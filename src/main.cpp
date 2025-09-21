@@ -42,7 +42,19 @@ int main()
     scene->ambientLight = vec3(0.1,0.1,0.1);
     scene->addModel(shared_ptr<Model>( ModelLoader::loadFromObjWithAssimp("Models/surface.obj")));
     scene->addModel(shared_ptr<Model>(   ModelLoader::loadFromObjWithAssimp("Models/gizmo.obj")));
-    scene->addLight(shared_ptr<Light>(new Light(LightType::POINT, vec3(1.0f, 1.0f,1.0f),5.0f)));
+    Model* m = ModelLoader::loadFromObjWithAssimp("Models/sphere.obj");
+    m->hasOutline = true;
+    m->transform.setPosition(vec3(2.5,0,0));
+    scene->addModel(shared_ptr<Model>(m));
+
+
+
+    Light* l= new Light(LightType::POINT, vec3(1.0f, 1.0f,1.0f),10.0f);
+    l->transform.setPosition(vec3(0,2.0f,2.0f));
+    scene->addLight(shared_ptr<Light>(l));
+
+
+
 
     renderer.loadScene(scene);
     renderer.loop();

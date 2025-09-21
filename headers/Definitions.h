@@ -38,9 +38,10 @@ enum class LightType {
 
 enum class ShaderType{ //should be put in render order (Lit first, Unlit second...)
     Lit,
+    Outline,
 };
 
-const unsigned int SHADER_COUNT = 1;
+const unsigned int SHADER_COUNT = 2;
 
 
 

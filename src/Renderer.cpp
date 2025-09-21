@@ -33,7 +33,10 @@ Renderer::Renderer(unsigned int width, unsigned int height, const char* title) {
     // Enable depth testing
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_CULL_FACE);
+    glEnable(GL_STENCIL_TEST);
+
     glCullFace(GL_BACK);
+
 
 
     // Initialize camera
@@ -51,8 +54,14 @@ Renderer::Renderer(unsigned int width, unsigned int height, const char* title) {
 
 void Renderer::loadShaders(){
     for(int i = 0;i<SHADER_COUNT;i++){
-        this->loadedShaders[(ShaderType)i] = std::unique_ptr<Shader>(new Shader());
-        this->loadedShaders[(ShaderType)i]->loadFromFile("Shaders/lit_vertex.glsl", "Shaders/lit_frag.glsl");
+        ShaderType type = (ShaderType)i;
+        this->loadedShaders[type] = std::unique_ptr<Shader>(new Shader());
+        if(type == ShaderType::Lit){
+            this->loadedShaders[(ShaderType)i]->loadFromFile("Shaders/lit_vertex.glsl", "Shaders/lit_frag.glsl");
+        }
+        if(type == ShaderType::Outline){
+            this->loadedShaders[(ShaderType)i]->loadFromFile("Shaders/outline_vertex.glsl", "Shaders/outline_frag.glsl");
+        }
 
     }
 
@@ -127,10 +136,20 @@ void Renderer::setupShaders(){
             //this shader is lit so we set its lights
             setupShaderLighting(shader);
             break;
+        case ShaderType::Outline:
+            shader = loadedShaders[type].get();
+            loadedShaders[type]->bindShader();
+            loadedShaders[type]->setUniform("viewMat", this->camera->getViewMat());
+            loadedShaders[type]->setUniform("projectionMat", this->camera->getProjectionMat());
+            loadedShaders[type]->setUniform("camera.position", this->camera->getPosition());
+            //this shader is lit so we set its lights
+            setupShaderLighting(shader);
+            break;
         
         default:
             break;
         }
+
         
     }
 
@@ -173,7 +192,8 @@ void Renderer::renderPass() {
 
     
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glEnable(GL_DEPTH_TEST);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
     //precompute normals
     setupShaders();
 
@@ -186,11 +206,40 @@ void Renderer::renderPass() {
             Drawable* drawable = it->get();
 
             if(drawable->getType() == Drawable::DrawableType::MODEL){
+                glStencilMask(0x00);
                 Model* model = static_cast<Model*>(drawable); 
+                shader->bindShader();
                 shader->setUniform("modelMat",model->transform.getTransformMat());
                 shader->setUniform("normalMat",model->transform.getNormalMat());
 
-                model->draw(shader);
+                if(model->hasOutline == false){
+                    model->draw(shader);
+                }
+                else{
+                    
+                    //we will use the stencil buffer for some neat things
+                    glStencilMask(0xff); //enable writes at this point all of our mask is zero
+                    glStencilFunc(GL_ALWAYS,1,0xff); //we always pass the test our reference is zero
+                    glStencilOp(GL_KEEP,GL_KEEP,GL_REPLACE); //we will only increment the mask if the drawn frag is in visible, so now our object frag area has ones
+                    //draw our object
+                    model->draw(shader);
+
+                    //glStencilMask(0x00); //disable writes
+                    glStencilFunc(GL_NOTEQUAL,1,0xff); //we now say our stencil only passes if it is neq
+                    glDisable(GL_DEPTH_TEST);     //we also disabel depth test becayse we want it ot be draw always
+                    ////now we use our outline shader, which scales the object a bit and draws a solid color, since we wont draw on the previous marked frags 
+                    loadedShaders[ShaderType::Outline]->bindShader();
+                    loadedShaders[ShaderType::Outline]->setUniform("modelMat",model->transform.getTransformMat());
+                    loadedShaders[ShaderType::Outline]->setUniform("normalMat",model->transform.getNormalMat());
+                    model->draw(loadedShaders[ShaderType::Outline]);
+                    glEnable(GL_DEPTH_TEST);
+                    //glStencilMask(0xff);
+
+
+
+
+
+                }
             }
 
             //setup the model matrix and finally render it

@@ -17,8 +17,12 @@ out vec3 fFragPos;
 
 void main()
 {
-    gl_Position = projectionMat*viewMat*modelMat* vec4(vPosition, 1.0);
-    fFragPos = vec3(modelMat*vec4(vPosition, 1.0));
+
+
+    vec3 extrudedPosition = vPosition + normalize(vNormal) * 0.05; // nalongside normal scaling
+    
+    gl_Position = projectionMat * viewMat * modelMat * vec4(extrudedPosition, 1.0);
+    fFragPos = vec3(modelMat * vec4(vPosition, 1.0));
     fTexCoord = vTexCoords;
     fVertexNormal = normalMat * vNormal;
 } 

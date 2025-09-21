@@ -17,16 +17,25 @@ private:
     std::vector<unique_ptr<Material>> materials; // Also fixed the type here
 
 
-    bool hasOutline = false;
-   
+
 
 public:
+    bool hasOutline = false;
+   
+    
     Transform transform;
     Model(std::vector<unique_ptr<Mesh>> meshes,std::vector<unique_ptr<Material>> materials);
 
+
+
+
+    //Drawable overridess
     ShaderType getShaderType() override;
     void draw(const unique_ptr<Shader>& shader) override;
     DrawableType getType() override;
+
+
+
 
 };
 #endif
