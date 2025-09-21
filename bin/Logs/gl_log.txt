@@ -1,0 +1,39 @@
+Log/initLog - Logging session started - 10:14:17 AM 
+[10:14:17 AM] - Program Initialized!
+[10:14:17 AM] - [ModelLoader::loadFromObjWithAssimp] - Successfully loaded: Models/surface.obj with 3 meshes
+[10:14:17 AM] - [ModelLoader::loadFromObjWithAssimp] - Processing mesh 0 with 4 vertices
+[10:14:17 AM] - [ModelLoader::loadFromObjWithAssimp] - Created mesh 'surface' with 4 vertices, 6 indices, material: 1
+[10:14:17 AM] - [ModelLoader::loadFromObjWithAssimp] - Successfully created mesh 0
+[10:14:17 AM] - [ModelLoader::loadFromObjWithAssimp] - Processing mesh 1 with 4 vertices
+[10:14:17 AM] - [ModelLoader::loadFromObjWithAssimp] - Created mesh 'wall' with 4 vertices, 6 indices, material: 2
+[10:14:17 AM] - [ModelLoader::loadFromObjWithAssimp] - Successfully created mesh 1
+[10:14:17 AM] - [ModelLoader::loadFromObjWithAssimp] - Processing mesh 2 with 48 vertices
+[10:14:17 AM] - [ModelLoader::loadFromObjWithAssimp] - Created mesh 'crate' with 48 vertices, 72 indices, material: 0
+[10:14:17 AM] - [ModelLoader::loadFromObjWithAssimp] - Successfully created mesh 2
+[10:14:17 AM] - [ModelLoader::loadFromObjWithAssimp] - Processing 3 materials (skipping default)
+[10:14:17 AM] - [ModelLoader::loadFromObjWithAssimp] - Material 0 texture path: Textures/crate_diff.png
+[10:14:17 AM] - [ModelLoader::loadFromObjWithAssimp] - Material 0 texture path: Textures/crate_spec.png
+[10:14:17 AM] - [ModelLoader::loadFromObjWithAssimp] - Material 0 has no normal texture
+[10:14:17 AM] - [TextureHandler::loadTexture] - Loadtexture path was empty, defaulting to fallback texture
+[10:14:18 AM] - [ModelLoader::loadFromObjWithAssimp] - Material 1 texture path: Textures/rock_diff.jpg
+[10:14:18 AM] - [ModelLoader::loadFromObjWithAssimp] - Material 1 texture path: Textures/no_spec.png
+[10:14:18 AM] - [ModelLoader::loadFromObjWithAssimp] - Material 1 has no normal texture
+[10:14:18 AM] - [TextureHandler::loadTexture] - Loadtexture path was empty, defaulting to fallback texture
+[10:14:18 AM] - [ModelLoader::loadFromObjWithAssimp] - Material 2 texture path: Textures/wall_diff.png
+[10:14:18 AM] - [ModelLoader::loadFromObjWithAssimp] - Material 2 texture path: Textures/no_spec.png
+[10:14:18 AM] - [ModelLoader::loadFromObjWithAssimp] - Material 2 has no normal texture
+[10:14:18 AM] - [TextureHandler::loadTexture] - Loadtexture path was empty, defaulting to fallback texture
+[10:14:18 AM] - [ModelLoader::loadFromObjWithAssimp] - Model loading completed successfully
+[10:14:18 AM] - [ModelLoader::loadFromObjWithAssimp] - About to return from function...
+[10:14:18 AM] - [ModelLoader::loadFromObjWithAssimp] - Successfully loaded: Models/gizmo.obj with 1 meshes
+[10:14:18 AM] - [ModelLoader::loadFromObjWithAssimp] - Processing mesh 0 with 72 vertices
+[10:14:18 AM] - [ModelLoader::loadFromObjWithAssimp] - Created mesh 'Gizmo' with 72 vertices, 72 indices, material: 0
+[10:14:18 AM] - [ModelLoader::loadFromObjWithAssimp] - Successfully created mesh 0
+[10:14:18 AM] - [ModelLoader::loadFromObjWithAssimp] - Processing 1 materials (skipping default)
+[10:14:18 AM] - [ModelLoader::loadFromObjWithAssimp] - Material 0 texture path: Textures/gizmo.png 
+[10:14:18 AM] - [ModelLoader::loadFromObjWithAssimp] - Material 0 texture path: Textures/no_spec.png
+[10:14:18 AM] - [ModelLoader::loadFromObjWithAssimp] - Material 0 has no normal texture
+[10:14:18 AM] - [TextureHandler::loadTexture] - Loadtexture path was empty, defaulting to fallback texture
+[10:14:18 AM] - [ModelLoader::loadFromObjWithAssimp] - Model loading completed successfully
+[10:14:18 AM] - [ModelLoader::loadFromObjWithAssimp] - About to return from function...
+Log/closeLog - Logging session ended - 10:14:49 AM 

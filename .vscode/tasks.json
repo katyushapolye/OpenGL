@@ -1,0 +1,61 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: g++.exe build active file",
+            "command": "g++",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "-std=c++17",
+                "-static",
+                "-I", "${workspaceFolder}/include",
+                "-I", "${workspaceFolder}/headers",
+                "-I", "${workspaceFolder}/libs/glfw-3.4.bin.WIN64/include",
+                "-L", "${workspaceFolder}/libs/glfw-3.4.bin.WIN64/lib-mingw-w64",
+                "${workspaceFolder}/src/*.cpp",
+                "${workspaceFolder}/src/*.c",
+                "-lglfw3",
+                "-lopengl32",
+                "-luser32",
+                "-lgdi32",
+                "-lshell32",
+                "-o",
+                "${workspaceFolder}/build/${workspaceFolderBasename}.exe"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": ["$gcc"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Task generated for building OpenGL project with GLAD and GLFW"
+        },
+        {
+            "type": "shell",
+            "label": "Create build directory",
+            "command": "mkdir",
+            "args": ["-p", "build"],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": "build",
+            "detail": "Creates build directory if it doesn't exist"
+        },
+        {
+            "type": "shell",
+            "label": "Build and Run",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Create build directory",
+                "C/C++: g++.exe build active file"
+            ],
+            "command": "${workspaceFolder}/build/${workspaceFolderBasename}.exe",
+            "group": "build",
+            "detail": "Builds and runs the OpenGL application"
+        }
+    ]
+}

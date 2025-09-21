@@ -1,0 +1,9 @@
+newmtl gizmo
+Kd 0.8 0.0 0.0      # Diffuse color  
+Ks 1.0 1.0 1.0      # Specular color
+Ns 0.0             # Specular exponent
+d 1.0               # Dissolve/opacity
+illum 2             # Illumination model
+map_Kd   Textures/gizmo.png 
+map_Ks   Textures/no_spec.png
+map_bump Textures/no_spec.png 

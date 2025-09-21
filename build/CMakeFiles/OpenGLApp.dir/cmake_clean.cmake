@@ -1,0 +1,41 @@
+file(REMOVE_RECURSE
+  "C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/bin/OpenGLApp.exe"
+  "C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/bin/OpenGLApp.exe.manifest"
+  "C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/bin/OpenGLApp.pdb"
+  "CMakeFiles/OpenGLApp.dir/src/Camera.cpp.obj"
+  "CMakeFiles/OpenGLApp.dir/src/Camera.cpp.obj.d"
+  "CMakeFiles/OpenGLApp.dir/src/Light.cpp.obj"
+  "CMakeFiles/OpenGLApp.dir/src/Light.cpp.obj.d"
+  "CMakeFiles/OpenGLApp.dir/src/Log.cpp.obj"
+  "CMakeFiles/OpenGLApp.dir/src/Log.cpp.obj.d"
+  "CMakeFiles/OpenGLApp.dir/src/Material.cpp.obj"
+  "CMakeFiles/OpenGLApp.dir/src/Material.cpp.obj.d"
+  "CMakeFiles/OpenGLApp.dir/src/Mesh.cpp.obj"
+  "CMakeFiles/OpenGLApp.dir/src/Mesh.cpp.obj.d"
+  "CMakeFiles/OpenGLApp.dir/src/Model.cpp.obj"
+  "CMakeFiles/OpenGLApp.dir/src/Model.cpp.obj.d"
+  "CMakeFiles/OpenGLApp.dir/src/ModelLoader.cpp.obj"
+  "CMakeFiles/OpenGLApp.dir/src/ModelLoader.cpp.obj.d"
+  "CMakeFiles/OpenGLApp.dir/src/Renderer.cpp.obj"
+  "CMakeFiles/OpenGLApp.dir/src/Renderer.cpp.obj.d"
+  "CMakeFiles/OpenGLApp.dir/src/Shader.cpp.obj"
+  "CMakeFiles/OpenGLApp.dir/src/Shader.cpp.obj.d"
+  "CMakeFiles/OpenGLApp.dir/src/Texture.cpp.obj"
+  "CMakeFiles/OpenGLApp.dir/src/Texture.cpp.obj.d"
+  "CMakeFiles/OpenGLApp.dir/src/TextureHandler.cpp.obj"
+  "CMakeFiles/OpenGLApp.dir/src/TextureHandler.cpp.obj.d"
+  "CMakeFiles/OpenGLApp.dir/src/Transform.cpp.obj"
+  "CMakeFiles/OpenGLApp.dir/src/Transform.cpp.obj.d"
+  "CMakeFiles/OpenGLApp.dir/src/glad.c.obj"
+  "CMakeFiles/OpenGLApp.dir/src/glad.c.obj.d"
+  "CMakeFiles/OpenGLApp.dir/src/main.cpp.obj"
+  "CMakeFiles/OpenGLApp.dir/src/main.cpp.obj.d"
+  "CMakeFiles/OpenGLApp.dir/src/stb_image.c.obj"
+  "CMakeFiles/OpenGLApp.dir/src/stb_image.c.obj.d"
+  "libOpenGLApp.dll.a"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang C CXX)
+  include(CMakeFiles/OpenGLApp.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()
