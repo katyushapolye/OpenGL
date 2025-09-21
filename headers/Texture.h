@@ -15,6 +15,8 @@ private:
 
     int w,h,channels;
 
+    bool hasTransparency;
+
     TextureType type;
 
 
@@ -24,6 +26,7 @@ public:
     Texture(std::string path, TextureType type);
 
 
+    bool isTransparent();
     TextureType getType();
     void bindTexture(unsigned int texUnity);
 

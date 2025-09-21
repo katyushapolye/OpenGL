@@ -10,8 +10,17 @@ Model::Model(std::vector<std::unique_ptr<Mesh>> meshes,std::vector<std::unique_p
 
         this->meshes = std::move(meshes);
         this->materials = std::move(material);
-        //materials.push_back(std::unique_ptr<Material> (new Material(testTexture, testSpecularTexture, testTexture, 0.9f)));
         this->shaderType = ShaderType::Lit;
+        //check our type by inividdualyy checking all material textures
+
+        for(auto mat = materials.begin();mat != materials.end();mat++ ){
+            if(mat->get()->diffuse->isTransparent()){
+                this->renderGroup = RenderGroup::Transparent;
+            }
+            else{
+                this->renderGroup = RenderGroup::Opaque;
+            }
+        }
 }
 
 
@@ -34,4 +43,8 @@ ShaderType Model::getShaderType(){
 
 Drawable::DrawableType Model::getType(){
     return Drawable::DrawableType::MODEL;
+}
+
+RenderGroup Model::getRenderGroup(){
+    return this->renderGroup;
 }

@@ -1,8 +1,10 @@
 #ifndef DEFINITIONS_H
 #define DEFINITIONS_H
+#define GLM_ENABLE_EXPERIMENTAL
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
+#include <glm/gtx/norm.hpp>
 #include "Log.h"
 #include <memory>
 
@@ -39,6 +41,11 @@ enum class LightType {
 enum class ShaderType{ //should be put in render order (Lit first, Unlit second...)
     Lit,
     Outline,
+};
+
+enum class RenderGroup{
+    Opaque,
+    Transparent
 };
 
 const unsigned int SHADER_COUNT = 2;

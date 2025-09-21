@@ -126,6 +126,10 @@ void Shader::setUniform(std::string name,int value){
 	glUniform1i(glGetUniformLocation(this->gl_ShaderProgramID,name.c_str()),value);
 }
 
+void Shader::setUniform(std::string name,bool value){
+	glUniform1i(glGetUniformLocation(this->gl_ShaderProgramID,name.c_str()),value);
+}
+
 void Shader::setUniform(std::string name,mat4 value){
     
     glUniformMatrix4fv(glGetUniformLocation(this->gl_ShaderProgramID,name.c_str()),1,GL_FALSE,glm::value_ptr(value));

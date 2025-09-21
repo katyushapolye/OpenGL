@@ -61,6 +61,10 @@ uniform Material material0;
 //Camera
 uniform Camera camera;
 
+//Control
+
+uniform bool alphaDiscard;
+
 vec3 pointLightPass(vec3 viewDir){
     vec3 pointContribution = vec3(0.0f,0.0f,0.0f);
     for (int i = 0; i < NR_POINT_LIGHTS; i++){
@@ -144,6 +148,7 @@ vec3 spotLightPass(vec3 viewDir){
 
 void main()
 {
+
     vec3 viewDir = normalize(camera.position - fFragPos);
     vec3 objectColor = (spotLightPass(viewDir) + pointLightPass(viewDir)+ ambientLightPass()+ directionalLightPass(viewDir)) * texture(material0.diffuse, fTexCoord).rgb;
 

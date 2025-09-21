@@ -100,6 +100,8 @@ CMakeFiles/OpenGLApp.dir/src/Camera.cpp.obj: C:/Users/rapha/Documents/Pessoal/Op
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_common.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_double.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_double_precision.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_exponential.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_exponential.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_float.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_float_precision.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_geometric.hpp \
@@ -110,6 +112,8 @@ CMakeFiles/OpenGLApp.dir/src/Camera.cpp.obj: C:/Users/rapha/Documents/Pessoal/Op
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_transform.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_trigonometric.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_trigonometric.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_common.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_common.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_constants.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_constants.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_int_sized.hpp \
@@ -170,6 +174,12 @@ CMakeFiles/OpenGLApp.dir/src/Camera.cpp.obj: C:/Users/rapha/Documents/Pessoal/Op
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/type_ptr.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/type_ptr.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/vec1.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/component_wise.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/component_wise.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/norm.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/norm.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/quaternion.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/quaternion.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/integer.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/mat2x2.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/mat2x3.hpp \
@@ -747,6 +757,8 @@ CMakeFiles/OpenGLApp.dir/src/Light.cpp.obj: C:/Users/rapha/Documents/Pessoal/Ope
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_common.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_double.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_double_precision.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_exponential.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_exponential.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_float.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_float_precision.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_geometric.hpp \
@@ -757,6 +769,8 @@ CMakeFiles/OpenGLApp.dir/src/Light.cpp.obj: C:/Users/rapha/Documents/Pessoal/Ope
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_transform.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_trigonometric.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_trigonometric.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_common.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_common.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_constants.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_constants.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_int_sized.hpp \
@@ -817,6 +831,12 @@ CMakeFiles/OpenGLApp.dir/src/Light.cpp.obj: C:/Users/rapha/Documents/Pessoal/Ope
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/type_ptr.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/type_ptr.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/vec1.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/component_wise.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/component_wise.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/norm.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/norm.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/quaternion.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/quaternion.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/integer.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/mat2x2.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/mat2x3.hpp \
@@ -1734,6 +1754,7 @@ CMakeFiles/OpenGLApp.dir/src/Material.cpp.obj: C:/Users/rapha/Documents/Pessoal/
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/func_vector_relational.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/qualifier.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/setup.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/type_float.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/type_half.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/type_half.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/type_mat2x2.hpp \
@@ -1754,6 +1775,8 @@ CMakeFiles/OpenGLApp.dir/src/Material.cpp.obj: C:/Users/rapha/Documents/Pessoal/
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/type_mat4x3.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/type_mat4x4.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/type_mat4x4.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/type_quat.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/type_quat.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/type_vec1.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/type_vec1.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/type_vec2.hpp \
@@ -1763,6 +1786,8 @@ CMakeFiles/OpenGLApp.dir/src/Material.cpp.obj: C:/Users/rapha/Documents/Pessoal/
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/type_vec4.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/type_vec4.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/exponential.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_clip_space.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_clip_space.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_double2x2.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_double2x2_precision.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_double2x3.hpp \
@@ -1799,6 +1824,30 @@ CMakeFiles/OpenGLApp.dir/src/Material.cpp.obj: C:/Users/rapha/Documents/Pessoal/
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_float4x3_precision.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_float4x4.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_float4x4_precision.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_projection.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_projection.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_transform.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_transform.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_common.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_common.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_double.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_double_precision.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_exponential.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_exponential.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_float.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_float_precision.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_geometric.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_geometric.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_relational.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_relational.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_transform.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_transform.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_trigonometric.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_trigonometric.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_common.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_common.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_constants.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_constants.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_int_sized.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_uint_sized.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/vector_bool2.hpp \
@@ -1825,6 +1874,8 @@ CMakeFiles/OpenGLApp.dir/src/Material.cpp.obj: C:/Users/rapha/Documents/Pessoal/
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/vector_int3_sized.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/vector_int4.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/vector_int4_sized.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/vector_relational.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/vector_relational.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/vector_uint2.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/vector_uint2_sized.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/vector_uint3.hpp \
@@ -1834,6 +1885,20 @@ CMakeFiles/OpenGLApp.dir/src/Material.cpp.obj: C:/Users/rapha/Documents/Pessoal/
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/fwd.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/geometric.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/glm.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/constants.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/constants.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/epsilon.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/epsilon.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/matrix_transform.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/matrix_transform.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/quaternion.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/quaternion.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/component_wise.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/component_wise.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/norm.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/norm.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/quaternion.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/quaternion.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/integer.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/mat2x2.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/mat2x3.hpp \
@@ -2417,6 +2482,8 @@ CMakeFiles/OpenGLApp.dir/src/Mesh.cpp.obj: C:/Users/rapha/Documents/Pessoal/Open
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_common.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_double.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_double_precision.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_exponential.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_exponential.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_float.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_float_precision.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_geometric.hpp \
@@ -2427,6 +2494,8 @@ CMakeFiles/OpenGLApp.dir/src/Mesh.cpp.obj: C:/Users/rapha/Documents/Pessoal/Open
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_transform.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_trigonometric.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_trigonometric.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_common.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_common.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_constants.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_constants.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_int_sized.hpp \
@@ -2487,6 +2556,12 @@ CMakeFiles/OpenGLApp.dir/src/Mesh.cpp.obj: C:/Users/rapha/Documents/Pessoal/Open
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/type_ptr.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/type_ptr.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/vec1.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/component_wise.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/component_wise.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/norm.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/norm.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/quaternion.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/quaternion.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/integer.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/mat2x2.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/mat2x3.hpp \
@@ -3081,6 +3156,8 @@ CMakeFiles/OpenGLApp.dir/src/Model.cpp.obj: C:/Users/rapha/Documents/Pessoal/Ope
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_common.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_double.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_double_precision.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_exponential.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_exponential.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_float.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_float_precision.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_geometric.hpp \
@@ -3091,6 +3168,8 @@ CMakeFiles/OpenGLApp.dir/src/Model.cpp.obj: C:/Users/rapha/Documents/Pessoal/Ope
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_transform.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_trigonometric.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_trigonometric.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_common.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_common.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_constants.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_constants.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_int_sized.hpp \
@@ -3151,6 +3230,12 @@ CMakeFiles/OpenGLApp.dir/src/Model.cpp.obj: C:/Users/rapha/Documents/Pessoal/Ope
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/type_ptr.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/type_ptr.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/vec1.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/component_wise.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/component_wise.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/norm.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/norm.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/quaternion.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/quaternion.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/integer.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/mat2x2.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/mat2x3.hpp \
@@ -3811,6 +3896,8 @@ CMakeFiles/OpenGLApp.dir/src/ModelLoader.cpp.obj: C:/Users/rapha/Documents/Pesso
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_common.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_double.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_double_precision.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_exponential.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_exponential.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_float.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_float_precision.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_geometric.hpp \
@@ -3821,6 +3908,8 @@ CMakeFiles/OpenGLApp.dir/src/ModelLoader.cpp.obj: C:/Users/rapha/Documents/Pesso
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_transform.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_trigonometric.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_trigonometric.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_common.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_common.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_constants.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_constants.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_int_sized.hpp \
@@ -3881,6 +3970,12 @@ CMakeFiles/OpenGLApp.dir/src/ModelLoader.cpp.obj: C:/Users/rapha/Documents/Pesso
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/type_ptr.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/type_ptr.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/vec1.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/component_wise.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/component_wise.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/norm.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/norm.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/quaternion.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/quaternion.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/integer.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/mat2x2.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/mat2x3.hpp \
@@ -4555,6 +4650,8 @@ CMakeFiles/OpenGLApp.dir/src/Renderer.cpp.obj: C:/Users/rapha/Documents/Pessoal/
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_common.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_double.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_double_precision.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_exponential.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_exponential.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_float.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_float_precision.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_geometric.hpp \
@@ -4565,6 +4662,8 @@ CMakeFiles/OpenGLApp.dir/src/Renderer.cpp.obj: C:/Users/rapha/Documents/Pessoal/
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_transform.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_trigonometric.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_trigonometric.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_common.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_common.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_constants.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_constants.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_int_sized.hpp \
@@ -4625,6 +4724,12 @@ CMakeFiles/OpenGLApp.dir/src/Renderer.cpp.obj: C:/Users/rapha/Documents/Pessoal/
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/type_ptr.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/type_ptr.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/vec1.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/component_wise.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/component_wise.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/norm.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/norm.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/quaternion.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/quaternion.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/integer.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/mat2x2.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/mat2x3.hpp \
@@ -5265,6 +5370,8 @@ CMakeFiles/OpenGLApp.dir/src/Scene.cpp.obj: C:/Users/rapha/Documents/Pessoal/Ope
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_common.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_double.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_double_precision.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_exponential.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_exponential.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_float.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_float_precision.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_geometric.hpp \
@@ -5275,6 +5382,8 @@ CMakeFiles/OpenGLApp.dir/src/Scene.cpp.obj: C:/Users/rapha/Documents/Pessoal/Ope
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_transform.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_trigonometric.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_trigonometric.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_common.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_common.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_constants.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_constants.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_int_sized.hpp \
@@ -5335,6 +5444,12 @@ CMakeFiles/OpenGLApp.dir/src/Scene.cpp.obj: C:/Users/rapha/Documents/Pessoal/Ope
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/type_ptr.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/type_ptr.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/vec1.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/component_wise.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/component_wise.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/norm.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/norm.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/quaternion.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/quaternion.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/integer.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/mat2x2.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/mat2x3.hpp \
@@ -5959,6 +6074,8 @@ CMakeFiles/OpenGLApp.dir/src/Shader.cpp.obj: C:/Users/rapha/Documents/Pessoal/Op
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_common.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_double.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_double_precision.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_exponential.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_exponential.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_float.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_float_precision.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_geometric.hpp \
@@ -5969,6 +6086,8 @@ CMakeFiles/OpenGLApp.dir/src/Shader.cpp.obj: C:/Users/rapha/Documents/Pessoal/Op
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_transform.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_trigonometric.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_trigonometric.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_common.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_common.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_constants.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_constants.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_int_sized.hpp \
@@ -6029,6 +6148,12 @@ CMakeFiles/OpenGLApp.dir/src/Shader.cpp.obj: C:/Users/rapha/Documents/Pessoal/Op
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/type_ptr.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/type_ptr.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/vec1.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/component_wise.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/component_wise.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/norm.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/norm.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/quaternion.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/quaternion.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/integer.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/mat2x2.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/mat2x3.hpp \
@@ -6535,6 +6660,7 @@ CMakeFiles/OpenGLApp.dir/src/Texture.cpp.obj: C:/Users/rapha/Documents/Pessoal/O
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/func_vector_relational.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/qualifier.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/setup.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/type_float.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/type_half.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/type_half.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/type_mat2x2.hpp \
@@ -6555,6 +6681,8 @@ CMakeFiles/OpenGLApp.dir/src/Texture.cpp.obj: C:/Users/rapha/Documents/Pessoal/O
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/type_mat4x3.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/type_mat4x4.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/type_mat4x4.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/type_quat.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/type_quat.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/type_vec1.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/type_vec1.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/type_vec2.hpp \
@@ -6564,6 +6692,8 @@ CMakeFiles/OpenGLApp.dir/src/Texture.cpp.obj: C:/Users/rapha/Documents/Pessoal/O
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/type_vec4.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/type_vec4.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/exponential.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_clip_space.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_clip_space.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_double2x2.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_double2x2_precision.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_double2x3.hpp \
@@ -6600,6 +6730,30 @@ CMakeFiles/OpenGLApp.dir/src/Texture.cpp.obj: C:/Users/rapha/Documents/Pessoal/O
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_float4x3_precision.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_float4x4.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_float4x4_precision.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_projection.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_projection.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_transform.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_transform.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_common.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_common.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_double.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_double_precision.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_exponential.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_exponential.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_float.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_float_precision.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_geometric.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_geometric.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_relational.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_relational.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_transform.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_transform.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_trigonometric.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_trigonometric.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_common.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_common.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_constants.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_constants.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_int_sized.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_uint_sized.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/vector_bool2.hpp \
@@ -6626,6 +6780,8 @@ CMakeFiles/OpenGLApp.dir/src/Texture.cpp.obj: C:/Users/rapha/Documents/Pessoal/O
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/vector_int3_sized.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/vector_int4.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/vector_int4_sized.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/vector_relational.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/vector_relational.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/vector_uint2.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/vector_uint2_sized.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/vector_uint3.hpp \
@@ -6635,6 +6791,20 @@ CMakeFiles/OpenGLApp.dir/src/Texture.cpp.obj: C:/Users/rapha/Documents/Pessoal/O
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/fwd.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/geometric.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/glm.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/constants.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/constants.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/epsilon.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/epsilon.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/matrix_transform.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/matrix_transform.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/quaternion.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/quaternion.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/component_wise.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/component_wise.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/norm.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/norm.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/quaternion.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/quaternion.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/integer.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/mat2x2.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/mat2x3.hpp \
@@ -7138,6 +7308,7 @@ CMakeFiles/OpenGLApp.dir/src/TextureHandler.cpp.obj: C:/Users/rapha/Documents/Pe
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/func_vector_relational.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/qualifier.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/setup.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/type_float.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/type_half.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/type_half.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/type_mat2x2.hpp \
@@ -7158,6 +7329,8 @@ CMakeFiles/OpenGLApp.dir/src/TextureHandler.cpp.obj: C:/Users/rapha/Documents/Pe
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/type_mat4x3.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/type_mat4x4.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/type_mat4x4.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/type_quat.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/type_quat.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/type_vec1.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/type_vec1.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/type_vec2.hpp \
@@ -7167,6 +7340,8 @@ CMakeFiles/OpenGLApp.dir/src/TextureHandler.cpp.obj: C:/Users/rapha/Documents/Pe
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/type_vec4.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/type_vec4.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/exponential.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_clip_space.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_clip_space.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_double2x2.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_double2x2_precision.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_double2x3.hpp \
@@ -7203,6 +7378,30 @@ CMakeFiles/OpenGLApp.dir/src/TextureHandler.cpp.obj: C:/Users/rapha/Documents/Pe
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_float4x3_precision.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_float4x4.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_float4x4_precision.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_projection.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_projection.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_transform.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_transform.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_common.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_common.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_double.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_double_precision.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_exponential.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_exponential.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_float.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_float_precision.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_geometric.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_geometric.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_relational.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_relational.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_transform.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_transform.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_trigonometric.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_trigonometric.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_common.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_common.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_constants.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_constants.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_int_sized.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_uint_sized.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/vector_bool2.hpp \
@@ -7229,6 +7428,8 @@ CMakeFiles/OpenGLApp.dir/src/TextureHandler.cpp.obj: C:/Users/rapha/Documents/Pe
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/vector_int3_sized.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/vector_int4.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/vector_int4_sized.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/vector_relational.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/vector_relational.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/vector_uint2.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/vector_uint2_sized.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/vector_uint3.hpp \
@@ -7238,6 +7439,20 @@ CMakeFiles/OpenGLApp.dir/src/TextureHandler.cpp.obj: C:/Users/rapha/Documents/Pe
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/fwd.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/geometric.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/glm.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/constants.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/constants.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/epsilon.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/epsilon.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/matrix_transform.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/matrix_transform.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/quaternion.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/quaternion.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/component_wise.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/component_wise.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/norm.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/norm.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/quaternion.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/quaternion.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/integer.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/mat2x2.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/mat2x3.hpp \
@@ -7823,6 +8038,8 @@ CMakeFiles/OpenGLApp.dir/src/Transform.cpp.obj: C:/Users/rapha/Documents/Pessoal
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_common.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_double.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_double_precision.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_exponential.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_exponential.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_float.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_float_precision.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_geometric.hpp \
@@ -7833,6 +8050,8 @@ CMakeFiles/OpenGLApp.dir/src/Transform.cpp.obj: C:/Users/rapha/Documents/Pessoal
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_transform.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_trigonometric.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_trigonometric.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_common.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_common.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_constants.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_constants.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_int_sized.hpp \
@@ -7893,6 +8112,12 @@ CMakeFiles/OpenGLApp.dir/src/Transform.cpp.obj: C:/Users/rapha/Documents/Pessoal
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/type_ptr.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/type_ptr.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/vec1.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/component_wise.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/component_wise.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/norm.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/norm.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/quaternion.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/quaternion.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/integer.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/mat2x2.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/mat2x3.hpp \
@@ -8808,6 +9033,8 @@ CMakeFiles/OpenGLApp.dir/src/main.cpp.obj: C:/Users/rapha/Documents/Pessoal/Open
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_common.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_double.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_double_precision.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_exponential.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_exponential.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_float.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_float_precision.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_geometric.hpp \
@@ -8818,6 +9045,8 @@ CMakeFiles/OpenGLApp.dir/src/main.cpp.obj: C:/Users/rapha/Documents/Pessoal/Open
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_transform.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_trigonometric.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_trigonometric.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_common.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_common.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_constants.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_constants.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_int_sized.hpp \
@@ -8878,6 +9107,12 @@ CMakeFiles/OpenGLApp.dir/src/main.cpp.obj: C:/Users/rapha/Documents/Pessoal/Open
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/type_ptr.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/type_ptr.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/vec1.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/component_wise.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/component_wise.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/norm.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/norm.inl \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/quaternion.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/quaternion.inl \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/integer.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/mat2x2.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/mat2x3.hpp \
@@ -9503,6 +9738,8 @@ C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/common.hpp:
 
 C:/msys64/mingw64/include/ctype.h:
 
+C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_exponential.inl:
+
 C:/msys64/mingw64/include/excpt.h:
 
 C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/_vectorize.hpp:
@@ -9520,8 +9757,6 @@ C:/msys64/mingw64/include/timezoneapi.h:
 C:/msys64/mingw64/include/c++/15.2.0/bits/locale_facets_nonio.h:
 
 C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/func_exponential.inl:
-
-C:/msys64/mingw64/include/winnetwk.h:
 
 C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/func_geometric.inl:
 
@@ -9703,6 +9938,8 @@ C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/avx512vpopcntdqintri
 
 C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_double3x3.hpp:
 
+C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/norm.inl:
+
 C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_double3x3_precision.hpp:
 
 C:/msys64/mingw64/include/basetsd.h:
@@ -9732,6 +9969,8 @@ C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/avx512vlintrin.h:
 C:/msys64/mingw64/include/reason.h:
 
 C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_float2x2.hpp:
+
+C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/norm.hpp:
 
 C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_float2x2_precision.hpp:
 
@@ -9835,6 +10074,8 @@ C:/msys64/mingw64/include/playsoundapi.h:
 
 C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_double_precision.hpp:
 
+C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_exponential.hpp:
+
 C:/msys64/mingw64/include/c++/15.2.0/bits/regex_compiler.tcc:
 
 C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_float.hpp:
@@ -9874,6 +10115,14 @@ C:/msys64/mingw64/include/ddeml.h:
 C:/msys64/mingw64/include/c++/15.2.0/bits/hashtable.h:
 
 C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/quaternion_trigonometric.inl:
+
+C:/msys64/mingw64/include/c++/15.2.0/tr1/riemann_zeta.tcc:
+
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/avx512vbmi2vlintrin.h:
+
+C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_common.hpp:
+
+C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/scalar_common.inl:
 
 C:/msys64/mingw64/include/wtypes.h:
 
@@ -9967,9 +10216,9 @@ C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/vector_float4.hpp
 
 C:/msys64/mingw64/include/c++/15.2.0/ext/alloc_traits.h:
 
-C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/vector_float4_precision.hpp:
-
 C:/msys64/mingw64/include/winnls.h:
+
+C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/vector_float4_precision.hpp:
 
 C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/vector_int1.hpp:
 
@@ -10054,6 +10303,20 @@ C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/quaternion.inl:
 C:/msys64/mingw64/include/c++/15.2.0/tr1/special_function_util.h:
 
 C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtc/type_ptr.hpp:
+
+C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/component_wise.hpp:
+
+C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/component_wise.inl:
+
+C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/quaternion.hpp:
+
+C:/msys64/mingw64/include/c++/15.2.0/string:
+
+C:/msys64/mingw64/include/threadpoolapiset.h:
+
+C:/msys64/mingw64/include/psdk_inc/intrin-impl.h:
+
+C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/gtx/quaternion.inl:
 
 C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/integer.hpp:
 
@@ -10413,10 +10676,6 @@ C:/msys64/mingw64/include/synchapi.h:
 
 C:/msys64/mingw64/include/c++/15.2.0/stdexcept:
 
-C:/msys64/mingw64/include/c++/15.2.0/string:
-
-C:/msys64/mingw64/include/threadpoolapiset.h:
-
 C:/msys64/mingw64/include/winsvc.h:
 
 C:/msys64/mingw64/include/c++/15.2.0/tr1/bessel_function.tcc:
@@ -10442,8 +10701,6 @@ C:/msys64/mingw64/include/sec_api/stdio_s.h:
 C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/assimp/vector3.h:
 
 C:/msys64/mingw64/include/c++/15.2.0/tr1/poly_laguerre.tcc:
-
-C:/msys64/mingw64/include/c++/15.2.0/tr1/riemann_zeta.tcc:
 
 C:/msys64/mingw64/include/c++/15.2.0/bits/stl_multimap.h:
 
@@ -10479,9 +10736,9 @@ C:/msys64/mingw64/include/sdkddkver.h:
 
 C:/msys64/mingw64/include/cguid.h:
 
-C:/msys64/mingw64/include/concurrencysal.h:
-
 C:/msys64/mingw64/include/winsmcrd.h:
+
+C:/msys64/mingw64/include/concurrencysal.h:
 
 C:/msys64/mingw64/include/c++/15.2.0/bits/regex_compiler.h:
 
@@ -10510,10 +10767,6 @@ C:/msys64/mingw64/include/dlgs.h:
 C:/msys64/mingw64/include/dpapi.h:
 
 C:/msys64/mingw64/include/errhandlingapi.h:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/avx512vp2intersectvlintrin.h:
-
-C:/msys64/mingw64/include/winscard.h:
 
 C:/msys64/mingw64/include/fibersapi.h:
 
@@ -10577,8 +10830,6 @@ C:/msys64/mingw64/include/psdk_inc/_socket_types.h:
 
 C:/msys64/mingw64/include/psdk_inc/_wsa_errnos.h:
 
-C:/msys64/mingw64/include/psdk_inc/intrin-impl.h:
-
 C:/msys64/mingw64/include/pshpack2.h:
 
 C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/rtmintrin.h:
@@ -10637,11 +10888,17 @@ C:/msys64/mingw64/include/wingdi.h:
 
 C:/msys64/mingw64/include/winioctl.h:
 
+C:/msys64/mingw64/include/winnetwk.h:
+
 C:/msys64/mingw64/include/winnt.h:
 
 C:/msys64/mingw64/include/winperf.h:
 
 C:/msys64/mingw64/include/winreg.h:
+
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/avx512vp2intersectvlintrin.h:
+
+C:/msys64/mingw64/include/winscard.h:
 
 C:/msys64/mingw64/include/winsock.h:
 
@@ -10724,8 +10981,6 @@ C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/avx512ifmavlintrin.h
 C:/msys64/mingw64/include/c++/15.2.0/unordered_set:
 
 C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/avx512vbmi2intrin.h:
-
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/avx512vbmi2vlintrin.h:
 
 C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/avx512vbmivlintrin.h:
 

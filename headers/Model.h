@@ -16,6 +16,7 @@ private:
     std::vector<unique_ptr<Mesh>> meshes;
     std::vector<unique_ptr<Material>> materials; // Also fixed the type here
 
+    RenderGroup renderGroup;
 
 
 
@@ -25,6 +26,7 @@ public:
     
     Transform transform;
     Model(std::vector<unique_ptr<Mesh>> meshes,std::vector<unique_ptr<Material>> materials);
+    RenderGroup getRenderGroup();
 
 
 

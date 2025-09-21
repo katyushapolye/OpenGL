@@ -47,6 +47,26 @@ int main()
     m->transform.setPosition(vec3(2.5,0,0));
     scene->addModel(shared_ptr<Model>(m));
 
+    m = ModelLoader::loadFromObjWithAssimp("Models/window.obj");
+    m->transform.setPosition(vec3(0,-1,0));
+    m->transform.rotateLocal(vec3(0,180,0));
+    scene->addModel(shared_ptr<Model>(m));
+
+    m = ModelLoader::loadFromObjWithAssimp("Models/window.obj");
+    m->transform.setPosition(vec3(0,-1,0.5));
+    m->transform.rotateLocal(vec3(0,180,0));
+    scene->addModel(shared_ptr<Model>(m));
+
+    m = ModelLoader::loadFromObjWithAssimp("Models/window.obj");
+    m->transform.setPosition(vec3(0,-1,1.0));
+    m->transform.rotateLocal(vec3(0,180,0));
+    scene->addModel(shared_ptr<Model>(m));
+
+     m = ModelLoader::loadFromObjWithAssimp("Models/grassleaves.obj");
+    m->transform.setPosition(vec3(0.0,-1,2.0));
+    m->transform.rotateLocal(vec3(0,180,0));
+    scene->addModel(shared_ptr<Model>(m));
+
 
 
     Light* l= new Light(LightType::POINT, vec3(1.0f, 1.0f,1.0f),10.0f);

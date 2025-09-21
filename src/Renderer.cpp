@@ -34,7 +34,10 @@ Renderer::Renderer(unsigned int width, unsigned int height, const char* title) {
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_CULL_FACE);
     glEnable(GL_STENCIL_TEST);
+    glEnable(GL_BLEND); 
 
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);  
+    
     glCullFace(GL_BACK);
 
 
@@ -199,7 +202,8 @@ void Renderer::renderPass() {
 
 
     //render loop for the loaded scene
-    //we will need to also sort by z-depth here later
+    //first we render all opaque objects, while storing transparents for later, outlines are broken because we need to render them after everythng
+    std::vector<std::pair<ShaderType,Model*>> transparentModels;
     for(int i = 0;i<loadedShaders.size();i++){
         for(auto it = shaderModelGroups[(ShaderType) i].begin() ;it != shaderModelGroups[(ShaderType) i].end();it++){
             auto& shader = loadedShaders[(ShaderType) i];
@@ -208,43 +212,74 @@ void Renderer::renderPass() {
             if(drawable->getType() == Drawable::DrawableType::MODEL){
                 glStencilMask(0x00);
                 Model* model = static_cast<Model*>(drawable); 
-                shader->bindShader();
-                shader->setUniform("modelMat",model->transform.getTransformMat());
-                shader->setUniform("normalMat",model->transform.getNormalMat());
+                if(model->getRenderGroup() == RenderGroup::Opaque){
+                    shader->bindShader();
+                    shader->setUniform("modelMat",model->transform.getTransformMat());
+                    shader->setUniform("normalMat",model->transform.getNormalMat());
+                    if(model->hasOutline == false){
+                        model->draw(shader);
+                    }
+                    else{
+                        //glStencilMask(0xFF);  // enable stencil writes
+                        ////we will use the stencil buffer for some neat things
+                        //glStencilFunc(GL_ALWAYS, 1, 0xFF);        // always pass
+                        //glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE); // replace stencil with 1
+                                                                         
+                                                                // keep depth for original model
+                        model->draw(shader);  
+                        Log::write("[Renderer::renderPass] - WARNING - OUTLINES ARE DISABLED UNTIL I SORT THEM CORRECTLY!");      
+                                                            
+                        //glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
+                        //glStencilMask(0x00); 
+                        //glDisable(GL_DEPTH_TEST);
+                        //loadedShaders[ShaderType::Outline]->bindShader();
+                        //shader->setUniform("modelMat",model->transform.getTransformMat());
+                        //shader->setUniform("normalMat",model->transform.getNormalMat());
+                        //model->draw(shader);
+                        //glStencilMask(0xFF);
+                        //glStencilFunc(GL_ALWAYS, 1, 0xFF);   
+                        //glEnable(GL_DEPTH_TEST);  
 
-                if(model->hasOutline == false){
-                    model->draw(shader);
+
+
+
+
+
+
+                    }
                 }
-                else{
-                    
-                    //we will use the stencil buffer for some neat things
-                    glStencilMask(0xff); //enable writes at this point all of our mask is zero
-                    glStencilFunc(GL_ALWAYS,1,0xff); //we always pass the test our reference is zero
-                    glStencilOp(GL_KEEP,GL_KEEP,GL_REPLACE); //we will only increment the mask if the drawn frag is in visible, so now our object frag area has ones
-                    //draw our object
-                    model->draw(shader);
-
-                    //glStencilMask(0x00); //disable writes
-                    glStencilFunc(GL_NOTEQUAL,1,0xff); //we now say our stencil only passes if it is neq
-                    glDisable(GL_DEPTH_TEST);     //we also disabel depth test becayse we want it ot be draw always
-                    ////now we use our outline shader, which scales the object a bit and draws a solid color, since we wont draw on the previous marked frags 
-                    loadedShaders[ShaderType::Outline]->bindShader();
-                    loadedShaders[ShaderType::Outline]->setUniform("modelMat",model->transform.getTransformMat());
-                    loadedShaders[ShaderType::Outline]->setUniform("normalMat",model->transform.getNormalMat());
-                    model->draw(loadedShaders[ShaderType::Outline]);
-                    glEnable(GL_DEPTH_TEST);
-                    //glStencilMask(0xff);
-
-
-
-
-
+                //transparent model
+                else if(model->getRenderGroup() == RenderGroup::Transparent){
+                    transparentModels.push_back(std::pair<ShaderType,Model*>((ShaderType) i,model));
                 }
+
             }
+
 
             //setup the model matrix and finally render it
 
         }
+    }
+
+    glm::vec3 camPos = camera->getPosition();
+
+    // Sort back-to-front
+    std::sort(transparentModels.begin(), transparentModels.end(),
+        [&camPos](const std::pair<ShaderType, Model*>& a, const std::pair<ShaderType, Model*>& b) {
+            float distA = glm::length2(camPos - a.second->transform.getPosition());
+            float distB = glm::length2(camPos - b.second->transform.getPosition());
+  
+            return distA > distB; // farthest first
+        }
+    );
+
+
+    for (auto& entry : transparentModels) {
+        
+        loadedShaders[entry.first]->bindShader();
+        loadedShaders[entry.first]->setUniform("modelMat",entry.second->transform.getTransformMat());
+        loadedShaders[entry.first]->setUniform("normalMat",entry.second->transform.getNormalMat());
+        entry.second->draw(loadedShaders[entry.first]);
     }
 
 

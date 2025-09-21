@@ -34,6 +34,7 @@ public:
 	void setUniform(std::string name,float value);
 	void setUniform(std::string name,mat4 value);
 	void setUniform(std::string name,mat3 value);
+	void setUniform(std::string name,bool value);
 };
 
 #endif

@@ -7,6 +7,15 @@ Texture::Texture(std::string path, TextureType type){
         std::cout << "Failed to load texture!" << std::endl;
         return;
     }
+    hasTransparency = false;
+    for (int i = 0; i < w * h; i++) {
+        unsigned char alpha = rawTexture[i * 4 + 3]; // 4th channel
+        if (alpha < 255) {                     // anything not fully opaque
+            hasTransparency = true;
+            break;
+        }
+    }
+
     glGenTextures(1,&(this->gl_TexID));
     glBindTexture(GL_TEXTURE_2D,this->gl_TexID);
 
@@ -36,6 +45,10 @@ Texture::Texture(std::string path, TextureType type){
 
 }
 
+bool Texture::isTransparent(){
+    return this->hasTransparency;
+}
+
 Texture::Texture(std::string path){
     stbi_set_flip_vertically_on_load(true); //to make the uv map easier
     unsigned char* rawTexture = stbi_load(path.c_str(),&(this->w),&(this->h),&(this->channels),4);
@@ -44,6 +57,17 @@ Texture::Texture(std::string path){
         Log::write("[Texture::Texture] - Failed to load texture at path:" + path);
         return;
     }
+
+    
+    hasTransparency = false;
+    for (int i = 0; i < w * h; i++) {
+        unsigned char alpha = rawTexture[i * 4 + 3]; // 4th channel
+        if (alpha < 255) {                     // anything not fully opaque
+            hasTransparency = true;
+            break;
+        }
+    }
+    
     glGenTextures(1,&(this->gl_TexID));
     glBindTexture(GL_TEXTURE_2D,this->gl_TexID);
 
@@ -56,8 +80,8 @@ Texture::Texture(std::string path){
     //// Add this after your anisotropic filtering code
     //glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_LOD_BIAS, -1.0f);
 
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S,GL_REPEAT); //repeatt at s
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T,GL_REPEAT); //repeat at t
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S,GL_CLAMP); //repeatt at s
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T,GL_CLAMP); //repeat at t
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR); //how to sample in case it downscales
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR); //how to sample in case of upscales
 
