@@ -18,6 +18,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/src/Model.cpp" "CMakeFiles/OpenGLApp.dir/src/Model.cpp.obj" "gcc" "CMakeFiles/OpenGLApp.dir/src/Model.cpp.obj.d"
   "C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/src/ModelLoader.cpp" "CMakeFiles/OpenGLApp.dir/src/ModelLoader.cpp.obj" "gcc" "CMakeFiles/OpenGLApp.dir/src/ModelLoader.cpp.obj.d"
   "C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/src/Renderer.cpp" "CMakeFiles/OpenGLApp.dir/src/Renderer.cpp.obj" "gcc" "CMakeFiles/OpenGLApp.dir/src/Renderer.cpp.obj.d"
+  "C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/src/Scene.cpp" "CMakeFiles/OpenGLApp.dir/src/Scene.cpp.obj" "gcc" "CMakeFiles/OpenGLApp.dir/src/Scene.cpp.obj.d"
   "C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/src/Shader.cpp" "CMakeFiles/OpenGLApp.dir/src/Shader.cpp.obj" "gcc" "CMakeFiles/OpenGLApp.dir/src/Shader.cpp.obj.d"
   "C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/src/Texture.cpp" "CMakeFiles/OpenGLApp.dir/src/Texture.cpp.obj" "gcc" "CMakeFiles/OpenGLApp.dir/src/Texture.cpp.obj.d"
   "C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/src/TextureHandler.cpp" "CMakeFiles/OpenGLApp.dir/src/TextureHandler.cpp.obj" "gcc" "CMakeFiles/OpenGLApp.dir/src/TextureHandler.cpp.obj.d"

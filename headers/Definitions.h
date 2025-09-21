@@ -12,6 +12,9 @@ using glm::vec4;
 using glm::mat4;
 using glm::mat3;
 
+using std::shared_ptr;
+using std::unique_ptr;
+
 struct Vertex {
     vec3 position;
     vec3 normal;
@@ -32,6 +35,12 @@ enum class LightType {
     POINT,
     SPOT
 };
+
+enum class ShaderType{ //should be put in render order (Lit first, Unlit second...)
+    Lit,
+};
+
+const unsigned int SHADER_COUNT = 1;
 
 
 

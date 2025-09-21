@@ -11,9 +11,9 @@ private:
     
 public:
     std::string name;
-    std::shared_ptr<Texture> diffuse;
-    std::shared_ptr<Texture> specular;
-    std::shared_ptr<Texture> normal;
+    shared_ptr<Texture> diffuse;
+    shared_ptr<Texture> specular;
+    shared_ptr<Texture> normal;
     
     float     shininess;
     Material(Texture* diffuse, Texture* specular, Texture* normal, float shininess,std::string name = "Material");

@@ -24,6 +24,7 @@
 
 
 
+
 int main()
 {
 
@@ -32,18 +33,22 @@ int main()
 
     Log::write("Program Initialized!");
     
- 
 
 
 
+    Renderer renderer = Renderer(800,600,"OpenGL Window"); //we need instantiate the renderer because it starts openGL
 
+    Scene* scene = new Scene();
+    scene->ambientLight = vec3(0.1,0.1,0.1);
+    scene->addModel(shared_ptr<Model>( ModelLoader::loadFromObjWithAssimp("Models/surface.obj")));
+    scene->addModel(shared_ptr<Model>(   ModelLoader::loadFromObjWithAssimp("Models/gizmo.obj")));
+    scene->addLight(shared_ptr<Light>(new Light(LightType::POINT, vec3(1.0f, 1.0f,1.0f),5.0f)));
 
-
-    Renderer renderer = Renderer(800,600,"OpenGL Window");
-
+    renderer.loadScene(scene);
     renderer.loop();
-
     renderer.dispose();
+
+
     glfwTerminate();
     Log::closeLog();
     return 0;

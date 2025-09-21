@@ -8,9 +8,9 @@ Renderer::Renderer(unsigned int width, unsigned int height, const char* title) {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
+
     this->width = width;
     this->height = height;
-    this->testNormalMatrix = glm::mat3(1.0f);
     // Create this->gl_Window
     this->gl_Window = glfwCreateWindow(width, height, title, NULL, NULL);
     if (!this->gl_Window) {
@@ -41,8 +41,34 @@ Renderer::Renderer(unsigned int width, unsigned int height, const char* title) {
     this->camera->setPosition(vec3(0.0f, 0.0f, 5.0f));
     this->camera->setTarget(vec3(0.0f, 0.0f, 0.0f));
 
-    // Debug initialization (load test shader, texture, mesh)
-    debug_INIT();
+    //Initialize the shaders
+    this->testShader = std::unique_ptr<Shader>(new Shader());
+    this->testShader->loadFromFile("Shaders/lit_vertex.glsl", "Shaders/lit_frag.glsl");
+
+    loadShaders();
+
+}
+
+void Renderer::loadShaders(){
+    for(int i = 0;i<SHADER_COUNT;i++){
+        this->loadedShaders[(ShaderType)i] = std::unique_ptr<Shader>(new Shader());
+        this->loadedShaders[(ShaderType)i]->loadFromFile("Shaders/lit_vertex.glsl", "Shaders/lit_frag.glsl");
+
+    }
+
+
+}
+
+void Renderer::sortSceneModels(){
+ const auto& models = this->loadedScene->getModels();
+    for(auto modelIt = models.begin(); modelIt != models.end(); ++modelIt){
+        shaderModelGroups[(*modelIt)->getShaderType()].push_back(*modelIt);
+
+    }
+
+
+
+
 }
 
 void Renderer::processInput(){
@@ -82,37 +108,60 @@ void Renderer::processInput(){
 }
 
 
-void Renderer::computeNormalsMatrixes(){
-    //for each transform...
-    this->testNormalMatrix = glm::mat3(glm::transpose(glm::inverse(this->testModel->transform.getTransformMat())));
+
+
+
+void Renderer::setupShaders(){
+    for(int i = 0;i<SHADER_COUNT;i++){
+        ShaderType type = (ShaderType)i;
+        Shader* shader = nullptr;
+
+        switch (type)
+        {
+        case ShaderType::Lit:
+            shader = loadedShaders[type].get();
+            loadedShaders[type]->bindShader();
+            loadedShaders[type]->setUniform("viewMat", this->camera->getViewMat());
+            loadedShaders[type]->setUniform("projectionMat", this->camera->getProjectionMat());
+            loadedShaders[type]->setUniform("camera.position", this->camera->getPosition());
+            //this shader is lit so we set its lights
+            setupShaderLighting(shader);
+            break;
+        
+        default:
+            break;
+        }
+        
+    }
 
 
 }
 
-void Renderer::lightningPass(){
-    this->testShader->bindShader();
-    //point first
-    this->testShader->setUniform("ambientLight",vec3(0.3,0.3,0.3));
+void Renderer::setupShaderLighting(Shader* shader){
 
-    for(int i = 0; i < this->loadedLights[LightType::POINT].size(); i++){
-        this->testShader->setUniform("pointLights[" + std::to_string(i) +"].position", this->loadedLights[LightType::POINT][i]->transform.getPosition());
-        this->testShader->setUniform("pointLights[" + std::to_string(i) +"].color", this->loadedLights[LightType::POINT][i]->color);
-        this->testShader->setUniform("pointLights[" + std::to_string(i) +"].intensity", this->loadedLights[LightType::POINT][i]->intensity);
 
-    }
 
-    for(int i = 0; i < this->loadedLights[LightType::DIRECTIONAL].size(); i++){
-        this->testShader->setUniform("dirLights[" + std::to_string(i) +"].direction", this->loadedLights[LightType::DIRECTIONAL][i]->transform.getForward());
-        this->testShader->setUniform("dirLights[" + std::to_string(i) +"].color", this->loadedLights[LightType::DIRECTIONAL][i]->color);
-        this->testShader->setUniform("dirLights[" + std::to_string(i) +"].intensity", this->loadedLights[LightType::DIRECTIONAL][i]->intensity);
+    shader->setUniform("ambientLight",this->loadedScene->ambientLight);
+
+    for(int i = 0; i < this->loadedScene->getLights()[LightType::POINT].size(); i++){
+        shader->setUniform("pointLights[" + std::to_string(i) +"].position", this->loadedScene->getLights()[LightType::POINT][i]->transform.getPosition());
+        shader->setUniform("pointLights[" + std::to_string(i) +"].color", this->loadedScene->getLights()[LightType::POINT][i]->color);
+        shader->setUniform("pointLights[" + std::to_string(i) +"].intensity", this->loadedScene->getLights()[LightType::POINT][i]->intensity);
 
     }
-    for(int i = 0; i < this->loadedLights[LightType::SPOT].size(); i++){
-        this->testShader->setUniform("spotLights[" + std::to_string(i) +"].position", this->loadedLights[LightType::SPOT][i]->transform.getPosition());
-        this->testShader->setUniform("spotLights[" + std::to_string(i) +"].direction", this->loadedLights[LightType::SPOT][i]->transform.getForward());
-        this->testShader->setUniform("spotLights[" + std::to_string(i) +"].color", this->loadedLights[LightType::SPOT][i]->color);
-        this->testShader->setUniform("spotLights[" + std::to_string(i) +"].intensity", this->loadedLights[LightType::SPOT][i]->intensity);
-        this->testShader->setUniform("spotLights[" + std::to_string(i) +"].theta", this->loadedLights[LightType::SPOT][i]->theta);
+
+    for(int i = 0; i < this->loadedScene->getLights()[LightType::DIRECTIONAL].size(); i++){
+        shader->setUniform("dirLights[" + std::to_string(i) +"].direction", this->loadedScene->getLights()[LightType::DIRECTIONAL][i]->transform.getForward());
+        shader->setUniform("dirLights[" + std::to_string(i) +"].color", this->loadedScene->getLights()[LightType::DIRECTIONAL][i]->color);
+        shader->setUniform("dirLights[" + std::to_string(i) +"].intensity", this->loadedScene->getLights()[LightType::DIRECTIONAL][i]->intensity);
+
+    }
+    for(int i = 0; i < this->loadedScene->getLights()[LightType::SPOT].size(); i++){
+        shader->setUniform("spotLights[" + std::to_string(i) +"].position", this->loadedScene->getLights()[LightType::SPOT][i]->transform.getPosition());
+        shader->setUniform("spotLights[" + std::to_string(i) +"].direction", this->loadedScene->getLights()[LightType::SPOT][i]->transform.getForward());
+        shader->setUniform("spotLights[" + std::to_string(i) +"].color", this->loadedScene->getLights()[LightType::SPOT][i]->color);
+        shader->setUniform("spotLights[" + std::to_string(i) +"].intensity",this->loadedScene->getLights()[LightType::SPOT][i]->intensity);
+        shader->setUniform("spotLights[" + std::to_string(i) +"].theta", this->loadedScene->getLights()[LightType::SPOT][i]->theta);
 
     }
 }
@@ -120,33 +169,34 @@ void Renderer::lightningPass(){
 void Renderer::renderPass() {
     
     // Clear color and depth buffers
+
+
     
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     //precompute normals
-    computeNormalsMatrixes();
-
-    // Use test shader, wewill use UBOS later
-    this->testShader->bindShader();
-    this->testShader->setUniform("viewMat", this->camera->getViewMat());
-    this->testShader->setUniform("projectionMat", this->camera->getProjectionMat());
-    this->testShader->setUniform("normalMat", this->testNormalMatrix);
-    this->testShader->setUniform("camera.position", this->camera->getPosition());
-
-    lightningPass();
+    setupShaders();
 
 
-    
- 
+    //render loop for the loaded scene
+    //we will need to also sort by z-depth here later
+    for(int i = 0;i<loadedShaders.size();i++){
+        for(auto it = shaderModelGroups[(ShaderType) i].begin() ;it != shaderModelGroups[(ShaderType) i].end();it++){
+            auto& shader = loadedShaders[(ShaderType) i];
+            Drawable* drawable = it->get();
 
+            if(drawable->getType() == Drawable::DrawableType::MODEL){
+                Model* model = static_cast<Model*>(drawable); 
+                shader->setUniform("modelMat",model->transform.getTransformMat());
+                shader->setUniform("normalMat",model->transform.getNormalMat());
 
+                model->draw(shader);
+            }
 
-    this->testShader->bindShader();
-    this->testShader->setUniform("modelMat", this->testModel->transform.getTransformMat());
-    this->testModel->draw( this->testShader);
+            //setup the model matrix and finally render it
 
-    this->testShader->setUniform("modelMat", this->axisGizmo->transform.getTransformMat());
-    this->axisGizmo->draw(this->testShader);
+        }
+    }
 
 
 
@@ -165,9 +215,10 @@ void Renderer::loop() {
         this->lastFrame = this->currentFrame;
         
         processInput();
-        debug_LOOP();
+
 
         renderPass();
+
         glfwSwapBuffers(this->gl_Window);
         glfwPollEvents();
     }
@@ -183,54 +234,13 @@ void Renderer::dispose(){
     glfwTerminate();
 }
 
-void Renderer::debug_LOOP(){
-    //spin the transfor
-    //this->testTransform->rotateLocal(vec3(0.0f,50.0f*this->deltaTime,0.0f));
-    //rotate the light across the center
 
-    //this->loadedLights[LightType::SPOT][0]->transform.setPosition(vec3(0.0, 3, 0.0));
+void Renderer::loadScene(Scene* scene){
+    this->loadedScene = scene;
 
-    //this->testModel->transform.rotateLocal(vec3(0.0f,0.0f,0.0f));
-    //this->loadedLights[LightType::POINT][0]->transform.setPosition(vec3(lightX, 1.0, lightZ));
-    //
-    //this->loadedLights[LightType::DIRECTIONAL][0]->transform.setPosition(vec3(0.0, 1.0, 0.0));
+    sortSceneModels();
 
-   // std::cout << this->testTransform->getRotation().x << "," << this->testTransform->getRotation().y << "," << this->testTransform->getRotation().z << std::endl;
-   //std::cout << "Loaed Count: " << TextureHandler::getLoadedTextureCount() << std::endl;
-}
-
-void Renderer::debug_INIT() {
-    // Load test shader
-    this->testShader = std::unique_ptr<Shader>(new Shader());
-    this->testShader->loadFromFile("Shaders/lit_vertex.glsl", "Shaders/lit_frag.glsl");
-
-
-    this->testModel =       ModelLoader::loadFromObjWithAssimp("Models/surface.obj");
-    this->axisGizmo =       ModelLoader::loadFromObjWithAssimp("Models/gizmo.obj");
-
-    //ModelLoader::loadFromObjWithAssimp("Models/surface.obj");
-
-    
-    loadedLights[LightType::DIRECTIONAL].reserve(4);
-    loadedLights[LightType::POINT].reserve(16);
-    loadedLights[LightType::SPOT].reserve(16);
-    
-
-    //loadedLights[LightType::POINT].push_back(std::shared_ptr<Light>(new Light(LightType::POINT, vec3(1.0f, 1.0f, 1.0f), 10.0f)));
-    //loadedLights[LightType::POINT][0]->transform.setPosition(vec3(0.0,2.0f,1.5f));
-    loadedLights[LightType::DIRECTIONAL].push_back(std::shared_ptr<Light>(new Light(LightType::DIRECTIONAL, vec3(1.0f, 1.0f, 1.0f), 1.0f)));
-    //
-    this->loadedLights[LightType::DIRECTIONAL][0]->transform.setRotation(vec3(135.0f,0.00f, 0.0f));
-
-    //loadedLights[LightType::SPOT].push_back(std::shared_ptr<Light>(new Light(LightType::SPOT, vec3(1.0f, 1.0f,1.0f),10.0f)));
-    //this->loadedLights[LightType::SPOT][0]->transform.setPosition(vec3(0.0, 3, 0.0));
-    //loadedLights[LightType::SPOT][0]->theta = 30.0f;
-    //loadedLights[LightType::SPOT][0]->transform.setPosition(vec3(0.0f, 1.0f, 0.0f));
-    //loadedLights[LightType::SPOT][0]->transform.rotateGlobal(vec3(90.0f, 0.0f, 0.0f));
-
-
-    
-    
+    //update all sorting layers
 }
 
 void Renderer::framebuffer_size_callback(GLFWwindow* gl_Window, int width, int height) {

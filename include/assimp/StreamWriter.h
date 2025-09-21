@@ -84,7 +84,7 @@ public:
      *    stream is in little endian byte order. Otherwise the
      *    endianness information is defined by the @c SwapEndianness
      *    template parameter and this parameter is meaningless.  */
-    StreamWriter(std::shared_ptr<IOStream> stream, bool le = false)
+    StreamWriter(shared_ptr<IOStream> stream, bool le = false)
         : stream(stream)
         , le(le)
         , cursor()
@@ -95,7 +95,7 @@ public:
 
     // ---------------------------------------------------------------------
     StreamWriter(IOStream* stream, bool le = false)
-        : stream(std::shared_ptr<IOStream>(stream))
+        : stream(shared_ptr<IOStream>(stream))
         , le(le)
         , cursor()
     {
@@ -277,7 +277,7 @@ public:
 
 private:
 
-    std::shared_ptr<IOStream> stream;
+    shared_ptr<IOStream> stream;
     bool le;
 
     std::vector<uint8_t> buffer;

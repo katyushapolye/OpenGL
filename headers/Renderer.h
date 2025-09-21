@@ -12,6 +12,7 @@
 #include "Light.h"
 #include "Model.h"
 #include "ModelLoader.h"
+#include "Scene.h"
 
 
 
@@ -32,32 +33,38 @@ private:
     float lastFrame;
     float currentFrame;
 
-    Model* axisGizmo;
 
-    Model* testModel;
+
+    Scene* loadedScene;
+    std::map<ShaderType,std::unique_ptr<Shader>> loadedShaders;
+
+
+    std::map<ShaderType, std::vector<std::shared_ptr<Drawable>>> shaderModelGroups;
 
     std::unique_ptr<Shader> testShader;
-    std::vector<Material>  testMaterials;
 
 
-    glm::mat3 testNormalMatrix;
+
+    //startup functions
+    void loadShaders();
+
+    //updates the sorting layes of shaders
+    void sortSceneModels();
 
 
-    std::map<LightType,std::vector<std::shared_ptr<Light>>> loadedLights;
 
-    void computeNormalsMatrixes();
 
-    void lightningPass();
 
     void processInput();
+
+
     void renderPass();
+    void setupShaders();
+    void setupShaderLighting(Shader* shader);
 
     //callbacks functions
     static void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
-
-    void debug_INIT();
-    void debug_LOOP();
 
 
 
@@ -68,18 +75,19 @@ private:
 
     
 public:
+
     Renderer(unsigned int width, unsigned int height, const char* title);
 
 
 
     bool isRunning();
-
     void loop();
-
     void dispose();
+
+
+    void loadScene(Scene* scene);
 
 
 
 };
 #endif
-

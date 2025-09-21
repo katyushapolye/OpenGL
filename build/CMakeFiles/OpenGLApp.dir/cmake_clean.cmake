@@ -18,6 +18,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/OpenGLApp.dir/src/ModelLoader.cpp.obj.d"
   "CMakeFiles/OpenGLApp.dir/src/Renderer.cpp.obj"
   "CMakeFiles/OpenGLApp.dir/src/Renderer.cpp.obj.d"
+  "CMakeFiles/OpenGLApp.dir/src/Scene.cpp.obj"
+  "CMakeFiles/OpenGLApp.dir/src/Scene.cpp.obj.d"
   "CMakeFiles/OpenGLApp.dir/src/Shader.cpp.obj"
   "CMakeFiles/OpenGLApp.dir/src/Shader.cpp.obj.d"
   "CMakeFiles/OpenGLApp.dir/src/Texture.cpp.obj"

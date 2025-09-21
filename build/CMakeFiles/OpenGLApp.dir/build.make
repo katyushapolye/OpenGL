@@ -191,11 +191,26 @@ CMakeFiles/OpenGLApp.dir/src/Renderer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/OpenGLApp.dir/src/Renderer.cpp.s"
 	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\rapha\Documents\Pessoal\OpenGL\OpenGL\src\Renderer.cpp -o CMakeFiles\OpenGLApp.dir\src\Renderer.cpp.s
 
+CMakeFiles/OpenGLApp.dir/src/Scene.cpp.obj: CMakeFiles/OpenGLApp.dir/flags.make
+CMakeFiles/OpenGLApp.dir/src/Scene.cpp.obj: CMakeFiles/OpenGLApp.dir/includes_CXX.rsp
+CMakeFiles/OpenGLApp.dir/src/Scene.cpp.obj: C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/src/Scene.cpp
+CMakeFiles/OpenGLApp.dir/src/Scene.cpp.obj: CMakeFiles/OpenGLApp.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\rapha\Documents\Pessoal\OpenGL\OpenGL\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/OpenGLApp.dir/src/Scene.cpp.obj"
+	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/OpenGLApp.dir/src/Scene.cpp.obj -MF CMakeFiles\OpenGLApp.dir\src\Scene.cpp.obj.d -o CMakeFiles\OpenGLApp.dir\src\Scene.cpp.obj -c C:\Users\rapha\Documents\Pessoal\OpenGL\OpenGL\src\Scene.cpp
+
+CMakeFiles/OpenGLApp.dir/src/Scene.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/OpenGLApp.dir/src/Scene.cpp.i"
+	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\rapha\Documents\Pessoal\OpenGL\OpenGL\src\Scene.cpp > CMakeFiles\OpenGLApp.dir\src\Scene.cpp.i
+
+CMakeFiles/OpenGLApp.dir/src/Scene.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/OpenGLApp.dir/src/Scene.cpp.s"
+	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\rapha\Documents\Pessoal\OpenGL\OpenGL\src\Scene.cpp -o CMakeFiles\OpenGLApp.dir\src\Scene.cpp.s
+
 CMakeFiles/OpenGLApp.dir/src/Shader.cpp.obj: CMakeFiles/OpenGLApp.dir/flags.make
 CMakeFiles/OpenGLApp.dir/src/Shader.cpp.obj: CMakeFiles/OpenGLApp.dir/includes_CXX.rsp
 CMakeFiles/OpenGLApp.dir/src/Shader.cpp.obj: C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/src/Shader.cpp
 CMakeFiles/OpenGLApp.dir/src/Shader.cpp.obj: CMakeFiles/OpenGLApp.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\rapha\Documents\Pessoal\OpenGL\OpenGL\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/OpenGLApp.dir/src/Shader.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\rapha\Documents\Pessoal\OpenGL\OpenGL\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/OpenGLApp.dir/src/Shader.cpp.obj"
 	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/OpenGLApp.dir/src/Shader.cpp.obj -MF CMakeFiles\OpenGLApp.dir\src\Shader.cpp.obj.d -o CMakeFiles\OpenGLApp.dir\src\Shader.cpp.obj -c C:\Users\rapha\Documents\Pessoal\OpenGL\OpenGL\src\Shader.cpp
 
 CMakeFiles/OpenGLApp.dir/src/Shader.cpp.i: cmake_force
@@ -210,7 +225,7 @@ CMakeFiles/OpenGLApp.dir/src/Texture.cpp.obj: CMakeFiles/OpenGLApp.dir/flags.mak
 CMakeFiles/OpenGLApp.dir/src/Texture.cpp.obj: CMakeFiles/OpenGLApp.dir/includes_CXX.rsp
 CMakeFiles/OpenGLApp.dir/src/Texture.cpp.obj: C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/src/Texture.cpp
 CMakeFiles/OpenGLApp.dir/src/Texture.cpp.obj: CMakeFiles/OpenGLApp.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\rapha\Documents\Pessoal\OpenGL\OpenGL\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/OpenGLApp.dir/src/Texture.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\rapha\Documents\Pessoal\OpenGL\OpenGL\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/OpenGLApp.dir/src/Texture.cpp.obj"
 	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/OpenGLApp.dir/src/Texture.cpp.obj -MF CMakeFiles\OpenGLApp.dir\src\Texture.cpp.obj.d -o CMakeFiles\OpenGLApp.dir\src\Texture.cpp.obj -c C:\Users\rapha\Documents\Pessoal\OpenGL\OpenGL\src\Texture.cpp
 
 CMakeFiles/OpenGLApp.dir/src/Texture.cpp.i: cmake_force
@@ -225,7 +240,7 @@ CMakeFiles/OpenGLApp.dir/src/TextureHandler.cpp.obj: CMakeFiles/OpenGLApp.dir/fl
 CMakeFiles/OpenGLApp.dir/src/TextureHandler.cpp.obj: CMakeFiles/OpenGLApp.dir/includes_CXX.rsp
 CMakeFiles/OpenGLApp.dir/src/TextureHandler.cpp.obj: C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/src/TextureHandler.cpp
 CMakeFiles/OpenGLApp.dir/src/TextureHandler.cpp.obj: CMakeFiles/OpenGLApp.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\rapha\Documents\Pessoal\OpenGL\OpenGL\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/OpenGLApp.dir/src/TextureHandler.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\rapha\Documents\Pessoal\OpenGL\OpenGL\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/OpenGLApp.dir/src/TextureHandler.cpp.obj"
 	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/OpenGLApp.dir/src/TextureHandler.cpp.obj -MF CMakeFiles\OpenGLApp.dir\src\TextureHandler.cpp.obj.d -o CMakeFiles\OpenGLApp.dir\src\TextureHandler.cpp.obj -c C:\Users\rapha\Documents\Pessoal\OpenGL\OpenGL\src\TextureHandler.cpp
 
 CMakeFiles/OpenGLApp.dir/src/TextureHandler.cpp.i: cmake_force
@@ -240,7 +255,7 @@ CMakeFiles/OpenGLApp.dir/src/Transform.cpp.obj: CMakeFiles/OpenGLApp.dir/flags.m
 CMakeFiles/OpenGLApp.dir/src/Transform.cpp.obj: CMakeFiles/OpenGLApp.dir/includes_CXX.rsp
 CMakeFiles/OpenGLApp.dir/src/Transform.cpp.obj: C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/src/Transform.cpp
 CMakeFiles/OpenGLApp.dir/src/Transform.cpp.obj: CMakeFiles/OpenGLApp.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\rapha\Documents\Pessoal\OpenGL\OpenGL\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/OpenGLApp.dir/src/Transform.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\rapha\Documents\Pessoal\OpenGL\OpenGL\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/OpenGLApp.dir/src/Transform.cpp.obj"
 	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/OpenGLApp.dir/src/Transform.cpp.obj -MF CMakeFiles\OpenGLApp.dir\src\Transform.cpp.obj.d -o CMakeFiles\OpenGLApp.dir\src\Transform.cpp.obj -c C:\Users\rapha\Documents\Pessoal\OpenGL\OpenGL\src\Transform.cpp
 
 CMakeFiles/OpenGLApp.dir/src/Transform.cpp.i: cmake_force
@@ -255,7 +270,7 @@ CMakeFiles/OpenGLApp.dir/src/main.cpp.obj: CMakeFiles/OpenGLApp.dir/flags.make
 CMakeFiles/OpenGLApp.dir/src/main.cpp.obj: CMakeFiles/OpenGLApp.dir/includes_CXX.rsp
 CMakeFiles/OpenGLApp.dir/src/main.cpp.obj: C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/src/main.cpp
 CMakeFiles/OpenGLApp.dir/src/main.cpp.obj: CMakeFiles/OpenGLApp.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\rapha\Documents\Pessoal\OpenGL\OpenGL\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/OpenGLApp.dir/src/main.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\rapha\Documents\Pessoal\OpenGL\OpenGL\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/OpenGLApp.dir/src/main.cpp.obj"
 	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/OpenGLApp.dir/src/main.cpp.obj -MF CMakeFiles\OpenGLApp.dir\src\main.cpp.obj.d -o CMakeFiles\OpenGLApp.dir\src\main.cpp.obj -c C:\Users\rapha\Documents\Pessoal\OpenGL\OpenGL\src\main.cpp
 
 CMakeFiles/OpenGLApp.dir/src/main.cpp.i: cmake_force
@@ -270,7 +285,7 @@ CMakeFiles/OpenGLApp.dir/src/glad.c.obj: CMakeFiles/OpenGLApp.dir/flags.make
 CMakeFiles/OpenGLApp.dir/src/glad.c.obj: CMakeFiles/OpenGLApp.dir/includes_C.rsp
 CMakeFiles/OpenGLApp.dir/src/glad.c.obj: C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/src/glad.c
 CMakeFiles/OpenGLApp.dir/src/glad.c.obj: CMakeFiles/OpenGLApp.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\rapha\Documents\Pessoal\OpenGL\OpenGL\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/OpenGLApp.dir/src/glad.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\rapha\Documents\Pessoal\OpenGL\OpenGL\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/OpenGLApp.dir/src/glad.c.obj"
 	C:\msys64\mingw64\bin\cc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/OpenGLApp.dir/src/glad.c.obj -MF CMakeFiles\OpenGLApp.dir\src\glad.c.obj.d -o CMakeFiles\OpenGLApp.dir\src\glad.c.obj -c C:\Users\rapha\Documents\Pessoal\OpenGL\OpenGL\src\glad.c
 
 CMakeFiles/OpenGLApp.dir/src/glad.c.i: cmake_force
@@ -285,7 +300,7 @@ CMakeFiles/OpenGLApp.dir/src/stb_image.c.obj: CMakeFiles/OpenGLApp.dir/flags.mak
 CMakeFiles/OpenGLApp.dir/src/stb_image.c.obj: CMakeFiles/OpenGLApp.dir/includes_C.rsp
 CMakeFiles/OpenGLApp.dir/src/stb_image.c.obj: C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/src/stb_image.c
 CMakeFiles/OpenGLApp.dir/src/stb_image.c.obj: CMakeFiles/OpenGLApp.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\rapha\Documents\Pessoal\OpenGL\OpenGL\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/OpenGLApp.dir/src/stb_image.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\rapha\Documents\Pessoal\OpenGL\OpenGL\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/OpenGLApp.dir/src/stb_image.c.obj"
 	C:\msys64\mingw64\bin\cc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/OpenGLApp.dir/src/stb_image.c.obj -MF CMakeFiles\OpenGLApp.dir\src\stb_image.c.obj.d -o CMakeFiles\OpenGLApp.dir\src\stb_image.c.obj -c C:\Users\rapha\Documents\Pessoal\OpenGL\OpenGL\src\stb_image.c
 
 CMakeFiles/OpenGLApp.dir/src/stb_image.c.i: cmake_force
@@ -306,6 +321,7 @@ OpenGLApp_OBJECTS = \
 "CMakeFiles/OpenGLApp.dir/src/Model.cpp.obj" \
 "CMakeFiles/OpenGLApp.dir/src/ModelLoader.cpp.obj" \
 "CMakeFiles/OpenGLApp.dir/src/Renderer.cpp.obj" \
+"CMakeFiles/OpenGLApp.dir/src/Scene.cpp.obj" \
 "CMakeFiles/OpenGLApp.dir/src/Shader.cpp.obj" \
 "CMakeFiles/OpenGLApp.dir/src/Texture.cpp.obj" \
 "CMakeFiles/OpenGLApp.dir/src/TextureHandler.cpp.obj" \
@@ -325,6 +341,7 @@ C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/bin/OpenGLApp.exe: CMakeFiles/Ope
 C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/bin/OpenGLApp.exe: CMakeFiles/OpenGLApp.dir/src/Model.cpp.obj
 C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/bin/OpenGLApp.exe: CMakeFiles/OpenGLApp.dir/src/ModelLoader.cpp.obj
 C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/bin/OpenGLApp.exe: CMakeFiles/OpenGLApp.dir/src/Renderer.cpp.obj
+C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/bin/OpenGLApp.exe: CMakeFiles/OpenGLApp.dir/src/Scene.cpp.obj
 C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/bin/OpenGLApp.exe: CMakeFiles/OpenGLApp.dir/src/Shader.cpp.obj
 C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/bin/OpenGLApp.exe: CMakeFiles/OpenGLApp.dir/src/Texture.cpp.obj
 C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/bin/OpenGLApp.exe: CMakeFiles/OpenGLApp.dir/src/TextureHandler.cpp.obj
@@ -338,7 +355,7 @@ C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/bin/OpenGLApp.exe: C:/Users/rapha
 C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/bin/OpenGLApp.exe: CMakeFiles/OpenGLApp.dir/linkLibs.rsp
 C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/bin/OpenGLApp.exe: CMakeFiles/OpenGLApp.dir/objects1.rsp
 C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/bin/OpenGLApp.exe: CMakeFiles/OpenGLApp.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\rapha\Documents\Pessoal\OpenGL\OpenGL\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Linking CXX executable C:\Users\rapha\Documents\Pessoal\OpenGL\OpenGL\bin\OpenGLApp.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\rapha\Documents\Pessoal\OpenGL\OpenGL\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Linking CXX executable C:\Users\rapha\Documents\Pessoal\OpenGL\OpenGL\bin\OpenGLApp.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\OpenGLApp.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

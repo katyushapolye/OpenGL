@@ -13,6 +13,7 @@ private:
     glm::quat rotation;
 
     mat4 transformMat;
+    mat3 normalMat;
 
     bool needsUpdate = true;
 
@@ -21,6 +22,7 @@ private:
     vec3 up;
 
     void updateVectors();
+    void updateMatrixes();
 
     
     
@@ -51,7 +53,10 @@ public:
 
 
 
-    mat4 getTransformMat();
+
+    
+    mat4 getTransformMat(); 
+    mat3 getNormalMat();
 
 
 };

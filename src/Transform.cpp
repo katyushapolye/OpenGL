@@ -15,22 +15,20 @@ Transform::Transform() {
 
 //creates and caches the transform matrix
 mat4 Transform::getTransformMat() {
-    if(!(this->needsUpdate)){
-        return this->transformMat;
-    }
+    updateMatrixes();
 
-    //update the transformation matrix and caches it
-    this->transformMat = glm::translate(glm::identity<mat4>(), this->position);
-    //the rotation is applied in order of x y and z, leave quartenio
-    //quartenion
-    this->transformMat *= glm::mat4_cast(this->rotation);
 
-    this->transformMat = glm::scale(this->transformMat, this->scale);
 
-    this->needsUpdate = false;
     return this->transformMat;
 
 
+}
+
+mat3 Transform::getNormalMat(){
+    //if we do transforms, and do not call the tranasform matrix get, this will be nt updated so we update both
+    updateMatrixes();
+
+    return this->normalMat;
 }
 
 
@@ -105,6 +103,25 @@ vec3 Transform::getRight() {
 }
 vec3 Transform::getUp() {
     return this->up;
+}
+
+
+void Transform::updateMatrixes(){
+    if(!(this->needsUpdate)){
+        return;
+    }
+
+    //update the transformation matrix and caches it
+    this->transformMat = glm::translate(glm::identity<mat4>(), this->position);
+    //the rotation is applied in order of x y and z, leave quartenio
+    //quartenion
+    this->transformMat *= glm::mat4_cast(this->rotation);
+
+    this->transformMat = glm::scale(this->transformMat, this->scale);
+
+    this->normalMat = glm::mat3(glm::transpose(glm::inverse(this->transformMat)));
+
+    this->needsUpdate = false;
 }
 
 void Transform::updateVectors() {

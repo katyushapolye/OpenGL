@@ -86,7 +86,7 @@ public:
      *    stream is in little endian byte order. Otherwise the
      *    endianness information is contained in the @c SwapEndianness
      *    template parameter and this parameter is meaningless.  */
-    StreamReader(std::shared_ptr<IOStream> stream, bool le = false) :
+    StreamReader(shared_ptr<IOStream> stream, bool le = false) :
             mStream(stream),
             mBuffer(nullptr),
             mCurrent(nullptr),
@@ -99,7 +99,7 @@ public:
 
     // ---------------------------------------------------------------------
     StreamReader(IOStream *stream, bool le = false) :
-            mStream(std::shared_ptr<IOStream>(stream)),
+            mStream(shared_ptr<IOStream>(stream)),
             mBuffer(nullptr),
             mCurrent(nullptr),
             mEnd(nullptr),
@@ -317,7 +317,7 @@ private:
     }
 
 private:
-    std::shared_ptr<IOStream> mStream;
+    shared_ptr<IOStream> mStream;
     int8_t *mBuffer;
     int8_t *mCurrent;
     int8_t *mEnd;

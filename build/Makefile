@@ -320,6 +320,30 @@ src/Renderer.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\OpenGLApp.dir\build.make CMakeFiles/OpenGLApp.dir/src/Renderer.cpp.s
 .PHONY : src/Renderer.cpp.s
 
+src/Scene.obj: src/Scene.cpp.obj
+.PHONY : src/Scene.obj
+
+# target to build an object file
+src/Scene.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\OpenGLApp.dir\build.make CMakeFiles/OpenGLApp.dir/src/Scene.cpp.obj
+.PHONY : src/Scene.cpp.obj
+
+src/Scene.i: src/Scene.cpp.i
+.PHONY : src/Scene.i
+
+# target to preprocess a source file
+src/Scene.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\OpenGLApp.dir\build.make CMakeFiles/OpenGLApp.dir/src/Scene.cpp.i
+.PHONY : src/Scene.cpp.i
+
+src/Scene.s: src/Scene.cpp.s
+.PHONY : src/Scene.s
+
+# target to generate assembly for a file
+src/Scene.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\OpenGLApp.dir\build.make CMakeFiles/OpenGLApp.dir/src/Scene.cpp.s
+.PHONY : src/Scene.cpp.s
+
 src/Shader.obj: src/Shader.cpp.obj
 .PHONY : src/Shader.obj
 
@@ -521,6 +545,9 @@ help:
 	@echo ... src/Renderer.obj
 	@echo ... src/Renderer.i
 	@echo ... src/Renderer.s
+	@echo ... src/Scene.obj
+	@echo ... src/Scene.i
+	@echo ... src/Scene.s
 	@echo ... src/Shader.obj
 	@echo ... src/Shader.i
 	@echo ... src/Shader.s

@@ -110,7 +110,7 @@ Structure_Convert_ptrdecl = """
 
 Structure_Convert_rawptrdecl = """
     {{
-        boost::shared_ptr<{type}> {name_canonical};
+        boost::shared_ptr<<{type}> {name_canonical};
         ReadFieldPtr<{policy}>({destcast}{name_canonical},"{name_dna}",db);
         dest.{name_canonical} = {name_canonical}.get();
     }}"""
