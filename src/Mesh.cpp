@@ -1,7 +1,7 @@
 #include "../headers/Mesh.h"
 
 
-
+//we need to update intilizeMesh with thenew values since there is now tg and bitg
 Mesh::Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indexes,unsigned int materialIndex) {
     std::vector<vec3> verts;
     std::vector<vec3> normals;
@@ -76,50 +76,46 @@ void Mesh::initializeMesh(std::vector<vec3>& verts, std::vector<vec3>& normals, 
 }
 
 
-void Mesh::setVertexArray(std::vector<vec3> verts, std::vector<vec3> normals, std::vector<vec2> texCoords) {
-    glBindBuffer(GL_ARRAY_BUFFER, this->gl_VBO);
-    float* rawData = new float[verts.size() * 16];  // 16 floats per vertex now
-    int c = 0;
-   
-    auto gl_Normal = normals.begin();
-    auto gl_TexCoord = texCoords.begin();
-   
-    for (auto gl_Pos = verts.begin(); gl_Pos != verts.end(); gl_Pos++) {
+void Mesh::setVertexArray(const std::vector<vec3>& verts, 
+                          const std::vector<vec3>& normals, 
+                          const std::vector<vec2>& texCoords) {
+    const size_t vertexCount = verts.size();
+    const size_t floatsPerVertex = 16;
+    const size_t totalFloats = vertexCount * floatsPerVertex;
+    
+
+    std::vector<float> rawData;
+    rawData.reserve(totalFloats);
+    
+
+    auto normalIt = normals.cbegin();
+    auto texCoordIt = texCoords.cbegin();
+    
+    for (auto vertIt = verts.cbegin(); vertIt != verts.cend(); ++vertIt) {
         // Position (3 floats)
-        rawData[c] = gl_Pos->x;
-        rawData[c + 1] = gl_Pos->y;
-        rawData[c + 2] = gl_Pos->z;
+        rawData.insert(rawData.end(), {vertIt->x, vertIt->y, vertIt->z});
         
-        // Normal (3 floats)
-        rawData[c + 3] = gl_Normal->x;
-        rawData[c + 4] = gl_Normal->y;
-        rawData[c + 5] = gl_Normal->z;
+        // Normal (3 floats)  
+        rawData.insert(rawData.end(), {normalIt->x, normalIt->y, normalIt->z});
         
         // Tangent (3 floats) - zeros for now
-        rawData[c + 6] = 0.0f;
-        rawData[c + 7] = 0.0f;
-        rawData[c + 8] = 0.0f;
+        rawData.insert(rawData.end(), {0.0f, 0.0f, 0.0f});
         
         // Bitangent (3 floats) - zeros for now
-        rawData[c + 9] = 0.0f;
-        rawData[c + 10] = 0.0f;
-        rawData[c + 11] = 0.0f;
+        rawData.insert(rawData.end(), {0.0f, 0.0f, 0.0f});
         
         // Primary texture coordinates (2 floats)
-        rawData[c + 12] = gl_TexCoord->s;
-        rawData[c + 13] = gl_TexCoord->t;
+        rawData.insert(rawData.end(), {texCoordIt->s, texCoordIt->t});
         
         // Secondary texture coordinates (2 floats) - zeros for now
-        rawData[c + 14] = 0.0f;
-        rawData[c + 15] = 0.0f;
-       
-        gl_Normal++;
-        gl_TexCoord++;
-        c += 16;  // Move to next vertex (16 floats ahead)
+        rawData.insert(rawData.end(), {0.0f, 0.0f});
+        
+        ++normalIt;
+        ++texCoordIt;
     }
-   
-    glBufferData(GL_ARRAY_BUFFER, verts.size() * 16 * sizeof(float), rawData, GL_STATIC_DRAW);
-    delete[] rawData;
+    
+    glBindBuffer(GL_ARRAY_BUFFER, this->gl_VBO);
+    glBufferData(GL_ARRAY_BUFFER, totalFloats * sizeof(float), rawData.data(), GL_STATIC_DRAW);
 }
 
 
@@ -133,7 +129,7 @@ void Mesh::setIndexArray(std::vector<unsigned int> idx) {
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, idx.size() * sizeof(unsigned int), rawIdx, GL_STATIC_DRAW);
 }
 
-void Mesh::draw(const std::unique_ptr<Shader>& shader,std::unique_ptr<Material>& mat) {
+void Mesh::draw(Shader* shader,Material* mat) {
     
     //how will we handle tetures here?
     shader->bindShader();

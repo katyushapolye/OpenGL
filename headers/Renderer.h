@@ -35,13 +35,15 @@ private:
 
 
 
+
     Scene* loadedScene;
+
+    //stores all loaded shader
     std::map<ShaderType,std::unique_ptr<Shader>> loadedShaders;
+    //Stores which all of the drawables that belongs to a given shader.
+    std::map<ShaderType, std::vector<std::shared_ptr<Drawable>>> shaderDrawGroups;
 
 
-    std::map<ShaderType, std::vector<std::shared_ptr<Drawable>>> shaderModelGroups;
-
-    std::unique_ptr<Shader> testShader;
 
 
 

@@ -28,7 +28,8 @@ Renderer::Renderer(unsigned int width, unsigned int height, const char* title) {
         std::cerr << "Failed to initialize GLAD" << std::endl;
         
     }
-
+    
+ 
 
     // Enable depth testing
     glEnable(GL_DEPTH_TEST);
@@ -47,9 +48,6 @@ Renderer::Renderer(unsigned int width, unsigned int height, const char* title) {
     this->camera->setPosition(vec3(0.0f, 0.0f, 5.0f));
     this->camera->setTarget(vec3(0.0f, 0.0f, 0.0f));
 
-    //Initialize the shaders
-    this->testShader = std::unique_ptr<Shader>(new Shader());
-    this->testShader->loadFromFile("Shaders/lit_vertex.glsl", "Shaders/lit_frag.glsl");
 
     loadShaders();
 
@@ -74,7 +72,7 @@ void Renderer::loadShaders(){
 void Renderer::sortSceneModels(){
  const auto& models = this->loadedScene->getModels();
     for(auto modelIt = models.begin(); modelIt != models.end(); ++modelIt){
-        shaderModelGroups[(*modelIt)->getShaderType()].push_back(*modelIt);
+        shaderDrawGroups[(*modelIt)->getShaderType()].push_back(*modelIt);
 
     }
 
@@ -194,19 +192,19 @@ void Renderer::renderPass() {
 
 
     
-    glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glEnable(GL_DEPTH_TEST);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
-    //precompute normals
+
     setupShaders();
 
 
     //render loop for the loaded scene
     //first we render all opaque objects, while storing transparents for later, outlines are broken because we need to render them after everythng
-    std::vector<std::pair<ShaderType,Model*>> transparentModels;
+    std::vector<std::pair<ShaderType,Model*>> transparentModels; //can be optimized to out the loop
     for(int i = 0;i<loadedShaders.size();i++){
-        for(auto it = shaderModelGroups[(ShaderType) i].begin() ;it != shaderModelGroups[(ShaderType) i].end();it++){
-            auto& shader = loadedShaders[(ShaderType) i];
+        for(auto it = shaderDrawGroups[(ShaderType) i].begin() ;it != shaderDrawGroups[(ShaderType) i].end();it++){
+            Shader* shader = loadedShaders[(ShaderType) i].get();
             Drawable* drawable = it->get();
 
             if(drawable->getType() == Drawable::DrawableType::MODEL){
@@ -255,10 +253,9 @@ void Renderer::renderPass() {
 
             }
 
-
-            //setup the model matrix and finally render it
-
         }
+
+
     }
 
     glm::vec3 camPos = camera->getPosition();
@@ -279,7 +276,7 @@ void Renderer::renderPass() {
         loadedShaders[entry.first]->bindShader();
         loadedShaders[entry.first]->setUniform("modelMat",entry.second->transform.getTransformMat());
         loadedShaders[entry.first]->setUniform("normalMat",entry.second->transform.getNormalMat());
-        entry.second->draw(loadedShaders[entry.first]);
+        entry.second->draw(loadedShaders[entry.first].get());
     }
 
 

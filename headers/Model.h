@@ -33,7 +33,7 @@ public:
 
     //Drawable overridess
     ShaderType getShaderType() override;
-    void draw(const unique_ptr<Shader>& shader) override;
+    void draw(Shader* shader) override;
     DrawableType getType() override;
 
 

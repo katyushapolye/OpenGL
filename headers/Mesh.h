@@ -25,7 +25,7 @@ private:
     std::vector<unsigned int> gl_Indices; //ebos indexes
 
 
-    void setVertexArray(std::vector<vec3> verts, std::vector<vec3> normals, std::vector<vec2> texCoords);
+    void setVertexArray(const std::vector<vec3>& verts,const std::vector<vec3>& normals,const std::vector<vec2>& texCoords);
     void setIndexArray(std::vector<unsigned int> idx);
     
     // Private helper method to initialize the mesh
@@ -40,7 +40,7 @@ public:
 
 
 
-    void draw(const std::unique_ptr<Shader>& shader,std::unique_ptr<Material>& mat);
+    void draw(Shader* shader,Material* mat);
 
 
 };

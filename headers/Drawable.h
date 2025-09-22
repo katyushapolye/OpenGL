@@ -9,7 +9,7 @@
 class Drawable {
 public:
     virtual ~Drawable() = default;
-    virtual void draw(const unique_ptr<Shader>& shader) = 0;
+    virtual void draw(Shader* shader) = 0;
 
     ShaderType shaderType;
 

@@ -62,10 +62,13 @@ int main()
     m->transform.rotateLocal(vec3(0,180,0));
     scene->addModel(shared_ptr<Model>(m));
 
-     m = ModelLoader::loadFromObjWithAssimp("Models/grassleaves.obj");
+    m = ModelLoader::loadFromObjWithAssimp("Models/grassleaves.obj");
     m->transform.setPosition(vec3(0.0,-1,2.0));
     m->transform.rotateLocal(vec3(0,180,0));
     scene->addModel(shared_ptr<Model>(m));
+
+
+    
 
 
 
