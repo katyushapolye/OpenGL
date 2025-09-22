@@ -7,20 +7,24 @@
 
 
 class Drawable {
+protected:
+
+    ShaderType shaderType;
+    RenderGroup renderGroup;
+    DrawableType drawableType;
 public:
+
+
     virtual ~Drawable() = default;
     virtual void draw(Shader* shader) = 0;
 
-    ShaderType shaderType;
-
     
     // Method 4: Enum-based type identification
-    enum class DrawableType {
-        MODEL,
-        MIRROR,
-    };
+
+
     virtual DrawableType getType() = 0;
     virtual ShaderType getShaderType() = 0;
+    virtual RenderGroup getRenderGroup() = 0;
 };
 
 #endif

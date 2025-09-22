@@ -34,17 +34,17 @@ bool Shader::compileShader(){
 	return true;
 }
 
-void Shader::loadFromString(std::string vertexCode,std::string fragmentCode) {
+bool Shader::loadFromString(std::string vertexCode,std::string fragmentCode) {
 	const char* rawCode = vertexCode.c_str();
 	glShaderSource(this->gl_VertexShaderID,1,&rawCode,NULL);
 	if(compileShader() == false){
-		return;
+		return false;
 	};
 
 	rawCode = fragmentCode.c_str();
 	glShaderSource(this->gl_FragmentShaderID,1,&rawCode,NULL);
 	if(compileShader() == false){
-		return;
+		return false;
 	};
 
 	//we compiled both sucefully so we can make a program now
@@ -61,15 +61,17 @@ void Shader::loadFromString(std::string vertexCode,std::string fragmentCode) {
     if (!success) {
         glGetProgramInfoLog(this->gl_ShaderProgramID, 512, NULL, infoLog);
         std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << std::endl;
+        return false;
     }
     glDeleteShader(this->gl_VertexShaderID);
     glDeleteShader(this->gl_FragmentShaderID);
 
+    return true;
 
 }
 
 
-void Shader::loadFromFile(std::string vertexPath, std::string fragmentPath){
+bool Shader::loadFromFile(std::string vertexPath, std::string fragmentPath){
 	std::string vertexCode;
     std::string fragmentCode;
     std::ifstream vShaderFile;
@@ -95,7 +97,7 @@ void Shader::loadFromFile(std::string vertexPath, std::string fragmentPath){
         std::cout << "ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ" << std::endl;
     }
 
-	loadFromString(vertexCode,fragmentCode);
+	return loadFromString(vertexCode,fragmentCode);
 }
 
 

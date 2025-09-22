@@ -20,8 +20,8 @@ private:
 public:
 	Shader();
 
-	void loadFromString(std::string vertexCode,std::string fragmentCode);
-	void loadFromFile(std::string vertexPath, std::string fragmentPath);
+	bool loadFromString(std::string vertexCode,std::string fragmentCode);
+	bool loadFromFile(std::string vertexPath, std::string fragmentPath);
 
 	void bindShader();
 

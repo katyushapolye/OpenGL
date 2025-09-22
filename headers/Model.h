@@ -16,7 +16,6 @@ private:
     std::vector<unique_ptr<Mesh>> meshes;
     std::vector<unique_ptr<Material>> materials; // Also fixed the type here
 
-    RenderGroup renderGroup;
 
 
 
@@ -26,15 +25,17 @@ public:
     
     Transform transform;
     Model(std::vector<unique_ptr<Mesh>> meshes,std::vector<unique_ptr<Material>> materials);
-    RenderGroup getRenderGroup();
+
 
 
 
 
     //Drawable overridess
-    ShaderType getShaderType() override;
-    void draw(Shader* shader) override;
     DrawableType getType() override;
+    ShaderType getShaderType() override;
+    RenderGroup getRenderGroup() override;
+    void draw(Shader* shader) override;
+
 
 
 

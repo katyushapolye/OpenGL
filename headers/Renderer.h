@@ -37,29 +37,45 @@ private:
 
 
     Scene* loadedScene;
+    bool hasSortedGroups;
+
 
     //stores all loaded shader
-    std::map<ShaderType,std::unique_ptr<Shader>> loadedShaders;
-    //Stores which all of the drawables that belongs to a given shader.
-    std::map<ShaderType, std::vector<std::shared_ptr<Drawable>>> shaderDrawGroups;
+    std::map<ShaderType,unique_ptr<Shader>> loadedShaders;
+    //Stores which all of the drawables that belongs to a given shader. Opaque object
+    std::map<ShaderType, std::vector<shared_ptr<Drawable>>> opaqueShaderDrawGroups;
+    std::vector<shared_ptr<Drawable>> transparentDrawGroups; //for transparent objects, we cant render by shader, only by their order of depth, since the drawable knows who is its shader, we can
+                                                                  //get away with just a vector
 
 
+    //post processingg stuff
+    unsigned int gl_ScreenQuad_VBO; //our vertex buffer
+    unsigned int gl_ScreenQuad_VAO; //our vertex array
+    unsigned int gl_Screen_FBO;
+    unsigned int gl_Screen_RBO; //a attachment which stores the depth and stencil buffer;
+    unsigned int gl_Screen_TEX; //The texture that stores the colors
+
+    unique_ptr<Shader> postProcessShader;
+    
+
+    
 
 
 
     //startup functions
     void loadShaders();
+    void loadScreenBuffer();
 
-    //updates the sorting layes of shaders
+    //Utility function, sorts every scene object in their group. We call this every frame but it is aware of updates
+    //operations are done since we only need to sort groups once
+
     void sortSceneModels();
 
-
-
-
-
+    //Input functions
     void processInput();
 
 
+    //Rendering function
     void renderPass();
     void setupShaders();
     void setupShaderLighting(Shader* shader);

@@ -26,6 +26,11 @@ struct Vertex {
     vec2 texCoords2;
 };
 
+enum class DrawableType {
+        MODEL,
+        MIRROR,
+};
+
 enum class TextureType {
     DIFFUSE,
     SPECULAR,

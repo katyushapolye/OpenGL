@@ -1,7 +1,7 @@
 #include "../headers/Mesh.h"
 
 
-//we need to update intilizeMesh with thenew values since there is now tg and bitg
+//we need to update intilize
 Mesh::Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indexes,unsigned int materialIndex) {
     std::vector<vec3> verts;
     std::vector<vec3> normals;

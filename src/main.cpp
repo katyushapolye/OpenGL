@@ -67,11 +67,6 @@ int main()
     m->transform.rotateLocal(vec3(0,180,0));
     scene->addModel(shared_ptr<Model>(m));
 
-
-    
-
-
-
     Light* l= new Light(LightType::POINT, vec3(1.0f, 1.0f,1.0f),10.0f);
     l->transform.setPosition(vec3(0,2.0f,2.0f));
     scene->addLight(shared_ptr<Light>(l));

@@ -21,6 +21,8 @@ Model::Model(std::vector<std::unique_ptr<Mesh>> meshes,std::vector<std::unique_p
                 this->renderGroup = RenderGroup::Opaque;
             }
         }
+
+        this->drawableType = DrawableType::MODEL;
 }
 
 
@@ -41,8 +43,8 @@ ShaderType Model::getShaderType(){
 
 }
 
-Drawable::DrawableType Model::getType(){
-    return Drawable::DrawableType::MODEL;
+DrawableType Model::getType(){
+    return this->drawableType;
 }
 
 RenderGroup Model::getRenderGroup(){
