@@ -8,6 +8,7 @@ Renderer::Renderer(unsigned int width, unsigned int height, const char* title) {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE); //disable rezing until i fix the FBO resizin along the window and the camera aspect ratio
 
 
     this->width = width;
@@ -40,6 +41,7 @@ Renderer::Renderer(unsigned int width, unsigned int height, const char* title) {
     glEnable(GL_STENCIL_TEST);
     glEnable(GL_BLEND); 
 
+    glDepthFunc(GL_LEQUAL);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);  
     
     glCullFace(GL_BACK);
@@ -54,6 +56,7 @@ Renderer::Renderer(unsigned int width, unsigned int height, const char* title) {
 
     this->loadShaders();
     this->loadScreenBuffer();
+    this->loadSkyBox();
 
 
 
@@ -82,9 +85,108 @@ void Renderer::loadShaders(){
 
 }
 
+void Renderer::loadSkyBox(){
+        std::vector<std::string> paths = {
+            "Textures/Skybox/posx.jpg",  // GL_TEXTURE_CUBE_MAP_POSITIVE_X
+            "Textures/Skybox/negx.jpg",  // GL_TEXTURE_CUBE_MAP_NEGATIVE_X
+            "Textures/Skybox/posy.jpg",  // GL_TEXTURE_CUBE_MAP_POSITIVE_Y
+            "Textures/Skybox/negy.jpg",  // GL_TEXTURE_CUBE_MAP_NEGATIVE_Y
+            "Textures/Skybox/posz.jpg",  // GL_TEXTURE_CUBE_MAP_POSITIVE_Z
+            "Textures/Skybox/negz.jpg"   // GL_TEXTURE_CUBE_MAP_NEGATIVE_Z
+        };
+
+    glGenTextures(1, &this->gl_SkyBox_Cubemap);
+    glBindTexture(GL_TEXTURE_CUBE_MAP, this->gl_SkyBox_Cubemap);
+    int width, height, nrChannels;
+    //now the directry is fixed because i need to think how we will approach this, we also just load it once and bypass the texturehandler since this is different 
+    for(int i = 0;i<6;i++){
+            unsigned char* data = stbi_load(paths[i].c_str(), &width, &height, &nrChannels, 0);
+            glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_RGB, width, height, 0,GL_RGB, GL_UNSIGNED_BYTE, data);
+            stbi_image_free(data);
+
+    }
+
+        glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+        glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+        glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
+
+
+        //now we create the vertex of the cube
+
+        float skyboxVertices[] = {
+    // positions          
+    -1.0f,  1.0f, -1.0f,
+    -1.0f, -1.0f, -1.0f,
+     1.0f, -1.0f, -1.0f,
+     1.0f, -1.0f, -1.0f,
+     1.0f,  1.0f, -1.0f,
+    -1.0f,  1.0f, -1.0f,
+
+    -1.0f, -1.0f,  1.0f,
+    -1.0f, -1.0f, -1.0f,
+    -1.0f,  1.0f, -1.0f,
+    -1.0f,  1.0f, -1.0f,
+    -1.0f,  1.0f,  1.0f,
+    -1.0f, -1.0f,  1.0f,
+
+     1.0f, -1.0f, -1.0f,
+     1.0f, -1.0f,  1.0f,
+     1.0f,  1.0f,  1.0f,
+     1.0f,  1.0f,  1.0f,
+     1.0f,  1.0f, -1.0f,
+     1.0f, -1.0f, -1.0f,
+
+    -1.0f, -1.0f,  1.0f,
+    -1.0f,  1.0f,  1.0f,
+     1.0f,  1.0f,  1.0f,
+     1.0f,  1.0f,  1.0f,
+     1.0f, -1.0f,  1.0f,
+    -1.0f, -1.0f,  1.0f,
+
+    -1.0f,  1.0f, -1.0f,
+     1.0f,  1.0f, -1.0f,
+     1.0f,  1.0f,  1.0f,
+     1.0f,  1.0f,  1.0f,
+    -1.0f,  1.0f,  1.0f,
+    -1.0f,  1.0f, -1.0f,
+
+    -1.0f, -1.0f, -1.0f,
+    -1.0f, -1.0f,  1.0f,
+     1.0f, -1.0f, -1.0f,
+     1.0f, -1.0f, -1.0f,
+    -1.0f, -1.0f,  1.0f,
+     1.0f, -1.0f,  1.0f
+};
+
+
+        glGenVertexArrays(1,&this->gl_Skybox_VAO);
+        glGenBuffers(1,&this->gl_Skybox_VBO);
+        glBindVertexArray(this->gl_Skybox_VAO);
+
+        glBindBuffer(GL_ARRAY_BUFFER,this->gl_Skybox_VBO);
+        glBufferData(GL_ARRAY_BUFFER,sizeof(skyboxVertices),skyboxVertices,GL_STATIC_DRAW);
+
+        //for vertex attr, we dont use texture coords since we will map them using position
+        glEnableVertexAttribArray(0);       //stride is zero because we only send one arg
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE,0, (void*)0); // position
+        
+
+        this->skyboxShader = unique_ptr<Shader>(new Shader());
+        if(!(this->skyboxShader->loadFromFile("Shaders/skybox_vertex.glsl","Shaders/skybox_frag.glsl"))){
+            Log::write("[Renderer::loadSkybox] -  Failed to load the skybox shader!");
+        }
+
+
+
+
+
+}
+
 void Renderer::loadScreenBuffer(){
     glGenVertexArrays(1, &this->gl_ScreenQuad_VAO);  
-    glGenBuffers(1, &this->gl_ScreenQuad_VBO);      // Fixed: was gl_ScreenQuad_VAO
+    glGenBuffers(1, &this->gl_ScreenQuad_VBO);      
 
     
     glBindVertexArray(this->gl_ScreenQuad_VAO);     // Fixed: was gl_ScreenQuad_VBO
@@ -104,7 +206,7 @@ void Renderer::loadScreenBuffer(){
     glBufferData(GL_ARRAY_BUFFER, sizeof(quadVertices), quadVertices, GL_STATIC_DRAW);
     
     glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)0); // position
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)0); // position (its two because z is null it is always in zero)
     glEnableVertexAttribArray(1);
     glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)(2 * sizeof(float))); // tex coords
     
@@ -121,8 +223,12 @@ void Renderer::loadScreenBuffer(){
     glBindTexture(GL_TEXTURE_2D, this->gl_Screen_TEX);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, this->width, this->height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
    
+
+
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);  
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, this->gl_Screen_TEX, 0);
    
     // Setup depth/stencil renderbuffer
@@ -297,17 +403,13 @@ void Renderer::setupShaderLighting(Shader* shader){
 }
 
 void Renderer::renderPass() {
+    glBindFramebuffer(GL_FRAMEBUFFER, this->gl_Screen_FBO);
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+    glEnable(GL_DEPTH_TEST);
     
     // we need to change toa  shared VAO, since all meshes have the same attributes.
-
     //we can create one statically in a static funcion in mesh class and just get it here before rendering aall ehes
-
-
-    glBindFramebuffer(GL_FRAMEBUFFER, this->gl_Screen_FBO);
-
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-    glEnable(GL_DEPTH_TEST);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
     setupShaders();
     sortSceneModels();
@@ -357,7 +459,16 @@ void Renderer::renderPass() {
     }
 
 
+    
+    //After that, we draw the skybox
+    skyboxShader->bindShader();
+    skyboxShader->setUniform("projectionMat",camera->getProjectionMat());
+    skyboxShader->setUniform("viewMat",glm::mat4(glm::mat3(camera->getViewMat())));
+    glBindVertexArray(this->gl_Skybox_VAO);
+    glBindTexture(GL_TEXTURE_CUBE_MAP, this->gl_SkyBox_Cubemap);
+    glDrawArrays(GL_TRIANGLES, 0, 36);
 
+    //Finally, we draw the transparent 
 
     for (auto& drawable : this->transparentDrawGroups) {
         Shader* shader = loadedShaders[drawable->getShaderType()].get();
@@ -372,14 +483,15 @@ void Renderer::renderPass() {
         
     }
 
+
+
+
     //At this point, if everything is ok, we can now move on to the post processing 
     //bindd to the window buffer
     glBindFramebuffer(GL_FRAMEBUFFER, 0); // back to default
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
-    
     glDisable(GL_DEPTH_TEST);
-    
     // Activate texture unit 0 and bind our screen texture
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, this->gl_Screen_TEX);
@@ -394,8 +506,8 @@ void Renderer::renderPass() {
 
 
 
-}
 
+}
 bool Renderer::isRunning() {
     return !glfwWindowShouldClose(this->gl_Window);
 }
@@ -407,7 +519,7 @@ void Renderer::loop() {
         this->currentFrame = static_cast<float>(glfwGetTime());
         this->deltaTime = this->currentFrame - this->lastFrame;
         this->lastFrame = this->currentFrame;
-        std::cout << 1/deltaTime << std::endl;
+        //std::cout << 1/deltaTime << std::endl;
         
         processInput();
 

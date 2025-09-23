@@ -47,6 +47,15 @@ private:
     std::vector<shared_ptr<Drawable>> transparentDrawGroups; //for transparent objects, we cant render by shader, only by their order of depth, since the drawable knows who is its shader, we can
                                                                   //get away with just a vector
 
+    //skybox (render fixed for now)
+    
+    unsigned int gl_SkyBox_Cubemap;
+    unsigned int gl_Skybox_VBO; 
+    unsigned int gl_Skybox_VAO; 
+
+    unique_ptr<Shader> skyboxShader;
+
+
 
     //post processingg stuff
     unsigned int gl_ScreenQuad_VBO; //our vertex buffer
@@ -65,6 +74,7 @@ private:
     //startup functions
     void loadShaders();
     void loadScreenBuffer();
+    void loadSkyBox();
 
     //Utility function, sorts every scene object in their group. We call this every frame but it is aware of updates
     //operations are done since we only need to sort groups once

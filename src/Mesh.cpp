@@ -49,6 +49,7 @@ void Mesh::initializeMesh(std::vector<vec3>& verts, std::vector<vec3>& normals, 
     */
     
     // Position attribute (location 0)
+                //location, sizeof, type, normalize, stride, alwayszero
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 16 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
     

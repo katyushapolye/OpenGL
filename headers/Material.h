@@ -13,6 +13,7 @@ public:
     std::string name;
     shared_ptr<Texture> diffuse;
     shared_ptr<Texture> specular;
+    
     shared_ptr<Texture> normal;
     
     float     shininess;
