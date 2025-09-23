@@ -6,7 +6,7 @@ Renderer::Renderer(unsigned int width, unsigned int height, const char* title) {
     glfwInit();
 
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 4);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE); //disable rezing until i fix the FBO resizin along the window and the camera aspect ratio
 
@@ -37,7 +37,7 @@ Renderer::Renderer(unsigned int width, unsigned int height, const char* title) {
 
     // Enable depth testing
     glEnable(GL_DEPTH_TEST);
-    glEnable(GL_CULL_FACE);
+    //glEnable(GL_CULL_FACE);
     glEnable(GL_STENCIL_TEST);
     glEnable(GL_BLEND); 
 
@@ -81,6 +81,36 @@ void Renderer::loadShaders(){
         }
 
     }
+
+        //initialize the availables UBOS for shaders to bind to
+        //now this requires some work
+        /* //now we send the data, since we are using GL4.2+, the bind the point  is statically in the shader code, so we dont need to tell to each shader the binding point
+        layout(std140, binding = 1) uniform Matrixes  {
+
+        mat4 UBO_viewMat; =  4*4*N   = 64 bytes pos at offset 0
+        mat4 UBO_projectionMat; 64 bytes at offset 64
+        };  */
+        //size is 128
+        glGenBuffers(1, &this->gl_Matrixes_UBO);
+        glBindBuffer(GL_UNIFORM_BUFFER, this->gl_Matrixes_UBO);
+        glBufferData(GL_UNIFORM_BUFFER, 128, NULL, GL_STATIC_DRAW); // allocate 152 bytes of memory
+        glBindBufferRange(GL_UNIFORM_BUFFER, 0,this->gl_Matrixes_UBO, 0, 128); //binding the whole range of the buffer to binding point 0
+        glBindBuffer(GL_UNIFORM_BUFFER,0);//unbind it
+
+        //now for the camera UBO
+        /*
+         layout(std140, binding = 1) uniform CameraUBO  {
+        vec3 cameraPos; //4N = 16 offset at 0
+        vec3 cameraRot; //4N = 16 offset at 16
+            };
+
+        */
+        glGenBuffers(1, &this->gl_Camera_UBO);
+        glBindBuffer(GL_UNIFORM_BUFFER, this->gl_Camera_UBO);
+        glBufferData(GL_UNIFORM_BUFFER,32,NULL,GL_STATIC_DRAW);
+        glBindBufferRange(GL_UNIFORM_BUFFER,1,this->gl_Camera_UBO,0,32);
+        glBindBuffer(GL_UNIFORM_BUFFER,0);
+
 
 
 }
@@ -345,23 +375,37 @@ void Renderer::setupShaders(){
         ShaderType type = (ShaderType)i;
         Shader* shader = nullptr;
 
+
+
+
+        //now we set the actuall memory
+        //matrix
+        glBindBuffer(GL_UNIFORM_BUFFER,this->gl_Matrixes_UBO);
+        glBufferSubData(GL_UNIFORM_BUFFER,0,sizeof(mat4),glm::value_ptr(this->camera->getViewMat()));
+        glBufferSubData(GL_UNIFORM_BUFFER,64,sizeof(mat4),glm::value_ptr(this->camera->getProjectionMat()));
+        glBindBuffer(GL_UNIFORM_BUFFER, 0);  //unbind the buffer
+        //cameraPos and roation for ease
+        //since they are vec3, they need padding
+        glBindBuffer(GL_UNIFORM_BUFFER,this->gl_Camera_UBO);
+        glBufferSubData(GL_UNIFORM_BUFFER,0,sizeof(vec4),glm::value_ptr(this->camera->getPosition()));
+        glBufferSubData(GL_UNIFORM_BUFFER,16,sizeof(vec4),glm::value_ptr(this->camera->getRotation())); //in degrees
+        glBindBuffer(GL_UNIFORM_BUFFER, 0);
+        //now the hard part with these buffers will be the lights, since we wil have 3 big vectors with stride things
+
+
         switch (type)
         {
         case ShaderType::Lit:
             shader = loadedShaders[type].get();
             loadedShaders[type]->bindShader();
-            loadedShaders[type]->setUniform("viewMat", this->camera->getViewMat());
-            loadedShaders[type]->setUniform("projectionMat", this->camera->getProjectionMat());
-            loadedShaders[type]->setUniform("camera.position", this->camera->getPosition());
-            //this shader is lit so we set its lights
             setupShaderLighting(shader);
+            //also set the skybox for enviroment reflection //Careful HERE, IT WIL BIND AUTOMATICALLY TO TEXT UNITY 0! -> WE
+            glBindTexture(GL_TEXTURE_CUBE_MAP, this->gl_SkyBox_Cubemap);
+            loadedShaders[type]->setUniform("skybox",0);
             break;
         case ShaderType::Outline:
             shader = loadedShaders[type].get();
             loadedShaders[type]->bindShader();
-            loadedShaders[type]->setUniform("viewMat", this->camera->getViewMat());
-            loadedShaders[type]->setUniform("projectionMat", this->camera->getProjectionMat());
-            loadedShaders[type]->setUniform("camera.position", this->camera->getPosition());
             //this shader is lit so we set its lights
             setupShaderLighting(shader);
             break;
@@ -380,24 +424,27 @@ void Renderer::setupShaderLighting(Shader* shader){
     shader->setUniform("ambientLight",this->loadedScene->ambientLight);
 
     for(int i = 0; i < this->loadedScene->getLights()[LightType::POINT].size(); i++){
-        shader->setUniform("pointLights[" + std::to_string(i) +"].position", this->loadedScene->getLights()[LightType::POINT][i]->transform.getPosition());
-        shader->setUniform("pointLights[" + std::to_string(i) +"].color", this->loadedScene->getLights()[LightType::POINT][i]->color);
-        shader->setUniform("pointLights[" + std::to_string(i) +"].intensity", this->loadedScene->getLights()[LightType::POINT][i]->intensity);
+        PointLight* light = static_cast<PointLight*>(this->loadedScene->getLights()[LightType::POINT][i].get());
+        shader->setUniform("pointLights[" + std::to_string(i) +"].position", light->transform.getPosition());
+        shader->setUniform("pointLights[" + std::to_string(i) +"].color",  light->getColor());
+        shader->setUniform("pointLights[" + std::to_string(i) +"].intensity",  light->getIntensity());
 
     }
 
     for(int i = 0; i < this->loadedScene->getLights()[LightType::DIRECTIONAL].size(); i++){
-        shader->setUniform("dirLights[" + std::to_string(i) +"].direction", this->loadedScene->getLights()[LightType::DIRECTIONAL][i]->transform.getForward());
-        shader->setUniform("dirLights[" + std::to_string(i) +"].color", this->loadedScene->getLights()[LightType::DIRECTIONAL][i]->color);
-        shader->setUniform("dirLights[" + std::to_string(i) +"].intensity", this->loadedScene->getLights()[LightType::DIRECTIONAL][i]->intensity);
+        DirectionalLight* light = static_cast<DirectionalLight*>(this->loadedScene->getLights()[LightType::DIRECTIONAL][i].get());
+        shader->setUniform("dirLights[" + std::to_string(i) +"].direction", light->transform.getForward());
+        shader->setUniform("dirLights[" + std::to_string(i) +"].color", light->getColor());
+        shader->setUniform("dirLights[" + std::to_string(i) +"].intensity", light->getIntensity());
 
     }
     for(int i = 0; i < this->loadedScene->getLights()[LightType::SPOT].size(); i++){
-        shader->setUniform("spotLights[" + std::to_string(i) +"].position", this->loadedScene->getLights()[LightType::SPOT][i]->transform.getPosition());
-        shader->setUniform("spotLights[" + std::to_string(i) +"].direction", this->loadedScene->getLights()[LightType::SPOT][i]->transform.getForward());
-        shader->setUniform("spotLights[" + std::to_string(i) +"].color", this->loadedScene->getLights()[LightType::SPOT][i]->color);
-        shader->setUniform("spotLights[" + std::to_string(i) +"].intensity",this->loadedScene->getLights()[LightType::SPOT][i]->intensity);
-        shader->setUniform("spotLights[" + std::to_string(i) +"].theta", this->loadedScene->getLights()[LightType::SPOT][i]->theta);
+        SpotLight* light = static_cast<SpotLight*>(this->loadedScene->getLights()[LightType::SPOT][i].get());
+        shader->setUniform("spotLights[" + std::to_string(i) +"].position", light->transform.getPosition());
+        shader->setUniform("spotLights[" + std::to_string(i) +"].direction", light->transform.getForward());
+        shader->setUniform("spotLights[" + std::to_string(i) +"].color", light->getColor());
+        shader->setUniform("spotLights[" + std::to_string(i) +"].intensity",light->getIntensity());
+        shader->setUniform("spotLights[" + std::to_string(i) +"].theta", light->getTheta());
 
     }
 }

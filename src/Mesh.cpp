@@ -1,6 +1,8 @@
 #include "../headers/Mesh.h"
 
 
+
+
 //we need to update intilize
 Mesh::Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indexes,unsigned int materialIndex) {
     std::vector<vec3> verts;
@@ -136,24 +138,28 @@ void Mesh::draw(Shader* shader,Material* mat) {
     shader->bindShader();
 
     glBindVertexArray(this->gl_VAO);
-    //shader.bindShader();
-    int unit = 0;
+    shader->setUniform(std::string("material" + std::to_string(0)) + ".diffuseColor",mat->diffuseColor); // Texture unit 1
 
 
-            mat->diffuse->bindTexture(unit);
-            shader->setUniform(std::string("material" + std::to_string(0)) + ".diffuse", unit); // Texture unit 0
-            unit++;
+    int unit = 1;
+    mat->diffuseMap->bindTexture(unit);
+    shader->setUniform(std::string("material" + std::to_string(0)) + ".diffuseMap", unit); // Texture unit 1
+    unit++;
 
-            mat->specular->bindTexture(unit);
-            shader->setUniform(std::string("material" + std::to_string(0)) + ".specular", unit); // Texture unit 0  
-            unit++;
+    mat->specularMap->bindTexture(unit);
+    shader->setUniform(std::string("material" + std::to_string(0)) + ".specularMap", unit); // Texture unit 2
+    unit++;
 
-            mat->normal->bindTexture(unit);
-            shader->setUniform(std::string("material" + std::to_string(0)) + ".normal", unit); // Texture unit 0  
-            unit++;
+    mat->reflectionMap->bindTexture(unit);
+    shader->setUniform(std::string("material" + std::to_string(0)) + ".reflectionMap", unit); // Texture unit 3
+    unit++;
 
-            shader->setUniform(std::string("material" + std::to_string(0)) + ".shininess", mat->shininess);
-        
+    mat->normalMap->bindTexture(unit);
+    shader->setUniform(std::string("material" + std::to_string(0)) + ".normalMap", unit); // Texture unit 4
+    unit++;
+
+    shader->setUniform(std::string("material" + std::to_string(0)) + ".shininess", mat->shininess);
+
 
     
 

@@ -32,7 +32,9 @@ private:
     void initializeMesh(std::vector<vec3>& verts, std::vector<vec3>& normals, std::vector<vec2>& texCoords, std::vector<unsigned int>& indexes);
 
 public:
-    // Constructor overloads
+    //holds the standard mesh VAO that is used to render all meshes
+
+
 
     unsigned int getMaterialIndex();
 
@@ -44,6 +46,8 @@ public:
 
 
 };
+
+
 
 
 #endif

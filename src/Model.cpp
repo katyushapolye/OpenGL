@@ -14,7 +14,7 @@ Model::Model(std::vector<std::unique_ptr<Mesh>> meshes,std::vector<std::unique_p
         //check our type by inividdualyy checking all material textures
 
         for(auto mat = materials.begin();mat != materials.end();mat++ ){
-            if(mat->get()->diffuse->isTransparent()){
+            if(mat->get()->diffuseMap->isTransparent()){
                 this->renderGroup = RenderGroup::Transparent;
             }
             else{

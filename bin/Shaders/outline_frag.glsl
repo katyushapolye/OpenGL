@@ -1,4 +1,4 @@
-#version 330 core
+#version 420 core
 in vec2 fTexCoord;
 in vec3 fVertexNormal;
 in vec3 fFragPos;

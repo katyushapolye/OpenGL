@@ -67,9 +67,15 @@ int main()
     m->transform.rotateLocal(vec3(0,180,0));
     scene->addModel(shared_ptr<Model>(m));
 
-    Light* l= new Light(LightType::DIRECTIONAL, vec3(1.0f, 1.0f,1.0f),1.0f);
+    m = ModelLoader::loadFromObjWithAssimp("Models/teapot.obj");
+    m->transform.setPosition(vec3(1.75,1,2.5));
+    m->transform.setScale(vec3(5,5,5));
+    scene->addModel(shared_ptr<Model>(m));
+
+
+    DirectionalLight* l= new DirectionalLight(vec3(0.0f, 0.0f,0.0f),vec3(1.0,1.0,1.0),1.0f);
     l->transform.setRotation(vec3(45.0,0.0,0.0f));
-    scene->addLight(shared_ptr<Light>(l));
+    scene->addLight(shared_ptr<DirectionalLight>(l));
 
 
 

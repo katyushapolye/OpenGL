@@ -12,7 +12,7 @@
 class ModelLoader
 {
 private:
-    static std::vector<Material*> loadMTLMaterial(std::string path);
+
     
 public:
 

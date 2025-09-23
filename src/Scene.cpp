@@ -16,8 +16,14 @@ void Scene::addModel(shared_ptr<Drawable> model){
     this->models.push_back(model);
 }
 
-void Scene::addLight(shared_ptr<Light> light){
-    this->lights[light->type].push_back(light);
+void Scene::addLight(shared_ptr<DirectionalLight> light){
+    this->lights[light->getType()].push_back(light); //implicit cast to light
+}
+void Scene::addLight(shared_ptr<PointLight> light){
+    this->lights[light->getType()].push_back(light);
+}
+void Scene::addLight(shared_ptr<SpotLight> light){
+    this->lights[light->getType()].push_back(light);
 }
 
 

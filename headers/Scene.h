@@ -22,7 +22,10 @@ public:
 
 
     void addModel(shared_ptr<Drawable> model);
-    void addLight(shared_ptr<Light> light);
+    
+    void addLight(shared_ptr<DirectionalLight> light);
+    void addLight(shared_ptr<PointLight> light);
+    void addLight(shared_ptr<SpotLight> light);
 
 
     std::vector<shared_ptr<Drawable>> getModels();

@@ -11,13 +11,18 @@ private:
     
 public:
     std::string name;
-    shared_ptr<Texture> diffuse;
-    shared_ptr<Texture> specular;
+    vec3 diffuseColor; //we  will use these in case we havent set a texturee
+
     
-    shared_ptr<Texture> normal;
     
+
+    shared_ptr<Texture> diffuseMap;
+    shared_ptr<Texture> specularMap;
+    shared_ptr<Texture> reflectionMap;
+    shared_ptr<Texture> normalMap;
     float     shininess;
-    Material(Texture* diffuse, Texture* specular, Texture* normal, float shininess,std::string name = "Material");
+
+    Material(Texture* diffuse, Texture* specular, Texture* normal, Texture* reflection,vec3 diffuseColor = vec3(1.0,1.0,1.0),float shininess = 0.25f,std::string name = "Material");
 
 };
 #endif

@@ -1,17 +1,19 @@
-#version 330 core
-struct Camera{
-    vec3 position;
-};
+#version 420 core
+
 struct Material {
-    sampler2D diffuse;
-    sampler2D specular;
-    sampler2D normal;
+    vec3 diffuseColor;
+
+    sampler2D diffuseMap; //TEX UNITY 1
+    sampler2D specularMap; //TEX UNITY 2
+    sampler2D reflectionMap; //TEX UNITY 3
+    sampler2D normalMap; //TEX UNITY 4
     float shininess;
 };
 struct PointLight {
-    vec3 position;
-    vec3 color;
-    float intensity;
+    vec3 position; //16 bytes
+    vec3 color; //16 bytes
+    float intensity; //4 bytes
+    float radius; //4 bytes
 };
 
 struct DirectionalLight {
@@ -38,10 +40,22 @@ in vec3 fVertexNormal;
 in vec3 fFragPos;
 
 out vec4 FragColor;
- 
 
 
-//Lighting
+
+layout(std140, binding = 1) uniform Camera  {
+    vec3 cameraPos;
+    vec3 cameraRot;
+};
+
+layout(std140, binding = 2) uniform PointLights_UBO{
+    int pointLightCount;
+    PointLight pointLights_UBO[16];//big
+
+};
+
+
+//Lighting, we need a attr to not iterate over the whole arrray (light count)
 #define NR_POINT_LIGHTS 16
 uniform PointLight pointLights[NR_POINT_LIGHTS];
 
@@ -54,16 +68,17 @@ uniform SpotLight spotLights[NR_SPOT_LIGHTS];
 
 uniform vec3 ambientLight;
 
+//Skybox for enviroment mapping
+
+uniform samplerCube skybox; //TEX UNITY 0
+
 //Materials
 
 uniform Material material0;
 
+
 //Camera
-uniform Camera camera;
 
-//Control
-
-uniform bool alphaDiscard;
 
 vec3 pointLightPass(vec3 viewDir){
     vec3 pointContribution = vec3(0.0f,0.0f,0.0f);
@@ -79,7 +94,7 @@ vec3 pointLightPass(vec3 viewDir){
         //specular
         vec3 reflectDir = reflect(-lightDir,normal);
         float specFactor = material0.shininess >= 0.05f? pow(max(dot(viewDir,reflectDir),0.0),material0.shininess*64) : 0.0;
-        vec3 specularColor =  specFactor * pointLights[i].color * texture(material0.specular,fTexCoord).rgb;
+        vec3 specularColor =  specFactor * pointLights[i].color * texture(material0.specularMap,fTexCoord).rgb;
         pointContribution  = pointContribution + (diffuseColor + specularColor)* attenuation;
 
     }
@@ -100,7 +115,7 @@ vec3 directionalLightPass(vec3 viewDir){
         vec3 diffuseColor = max(dot(normal,lightDir),0.0f) * dirLights[i].color;
         vec3 reflectDir = reflect(-lightDir,normal);
         float specFactor = material0.shininess >= 0.05f? pow(max(dot(viewDir,reflectDir),0.0),material0.shininess*32) : 0.0;
-        vec3 specularColor = specFactor * dirLights[i].color * texture(material0.specular,fTexCoord).rgb;
+        vec3 specularColor = specFactor * dirLights[i].color * texture(material0.specularMap,fTexCoord).rgb;
        
         // Remove the extra color multiplication
         dirContribution = dirContribution + (diffuseColor + specularColor) * dirLights[i].intensity;
@@ -125,7 +140,7 @@ vec3 spotLightPass(vec3 viewDir){
             //specular
             vec3 reflectDir = reflect(-lightDir,normal);
             float specFactor = material0.shininess >= 0.05f? pow(max(dot(viewDir,reflectDir),0.0),material0.shininess*32) : 0.0;
-            vec3 specularColor =  specFactor * spotLights[i].color * texture(material0.specular,fTexCoord).rgb;
+            vec3 specularColor =  specFactor * spotLights[i].color * texture(material0.specularMap,fTexCoord).rgb;
             spotcontribution  = spotcontribution + (diffuseColor + specularColor)* attenuation;
 
         }
@@ -148,11 +163,25 @@ vec3 spotLightPass(vec3 viewDir){
 
 void main()
 {
+    
 
-    vec3 viewDir = normalize(camera.position - fFragPos);
-    vec3 objectColor = (spotLightPass(viewDir) + pointLightPass(viewDir)+ ambientLightPass()+ directionalLightPass(viewDir)) * texture(material0.diffuse, fTexCoord).rgb;
+    vec3 viewDir = normalize(cameraPos - fFragPos);
+    vec3 lightContribution = spotLightPass(viewDir) + pointLightPass(viewDir)+ ambientLightPass()+ directionalLightPass(viewDir);
+    vec3 objectColor =  + (spotLightPass(viewDir) + pointLightPass(viewDir)+ ambientLightPass()+ directionalLightPass(viewDir)) * texture(material0.diffuseMap, fTexCoord).rgb;
 
-    FragColor = vec4(objectColor, texture(material0.diffuse, fTexCoord).a);
+    //enviroment reflection calculation
+
+        //enviroment reflection calculation
+    vec3 I = -viewDir;
+    vec3 R = reflect(I,normalize(fVertexNormal));
+    vec3 reflectionColor = (texture(skybox,R).rgb * texture(material0.reflectionMap,fTexCoord).rgb) * lightContribution; //returns all black in non-reflective objects
+    
+
+    vec3 finalColor = (reflectionColor + objectColor)*material0.diffuseColor;
+    //(1-reflectivity) * (diffuse) + (reflectivity) * reflectionmap + specular
+
+
+    FragColor = vec4(finalColor, texture(material0.diffuseMap,fTexCoord).a);
     //float depth = gl_FragCoord.z; // divide by far for demonstration
     //FragColor = vec4(vec3(depth), 1.0);
 }

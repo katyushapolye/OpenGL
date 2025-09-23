@@ -5,10 +5,14 @@ std::map<std::string,shared_ptr<Texture>> TextureHandler::loadedTextures = std::
 
 shared_ptr<Texture> TextureHandler::loadTexture(std::string path){
 
-    if(path == ""){
-        Log::write("[TextureHandler::loadTexture] - Loadtexture path was empty, defaulting to fallback texture (no_spec.png)");
+    if(path == "DIFFUSE_FALLBACK"){
+        Log::write("[TextureHandler::loadTexture] - Setting texture path to Diffuse fallback.png");
+        path = "Textures/Fallback/fallback_white.png";
+    }
+    else if(path == "GENERIC_FALLBACK" || path == ""){
+        Log::write("[TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png");
 
-        path = "Textures/backup/no_spec.png";
+        path = "Textures/Fallback/fallback.png";
     }
 
 

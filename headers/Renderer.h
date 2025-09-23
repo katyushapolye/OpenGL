@@ -47,6 +47,10 @@ private:
     std::vector<shared_ptr<Drawable>> transparentDrawGroups; //for transparent objects, we cant render by shader, only by their order of depth, since the drawable knows who is its shader, we can
                                                                   //get away with just a vector
 
+    //Shader UBO's
+    unsigned int gl_Matrixes_UBO;
+    unsigned int gl_Camera_UBO;
+
     //skybox (render fixed for now)
     
     unsigned int gl_SkyBox_Cubemap;
