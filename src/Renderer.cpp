@@ -362,6 +362,26 @@ void Renderer::processInput(){
         zoomOut = true;
 
     }
+    //Debug
+    if(glfwGetKey(this->gl_Window,GLFW_KEY_W) ==  GLFW_PRESS){
+        this->loadedScene->getLights()[LightType::POINT][0]->transform.setPosition( this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition() + vec3(0,5,0)*deltaTime);
+
+    }
+    if(glfwGetKey(this->gl_Window,GLFW_KEY_S) ==  GLFW_PRESS){
+        this->loadedScene->getLights()[LightType::POINT][0]->transform.setPosition( this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition() + vec3(0,-5,0)*deltaTime);
+
+    }
+
+    if(glfwGetKey(this->gl_Window,GLFW_KEY_D) ==  GLFW_PRESS){
+        this->loadedScene->getLights()[LightType::POINT][0]->transform.setPosition( this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition() + vec3(+5,0,0)*deltaTime);
+
+    }
+    if(glfwGetKey(this->gl_Window,GLFW_KEY_A) ==  GLFW_PRESS){
+        this->loadedScene->getLights()[LightType::POINT][0]->transform.setPosition( this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition() + vec3(-5,0,0)*deltaTime);
+
+    }
+
+
 
     this->camera->receiveInput(inputDir,this->deltaTime,zoomIn,zoomOut);
 }
@@ -567,7 +587,6 @@ void Renderer::loop() {
         this->deltaTime = this->currentFrame - this->lastFrame;
         this->lastFrame = this->currentFrame;
         //std::cout << 1/deltaTime << std::endl;
-        
         processInput();
 
 

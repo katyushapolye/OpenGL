@@ -34,6 +34,7 @@ enum class DrawableType {
 enum class TextureType {
     DIFFUSE,
     SPECULAR,
+    REFLECTION,
     NORMAL
 };
 

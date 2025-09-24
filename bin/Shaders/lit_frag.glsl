@@ -38,6 +38,7 @@ struct SpotLight {
 in vec2 fTexCoord;
 in vec3 fVertexNormal;
 in vec3 fFragPos;
+in mat3 fTBNMat;
 
 out vec4 FragColor;
 
@@ -80,11 +81,10 @@ uniform Material material0;
 //Camera
 
 
-vec3 pointLightPass(vec3 viewDir){
+vec3 pointLightPass(vec3 viewDir,vec3 normal){
     vec3 pointContribution = vec3(0.0f,0.0f,0.0f);
     for (int i = 0; i < NR_POINT_LIGHTS; i++){
         //difuse and ambient component
-        vec3 normal = normalize(fVertexNormal);
         vec3 lightDir = normalize(pointLights[i].position - fFragPos);
         //inverse square law
         float distance = length(pointLights[i].position - fFragPos);
@@ -101,15 +101,13 @@ vec3 pointLightPass(vec3 viewDir){
     return pointContribution;
 }
  
-
 vec3 ambientLightPass(){
     return ambientLight;
 }
 
-vec3 directionalLightPass(vec3 viewDir){
+vec3 directionalLightPass(vec3 viewDir,vec3 normal){
     vec3 dirContribution = vec3(0.0f,0.0f,0.0f);
     for (int i = 0; i < NR_DIRECTIONAL_LIGHTS; i++){
-        vec3 normal = normalize(fVertexNormal);
         vec3 lightDir = normalize(-dirLights[i].direction);
         
         vec3 diffuseColor = max(dot(normal,lightDir),0.0f) * dirLights[i].color;
@@ -123,10 +121,9 @@ vec3 directionalLightPass(vec3 viewDir){
     return dirContribution;
 }
 
-vec3 spotLightPass(vec3 viewDir){
+vec3 spotLightPass(vec3 viewDir,vec3 normal){
     vec3 spotcontribution = vec3(0.0f,0.0f,0.0f);
     for (int i = 0; i < NR_SPOT_LIGHTS; i++){
-        vec3 normal = normalize(fVertexNormal);
         vec3 lightDir = normalize(spotLights[i].position - fFragPos); 
         //calculate the angle between foward light and this fragment dir
         float phi = dot(normalize(spotLights[i].direction), -lightDir); //will spit the cos(phi) in radians
@@ -166,8 +163,12 @@ void main()
     
 
     vec3 viewDir = normalize(cameraPos - fFragPos);
-    vec3 lightContribution = spotLightPass(viewDir) + pointLightPass(viewDir)+ ambientLightPass()+ directionalLightPass(viewDir);
-    vec3 objectColor =  + (spotLightPass(viewDir) + pointLightPass(viewDir)+ ambientLightPass()+ directionalLightPass(viewDir)) * texture(material0.diffuseMap, fTexCoord).rgb;
+    vec3 normal = normalize(fVertexNormal); //fallback normal
+    if(textureSize(material0.normalMap, 0).x >1){ //if we have a normal map
+        normal =   normalize(fTBNMat * (texture(material0.normalMap,fTexCoord).rgb*2.0 - 1.0)); //we also need to make the TBN transform to global space
+    }
+    vec3 lightContribution = spotLightPass(viewDir,normal) + pointLightPass(viewDir,normal)+ ambientLightPass()+ directionalLightPass(viewDir,normal);
+    vec3 objectColor =   lightContribution * texture(material0.diffuseMap, fTexCoord).rgb;
 
     //enviroment reflection calculation
 

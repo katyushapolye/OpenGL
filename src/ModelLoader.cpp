@@ -109,20 +109,20 @@ Model* ModelLoader::loadFromObjWithAssimp(std::string path) {
                 Log::write("[ModelLoader::loadFromObjWithAssimp] - ERROR: Material " + std::to_string(i-1) + " is incomplete, using MAGENTA fallback");
 
                 materials.push_back(std::unique_ptr<Material>(new Material(
-                    TextureHandler::loadTexture("DIFFUSE_FALLBACK").get(), // empty texture let the handler solve it
-                    TextureHandler::loadTexture("").get(),
-                    TextureHandler::loadTexture("").get(),
-                    TextureHandler::loadTexture("").get(),
+                    TextureHandler::loadTexture("DIFFUSE_FALLBACK",TextureType::DIFFUSE).get(), // empty texture let the handler solve it
+                    TextureHandler::loadTexture("",TextureType::SPECULAR).get(),
+                    TextureHandler::loadTexture("",TextureType::NORMAL).get(),
+                    TextureHandler::loadTexture("",TextureType::REFLECTION).get(),
                     vec3(1.0f, 0.0f, 1.0f), // magenta
                     1.0f,
                     "FallbackMagenta"
                 )));
             } else {
                 materials.push_back(std::unique_ptr<Material>(new Material(
-                    TextureHandler::loadTexture(hasDiffuse  ? diffusePath.C_Str()   : "DIFFUSE_FALLBACK").get(),
-                    TextureHandler::loadTexture(hasSpecular ? specularPath.C_Str()  : "").get(),
-                    TextureHandler::loadTexture(hasNormal   ? normalPath.C_Str()    : "").get(),
-                    TextureHandler::loadTexture(hasReflect  ? reflectionPath.C_Str(): "").get(),
+                    TextureHandler::loadTexture(hasDiffuse  ? diffusePath.C_Str()   : "DIFFUSE_FALLBACK",TextureType::DIFFUSE).get(),
+                    TextureHandler::loadTexture(hasSpecular ? specularPath.C_Str()  : "",TextureType::SPECULAR).get(),
+                    TextureHandler::loadTexture(hasNormal   ? normalPath.C_Str()    : "",TextureType::NORMAL).get(),
+                    TextureHandler::loadTexture(hasReflect  ? reflectionPath.C_Str(): "",TextureType::REFLECTION).get(),
                     difCol,
                     normalizedShininess,
                     std::string(rawMat->GetName().C_Str())
@@ -131,10 +131,10 @@ Model* ModelLoader::loadFromObjWithAssimp(std::string path) {
         } catch (const std::exception& e) {
             Log::write("[ModelLoader::loadFromObjWithAssimp] - ERROR: Failed to load material " + std::to_string(i-1) + ": " + std::string(e.what()) + " — using MAGENTA fallback");
             materials.push_back(std::unique_ptr<Material>(new Material(
-                TextureHandler::loadTexture("DIFUSSE_FALLBACK").get(),
-                TextureHandler::loadTexture("").get(),
-                TextureHandler::loadTexture("").get(),
-                TextureHandler::loadTexture("").get(),
+                TextureHandler::loadTexture("DIFUSSE_FALLBACK",TextureType::DIFFUSE).get(),
+                TextureHandler::loadTexture("",TextureType::SPECULAR).get(),
+                TextureHandler::loadTexture("",TextureType::NORMAL).get(),
+                TextureHandler::loadTexture("",TextureType::REFLECTION).get(),
                 vec3(1.0f, 0.0f, 1.0f),
                 1.0f,
                 "FallbackMagenta"

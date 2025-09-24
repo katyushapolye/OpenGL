@@ -73,9 +73,12 @@ int main()
     scene->addModel(shared_ptr<Model>(m));
 
 
-    DirectionalLight* l= new DirectionalLight(vec3(0.0f, 0.0f,0.0f),vec3(1.0,1.0,1.0),1.0f);
-    l->transform.setRotation(vec3(45.0,0.0,0.0f));
-    scene->addLight(shared_ptr<DirectionalLight>(l));
+    //DirectionalLight* l= new DirectionalLight(vec3(0.0f, 0.0f,0.0f),vec3(1.0,1.0,1.0),1.0f);
+    //l->transform.setRotation(vec3(60.0,0.0,0.0f));
+    //scene->addLight(shared_ptr<DirectionalLight>(l));
+
+    PointLight* l1 = new PointLight(vec3(0.0,3.0,2.5),vec3(1.0,1.0,1.0),5.0);
+    scene->addLight(shared_ptr<PointLight>(l1));
 
 
 
