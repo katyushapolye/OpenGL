@@ -1,7 +1,7 @@
 //encapsulates a VAO wth a VBO and EBO. Only that and nothing more
-#ifndef MESH_H
+#ifndef INSTANCEDMESH_H
 
-#define MESH_H
+#define INSTANCEDMESH_H
 
 
 
@@ -14,10 +14,10 @@
 
 
 
-class Mesh {
+class InstancedMesh {
 private:
-    unsigned int gl_VBO, gl_VAO, gl_EBO;
-
+    unsigned int gl_VAO,gl_EBO,gl_VBO;
+    unsigned int gl_Instance_VBO;
     unsigned int gl_MaterialIndex;
 
     int elementCount;
@@ -26,9 +26,8 @@ private:
 
 
 
-    
     // Private helper method to initialize the mesh
-void initializeMesh(const std::vector<Vertex>& vertices, const std::vector<unsigned int>& indexes);
+    void initializeInstancedMesh(const std::vector<Vertex>& vertices, const std::vector<unsigned int>& indexes);
 
 public:
     //holds the standard mesh VAO that is used to render all meshes
@@ -37,11 +36,12 @@ public:
 
     unsigned int getMaterialIndex();
 
-    Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indexes,unsigned int materialIndex);
+    InstancedMesh(std::vector<Vertex> vertices, std::vector<unsigned int> indexes,unsigned int materialIndex);
+    
+    void setInstanceMatrixArray(std::vector<mat4> instanceMatrices);
 
 
-
-    void draw(Shader* shader,Material* mat);
+    void InstancedDraw(Shader* shader,Material* mat,std::vector<mat4>& instanceMatrices);
 
 
 };

@@ -13,6 +13,7 @@
 #include "Model.h"
 #include "ModelLoader.h"
 #include "Scene.h"
+#include "InstancedModel.h"
 
 
 

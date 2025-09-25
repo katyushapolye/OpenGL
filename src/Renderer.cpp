@@ -49,7 +49,7 @@ Renderer::Renderer(unsigned int width, unsigned int height, const char* title) {
 
 
     // Initialize camera
-    this->camera = std::unique_ptr<Camera>( new Camera(45.0f, (float)width / (float)height, 0.1f, 100.0f, width, height));
+    this->camera = std::unique_ptr<Camera>( new Camera(45.0f, (float)width / (float)height, 0.1f, 1000.0f, width, height));
     this->camera->setPosition(vec3(0.0f, 0.0f, 5.0f));
     this->camera->setTarget(vec3(0.0f, 0.0f, 0.0f));
 
@@ -72,6 +72,11 @@ void Renderer::loadShaders(){
             if( !(this->loadedShaders[(ShaderType)i]->loadFromFile("Shaders/lit_vertex.glsl", "Shaders/lit_frag.glsl"))){
                 Log::write("[RendererRenderer] - Failed to load lit shader");
 
+            }
+        }
+        else if(type == ShaderType::Instanced){
+            if(!( this->loadedShaders[(ShaderType)i]->loadFromFile("Shaders/instanced_vertex.glsl", "Shaders/instanced_frag.glsl"))){
+                Log::write("[RendererRenderer] - Failed to load instanced shader");
             }
         }
         else if(type == ShaderType::Outline){
@@ -423,6 +428,16 @@ void Renderer::setupShaders(){
             glBindTexture(GL_TEXTURE_CUBE_MAP, this->gl_SkyBox_Cubemap);
             loadedShaders[type]->setUniform("skybox",0);
             break;
+
+        case ShaderType::Instanced:
+            shader = loadedShaders[type].get();
+            loadedShaders[type]->bindShader();
+            setupShaderLighting(shader);
+            //also set the skybox for enviroment reflection //Careful HERE, IT WIL BIND AUTOMATICALLY TO TEXT UNITY 0! -> WE
+            glBindTexture(GL_TEXTURE_CUBE_MAP, this->gl_SkyBox_Cubemap);
+            loadedShaders[type]->setUniform("skybox",0);
+            break;
+
         case ShaderType::Outline:
             shader = loadedShaders[type].get();
             loadedShaders[type]->bindShader();
@@ -521,7 +536,19 @@ void Renderer::renderPass() {
                     //glEnable(GL_DEPTH_TEST);  
 
                     }
+                }
+
+            else if(drawable->getType() == DrawableType::INSTANCED_MODEL){
+                glStencilMask(0x00);
+                InstancedModel* model = static_cast<InstancedModel*>(drawable); 
+                loadedShaders[ShaderType::Instanced].get()->bindShader(); //not necessary
+                //instanced models dont have uniform binding of the model matrix, this is solved by the model
+                model->draw(loadedShaders[ShaderType::Instanced].get());
+
+
             }
+
+
         }
     }
 

@@ -152,6 +152,54 @@ src/Camera.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\OpenGLApp.dir\build.make CMakeFiles/OpenGLApp.dir/src/Camera.cpp.s
 .PHONY : src/Camera.cpp.s
 
+src/InstancedMesh.obj: src/InstancedMesh.cpp.obj
+.PHONY : src/InstancedMesh.obj
+
+# target to build an object file
+src/InstancedMesh.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\OpenGLApp.dir\build.make CMakeFiles/OpenGLApp.dir/src/InstancedMesh.cpp.obj
+.PHONY : src/InstancedMesh.cpp.obj
+
+src/InstancedMesh.i: src/InstancedMesh.cpp.i
+.PHONY : src/InstancedMesh.i
+
+# target to preprocess a source file
+src/InstancedMesh.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\OpenGLApp.dir\build.make CMakeFiles/OpenGLApp.dir/src/InstancedMesh.cpp.i
+.PHONY : src/InstancedMesh.cpp.i
+
+src/InstancedMesh.s: src/InstancedMesh.cpp.s
+.PHONY : src/InstancedMesh.s
+
+# target to generate assembly for a file
+src/InstancedMesh.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\OpenGLApp.dir\build.make CMakeFiles/OpenGLApp.dir/src/InstancedMesh.cpp.s
+.PHONY : src/InstancedMesh.cpp.s
+
+src/InstancedModel.obj: src/InstancedModel.cpp.obj
+.PHONY : src/InstancedModel.obj
+
+# target to build an object file
+src/InstancedModel.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\OpenGLApp.dir\build.make CMakeFiles/OpenGLApp.dir/src/InstancedModel.cpp.obj
+.PHONY : src/InstancedModel.cpp.obj
+
+src/InstancedModel.i: src/InstancedModel.cpp.i
+.PHONY : src/InstancedModel.i
+
+# target to preprocess a source file
+src/InstancedModel.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\OpenGLApp.dir\build.make CMakeFiles/OpenGLApp.dir/src/InstancedModel.cpp.i
+.PHONY : src/InstancedModel.cpp.i
+
+src/InstancedModel.s: src/InstancedModel.cpp.s
+.PHONY : src/InstancedModel.s
+
+# target to generate assembly for a file
+src/InstancedModel.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\OpenGLApp.dir\build.make CMakeFiles/OpenGLApp.dir/src/InstancedModel.cpp.s
+.PHONY : src/InstancedModel.cpp.s
+
 src/Light.obj: src/Light.cpp.obj
 .PHONY : src/Light.obj
 
@@ -524,6 +572,12 @@ help:
 	@echo ... src/Camera.obj
 	@echo ... src/Camera.i
 	@echo ... src/Camera.s
+	@echo ... src/InstancedMesh.obj
+	@echo ... src/InstancedMesh.i
+	@echo ... src/InstancedMesh.s
+	@echo ... src/InstancedModel.obj
+	@echo ... src/InstancedModel.i
+	@echo ... src/InstancedModel.s
 	@echo ... src/Light.obj
 	@echo ... src/Light.i
 	@echo ... src/Light.s

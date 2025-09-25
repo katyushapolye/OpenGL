@@ -28,6 +28,7 @@ struct Vertex {
 
 enum class DrawableType {
         MODEL,
+        INSTANCED_MODEL,
         MIRROR,
 };
 
@@ -46,6 +47,7 @@ enum class LightType {
 
 enum class ShaderType{ //should be put in render order (Lit first, Unlit second...)
     Lit,
+    Instanced,
     Outline,
 };
 

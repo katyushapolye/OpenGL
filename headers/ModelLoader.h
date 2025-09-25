@@ -2,6 +2,7 @@
 #define MODELLOADER_H
 #include <memory>
 #include "Model.h"
+#include "InstancedModel.h"
 #include "TextureHandler.h"
 #include <fstream>
 #include <assimp/Importer.hpp>
@@ -17,8 +18,7 @@ private:
 public:
 
     static Model* loadFromObj(std::string path);
-
-    static Model* loadFromObjWithAssimp(std::string path);
+    static InstancedModel* loadFromObjAsInstanced(std::string path);
 
 
 };
