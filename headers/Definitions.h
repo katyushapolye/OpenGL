@@ -8,6 +8,7 @@
 #include "Log.h"
 #include <memory>
 
+
 using glm::vec2;
 using glm::vec3;
 using glm::vec4;
@@ -56,7 +57,7 @@ enum class RenderGroup{
     Transparent
 };
 
-const unsigned int SHADER_COUNT = 2;
+const unsigned int SHADER_COUNT = 3;
 
 
 

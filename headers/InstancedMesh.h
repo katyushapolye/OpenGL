@@ -41,7 +41,7 @@ public:
     void setInstanceMatrixArray(std::vector<mat4> instanceMatrices);
 
 
-    void InstancedDraw(Shader* shader,Material* mat,std::vector<mat4>& instanceMatrices);
+    void InstancedDraw(Shader* shader,Material* mat,std::vector<mat4>& instanceMatrices,bool needsMatrixUpdate);
 
 
 };

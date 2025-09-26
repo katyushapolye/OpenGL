@@ -422,7 +422,7 @@ void Renderer::setupShaders(){
         {
         case ShaderType::Lit:
             shader = loadedShaders[type].get();
-            loadedShaders[type]->bindShader();
+            shader->bindShader();
             setupShaderLighting(shader);
             //also set the skybox for enviroment reflection //Careful HERE, IT WIL BIND AUTOMATICALLY TO TEXT UNITY 0! -> WE
             glBindTexture(GL_TEXTURE_CUBE_MAP, this->gl_SkyBox_Cubemap);
@@ -430,12 +430,15 @@ void Renderer::setupShaders(){
             break;
 
         case ShaderType::Instanced:
+            //printf("Hit!\n");
             shader = loadedShaders[type].get();
-            loadedShaders[type]->bindShader();
+            shader->bindShader();
             setupShaderLighting(shader);
             //also set the skybox for enviroment reflection //Careful HERE, IT WIL BIND AUTOMATICALLY TO TEXT UNITY 0! -> WE
             glBindTexture(GL_TEXTURE_CUBE_MAP, this->gl_SkyBox_Cubemap);
-            loadedShaders[type]->setUniform("skybox",0);
+            shader->setUniform("time",(float)glfwGetTime());
+            shader->setUniform("skybox",0);
+
             break;
 
         case ShaderType::Outline:
@@ -541,9 +544,9 @@ void Renderer::renderPass() {
             else if(drawable->getType() == DrawableType::INSTANCED_MODEL){
                 glStencilMask(0x00);
                 InstancedModel* model = static_cast<InstancedModel*>(drawable); 
-                loadedShaders[ShaderType::Instanced].get()->bindShader(); //not necessary
+                //loadedShaders[ShaderType::Instanced].get()->bindShader(); //not necessary
                 //instanced models dont have uniform binding of the model matrix, this is solved by the model
-                model->draw(loadedShaders[ShaderType::Instanced].get());
+                model->draw(shader);
 
 
             }

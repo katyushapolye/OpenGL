@@ -21,10 +21,15 @@ private:
                                               // GPU buffer that constais all the instanceMatrixes
                                                          // The idea is to send all instanceMat (the model mat for each instance) in one go to render it
 
-    void updateInstanceArray();                                                
+    bool updateInstanceArray();   
+
+    std::vector<Transform> transforms;    
+    unsigned int instanceCount;
+    bool needUpdate;
 
 public:
-    std::vector<Transform> transforms;
+
+
 
     //Instanced models do not support normal maps, nor transparency(since they are too many, sorting them would be a nightmare)
     InstancedModel(std::vector<unique_ptr<InstancedMesh>> meshes,std::vector<unique_ptr<Material>> materials);
@@ -38,6 +43,12 @@ public:
     ShaderType getShaderType() override;
     RenderGroup getRenderGroup() override;
     void draw(Shader* shade) override;
+
+    void setInstance(Transform transform, unsigned int index);
+    void addInstance(Transform transform);
+    void killInstance(unsigned int index);
+    Transform getInstance(unsigned int index);
+    
 
 
 

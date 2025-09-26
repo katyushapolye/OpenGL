@@ -37,7 +37,9 @@ struct SpotLight {
 //Ins an outs
 in vec2 fTexCoord;
 in vec3 fVertexNormal;
+in vec3 fVertexNormal2;
 in vec3 fFragPos;
+
 
 out vec4 FragColor;
 
@@ -78,7 +80,10 @@ uniform Material material0;
 
 
 //Camera
-
+ 
+vec3 ambientLightPass(){
+    return ambientLight;
+}
 
 vec3 pointLightPass(vec3 viewDir,vec3 normal){
     vec3 pointContribution = vec3(0.0f,0.0f,0.0f);
@@ -100,9 +105,7 @@ vec3 pointLightPass(vec3 viewDir,vec3 normal){
     return pointContribution;
 }
  
-vec3 ambientLightPass(){
-    return ambientLight;
-}
+
 
 vec3 directionalLightPass(vec3 viewDir,vec3 normal){
     vec3 dirContribution = vec3(0.0f,0.0f,0.0f);
@@ -159,29 +162,31 @@ vec3 spotLightPass(vec3 viewDir,vec3 normal){
 
 void main()
 {
-    
+    //insane trick for edge noormals
+    //i use the UV coords for 
+
+    float width = fTexCoord.x;
+    vec3 normal = normalize(mix(fVertexNormal,fVertexNormal2,width)); //fallback normal
+    if(gl_FrontFacing){
+        normal = -normal;
+
+    }
+    //control the color now based on height now
+    float height = 1-fTexCoord.y; //heigh is inverted in gl for reasonsunknon
+    vec3 top = vec3(0.05,0.2,0.01);
+    vec3 botton = vec3(0.5,0.5,0.1);
+    vec3 color = mix(botton,top,height);
+
+
 
     vec3 viewDir = normalize(cameraPos - fFragPos);
-    vec3 normal = normalize(fVertexNormal); //fallback normal
-    //if(textureSize(material0.normalMap, 0).x >1){ //if we have a normal map
-    //    normal =   normalize(fTBNMat * (texture(material0.normalMap,fTexCoord).rgb*2.0 - 1.0)); //we also need to make the TBN transform to global space
-    //}
+
     vec3 lightContribution = spotLightPass(viewDir,normal) + pointLightPass(viewDir,normal)+ ambientLightPass()+ directionalLightPass(viewDir,normal);
-    vec3 objectColor =   lightContribution * texture(material0.diffuseMap, fTexCoord).rgb;
-
-    //enviroment reflection calculation
-
-     //enviroment reflection calculation
-    vec3 I = -viewDir;
-    vec3 R = reflect(I,normalize(fVertexNormal));
-    vec3 reflectionColor = (texture(skybox,R).rgb * texture(material0.reflectionMap,fTexCoord).rgb) * lightContribution; //returns all black in non-reflective objects
-    
-
-    vec3 finalColor = (reflectionColor + objectColor)*material0.diffuseColor;
-    //(1-reflectivity) * (diffuse) + (reflectivity) * reflectionmap + specular
+    vec3 objectColor =   lightContribution * color;
 
 
-    FragColor = vec4(finalColor, texture(material0.diffuseMap,fTexCoord).a);
+
+    FragColor = vec4(objectColor, texture(material0.diffuseMap,fTexCoord).a);
     //float depth = gl_FragCoord.z; // divide by far for demonstration
     //FragColor = vec4(vec3(depth), 1.0);
 }

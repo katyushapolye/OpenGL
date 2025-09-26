@@ -69,13 +69,15 @@ unsigned int InstancedMesh::getMaterialIndex() {
     return gl_MaterialIndex;
 }
 
-void InstancedMesh::InstancedDraw(Shader* shader, Material* mat, std::vector<mat4>& instanceMatrices) {
+void InstancedMesh::InstancedDraw(Shader* shader, Material* mat, std::vector<mat4>& instanceMatrices,bool needsMatrixUpdate) {
     shader->bindShader();
     
+    if(needsMatrixUpdate){
     // Update instance buffer with new matrices
-    glBindBuffer(GL_ARRAY_BUFFER, gl_Instance_VBO);
-    glBufferData(GL_ARRAY_BUFFER, instanceMatrices.size() * sizeof(glm::mat4), 
-                 instanceMatrices.data(), GL_DYNAMIC_DRAW);
+        glBindBuffer(GL_ARRAY_BUFFER, gl_Instance_VBO);
+        glBufferData(GL_ARRAY_BUFFER, instanceMatrices.size() * sizeof(glm::mat4), 
+                     instanceMatrices.data(), GL_DYNAMIC_DRAW);
+    }
     
     glBindVertexArray(gl_VAO);
     
