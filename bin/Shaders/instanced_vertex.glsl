@@ -85,30 +85,20 @@ float windIntensity(vec3 worldPos, float time, float gustFrequency, vec3 windDir
     // Normalize the wind direction
     vec3 direction = normalize(windDir);
     
-    // Base wind with large-scale patterns - now direction-aware
+
     vec3 windSamplePos = worldPos * 0.05 + direction * time * 0.8;
     float baseWind = snoise(windSamplePos);
     
-    // Gust patterns (lower frequency) - also direction-aware
-    vec3 gustTimeVec = direction * time * gustFrequency;
-    float gust = snoise(gustTimeVec);
-    gust = smoothstep(-0.3, 0.7, gust); // Threshold to create gust events
+
+    vec3 turbulenceDir = normalize(direction + vec3(0.2, 0.1, 0.3));
+    vec3 turbulencePos = worldPos * 0.2 + turbulenceDir * time * 2.0; 
+    float turbulence = snoise(turbulencePos); 
     
-    // Turbulence (higher frequency) - direction-aware but with some randomness
-    vec3 turbulenceDir = normalize(direction + vec3(0.2, 0.1, 0.3)); // Add some variation
-    vec3 turbulencePos = worldPos * 0.2 + turbulenceDir * time * 2.0;
-    float turbulence = snoise(turbulencePos) * 0.3;
-    
-    // Combine all elements
-    float intensity = baseWind * 0.7 + gust * 0.5 + turbulence;
-    
-    // Height-based intensity (wind stronger higher up)
-    float heightFactor = smoothstep(0.0, 10.0, worldPos.y);
-    intensity *= (1.0 + heightFactor * 0.5);
+    float intensity = baseWind * 0.7 + turbulence*0.3;
+
     
     return intensity;
 }
-
 
 //Matrix UBO
 layout(std140, binding = 0) uniform Matrixes  {
@@ -156,7 +146,7 @@ void main()
     float intensity = windIntensity(worldPos, time, 0.3,vec3(-1,0,0));
     
     // Apply wind effect (consider using intensity more subtly)
-    float factor = (intensity*25  + 25.0)* (vPosition.y / 1.5);
+    float factor = (intensity*50  + 25.0+(2*(gl_InstanceID*8931) % 7) )* (vPosition.y / 1.5);
 
 
 

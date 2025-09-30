@@ -11,9 +11,9 @@ Camera::Camera(float fov, float aspectRatio, float nearPlane, float farPlane, un
 
     this->position = vec3(0.0f,0.0f,5.0f);
     this->rotation = vec3(0.0f,0.0f,0.0f);
-    this->target = vec3(0.0f,0.0f,0.0f);
+    //this->target = vec3(0.0f,0.0f,0.0f);
 
-    this->forward = glm::normalize( this->target - this->position); 
+    //this->forward = glm::normalize( this->target - this->position); 
     this->right = glm::normalize(glm::cross(this->forward, vec3(0.0f,1.0f,0.0f)));
     this->up = glm::normalize(glm::cross(this->right, this->forward));
 
@@ -51,54 +51,57 @@ vec3 Camera::getTarget()
 }
 
 //orbital camera control
-void Camera::receiveInput(vec2 inputDir, float deltaTime, bool zoomIn, bool zoomOut)
-{
-    float rotationSpeed = 2.0f * deltaTime;
-    float zoomSpeed = 5.0f * deltaTime; // Adjust zoom speed as needed
-    
-    // Calculate current spherical coordinates
-    vec3 toCamera = this->position - this->target;
-    float radius = glm::length(toCamera);
-    
-    // Calculate angles from the normalized direction (independent of radius)
-    vec3 normalizedDir = toCamera / radius;
-    float currentPitch = asin(normalizedDir.y);
-    float currentYaw = atan2(normalizedDir.z, normalizedDir.x);
-    
-    // Apply rotation input
-    currentPitch += inputDir.y * rotationSpeed;
-    currentYaw += inputDir.x * rotationSpeed;
-   
-    // Clamp pitch
-    currentPitch = glm::clamp(currentPitch, -1.57f + 0.1f, 1.57f - 0.1f); // ~89 degrees
-    
-    // Handle zoom input AFTER calculating angles
-    if (zoomIn) {
-        radius -= zoomSpeed;
-    }
-    if (zoomOut) {
-        radius += zoomSpeed;
-    }
-    
-    // Clamp radius to reasonable bounds
-    radius = glm::clamp(radius, 0.5f, 50.0f); // Adjust min/max as needed
-   
-    this->position = this->target + vec3(
-        radius * cos(currentPitch) * cos(currentYaw),
-        radius * sin(currentPitch),
-        radius * cos(currentPitch) * sin(currentYaw)
-    );
-   
-    this->forward = glm::normalize(this->target - this->position);
+void Camera::receiveInput(vec2 inputDir,vec2 mouseDir, float deltaTime, bool zoomIn, bool zoomOut)
+{   
+    //first we set the new camera foward vector using the new yaw and pitch
+    float mouseSensibility = 0.10;
+
+
+    float currentYaw  =  this->getRotation().y; //rotation around the y axis
+
+    currentYaw += mouseDir.x*mouseSensibility*deltaTime; //simple calculation
+    //same process for pitch
+    float currentPitch = this->getRotation().x;
+
+    currentPitch -=  mouseDir.y*mouseSensibility*deltaTime; //inverted ebcause the coorda are inverted
+    currentPitch = glm::clamp(currentPitch, -89.0f, 89.0f);
+
+    //foward reccaltulation
+
+    this->forward.x = glm::cos(glm::radians(currentYaw)) * glm::cos(glm::radians(currentPitch));
+    this->forward.y = glm::sin(glm::radians(currentPitch));
+    this->forward.z = glm::sin(glm::radians(currentYaw)) * cos(glm::radians(currentPitch));
+
     this->right = glm::normalize(glm::cross(this->forward, vec3(0.0f,1.0f,0.0f)));
     this->up = glm::normalize(glm::cross(this->right, this->forward));
+
+    //printf("%f , %f , %f \n",this->forward.x,this->forward.y,this->forward.z);
+
+    this->setRotation(vec3(currentPitch,currentYaw,this->getRotation().z));
+
+
+    //now we handle keyboard input
+    //we want 
+
+    this->position = this->position +  (10*inputDir.y*this->forward*deltaTime); //inputdir y+ is w 
+    this->position = this->position +  (10*inputDir.x*this->right*deltaTime); //inputdir y+ is w 
+
+    //simple fov change
+    if(zoomIn){
+        this->fov ++;
+
+    }
+    if(zoomOut){
+        this->fov--;
+    }
+    
 }
 
 
 
 mat4 Camera::getViewMat()
 {
-    mat4 view = glm::lookAt(this->position,this->target,this->up);
+    mat4 view = glm::lookAt(this->position,this->position + this->forward,this->up);
     return view;
 }
 

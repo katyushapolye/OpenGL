@@ -88,12 +88,14 @@ vec3 pointLightPass(vec3 viewDir,vec3 normal){
         vec3 lightDir = normalize(pointLights[i].position - fFragPos);
         //inverse square law
         float distance = length(pointLights[i].position - fFragPos);
-        float attenuation = pointLights[i].intensity / (1.0 + distance * distance);
+        float attenuation = pointLights[i].intensity / (1.0 + distance*distance);
 
         vec3 diffuseColor = max(dot(normal,lightDir),0.0f) * pointLights[i].color;
         //specular
-        vec3 reflectDir = reflect(-lightDir,normal);
-        float specFactor = material0.shininess >= 0.05f? pow(max(dot(viewDir,reflectDir),0.0),material0.shininess*64) : 0.0;
+        vec3 reflectDir = reflect(-lightDir,normal); //we use the halfwat vector for bling phong specular reflections, i really didnt notice MUCH change to it
+        vec3 halfwayDir = normalize(lightDir + viewDir);
+        //
+        float specFactor = material0.shininess >= 0.05f? pow(max(dot(viewDir,reflectDir),0.0),material0.shininess*32) : 0.0;
         vec3 specularColor =  specFactor * pointLights[i].color * texture(material0.specularMap,fTexCoord).rgb;
         pointContribution  = pointContribution + (diffuseColor + specularColor)* attenuation;
 
@@ -102,7 +104,7 @@ vec3 pointLightPass(vec3 viewDir,vec3 normal){
 }
  
 vec3 ambientLightPass(){
-    return ambientLight;
+    return pow(ambientLight,vec3(4.4)); //i just made up a magic number for this
 }
 
 vec3 directionalLightPass(vec3 viewDir,vec3 normal){
@@ -111,9 +113,11 @@ vec3 directionalLightPass(vec3 viewDir,vec3 normal){
         vec3 lightDir = normalize(-dirLights[i].direction);
         
         vec3 diffuseColor = max(dot(normal,lightDir),0.0f) * dirLights[i].color;
-        vec3 reflectDir = reflect(-lightDir,normal);
-        float specFactor = material0.shininess >= 0.05f? pow(max(dot(viewDir,reflectDir),0.0),material0.shininess*32) : 0.0;
-        vec3 specularColor = specFactor * dirLights[i].color * texture(material0.specularMap,fTexCoord).rgb;
+
+        vec3 reflectDir = reflect(-lightDir,normal); //we use the halfwat vector for bling phong specular reflections, i really didnt notice MUCH change to it
+        vec3 halfwayDir = normalize(lightDir + viewDir);
+        float specFactor = material0.shininess >= 0.05f? pow(max(dot(viewDir,reflectDir),0.0),material0.shininess*256) : 0.0;
+        vec3 specularColor =  specFactor * pointLights[i].color * texture(material0.specularMap,fTexCoord).rgb;
        
         // Remove the extra color multiplication
         dirContribution = dirContribution + (diffuseColor + specularColor) * dirLights[i].intensity;
@@ -135,9 +139,11 @@ vec3 spotLightPass(vec3 viewDir,vec3 normal){
 
             vec3 diffuseColor = max(dot(normal,lightDir),0.0f) * spotLights[i].color;
             //specular
-            vec3 reflectDir = reflect(-lightDir,normal);
-            float specFactor = material0.shininess >= 0.05f? pow(max(dot(viewDir,reflectDir),0.0),material0.shininess*32) : 0.0;
-            vec3 specularColor =  specFactor * spotLights[i].color * texture(material0.specularMap,fTexCoord).rgb;
+            vec3 reflectDir = reflect(-lightDir,normal); //we use the halfwat vector for bling phong specular reflections, i really didnt notice MUCH change to it
+            vec3 halfwayDir = normalize(lightDir + viewDir);
+            //
+            float specFactor = material0.shininess >= 0.05f? pow(max(dot(viewDir,reflectDir),0.0),material0.shininess*256) : 0.0;
+            vec3 specularColor =  specFactor * pointLights[i].color * texture(material0.specularMap,fTexCoord).rgb;
             spotcontribution  = spotcontribution + (diffuseColor + specularColor)* attenuation;
 
         }
@@ -165,7 +171,7 @@ void main()
     vec3 viewDir = normalize(cameraPos - fFragPos);
     vec3 normal = normalize(fVertexNormal); //fallback normal
     if(textureSize(material0.normalMap, 0).x >1){ //if we have a normal map
-        normal =   normalize(fTBNMat * (texture(material0.normalMap,fTexCoord).rgb*2.0 - 1.0)); //we also need to make the TBN transform to global space
+        normal =   normalize(fTBNMat * (texture(material0.normalMap,fTexCoord).rgb*2.0 - 1.0)); 
     }
     vec3 lightContribution = spotLightPass(viewDir,normal) + pointLightPass(viewDir,normal)+ ambientLightPass()+ directionalLightPass(viewDir,normal);
     vec3 objectColor =   lightContribution * texture(material0.diffuseMap, fTexCoord).rgb;
@@ -174,15 +180,16 @@ void main()
 
         //enviroment reflection calculation
     vec3 I = -viewDir;
-    vec3 R = reflect(I,normalize(fVertexNormal));
+    vec3 R = reflect(I,normalize(normal));
     vec3 reflectionColor = (texture(skybox,R).rgb * texture(material0.reflectionMap,fTexCoord).rgb) * lightContribution; //returns all black in non-reflective objects
     
 
     vec3 finalColor = (reflectionColor + objectColor)*material0.diffuseColor;
     //(1-reflectivity) * (diffuse) + (reflectivity) * reflectionmap + specular
 
+    FragColor.a = texture(material0.diffuseMap,fTexCoord).a;
 
-    FragColor = vec4(finalColor, texture(material0.diffuseMap,fTexCoord).a);
+    FragColor.rgb = pow(vec3(finalColor.rgb),vec3(1/2.2));
     //float depth = gl_FragCoord.z; // divide by far for demonstration
     //FragColor = vec4(vec3(depth), 1.0);
 }

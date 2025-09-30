@@ -33,6 +33,7 @@ private:
     float deltaTime;
     float lastFrame;
     float currentFrame;
+    double mouseX,mouseY;
 
 
 
@@ -53,12 +54,14 @@ private:
     unsigned int gl_Camera_UBO;
 
     //skybox (render fixed for now)
-    
     unsigned int gl_SkyBox_Cubemap;
     unsigned int gl_Skybox_VBO; 
     unsigned int gl_Skybox_VAO; 
-
     unique_ptr<Shader> skyboxShader;
+
+    // shadow mapping stuff
+    unsigned int gl_ShadowMap_FBO;
+
 
 
 
@@ -66,8 +69,10 @@ private:
     unsigned int gl_ScreenQuad_VBO; //our vertex buffer
     unsigned int gl_ScreenQuad_VAO; //our vertex array
     unsigned int gl_Screen_FBO;
+    unsigned int gl_Resolved_FBO;
     unsigned int gl_Screen_RBO; //a attachment which stores the depth and stencil buffer;
     unsigned int gl_Screen_TEX; //The texture that stores the colors
+    unsigned int gl_Resolved_TEX;
 
     unique_ptr<Shader> postProcessShader;
     
@@ -80,6 +85,7 @@ private:
     void loadShaders();
     void loadScreenBuffer();
     void loadSkyBox();
+    void loadShadowMap();
 
     //Utility function, sorts every scene object in their group. We call this every frame but it is aware of updates
     //operations are done since we only need to sort groups once

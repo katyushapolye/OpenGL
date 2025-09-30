@@ -44,7 +44,7 @@ public:
     mat4 getViewMat();
     mat4 getProjectionMat();
     
-    void receiveInput(vec2 inputDir, float deltaTime, bool zoomIn, bool zoomOut);
+    void receiveInput(vec2 inputDir,vec2 mouseDir, float deltaTime, bool zoomIn, bool zoomOut);
 };
 
 

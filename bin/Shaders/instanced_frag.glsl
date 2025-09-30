@@ -80,6 +80,9 @@ uniform Material material0;
 
 
 //Camera
+
+
+
  
 vec3 ambientLightPass(){
     return ambientLight;
@@ -115,7 +118,12 @@ vec3 directionalLightPass(vec3 viewDir,vec3 normal){
         vec3 diffuseColor = max(dot(normal,lightDir),0.0f) * dirLights[i].color;
         vec3 reflectDir = reflect(-lightDir,normal);
         float specFactor = material0.shininess >= 0.05f? pow(max(dot(viewDir,reflectDir),0.0),material0.shininess*32) : 0.0;
-        vec3 specularColor = specFactor * dirLights[i].color * texture(material0.specularMap,fTexCoord).rgb;
+        float height = 1-fTexCoord.y; //heigh is inverted in gl for reasonsunknon
+        vec3 top = vec3(1.0,1.0,1.0);
+        vec3 botton = vec3(0.5,0.5,0.5);
+        vec3 color = mix(botton,top,height);
+        vec3 specularColor = specFactor * dirLights[i].color * color;
+
        
         // Remove the extra color multiplication
         dirContribution = dirContribution + (diffuseColor + specularColor) * dirLights[i].intensity;

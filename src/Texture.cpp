@@ -35,7 +35,12 @@ Texture::Texture(std::string path, TextureType type){
 
 
     //text target, mipmap level, store format, width,height, legacy stuff,format of source, source type, source
-    glTexImage2D(GL_TEXTURE_2D,0,GL_RGBA,this->w,this->h,0,GL_RGBA,GL_UNSIGNED_BYTE,rawTexture);
+    if(type == TextureType::DIFFUSE){
+    glTexImage2D(GL_TEXTURE_2D,0,GL_SRGB_ALPHA,this->w,this->h,0,GL_RGBA,GL_UNSIGNED_BYTE,rawTexture);
+    }
+    else{
+        glTexImage2D(GL_TEXTURE_2D,0,GL_RGBA,this->w,this->h,0,GL_RGBA,GL_UNSIGNED_BYTE,rawTexture);
+    }
     glGenerateMipmap(GL_TEXTURE_2D);
     this->type = type;
 

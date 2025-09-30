@@ -7,6 +7,7 @@ Renderer::Renderer(unsigned int width, unsigned int height, const char* title) {
 
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 4);
+    glfwWindowHint(GLFW_SAMPLES, 4);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE); //disable rezing until i fix the FBO resizin along the window and the camera aspect ratio
 
@@ -20,11 +21,19 @@ Renderer::Renderer(unsigned int width, unsigned int height, const char* title) {
         glfwTerminate();
         return;
     }
+
+
     
 
 
     glfwMakeContextCurrent(this->gl_Window);
     glfwSetFramebufferSizeCallback(this->gl_Window, this->framebuffer_size_callback);
+    glfwSetInputMode(this->gl_Window, GLFW_CURSOR, GLFW_CURSOR_DISABLED); //locks tthe mouse to screen
+    if (glfwRawMouseMotionSupported()){
+        Log::write("[RendererRenderer] - Mouse Raw acceleration is supported, turning it on");
+        glfwSetInputMode(this->gl_Window, GLFW_RAW_MOUSE_MOTION, GLFW_TRUE);
+    }
+    glfwGetCursorPos(this->gl_Window,&this->mouseX,&this->mouseY);
 
 
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
@@ -40,6 +49,9 @@ Renderer::Renderer(unsigned int width, unsigned int height, const char* title) {
     //glEnable(GL_CULL_FACE);
     glEnable(GL_STENCIL_TEST);
     glEnable(GL_BLEND); 
+    glEnable(GL_MULTISAMPLE);
+
+    
 
     glDepthFunc(GL_LEQUAL);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);  
@@ -122,12 +134,12 @@ void Renderer::loadShaders(){
 
 void Renderer::loadSkyBox(){
         std::vector<std::string> paths = {
-            "Textures/Skybox/posx.jpg",  // GL_TEXTURE_CUBE_MAP_POSITIVE_X
-            "Textures/Skybox/negx.jpg",  // GL_TEXTURE_CUBE_MAP_NEGATIVE_X
-            "Textures/Skybox/posy.jpg",  // GL_TEXTURE_CUBE_MAP_POSITIVE_Y
-            "Textures/Skybox/negy.jpg",  // GL_TEXTURE_CUBE_MAP_NEGATIVE_Y
-            "Textures/Skybox/posz.jpg",  // GL_TEXTURE_CUBE_MAP_POSITIVE_Z
-            "Textures/Skybox/negz.jpg"   // GL_TEXTURE_CUBE_MAP_NEGATIVE_Z
+            "Textures/Skybox/posx.png",  // GL_TEXTURE_CUBE_MAP_POSITIVE_X
+            "Textures/Skybox/negx.png",  // GL_TEXTURE_CUBE_MAP_NEGATIVE_X
+            "Textures/Skybox/posy.png",  // GL_TEXTURE_CUBE_MAP_POSITIVE_Y
+            "Textures/Skybox/negy.png",  // GL_TEXTURE_CUBE_MAP_NEGATIVE_Y
+            "Textures/Skybox/posz.png",  // GL_TEXTURE_CUBE_MAP_POSITIVE_Z
+            "Textures/Skybox/negz.png"   // GL_TEXTURE_CUBE_MAP_NEGATIVE_Z
         };
 
     glGenTextures(1, &this->gl_SkyBox_Cubemap);
@@ -136,7 +148,7 @@ void Renderer::loadSkyBox(){
     //now the directry is fixed because i need to think how we will approach this, we also just load it once and bypass the texturehandler since this is different 
     for(int i = 0;i<6;i++){
             unsigned char* data = stbi_load(paths[i].c_str(), &width, &height, &nrChannels, 0);
-            glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_RGB, width, height, 0,GL_RGB, GL_UNSIGNED_BYTE, data);
+            glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_SRGB_ALPHA, width, height, 0,GL_RGBA, GL_UNSIGNED_BYTE, data);
             stbi_image_free(data);
 
     }
@@ -222,13 +234,10 @@ void Renderer::loadSkyBox(){
 void Renderer::loadScreenBuffer(){
     glGenVertexArrays(1, &this->gl_ScreenQuad_VAO);  
     glGenBuffers(1, &this->gl_ScreenQuad_VBO);      
-
-    
-    glBindVertexArray(this->gl_ScreenQuad_VAO);     // Fixed: was gl_ScreenQuad_VBO
-    
-    // Hardcoded coords in NDC to cover the whole screen
+   
+    glBindVertexArray(this->gl_ScreenQuad_VAO);
+   
     float quadVertices[] = {  
-        // positions   // texCoords
         -1.0f,  1.0f,  0.0f, 1.0f,
         -1.0f, -1.0f,  0.0f, 0.0f,
          1.0f, -1.0f,  1.0f, 0.0f,
@@ -236,49 +245,54 @@ void Renderer::loadScreenBuffer(){
          1.0f, -1.0f,  1.0f, 0.0f,
          1.0f,  1.0f,  1.0f, 1.0f
     };  
-    
+   
     glBindBuffer(GL_ARRAY_BUFFER, this->gl_ScreenQuad_VBO);
     glBufferData(GL_ARRAY_BUFFER, sizeof(quadVertices), quadVertices, GL_STATIC_DRAW);
-    
+   
     glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)0); // position (its two because z is null it is always in zero)
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(1);
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)(2 * sizeof(float))); // tex coords
-    
-    // Load post processing shader
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)(2 * sizeof(float)));
+   
     this->postProcessShader = unique_ptr<Shader>(new Shader());
     this->postProcessShader->loadFromFile("PostProcessing/vertex_post.glsl","PostProcessing/fragment_post.glsl");
  
-    // Generate and bind the framebuffer
+    // MULTISAMPLED FRAMEBUFFER
     glGenFramebuffers(1, &this->gl_Screen_FBO);
-    glBindFramebuffer(GL_FRAMEBUFFER, this->gl_Screen_FBO);  // Added: bind FBO
-    
-    // Generate and setup screen texture
+    glBindFramebuffer(GL_FRAMEBUFFER, this->gl_Screen_FBO);
     glGenTextures(1, &this->gl_Screen_TEX);
-    glBindTexture(GL_TEXTURE_2D, this->gl_Screen_TEX);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, this->width, this->height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+    glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, this->gl_Screen_TEX); 
+    glTexImage2DMultisample(GL_TEXTURE_2D_MULTISAMPLE, 4, GL_RGB, width, height, GL_TRUE);
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D_MULTISAMPLE, this->gl_Screen_TEX, 0); 
+    // Setup multisampled depth/stencil renderbuffer
+    glGenRenderbuffers(1, &this->gl_Screen_RBO);
+    glBindRenderbuffer(GL_RENDERBUFFER, this->gl_Screen_RBO);
+    glRenderbufferStorageMultisample(GL_RENDERBUFFER, 4, GL_DEPTH24_STENCIL8, this->width, this->height);  
+    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, this->gl_Screen_RBO);
    
-
-
+    if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE){
+        Log::write("[Renderer::loadScreenBuffer] - Failed to initialize the Screen buffer");
+    }
+    
+    // RESOLVE FRAMEBUFFER -same thing byt used to resolve the color buffer to a non-multisampeld value
+    glGenFramebuffers(1, &this->gl_Resolved_FBO);
+    glBindFramebuffer(GL_FRAMEBUFFER, this->gl_Resolved_FBO);
+    glGenTextures(1, &this->gl_Resolved_TEX);
+    glBindTexture(GL_TEXTURE_2D, this->gl_Resolved_TEX);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, this->gl_Screen_TEX, 0);
-   
-    // Setup depth/stencil renderbuffer
-    glGenRenderbuffers(1, &this->gl_Screen_RBO);
-    glBindRenderbuffer(GL_RENDERBUFFER, this->gl_Screen_RBO);
-    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, this->width, this->height);  
-    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, this->gl_Screen_RBO);
-    
-    // Check framebuffer completeness
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, this->gl_Resolved_TEX, 0);
+
+    // Check resolve framebuffer completeness
     if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE){
-        Log::write("[Renderer::loadScreenBuffer] - Failed to initialize the Screen buffer");
+        Log::write("[Renderer::loadScreenBuffer] - Failed to initialize resolve framebuffer");
     }
        
-    glBindFramebuffer(GL_FRAMEBUFFER, 0); // Unbind
-    glBindRenderbuffer(GL_RENDERBUFFER, 0); // Added: unbind renderbuffer
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    glBindRenderbuffer(GL_RENDERBUFFER, 0);
 }
 
 
@@ -367,28 +381,66 @@ void Renderer::processInput(){
         zoomOut = true;
 
     }
-    //Debug
+    //mouse
+    vec2 mouseDir;
+    double x,y;
+    
+    glfwGetCursorPos(this->gl_Window,&x,&y);
+
+    mouseDir.x = ( x-this->mouseX) / this->deltaTime;
+    mouseDir.y = ( y-this->mouseY) / this->deltaTime;
+    this->mouseX = x;
+    this->mouseY = y;
+
+    this->camera->receiveInput(inputDir,mouseDir,this->deltaTime,zoomIn,zoomOut);
+
     if(glfwGetKey(this->gl_Window,GLFW_KEY_W) ==  GLFW_PRESS){
-        this->loadedScene->getLights()[LightType::POINT][0]->transform.setPosition( this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition() + vec3(0,5,0)*deltaTime);
+        this->loadedScene->getLights()[LightType::POINT][0]->transform.setPosition(vec3(this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition().x+0.01,
+        this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition().y,
+        this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition().z));
 
     }
+
     if(glfwGetKey(this->gl_Window,GLFW_KEY_S) ==  GLFW_PRESS){
-        this->loadedScene->getLights()[LightType::POINT][0]->transform.setPosition( this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition() + vec3(0,-5,0)*deltaTime);
+        this->loadedScene->getLights()[LightType::POINT][0]->transform.setPosition(vec3(this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition().x-0.01,
+        this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition().y,
+        this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition().z));
 
     }
 
     if(glfwGetKey(this->gl_Window,GLFW_KEY_D) ==  GLFW_PRESS){
-        this->loadedScene->getLights()[LightType::POINT][0]->transform.setPosition( this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition() + vec3(+5,0,0)*deltaTime);
+        this->loadedScene->getLights()[LightType::POINT][0]->transform.setPosition(vec3(this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition().x,
+        this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition().y,
+        this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition().z+0.01));
 
+        
     }
+
+    
     if(glfwGetKey(this->gl_Window,GLFW_KEY_A) ==  GLFW_PRESS){
-        this->loadedScene->getLights()[LightType::POINT][0]->transform.setPosition( this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition() + vec3(-5,0,0)*deltaTime);
+        this->loadedScene->getLights()[LightType::POINT][0]->transform.setPosition(vec3(this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition().x,
+        this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition().y,
+        this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition().z-0.01));
+
+    }
+
+        if(glfwGetKey(this->gl_Window,GLFW_KEY_Q) ==  GLFW_PRESS){
+        this->loadedScene->getLights()[LightType::POINT][0]->transform.setPosition(vec3(this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition().x,
+        this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition().y+0.01,
+        this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition().z));
+
+        
+    }
+
+    
+    if(glfwGetKey(this->gl_Window,GLFW_KEY_E) ==  GLFW_PRESS){
+        this->loadedScene->getLights()[LightType::POINT][0]->transform.setPosition(vec3(this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition().x,
+        this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition().y-0.01,
+        this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition().z));
 
     }
 
 
-
-    this->camera->receiveInput(inputDir,this->deltaTime,zoomIn,zoomOut);
 }
 
 
@@ -583,20 +635,20 @@ void Renderer::renderPass() {
 
 
 
-    //At this point, if everything is ok, we can now move on to the post processing 
-    //bindd to the window buffer
-    glBindFramebuffer(GL_FRAMEBUFFER, 0); // back to default
+    glBindFramebuffer(GL_READ_FRAMEBUFFER, this->gl_Screen_FBO);    // we resole the multisampld buffer sour
+    glBindFramebuffer(GL_DRAW_FRAMEBUFFER, this->gl_Resolved_FBO);   //dest
+    glBlitFramebuffer(0, 0, width, height, 0, 0, width, height, GL_COLOR_BUFFER_BIT, GL_NEAREST);
+
+    // Now bind the resolved texture for post-processing
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
     glDisable(GL_DEPTH_TEST);
-    // Activate texture unit 0 and bind our screen texture
     glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, this->gl_Screen_TEX);
-    
-    // Bind shader and set tex unity
+    glBindTexture(GL_TEXTURE_2D, this->gl_Resolved_TEX);  
+
     this->postProcessShader->bindShader();
     this->postProcessShader->setUniform("screenTexture", 0);
-    
 
     glBindVertexArray(this->gl_ScreenQuad_VAO);
     glDrawArrays(GL_TRIANGLES, 0, 6);
