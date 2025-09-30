@@ -6,24 +6,21 @@ layout (location = 3) in vec3 vBitangent;
 layout (location = 4) in vec2 vTexCoords;
 layout (location = 5) in vec2 vTexCoords2;  // lightmap UVs
 
+
+uniform mat4 worldtoLightMat;
 uniform mat4 modelMat;
 uniform mat3 normalMat;
 
 out vec2 fTexCoord;
 out vec3 fVertexNormal;
 out vec3 fFragPos;
+out vec4 fLightFragPos;
 out mat3 fTBNMat; //Tangent bitangent Normal matrix space transformation matrix
 
 //Matrix UBO
 layout(std140, binding = 0) uniform Matrixes  {
     mat4 viewMat;
     mat4 projectionMat;
-
-
-
-
-
-
 
 };
 //Camera UBO (on frag shader)
@@ -45,4 +42,7 @@ void main()
     
     fTBNMat = mat3(T, B, N);
     fVertexNormal = N; 
+
+    //shadow mapping transform
+    fLightFragPos = worldtoLightMat * vec4(fFragPos, 1.0);
 }

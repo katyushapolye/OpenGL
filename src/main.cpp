@@ -137,17 +137,18 @@ int main()
     scene->addLight(shared_ptr<SpotLight>(l));*/
 
     DirectionalLight* l= new DirectionalLight(vec3(0.0f, 0.0f,0.0f),vec3(1.0,1.0,1.0),0.7f);
-    l->transform.setRotation(vec3(70,0.0,0.0f));
+    l->transform.setPosition(vec3(0, 5, 0));
+    l->transform.setRotation(vec3(90,0.0,0.0f));
     scene->addLight(shared_ptr<DirectionalLight>(l));
 
     Model* m = ModelLoader::loadFromObj("Models/terrain.obj");
     m->transform.setScale(vec3(1,1,1));
     scene->addModel(shared_ptr<Model>(m));
     m = ModelLoader::loadFromObj("Models/cube.obj");
-    m->transform.setPosition(vec3(-2,1,0));
+    m->transform.setPosition(vec3(0,1,0));
     scene->addModel(shared_ptr<Model>(m));
     m = ModelLoader::loadFromObj("Models/cube.obj");
-    m->transform.setPosition(vec3(4,0.5,2));
+    m->transform.setPosition(vec3(2,0.5,0));
     m->transform.rotateLocal(vec3(0,45,0));
     scene->addModel(shared_ptr<Model>(m));
 

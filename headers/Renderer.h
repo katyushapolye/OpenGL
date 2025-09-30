@@ -60,7 +60,10 @@ private:
     unique_ptr<Shader> skyboxShader;
 
     // shadow mapping stuff
+    mat4 worldToLightMat;
     unsigned int gl_ShadowMap_FBO;
+    unsigned int gl_ShadowMap_TEX;
+    unique_ptr<Shader> shadowMapShader;
 
 
 
@@ -96,10 +99,13 @@ private:
     void processInput();
 
 
-    //Rendering function
-    void renderPass();
+    //renering setup functions
     void setupShaders();
     void setupShaderLighting(Shader* shader);
+    //Rendering functions
+    void shadowPass();
+    void geometryPass();
+
 
     //callbacks functions
     static void framebuffer_size_callback(GLFWwindow* window, int width, int height);

@@ -38,7 +38,9 @@ struct SpotLight {
 in vec2 fTexCoord;
 in vec3 fVertexNormal;
 in vec3 fFragPos;
+in vec4 fLightFragPos;
 in mat3 fTBNMat;
+
 
 out vec4 FragColor;
 
@@ -71,14 +73,15 @@ uniform vec3 ambientLight;
 
 //Skybox for enviroment mapping
 
-uniform samplerCube skybox; //TEX UNITY 0
+uniform samplerCube skybox; //TEX UNIT 0
 
-//Materials
-
+//Materials (check the tex unit inside them)
 uniform Material material0;
 
+//shadow map
+uniform sampler2D shadowMap; //TEX UNIT 15 (it decreases)
 
-//Camera
+
 
 
 vec3 pointLightPass(vec3 viewDir,vec3 normal){
@@ -164,16 +167,62 @@ vec3 spotLightPass(vec3 viewDir,vec3 normal){
 
 
 
+float shadowTest(vec4 lightFragPos,vec3 lightDir,vec3 normal)
+{
+    vec3 projCoords = lightFragPos.xyz / lightFragPos.w;
+    projCoords = projCoords * 0.5 + 0.5;
+
+    // If outside the shadow map, just say "no shadow"
+    if (projCoords.x < 0.0 || projCoords.x > 1.0 ||
+        projCoords.y < 0.0 || projCoords.y > 1.0 ||
+        projCoords.z > 1.0) {
+        return 0.0; // no shadow
+    }
+
+    float closestDepth = texture(shadowMap, projCoords.xy).r; 
+    float currentDepth = projCoords.z;
+    float bias = max(0.1 * (1.0 - dot(normal, lightDir)), 0.005);  
+
+    //fgaus
+    float shadow = 0.0;
+    vec2 texelSize = 1.0 / textureSize(shadowMap, 0);
+    float kernel[9] = float[](
+        0.0625, 0.125, 0.0625,
+        0.125,  0.25,  0.125,
+        0.0625, 0.125, 0.0625
+    );
+
+    // Precomputed offsets for the 3x3 taps
+    vec2 offsets[9] = vec2[](
+        vec2(-1, -1), vec2( 0, -1), vec2( 1, -1),
+        vec2(-1,  0), vec2( 0,  0), vec2( 1,  0),
+        vec2(-1,  1), vec2( 0,  1), vec2( 1,  1)
+    );
+
+    for (int i = 0; i < 9; i++)
+    {
+        vec2 offset = offsets[i] * texelSize;
+        float pcfDepth = texture(shadowMap, projCoords.xy + offset).r;
+        shadow += (currentDepth - bias > pcfDepth ? 1.0 : 0.0) * kernel[i];
+    }
+
+
+
+
+    return shadow;
+}
+
+
 void main()
 {
     
-
+    vec3 lightDir = normalize(-dirLights[0].direction); //debug
     vec3 viewDir = normalize(cameraPos - fFragPos);
     vec3 normal = normalize(fVertexNormal); //fallback normal
     if(textureSize(material0.normalMap, 0).x >1){ //if we have a normal map
         normal =   normalize(fTBNMat * (texture(material0.normalMap,fTexCoord).rgb*2.0 - 1.0)); 
     }
-    vec3 lightContribution = spotLightPass(viewDir,normal) + pointLightPass(viewDir,normal)+ ambientLightPass()+ directionalLightPass(viewDir,normal);
+    vec3 lightContribution = (spotLightPass(viewDir,normal) + pointLightPass(viewDir,normal)+ directionalLightPass(viewDir,normal)) *(1-shadowTest(fLightFragPos,lightDir,fVertexNormal))+ ambientLightPass();
     vec3 objectColor =   lightContribution * texture(material0.diffuseMap, fTexCoord).rgb;
 
     //enviroment reflection calculation
@@ -190,6 +239,8 @@ void main()
     FragColor.a = texture(material0.diffuseMap,fTexCoord).a;
 
     FragColor.rgb = pow(vec3(finalColor.rgb),vec3(1/2.2));
-    //float depth = gl_FragCoord.z; // divide by far for demonstration
-    //FragColor = vec4(vec3(depth), 1.0);
+
+    //to debug the shadow, we plot the frag shadow contribution
+
+
 }

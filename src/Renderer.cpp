@@ -69,6 +69,7 @@ Renderer::Renderer(unsigned int width, unsigned int height, const char* title) {
     this->loadShaders();
     this->loadScreenBuffer();
     this->loadSkyBox();
+    this->loadShadowMap();
 
 
 
@@ -134,12 +135,12 @@ void Renderer::loadShaders(){
 
 void Renderer::loadSkyBox(){
         std::vector<std::string> paths = {
-            "Textures/Skybox/posx.png",  // GL_TEXTURE_CUBE_MAP_POSITIVE_X
-            "Textures/Skybox/negx.png",  // GL_TEXTURE_CUBE_MAP_NEGATIVE_X
-            "Textures/Skybox/posy.png",  // GL_TEXTURE_CUBE_MAP_POSITIVE_Y
-            "Textures/Skybox/negy.png",  // GL_TEXTURE_CUBE_MAP_NEGATIVE_Y
-            "Textures/Skybox/posz.png",  // GL_TEXTURE_CUBE_MAP_POSITIVE_Z
-            "Textures/Skybox/negz.png"   // GL_TEXTURE_CUBE_MAP_NEGATIVE_Z
+            "Textures/Skybox/Sunny/posx.jpg",  // GL_TEXTURE_CUBE_MAP_POSITIVE_X
+            "Textures/Skybox/Sunny/negx.jpg",  // GL_TEXTURE_CUBE_MAP_NEGATIVE_X
+            "Textures/Skybox/Sunny/posy.jpg",  // GL_TEXTURE_CUBE_MAP_POSITIVE_Y
+            "Textures/Skybox/Sunny/negy.jpg",  // GL_TEXTURE_CUBE_MAP_NEGATIVE_Y
+            "Textures/Skybox/Sunny/posz.jpg",  // GL_TEXTURE_CUBE_MAP_POSITIVE_Z
+            "Textures/Skybox/Sunny/negz.jpg"   // GL_TEXTURE_CUBE_MAP_NEGATIVE_Z
         };
 
     glGenTextures(1, &this->gl_SkyBox_Cubemap);
@@ -148,7 +149,7 @@ void Renderer::loadSkyBox(){
     //now the directry is fixed because i need to think how we will approach this, we also just load it once and bypass the texturehandler since this is different 
     for(int i = 0;i<6;i++){
             unsigned char* data = stbi_load(paths[i].c_str(), &width, &height, &nrChannels, 0);
-            glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_SRGB_ALPHA, width, height, 0,GL_RGBA, GL_UNSIGNED_BYTE, data);
+            glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_SRGB, width, height, 0,GL_RGB, GL_UNSIGNED_BYTE, data);
             stbi_image_free(data);
 
     }
@@ -296,6 +297,39 @@ void Renderer::loadScreenBuffer(){
 }
 
 
+void Renderer::loadShadowMap() {
+    
+    glGenFramebuffers(1, &this->gl_ShadowMap_FBO);
+    glGenTextures(1, &this->gl_ShadowMap_TEX);
+    
+    glBindTexture(GL_TEXTURE_2D, this->gl_ShadowMap_TEX);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, 4096, 4096, 0, 
+                 GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    
+    glBindFramebuffer(GL_FRAMEBUFFER, this->gl_ShadowMap_FBO);
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, 
+                           GL_TEXTURE_2D, this->gl_ShadowMap_TEX, 0);
+    glDrawBuffer(GL_NONE);
+    glReadBuffer(GL_NONE);
+    
+    
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    glDrawBuffer(GL_BACK);   // Reset default framebuffer draw buffer
+    glReadBuffer(GL_BACK);   // Reset default framebuffer read buffer
+    
+    this->shadowMapShader = unique_ptr<Shader>(new Shader());
+    if(!(this->shadowMapShader->loadFromFile("Shaders/shadow_vertex.glsl",
+                                              "Shaders/shadow_frag.glsl"))) {
+        Log::write("[Renderer::loadShadowMap] - Failed to load shadowmapping shader!");
+    }
+}
+
+
+
 void Renderer::sortSceneModels(){
  //we only do this once per scene unless we add more objects to the scene which we will check later using some flags
     if(this->hasSortedGroups == false){
@@ -424,21 +458,30 @@ void Renderer::processInput(){
 
     }
 
-        if(glfwGetKey(this->gl_Window,GLFW_KEY_Q) ==  GLFW_PRESS){
-        this->loadedScene->getLights()[LightType::POINT][0]->transform.setPosition(vec3(this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition().x,
-        this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition().y+0.01,
-        this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition().z));
+static float angle = 0.0f;
+if (glfwGetKey(this->gl_Window, GLFW_KEY_Q) == GLFW_PRESS) angle += 0.001f;
+if (glfwGetKey(this->gl_Window, GLFW_KEY_E) == GLFW_PRESS) angle -= 0.001f;
 
-        
-    }
+auto light = this->loadedScene->getLights()[LightType::DIRECTIONAL][0];
 
-    
-    if(glfwGetKey(this->gl_Window,GLFW_KEY_E) ==  GLFW_PRESS){
-        this->loadedScene->getLights()[LightType::POINT][0]->transform.setPosition(vec3(this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition().x,
-        this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition().y-0.01,
-        this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition().z));
+float radius = 5.0f;
+vec3 pos = vec3(cos(angle) * radius, sin(angle) * radius, 0.0f);
+light->transform.setPosition(pos);
 
-    }
+// compute direction to origin
+vec3 dir = glm::normalize(-pos);
+
+// build rotation quaternion to face origin
+vec3 forward = vec3(0,0,1); // default forward
+vec3 axis = glm::cross(forward, dir);
+float dot = glm::dot(forward, dir);
+float angleBetween = acos(glm::clamp(dot, -1.0f, 1.0f));
+
+if (glm::length(axis) > 0.0001f) {
+    glm::quat rot = glm::angleAxis(angleBetween, glm::normalize(axis));
+    light->transform.setRotation(glm::degrees(glm::eulerAngles(rot)));
+}
+
 
 
 }
@@ -477,6 +520,7 @@ void Renderer::setupShaders(){
             shader->bindShader();
             setupShaderLighting(shader);
             //also set the skybox for enviroment reflection //Careful HERE, IT WIL BIND AUTOMATICALLY TO TEXT UNITY 0! -> WE
+            glActiveTexture(GL_TEXTURE0);
             glBindTexture(GL_TEXTURE_CUBE_MAP, this->gl_SkyBox_Cubemap);
             loadedShaders[type]->setUniform("skybox",0);
             break;
@@ -487,6 +531,7 @@ void Renderer::setupShaders(){
             shader->bindShader();
             setupShaderLighting(shader);
             //also set the skybox for enviroment reflection //Careful HERE, IT WIL BIND AUTOMATICALLY TO TEXT UNITY 0! -> WE
+            glActiveTexture(GL_TEXTURE0);
             glBindTexture(GL_TEXTURE_CUBE_MAP, this->gl_SkyBox_Cubemap);
             shader->setUniform("time",(float)glfwGetTime());
             shader->setUniform("skybox",0);
@@ -537,16 +582,86 @@ void Renderer::setupShaderLighting(Shader* shader){
         shader->setUniform("spotLights[" + std::to_string(i) +"].theta", light->getTheta());
 
     }
+
+    //world to light matrices
+    shader->setUniform("worldtoLightMat",this->worldToLightMat);
+    //shadow map
+    glActiveTexture(GL_TEXTURE0+15);
+    glBindTexture(GL_TEXTURE_2D,this->gl_ShadowMap_TEX);
+    shader->setUniform("shadowMap",15);
+
 }
 
-void Renderer::renderPass() {
+
+void Renderer::shadowPass(){
+
+    glViewport(0, 0, 4096, 4096);
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LESS);
+    glDepthMask(GL_TRUE);
+    glBindFramebuffer(GL_FRAMEBUFFER, this->gl_ShadowMap_FBO);
+    glCullFace(GL_FRONT);
+    glClear(GL_DEPTH_BUFFER_BIT);
+
+    glEnable(GL_POLYGON_OFFSET_FILL);
+
+    
+    DirectionalLight* light = (DirectionalLight*) this->loadedScene->getLights()[LightType::DIRECTIONAL][0].get();
+    
+    // Make frustum VERY large to ensure geometry is inside
+    mat4 lightPerspective = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, 1.0f, 15.0f);
+    
+    // Lo
+    mat4 lightView = glm::lookAt(
+    light->transform.getPosition(),      // eye: 45 degrees up and to the side
+    light->transform.getPosition() + light->transform.getForward(),        // target: looking at origin
+    light->transform.getUp()         // up: world up (now we can use it since not looking straight down)
+    );
+    
+    mat4 worldToLightTransform = lightPerspective * lightView;
+    this->worldToLightMat = worldToLightTransform;
+    
+    this->shadowMapShader->bindShader();
+    this->shadowMapShader->setUniform("lightSpaceMat", worldToLightTransform);
+    
+    
+    //now, we just render everything, we do not consider transparency here, we dont care about any of that or their respective shaders
+    //so we will just loop thourght the loaded scene drawables and render them whatever  
+    glClear(GL_DEPTH_BUFFER_BIT);
+    const auto& models = this->loadedScene->getModels();
+        for(auto modelIt = models.begin(); modelIt != models.end(); ++modelIt){
+        Drawable* drawable = modelIt->get();
+        if(drawable->getType() == DrawableType::MODEL){ //models cast shadows, usually
+            Model* model = static_cast<Model*>(drawable);
+            this->shadowMapShader->setUniform("modelMat",model->transform.getTransformMat());
+            model->draw(this->shadowMapShader.get());
+
+        }
+
+        
+
+    }
+    glDisable(GL_POLYGON_OFFSET_FILL);
+    glCullFace(GL_BACK);
+    
+    
+
+
+    //here we should have this light shadow map on the gl_ShadowMap_TEX
+    glBindFramebuffer(GL_FRAMEBUFFER,0);
+    
+
+
+}
+
+void Renderer::geometryPass() {
+    glViewport(0, 0, this->width, this->height);
     glBindFramebuffer(GL_FRAMEBUFFER, this->gl_Screen_FBO);
+    glDrawBuffer(GL_COLOR_ATTACHMENT0);  // ADD THIS LINE - reset draw buffer
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
     glEnable(GL_DEPTH_TEST);
-    
-    // we need to change toa  shared VAO, since all meshes have the same attributes.
-    //we can create one statically in a static funcion in mesh class and just get it here before rendering aall ehes
+
 
     setupShaders();
     sortSceneModels();
@@ -577,7 +692,7 @@ void Renderer::renderPass() {
                                                                      
                                                             // keep depth for original model
                     model->draw(shader);  
-                    //Log::write("[Renderer::renderPass] - WARNING - OUTLINES ARE DISABLED UNTIL I SORT THEM CORRECTLY!");      
+                    //Log::write("[Renderer::geometryPass] - WARNING - OUTLINES ARE DISABLED UNTIL I SORT THEM CORRECTLY!");      
                                                         
                     //glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
                     //glStencilMask(0x00); 
@@ -610,10 +725,13 @@ void Renderer::renderPass() {
 
     
     //After that, we draw the skybox
+    glDepthFunc(GL_LEQUAL);
+    glDepthMask(GL_TRUE);
     skyboxShader->bindShader();
     skyboxShader->setUniform("projectionMat",camera->getProjectionMat());
     skyboxShader->setUniform("viewMat",glm::mat4(glm::mat3(camera->getViewMat())));
     glBindVertexArray(this->gl_Skybox_VAO);
+    glActiveTexture(0);
     glBindTexture(GL_TEXTURE_CUBE_MAP, this->gl_SkyBox_Cubemap);
     glDrawArrays(GL_TRIANGLES, 0, 36);
 
@@ -657,6 +775,9 @@ void Renderer::renderPass() {
 
 
 }
+
+
+
 bool Renderer::isRunning() {
     return !glfwWindowShouldClose(this->gl_Window);
 }
@@ -671,8 +792,8 @@ void Renderer::loop() {
         //std::cout << 1/deltaTime << std::endl;
         processInput();
 
-
-        renderPass();
+        shadowPass();
+        geometryPass();
 
         glfwSwapBuffers(this->gl_Window);
         glfwPollEvents();
