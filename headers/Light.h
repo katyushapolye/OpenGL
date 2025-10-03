@@ -11,6 +11,7 @@ protected:
     vec3 color;
     float intensity;
     LightType type;
+    bool castShadow;
     
 public:
     Transform transform;
@@ -20,6 +21,11 @@ public:
     
     // Make Light abstract - no direct instances allowed
     virtual LightType getLightType() const = 0;
+
+    //shadow mapping stuff
+    virtual mat4 getViewMatrix() = 0;
+    virtual mat4 getProjectionMatrix() = 0;
+
     
     // Getters
     const vec3& getColor() const { return color; }
@@ -50,6 +56,8 @@ public:
     
     // Override pure virtual function
     LightType getLightType() const override { return LightType::POINT; }
+    mat4 getViewMatrix() override;
+    mat4 getProjectionMatrix() override;
 };
 
 // Spot Light class
@@ -72,6 +80,7 @@ public:
     // Getters/Setters
     float getTheta() const { return theta; }
     float getOuterTheta() const { return outerTheta; }
+
     float getRadius() const { return radius; }
     
     void setTheta(float t) { theta = t; }
@@ -80,6 +89,8 @@ public:
     
     // Override pure virtual function
     LightType getLightType() const override { return LightType::SPOT; }
+    mat4 getViewMatrix() override;
+    mat4 getProjectionMatrix() override;
 };
 
 // Directional Light class
@@ -94,6 +105,9 @@ public:
     
     // Override pure virtual function
     LightType getLightType() const override { return LightType::DIRECTIONAL; }
+
+    mat4 getViewMatrix() override;
+    mat4 getProjectionMatrix() override;
 };
 
 #endif

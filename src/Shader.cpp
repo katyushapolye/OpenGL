@@ -5,6 +5,7 @@ Shader::Shader() {
 
 
 		this->gl_VertexShaderID = glCreateShader(GL_VERTEX_SHADER);
+        this->gl_GeometryShaderID = glCreateShader(GL_GEOMETRY_SHADER);
 		this->gl_FragmentShaderID = glCreateShader(GL_FRAGMENT_SHADER);
 
 	
@@ -21,6 +22,17 @@ bool Shader::compileShader(){
         glGetShaderInfoLog(this->gl_VertexShaderID, 512, NULL, infoLog);
         std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
 		return false;
+    }
+
+    if(this->gl_GeometryShaderID != 0){
+    glCompileShader(this->gl_GeometryShaderID);
+    glGetShaderiv(this->gl_GeometryShaderID, GL_COMPILE_STATUS, &success);
+    if (!success)
+    {
+        glGetShaderInfoLog(this->gl_GeometryShaderID, 512, NULL, infoLog);
+        std::cout << "ERROR::SHADER::GEOMETRY::COMPILATION_FAILED\n" << infoLog << std::endl;
+		return false;
+    }
     }
 
 	glCompileShader(this->gl_FragmentShaderID);
@@ -68,6 +80,88 @@ bool Shader::loadFromString(std::string vertexCode,std::string fragmentCode) {
 
     return true;
 
+}
+
+bool Shader::loadFromString(std::string vertexCode,std::string geometryCode,std::string fragmentCode) {
+	const char* rawCode = vertexCode.c_str();
+	glShaderSource(this->gl_VertexShaderID,1,&rawCode,NULL);
+	if(compileShader() == false){
+		return false;
+	};
+
+    rawCode = geometryCode.c_str();
+	glShaderSource(this->gl_GeometryShaderID,1,&rawCode,NULL);
+	if(compileShader() == false){
+		return false;
+	};
+
+	rawCode = fragmentCode.c_str();
+	glShaderSource(this->gl_FragmentShaderID,1,&rawCode,NULL);
+	if(compileShader() == false){
+		return false;
+	};
+
+	//we compiled both sucefully so we can make a program now
+
+	this->gl_ShaderProgramID = glCreateProgram();
+	glAttachShader(this->gl_ShaderProgramID,this->gl_VertexShaderID);
+	glAttachShader(this->gl_ShaderProgramID,this->gl_FragmentShaderID);
+    if(this->gl_GeometryShaderID != 0){
+        	glAttachShader(this->gl_ShaderProgramID,this->gl_GeometryShaderID);
+    }
+	glLinkProgram(this->gl_ShaderProgramID);
+
+	//check for linkage errors
+	int success;
+	 char infoLog[512];
+	glGetProgramiv(this->gl_ShaderProgramID, GL_LINK_STATUS, &success);
+    if (!success) {
+        glGetProgramInfoLog(this->gl_ShaderProgramID, 512, NULL, infoLog);
+        std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << std::endl;
+        return false;
+    }
+    glDeleteShader(this->gl_VertexShaderID);
+    glDeleteShader(this->gl_GeometryShaderID);
+    glDeleteShader(this->gl_FragmentShaderID);
+
+    return true;
+
+}
+
+bool Shader::loadFromFile(std::string vertexPath,std::string geometryPath,  std::string fragmentPath){
+	std::string vertexCode;
+    std::string fragmentCode;
+    std::string geometryCode;
+    std::ifstream vShaderFile;
+    std::ifstream fShaderFile;
+    std::ifstream gShaderFile;
+    vShaderFile.exceptions (std::ifstream::failbit | std::ifstream::badbit);
+    gShaderFile.exceptions (std::ifstream::failbit | std::ifstream::badbit);
+    fShaderFile.exceptions (std::ifstream::failbit | std::ifstream::badbit);
+    try 
+    {
+        // open files
+        vShaderFile.open(vertexPath);
+        fShaderFile.open(fragmentPath);
+        gShaderFile.open(geometryPath);
+        std::stringstream vShaderStream, fShaderStream,gShaderStream;
+        // read file's buffer contents into streams
+        vShaderStream << vShaderFile.rdbuf();
+        fShaderStream << fShaderFile.rdbuf();		
+        gShaderStream << gShaderFile.rdbuf();
+        vShaderFile.close();
+        fShaderFile.close();
+        gShaderFile.close();
+        vertexCode   = vShaderStream.str();
+        fragmentCode = fShaderStream.str();		
+        geometryCode = gShaderStream.str();
+    }
+    catch(std::ifstream::failure* e)
+    {
+        std::cout << "ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ" << std::endl;
+    }
+
+	return loadFromString(vertexCode,geometryCode,fragmentCode);
 }
 
 

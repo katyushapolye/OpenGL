@@ -59,11 +59,23 @@ private:
     unsigned int gl_Skybox_VAO; 
     unique_ptr<Shader> skyboxShader;
 
-    // shadow mapping stuff
+    // shadow mapping stuff, this will turn into vector for multiple shadows
     mat4 worldToLightMat;
-    unsigned int gl_ShadowMap_FBO;
+    unsigned int gl_ShadowMap_FBO; 
     unsigned int gl_ShadowMap_TEX;
+
+    //multiple shadow casters
+    unsigned int MAX_SHADOWCASTERS = 16;
+    mat4 gl_LightMatrices[16];
+    unsigned int gl_ShadowMap_FBOS[16]; 
+    unsigned int gl_ShadowMap_TEX_ARRAY; //openGL has a texture array to work with, it has a layer type interface
+    unsigned int activeShadowCasters;
+    std::vector<shared_ptr<Light>> shadowCasters;
+    unsigned int gl_ShadowMap_Resolution;
     unique_ptr<Shader> shadowMapShader;
+
+    Shader* debugShader;
+
 
 
 

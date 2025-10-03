@@ -42,12 +42,14 @@ public:
     void setRotation(vec3 angles);
     void rotateLocal(vec3 angles);
     void rotateGlobal(vec3 angles);
+    void lookAt(vec3 target);
 
     vec3 getRotation();
 
     vec3 getForward();
     vec3 getRight();
     vec3 getUp();
+    vec3 getTarget();
 
 
 

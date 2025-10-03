@@ -50,6 +50,16 @@ vec3 Camera::getTarget()
     return this->target;
 }
 
+vec3 Camera::getForward(){
+    return this->forward;
+}
+
+vec3 Camera::getUp(){
+    return this->up;
+}
+
+
+
 //orbital camera control
 void Camera::receiveInput(vec2 inputDir,vec2 mouseDir, float deltaTime, bool zoomIn, bool zoomOut)
 {   

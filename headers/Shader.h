@@ -14,6 +14,7 @@ class Shader {
 private:
 	int gl_VertexShaderID;
 	int gl_FragmentShaderID;
+	int gl_GeometryShaderID;
 	int gl_ShaderProgramID;
 
 	bool compileShader();
@@ -21,7 +22,11 @@ public:
 	Shader();
 
 	bool loadFromString(std::string vertexCode,std::string fragmentCode);
+	bool loadFromString(std::string vertexCode,std::string geometryCode,std::string fragmentCode);
+
+	bool loadFromFile(std::string vertexPath,std::string geometryPath ,std::string fragmentPath);
 	bool loadFromFile(std::string vertexPath, std::string fragmentPath);
+	
 
 	void bindShader();
 

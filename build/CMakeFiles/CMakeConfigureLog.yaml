@@ -27,6 +27,7 @@ events:
     names:
       - "mingw32-make.exe"
     candidate_directories:
+      - "C:/Program Files/Microsoft MPI/Bin/"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
@@ -42,17 +43,21 @@ events:
       - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/"
       - "C:/msys64/mingw64/bin/"
       - "C:/Program Files/CMake/bin/"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/"
+      - "C:/Program Files (x86)/GnuWin32/bin/"
+      - "C:/Program Files/Git/cmd/"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/rapha/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
       - "/REGISTRY-NOTFOUND/bin/"
       - "c:/MinGW/bin/"
       - "/MinGW/bin/"
       - "/REGISTRY-NOTFOUND/MinGW/bin/"
     searched_directories:
+      - "C:/Program Files/Microsoft MPI/Bin/mingw32-make.exe.com"
+      - "C:/Program Files/Microsoft MPI/Bin/mingw32-make.exe"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/mingw32-make.exe.com"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/mingw32-make.exe"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/mingw32-make.exe.com"
@@ -83,6 +88,7 @@ events:
     found: "C:/msys64/mingw64/bin/mingw32-make.exe"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\Microsoft MPI\\Bin\\"
         - "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.7.6-hotspot\\bin"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
@@ -98,11 +104,13 @@ events:
         - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
         - "C:\\msys64\\mingw64\\bin"
         - "C:\\Program Files\\CMake\\bin"
-        - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\"
-        - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python313\\"
+        - "C:\\Program Files (x86)\\GnuWin32\\bin"
+        - "C:\\Program Files\\Git\\cmd"
         - "C:\\Users\\rapha\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\rapha\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-7.1.1-full_build\\bin"
+        - "C:\\Users\\rapha\\AppData\\Local\\GitHubDesktop\\bin"
+        - "c:\\Users\\rapha\\.vscode\\extensions\\ms-python.debugpy-2025.10.0-win32-x64\\bundled\\scripts\\noConfigScripts"
         - "c:\\Users\\rapha\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
   -
     kind: "find-v1"
@@ -130,6 +138,7 @@ events:
       - "icx"
       - "clang"
     candidate_directories:
+      - "C:/Program Files/Microsoft MPI/Bin/"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
@@ -145,13 +154,36 @@ events:
       - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/"
       - "C:/msys64/mingw64/bin/"
       - "C:/Program Files/CMake/bin/"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/"
+      - "C:/Program Files (x86)/GnuWin32/bin/"
+      - "C:/Program Files/Git/cmd/"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/rapha/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
     searched_directories:
+      - "C:/Program Files/Microsoft MPI/Bin/cc.com"
+      - "C:/Program Files/Microsoft MPI/Bin/cc.exe"
+      - "C:/Program Files/Microsoft MPI/Bin/cc"
+      - "C:/Program Files/Microsoft MPI/Bin/gcc.com"
+      - "C:/Program Files/Microsoft MPI/Bin/gcc.exe"
+      - "C:/Program Files/Microsoft MPI/Bin/gcc"
+      - "C:/Program Files/Microsoft MPI/Bin/cl.com"
+      - "C:/Program Files/Microsoft MPI/Bin/cl.exe"
+      - "C:/Program Files/Microsoft MPI/Bin/cl"
+      - "C:/Program Files/Microsoft MPI/Bin/bcc.com"
+      - "C:/Program Files/Microsoft MPI/Bin/bcc.exe"
+      - "C:/Program Files/Microsoft MPI/Bin/bcc"
+      - "C:/Program Files/Microsoft MPI/Bin/xlc.com"
+      - "C:/Program Files/Microsoft MPI/Bin/xlc.exe"
+      - "C:/Program Files/Microsoft MPI/Bin/xlc"
+      - "C:/Program Files/Microsoft MPI/Bin/icx.com"
+      - "C:/Program Files/Microsoft MPI/Bin/icx.exe"
+      - "C:/Program Files/Microsoft MPI/Bin/icx"
+      - "C:/Program Files/Microsoft MPI/Bin/clang.com"
+      - "C:/Program Files/Microsoft MPI/Bin/clang.exe"
+      - "C:/Program Files/Microsoft MPI/Bin/clang"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/cc.com"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/cc.exe"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/cc"
@@ -429,6 +461,7 @@ events:
     found: "C:/msys64/mingw64/bin/cc.exe"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\Microsoft MPI\\Bin\\"
         - "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.7.6-hotspot\\bin"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
@@ -444,11 +477,13 @@ events:
         - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
         - "C:\\msys64\\mingw64\\bin"
         - "C:\\Program Files\\CMake\\bin"
-        - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\"
-        - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python313\\"
+        - "C:\\Program Files (x86)\\GnuWin32\\bin"
+        - "C:\\Program Files\\Git\\cmd"
         - "C:\\Users\\rapha\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\rapha\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-7.1.1-full_build\\bin"
+        - "C:\\Users\\rapha\\AppData\\Local\\GitHubDesktop\\bin"
+        - "c:\\Users\\rapha\\.vscode\\extensions\\ms-python.debugpy-2025.10.0-win32-x64\\bundled\\scripts\\noConfigScripts"
         - "c:\\Users\\rapha\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
   -
     kind: "find-v1"
@@ -477,6 +512,7 @@ events:
     found: "C:/Program Files/CMake/share/cmake-4.1/Modules/CMakeCCompilerId.c.in"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\Microsoft MPI\\Bin\\"
         - "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.7.6-hotspot\\bin"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
@@ -492,11 +528,13 @@ events:
         - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
         - "C:\\msys64\\mingw64\\bin"
         - "C:\\Program Files\\CMake\\bin"
-        - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\"
-        - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python313\\"
+        - "C:\\Program Files (x86)\\GnuWin32\\bin"
+        - "C:\\Program Files\\Git\\cmd"
         - "C:\\Users\\rapha\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\rapha\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-7.1.1-full_build\\bin"
+        - "C:\\Users\\rapha\\AppData\\Local\\GitHubDesktop\\bin"
+        - "c:\\Users\\rapha\\.vscode\\extensions\\ms-python.debugpy-2025.10.0-win32-x64\\bundled\\scripts\\noConfigScripts"
         - "c:\\Users\\rapha\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
   -
     kind: "message-v1"
@@ -541,6 +579,7 @@ events:
       - "ar"
     candidate_directories:
       - "C:/msys64/mingw64/bin/"
+      - "C:/Program Files/Microsoft MPI/Bin/"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
@@ -555,17 +594,20 @@ events:
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
       - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/"
       - "C:/Program Files/CMake/bin/"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/"
+      - "C:/Program Files (x86)/GnuWin32/bin/"
+      - "C:/Program Files/Git/cmd/"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/rapha/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
     searched_directories:
       - "C:/msys64/mingw64/bin/ar.com"
     found: "C:/msys64/mingw64/bin/ar.exe"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\Microsoft MPI\\Bin\\"
         - "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.7.6-hotspot\\bin"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
@@ -581,11 +623,13 @@ events:
         - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
         - "C:\\msys64\\mingw64\\bin"
         - "C:\\Program Files\\CMake\\bin"
-        - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\"
-        - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python313\\"
+        - "C:\\Program Files (x86)\\GnuWin32\\bin"
+        - "C:\\Program Files\\Git\\cmd"
         - "C:\\Users\\rapha\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\rapha\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-7.1.1-full_build\\bin"
+        - "C:\\Users\\rapha\\AppData\\Local\\GitHubDesktop\\bin"
+        - "c:\\Users\\rapha\\.vscode\\extensions\\ms-python.debugpy-2025.10.0-win32-x64\\bundled\\scripts\\noConfigScripts"
         - "c:\\Users\\rapha\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
   -
     kind: "find-v1"
@@ -608,6 +652,7 @@ events:
       - "ranlib"
     candidate_directories:
       - "C:/msys64/mingw64/bin/"
+      - "C:/Program Files/Microsoft MPI/Bin/"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
@@ -622,17 +667,20 @@ events:
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
       - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/"
       - "C:/Program Files/CMake/bin/"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/"
+      - "C:/Program Files (x86)/GnuWin32/bin/"
+      - "C:/Program Files/Git/cmd/"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/rapha/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
     searched_directories:
       - "C:/msys64/mingw64/bin/ranlib.com"
     found: "C:/msys64/mingw64/bin/ranlib.exe"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\Microsoft MPI\\Bin\\"
         - "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.7.6-hotspot\\bin"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
@@ -648,11 +696,13 @@ events:
         - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
         - "C:\\msys64\\mingw64\\bin"
         - "C:\\Program Files\\CMake\\bin"
-        - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\"
-        - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python313\\"
+        - "C:\\Program Files (x86)\\GnuWin32\\bin"
+        - "C:\\Program Files\\Git\\cmd"
         - "C:\\Users\\rapha\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\rapha\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-7.1.1-full_build\\bin"
+        - "C:\\Users\\rapha\\AppData\\Local\\GitHubDesktop\\bin"
+        - "c:\\Users\\rapha\\.vscode\\extensions\\ms-python.debugpy-2025.10.0-win32-x64\\bundled\\scripts\\noConfigScripts"
         - "c:\\Users\\rapha\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
   -
     kind: "find-v1"
@@ -675,6 +725,7 @@ events:
       - "strip"
     candidate_directories:
       - "C:/msys64/mingw64/bin/"
+      - "C:/Program Files/Microsoft MPI/Bin/"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
@@ -689,17 +740,20 @@ events:
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
       - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/"
       - "C:/Program Files/CMake/bin/"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/"
+      - "C:/Program Files (x86)/GnuWin32/bin/"
+      - "C:/Program Files/Git/cmd/"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/rapha/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
     searched_directories:
       - "C:/msys64/mingw64/bin/strip.com"
     found: "C:/msys64/mingw64/bin/strip.exe"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\Microsoft MPI\\Bin\\"
         - "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.7.6-hotspot\\bin"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
@@ -715,11 +769,13 @@ events:
         - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
         - "C:\\msys64\\mingw64\\bin"
         - "C:\\Program Files\\CMake\\bin"
-        - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\"
-        - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python313\\"
+        - "C:\\Program Files (x86)\\GnuWin32\\bin"
+        - "C:\\Program Files\\Git\\cmd"
         - "C:\\Users\\rapha\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\rapha\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-7.1.1-full_build\\bin"
+        - "C:\\Users\\rapha\\AppData\\Local\\GitHubDesktop\\bin"
+        - "c:\\Users\\rapha\\.vscode\\extensions\\ms-python.debugpy-2025.10.0-win32-x64\\bundled\\scripts\\noConfigScripts"
         - "c:\\Users\\rapha\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
   -
     kind: "find-v1"
@@ -742,6 +798,7 @@ events:
       - "ld"
     candidate_directories:
       - "C:/msys64/mingw64/bin/"
+      - "C:/Program Files/Microsoft MPI/Bin/"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
@@ -756,17 +813,20 @@ events:
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
       - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/"
       - "C:/Program Files/CMake/bin/"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/"
+      - "C:/Program Files (x86)/GnuWin32/bin/"
+      - "C:/Program Files/Git/cmd/"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/rapha/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
     searched_directories:
       - "C:/msys64/mingw64/bin/ld.com"
     found: "C:/msys64/mingw64/bin/ld.exe"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\Microsoft MPI\\Bin\\"
         - "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.7.6-hotspot\\bin"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
@@ -782,11 +842,13 @@ events:
         - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
         - "C:\\msys64\\mingw64\\bin"
         - "C:\\Program Files\\CMake\\bin"
-        - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\"
-        - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python313\\"
+        - "C:\\Program Files (x86)\\GnuWin32\\bin"
+        - "C:\\Program Files\\Git\\cmd"
         - "C:\\Users\\rapha\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\rapha\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-7.1.1-full_build\\bin"
+        - "C:\\Users\\rapha\\AppData\\Local\\GitHubDesktop\\bin"
+        - "c:\\Users\\rapha\\.vscode\\extensions\\ms-python.debugpy-2025.10.0-win32-x64\\bundled\\scripts\\noConfigScripts"
         - "c:\\Users\\rapha\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
   -
     kind: "find-v1"
@@ -809,6 +871,7 @@ events:
       - "nm"
     candidate_directories:
       - "C:/msys64/mingw64/bin/"
+      - "C:/Program Files/Microsoft MPI/Bin/"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
@@ -823,17 +886,20 @@ events:
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
       - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/"
       - "C:/Program Files/CMake/bin/"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/"
+      - "C:/Program Files (x86)/GnuWin32/bin/"
+      - "C:/Program Files/Git/cmd/"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/rapha/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
     searched_directories:
       - "C:/msys64/mingw64/bin/nm.com"
     found: "C:/msys64/mingw64/bin/nm.exe"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\Microsoft MPI\\Bin\\"
         - "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.7.6-hotspot\\bin"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
@@ -849,11 +915,13 @@ events:
         - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
         - "C:\\msys64\\mingw64\\bin"
         - "C:\\Program Files\\CMake\\bin"
-        - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\"
-        - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python313\\"
+        - "C:\\Program Files (x86)\\GnuWin32\\bin"
+        - "C:\\Program Files\\Git\\cmd"
         - "C:\\Users\\rapha\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\rapha\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-7.1.1-full_build\\bin"
+        - "C:\\Users\\rapha\\AppData\\Local\\GitHubDesktop\\bin"
+        - "c:\\Users\\rapha\\.vscode\\extensions\\ms-python.debugpy-2025.10.0-win32-x64\\bundled\\scripts\\noConfigScripts"
         - "c:\\Users\\rapha\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
   -
     kind: "find-v1"
@@ -876,6 +944,7 @@ events:
       - "objdump"
     candidate_directories:
       - "C:/msys64/mingw64/bin/"
+      - "C:/Program Files/Microsoft MPI/Bin/"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
@@ -890,17 +959,20 @@ events:
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
       - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/"
       - "C:/Program Files/CMake/bin/"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/"
+      - "C:/Program Files (x86)/GnuWin32/bin/"
+      - "C:/Program Files/Git/cmd/"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/rapha/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
     searched_directories:
       - "C:/msys64/mingw64/bin/objdump.com"
     found: "C:/msys64/mingw64/bin/objdump.exe"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\Microsoft MPI\\Bin\\"
         - "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.7.6-hotspot\\bin"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
@@ -916,11 +988,13 @@ events:
         - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
         - "C:\\msys64\\mingw64\\bin"
         - "C:\\Program Files\\CMake\\bin"
-        - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\"
-        - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python313\\"
+        - "C:\\Program Files (x86)\\GnuWin32\\bin"
+        - "C:\\Program Files\\Git\\cmd"
         - "C:\\Users\\rapha\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\rapha\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-7.1.1-full_build\\bin"
+        - "C:\\Users\\rapha\\AppData\\Local\\GitHubDesktop\\bin"
+        - "c:\\Users\\rapha\\.vscode\\extensions\\ms-python.debugpy-2025.10.0-win32-x64\\bundled\\scripts\\noConfigScripts"
         - "c:\\Users\\rapha\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
   -
     kind: "find-v1"
@@ -943,6 +1017,7 @@ events:
       - "objcopy"
     candidate_directories:
       - "C:/msys64/mingw64/bin/"
+      - "C:/Program Files/Microsoft MPI/Bin/"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
@@ -957,17 +1032,20 @@ events:
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
       - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/"
       - "C:/Program Files/CMake/bin/"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/"
+      - "C:/Program Files (x86)/GnuWin32/bin/"
+      - "C:/Program Files/Git/cmd/"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/rapha/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
     searched_directories:
       - "C:/msys64/mingw64/bin/objcopy.com"
     found: "C:/msys64/mingw64/bin/objcopy.exe"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\Microsoft MPI\\Bin\\"
         - "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.7.6-hotspot\\bin"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
@@ -983,11 +1061,13 @@ events:
         - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
         - "C:\\msys64\\mingw64\\bin"
         - "C:\\Program Files\\CMake\\bin"
-        - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\"
-        - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python313\\"
+        - "C:\\Program Files (x86)\\GnuWin32\\bin"
+        - "C:\\Program Files\\Git\\cmd"
         - "C:\\Users\\rapha\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\rapha\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-7.1.1-full_build\\bin"
+        - "C:\\Users\\rapha\\AppData\\Local\\GitHubDesktop\\bin"
+        - "c:\\Users\\rapha\\.vscode\\extensions\\ms-python.debugpy-2025.10.0-win32-x64\\bundled\\scripts\\noConfigScripts"
         - "c:\\Users\\rapha\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
   -
     kind: "find-v1"
@@ -1010,6 +1090,7 @@ events:
       - "readelf"
     candidate_directories:
       - "C:/msys64/mingw64/bin/"
+      - "C:/Program Files/Microsoft MPI/Bin/"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
@@ -1024,17 +1105,20 @@ events:
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
       - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/"
       - "C:/Program Files/CMake/bin/"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/"
+      - "C:/Program Files (x86)/GnuWin32/bin/"
+      - "C:/Program Files/Git/cmd/"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/rapha/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
     searched_directories:
       - "C:/msys64/mingw64/bin/readelf.com"
     found: "C:/msys64/mingw64/bin/readelf.exe"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\Microsoft MPI\\Bin\\"
         - "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.7.6-hotspot\\bin"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
@@ -1050,11 +1134,13 @@ events:
         - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
         - "C:\\msys64\\mingw64\\bin"
         - "C:\\Program Files\\CMake\\bin"
-        - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\"
-        - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python313\\"
+        - "C:\\Program Files (x86)\\GnuWin32\\bin"
+        - "C:\\Program Files\\Git\\cmd"
         - "C:\\Users\\rapha\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\rapha\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-7.1.1-full_build\\bin"
+        - "C:\\Users\\rapha\\AppData\\Local\\GitHubDesktop\\bin"
+        - "c:\\Users\\rapha\\.vscode\\extensions\\ms-python.debugpy-2025.10.0-win32-x64\\bundled\\scripts\\noConfigScripts"
         - "c:\\Users\\rapha\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
   -
     kind: "find-v1"
@@ -1077,6 +1163,7 @@ events:
       - "dlltool"
     candidate_directories:
       - "C:/msys64/mingw64/bin/"
+      - "C:/Program Files/Microsoft MPI/Bin/"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
@@ -1091,17 +1178,20 @@ events:
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
       - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/"
       - "C:/Program Files/CMake/bin/"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/"
+      - "C:/Program Files (x86)/GnuWin32/bin/"
+      - "C:/Program Files/Git/cmd/"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/rapha/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
     searched_directories:
       - "C:/msys64/mingw64/bin/dlltool.com"
     found: "C:/msys64/mingw64/bin/dlltool.exe"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\Microsoft MPI\\Bin\\"
         - "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.7.6-hotspot\\bin"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
@@ -1117,11 +1207,13 @@ events:
         - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
         - "C:\\msys64\\mingw64\\bin"
         - "C:\\Program Files\\CMake\\bin"
-        - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\"
-        - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python313\\"
+        - "C:\\Program Files (x86)\\GnuWin32\\bin"
+        - "C:\\Program Files\\Git\\cmd"
         - "C:\\Users\\rapha\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\rapha\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-7.1.1-full_build\\bin"
+        - "C:\\Users\\rapha\\AppData\\Local\\GitHubDesktop\\bin"
+        - "c:\\Users\\rapha\\.vscode\\extensions\\ms-python.debugpy-2025.10.0-win32-x64\\bundled\\scripts\\noConfigScripts"
         - "c:\\Users\\rapha\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
   -
     kind: "find-v1"
@@ -1144,6 +1236,7 @@ events:
       - "addr2line"
     candidate_directories:
       - "C:/msys64/mingw64/bin/"
+      - "C:/Program Files/Microsoft MPI/Bin/"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
@@ -1158,17 +1251,20 @@ events:
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
       - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/"
       - "C:/Program Files/CMake/bin/"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/"
+      - "C:/Program Files (x86)/GnuWin32/bin/"
+      - "C:/Program Files/Git/cmd/"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/rapha/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
     searched_directories:
       - "C:/msys64/mingw64/bin/addr2line.com"
     found: "C:/msys64/mingw64/bin/addr2line.exe"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\Microsoft MPI\\Bin\\"
         - "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.7.6-hotspot\\bin"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
@@ -1184,11 +1280,13 @@ events:
         - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
         - "C:\\msys64\\mingw64\\bin"
         - "C:\\Program Files\\CMake\\bin"
-        - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\"
-        - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python313\\"
+        - "C:\\Program Files (x86)\\GnuWin32\\bin"
+        - "C:\\Program Files\\Git\\cmd"
         - "C:\\Users\\rapha\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\rapha\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-7.1.1-full_build\\bin"
+        - "C:\\Users\\rapha\\AppData\\Local\\GitHubDesktop\\bin"
+        - "c:\\Users\\rapha\\.vscode\\extensions\\ms-python.debugpy-2025.10.0-win32-x64\\bundled\\scripts\\noConfigScripts"
         - "c:\\Users\\rapha\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
   -
     kind: "find-v1"
@@ -1211,6 +1309,7 @@ events:
       - "tapi"
     candidate_directories:
       - "C:/msys64/mingw64/bin/"
+      - "C:/Program Files/Microsoft MPI/Bin/"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
@@ -1225,16 +1324,21 @@ events:
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
       - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/"
       - "C:/Program Files/CMake/bin/"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/"
+      - "C:/Program Files (x86)/GnuWin32/bin/"
+      - "C:/Program Files/Git/cmd/"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/rapha/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
     searched_directories:
       - "C:/msys64/mingw64/bin/tapi.com"
       - "C:/msys64/mingw64/bin/tapi.exe"
       - "C:/msys64/mingw64/bin/tapi"
+      - "C:/Program Files/Microsoft MPI/Bin/tapi.com"
+      - "C:/Program Files/Microsoft MPI/Bin/tapi.exe"
+      - "C:/Program Files/Microsoft MPI/Bin/tapi"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/tapi.com"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/tapi.exe"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/tapi"
@@ -1277,12 +1381,12 @@ events:
       - "C:/Program Files/CMake/bin/tapi.com"
       - "C:/Program Files/CMake/bin/tapi.exe"
       - "C:/Program Files/CMake/bin/tapi"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/tapi.com"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/tapi.exe"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/tapi"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/tapi.com"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/tapi.exe"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/tapi"
+      - "C:/Program Files (x86)/GnuWin32/bin/tapi.com"
+      - "C:/Program Files (x86)/GnuWin32/bin/tapi.exe"
+      - "C:/Program Files (x86)/GnuWin32/bin/tapi"
+      - "C:/Program Files/Git/cmd/tapi.com"
+      - "C:/Program Files/Git/cmd/tapi.exe"
+      - "C:/Program Files/Git/cmd/tapi"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/tapi.com"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/tapi.exe"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/tapi"
@@ -1292,12 +1396,19 @@ events:
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/tapi.com"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/tapi.exe"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/tapi"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/tapi.com"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/tapi.exe"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/tapi"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/tapi.com"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/tapi.exe"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/tapi"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/tapi.com"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/tapi.exe"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/tapi"
     found: false
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\Microsoft MPI\\Bin\\"
         - "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.7.6-hotspot\\bin"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
@@ -1313,11 +1424,13 @@ events:
         - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
         - "C:\\msys64\\mingw64\\bin"
         - "C:\\Program Files\\CMake\\bin"
-        - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\"
-        - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python313\\"
+        - "C:\\Program Files (x86)\\GnuWin32\\bin"
+        - "C:\\Program Files\\Git\\cmd"
         - "C:\\Users\\rapha\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\rapha\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-7.1.1-full_build\\bin"
+        - "C:\\Users\\rapha\\AppData\\Local\\GitHubDesktop\\bin"
+        - "c:\\Users\\rapha\\.vscode\\extensions\\ms-python.debugpy-2025.10.0-win32-x64\\bundled\\scripts\\noConfigScripts"
         - "c:\\Users\\rapha\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
   -
     kind: "find-v1"
@@ -1343,6 +1456,7 @@ events:
       - "gcc-ar"
     candidate_directories:
       - "C:/msys64/mingw64/bin/"
+      - "C:/Program Files/Microsoft MPI/Bin/"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
@@ -1357,16 +1471,21 @@ events:
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
       - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/"
       - "C:/Program Files/CMake/bin/"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/"
+      - "C:/Program Files (x86)/GnuWin32/bin/"
+      - "C:/Program Files/Git/cmd/"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/rapha/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
     searched_directories:
       - "C:/msys64/mingw64/bin/gcc-ar-15.2.com"
       - "C:/msys64/mingw64/bin/gcc-ar-15.2.exe"
       - "C:/msys64/mingw64/bin/gcc-ar-15.2"
+      - "C:/Program Files/Microsoft MPI/Bin/gcc-ar-15.2.com"
+      - "C:/Program Files/Microsoft MPI/Bin/gcc-ar-15.2.exe"
+      - "C:/Program Files/Microsoft MPI/Bin/gcc-ar-15.2"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/gcc-ar-15.2.com"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/gcc-ar-15.2.exe"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/gcc-ar-15.2"
@@ -1409,12 +1528,12 @@ events:
       - "C:/Program Files/CMake/bin/gcc-ar-15.2.com"
       - "C:/Program Files/CMake/bin/gcc-ar-15.2.exe"
       - "C:/Program Files/CMake/bin/gcc-ar-15.2"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/gcc-ar-15.2.com"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/gcc-ar-15.2.exe"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/gcc-ar-15.2"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/gcc-ar-15.2.com"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/gcc-ar-15.2.exe"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/gcc-ar-15.2"
+      - "C:/Program Files (x86)/GnuWin32/bin/gcc-ar-15.2.com"
+      - "C:/Program Files (x86)/GnuWin32/bin/gcc-ar-15.2.exe"
+      - "C:/Program Files (x86)/GnuWin32/bin/gcc-ar-15.2"
+      - "C:/Program Files/Git/cmd/gcc-ar-15.2.com"
+      - "C:/Program Files/Git/cmd/gcc-ar-15.2.exe"
+      - "C:/Program Files/Git/cmd/gcc-ar-15.2"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/gcc-ar-15.2.com"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/gcc-ar-15.2.exe"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/gcc-ar-15.2"
@@ -1424,12 +1543,21 @@ events:
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/gcc-ar-15.2.com"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/gcc-ar-15.2.exe"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/gcc-ar-15.2"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/gcc-ar-15.2.com"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/gcc-ar-15.2.exe"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/gcc-ar-15.2"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/gcc-ar-15.2.com"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/gcc-ar-15.2.exe"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/gcc-ar-15.2"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ar-15.2.com"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ar-15.2.exe"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ar-15.2"
       - "C:/msys64/mingw64/bin/gcc-ar-15.com"
       - "C:/msys64/mingw64/bin/gcc-ar-15.exe"
       - "C:/msys64/mingw64/bin/gcc-ar-15"
+      - "C:/Program Files/Microsoft MPI/Bin/gcc-ar-15.com"
+      - "C:/Program Files/Microsoft MPI/Bin/gcc-ar-15.exe"
+      - "C:/Program Files/Microsoft MPI/Bin/gcc-ar-15"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/gcc-ar-15.com"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/gcc-ar-15.exe"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/gcc-ar-15"
@@ -1472,12 +1600,12 @@ events:
       - "C:/Program Files/CMake/bin/gcc-ar-15.com"
       - "C:/Program Files/CMake/bin/gcc-ar-15.exe"
       - "C:/Program Files/CMake/bin/gcc-ar-15"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/gcc-ar-15.com"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/gcc-ar-15.exe"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/gcc-ar-15"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/gcc-ar-15.com"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/gcc-ar-15.exe"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/gcc-ar-15"
+      - "C:/Program Files (x86)/GnuWin32/bin/gcc-ar-15.com"
+      - "C:/Program Files (x86)/GnuWin32/bin/gcc-ar-15.exe"
+      - "C:/Program Files (x86)/GnuWin32/bin/gcc-ar-15"
+      - "C:/Program Files/Git/cmd/gcc-ar-15.com"
+      - "C:/Program Files/Git/cmd/gcc-ar-15.exe"
+      - "C:/Program Files/Git/cmd/gcc-ar-15"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/gcc-ar-15.com"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/gcc-ar-15.exe"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/gcc-ar-15"
@@ -1487,12 +1615,21 @@ events:
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/gcc-ar-15.com"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/gcc-ar-15.exe"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/gcc-ar-15"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/gcc-ar-15.com"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/gcc-ar-15.exe"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/gcc-ar-15"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/gcc-ar-15.com"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/gcc-ar-15.exe"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/gcc-ar-15"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ar-15.com"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ar-15.exe"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ar-15"
       - "C:/msys64/mingw64/bin/gcc-ar15.com"
       - "C:/msys64/mingw64/bin/gcc-ar15.exe"
       - "C:/msys64/mingw64/bin/gcc-ar15"
+      - "C:/Program Files/Microsoft MPI/Bin/gcc-ar15.com"
+      - "C:/Program Files/Microsoft MPI/Bin/gcc-ar15.exe"
+      - "C:/Program Files/Microsoft MPI/Bin/gcc-ar15"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/gcc-ar15.com"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/gcc-ar15.exe"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/gcc-ar15"
@@ -1535,12 +1672,12 @@ events:
       - "C:/Program Files/CMake/bin/gcc-ar15.com"
       - "C:/Program Files/CMake/bin/gcc-ar15.exe"
       - "C:/Program Files/CMake/bin/gcc-ar15"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/gcc-ar15.com"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/gcc-ar15.exe"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/gcc-ar15"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/gcc-ar15.com"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/gcc-ar15.exe"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/gcc-ar15"
+      - "C:/Program Files (x86)/GnuWin32/bin/gcc-ar15.com"
+      - "C:/Program Files (x86)/GnuWin32/bin/gcc-ar15.exe"
+      - "C:/Program Files (x86)/GnuWin32/bin/gcc-ar15"
+      - "C:/Program Files/Git/cmd/gcc-ar15.com"
+      - "C:/Program Files/Git/cmd/gcc-ar15.exe"
+      - "C:/Program Files/Git/cmd/gcc-ar15"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/gcc-ar15.com"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/gcc-ar15.exe"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/gcc-ar15"
@@ -1550,6 +1687,12 @@ events:
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/gcc-ar15.com"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/gcc-ar15.exe"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/gcc-ar15"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/gcc-ar15.com"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/gcc-ar15.exe"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/gcc-ar15"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/gcc-ar15.com"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/gcc-ar15.exe"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/gcc-ar15"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ar15.com"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ar15.exe"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ar15"
@@ -1557,6 +1700,7 @@ events:
     found: "C:/msys64/mingw64/bin/gcc-ar.exe"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\Microsoft MPI\\Bin\\"
         - "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.7.6-hotspot\\bin"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
@@ -1572,11 +1716,13 @@ events:
         - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
         - "C:\\msys64\\mingw64\\bin"
         - "C:\\Program Files\\CMake\\bin"
-        - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\"
-        - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python313\\"
+        - "C:\\Program Files (x86)\\GnuWin32\\bin"
+        - "C:\\Program Files\\Git\\cmd"
         - "C:\\Users\\rapha\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\rapha\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-7.1.1-full_build\\bin"
+        - "C:\\Users\\rapha\\AppData\\Local\\GitHubDesktop\\bin"
+        - "c:\\Users\\rapha\\.vscode\\extensions\\ms-python.debugpy-2025.10.0-win32-x64\\bundled\\scripts\\noConfigScripts"
         - "c:\\Users\\rapha\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
   -
     kind: "find-v1"
@@ -1602,6 +1748,7 @@ events:
       - "gcc-ranlib"
     candidate_directories:
       - "C:/msys64/mingw64/bin/"
+      - "C:/Program Files/Microsoft MPI/Bin/"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
@@ -1616,16 +1763,21 @@ events:
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
       - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/"
       - "C:/Program Files/CMake/bin/"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/"
+      - "C:/Program Files (x86)/GnuWin32/bin/"
+      - "C:/Program Files/Git/cmd/"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/rapha/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
     searched_directories:
       - "C:/msys64/mingw64/bin/gcc-ranlib-15.2.com"
       - "C:/msys64/mingw64/bin/gcc-ranlib-15.2.exe"
       - "C:/msys64/mingw64/bin/gcc-ranlib-15.2"
+      - "C:/Program Files/Microsoft MPI/Bin/gcc-ranlib-15.2.com"
+      - "C:/Program Files/Microsoft MPI/Bin/gcc-ranlib-15.2.exe"
+      - "C:/Program Files/Microsoft MPI/Bin/gcc-ranlib-15.2"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/gcc-ranlib-15.2.com"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/gcc-ranlib-15.2.exe"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/gcc-ranlib-15.2"
@@ -1668,12 +1820,12 @@ events:
       - "C:/Program Files/CMake/bin/gcc-ranlib-15.2.com"
       - "C:/Program Files/CMake/bin/gcc-ranlib-15.2.exe"
       - "C:/Program Files/CMake/bin/gcc-ranlib-15.2"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/gcc-ranlib-15.2.com"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/gcc-ranlib-15.2.exe"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/gcc-ranlib-15.2"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/gcc-ranlib-15.2.com"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/gcc-ranlib-15.2.exe"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/gcc-ranlib-15.2"
+      - "C:/Program Files (x86)/GnuWin32/bin/gcc-ranlib-15.2.com"
+      - "C:/Program Files (x86)/GnuWin32/bin/gcc-ranlib-15.2.exe"
+      - "C:/Program Files (x86)/GnuWin32/bin/gcc-ranlib-15.2"
+      - "C:/Program Files/Git/cmd/gcc-ranlib-15.2.com"
+      - "C:/Program Files/Git/cmd/gcc-ranlib-15.2.exe"
+      - "C:/Program Files/Git/cmd/gcc-ranlib-15.2"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/gcc-ranlib-15.2.com"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/gcc-ranlib-15.2.exe"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/gcc-ranlib-15.2"
@@ -1683,12 +1835,21 @@ events:
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/gcc-ranlib-15.2.com"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/gcc-ranlib-15.2.exe"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/gcc-ranlib-15.2"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/gcc-ranlib-15.2.com"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/gcc-ranlib-15.2.exe"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/gcc-ranlib-15.2"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/gcc-ranlib-15.2.com"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/gcc-ranlib-15.2.exe"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/gcc-ranlib-15.2"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ranlib-15.2.com"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ranlib-15.2.exe"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ranlib-15.2"
       - "C:/msys64/mingw64/bin/gcc-ranlib-15.com"
       - "C:/msys64/mingw64/bin/gcc-ranlib-15.exe"
       - "C:/msys64/mingw64/bin/gcc-ranlib-15"
+      - "C:/Program Files/Microsoft MPI/Bin/gcc-ranlib-15.com"
+      - "C:/Program Files/Microsoft MPI/Bin/gcc-ranlib-15.exe"
+      - "C:/Program Files/Microsoft MPI/Bin/gcc-ranlib-15"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/gcc-ranlib-15.com"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/gcc-ranlib-15.exe"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/gcc-ranlib-15"
@@ -1731,12 +1892,12 @@ events:
       - "C:/Program Files/CMake/bin/gcc-ranlib-15.com"
       - "C:/Program Files/CMake/bin/gcc-ranlib-15.exe"
       - "C:/Program Files/CMake/bin/gcc-ranlib-15"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/gcc-ranlib-15.com"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/gcc-ranlib-15.exe"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/gcc-ranlib-15"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/gcc-ranlib-15.com"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/gcc-ranlib-15.exe"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/gcc-ranlib-15"
+      - "C:/Program Files (x86)/GnuWin32/bin/gcc-ranlib-15.com"
+      - "C:/Program Files (x86)/GnuWin32/bin/gcc-ranlib-15.exe"
+      - "C:/Program Files (x86)/GnuWin32/bin/gcc-ranlib-15"
+      - "C:/Program Files/Git/cmd/gcc-ranlib-15.com"
+      - "C:/Program Files/Git/cmd/gcc-ranlib-15.exe"
+      - "C:/Program Files/Git/cmd/gcc-ranlib-15"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/gcc-ranlib-15.com"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/gcc-ranlib-15.exe"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/gcc-ranlib-15"
@@ -1746,12 +1907,21 @@ events:
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/gcc-ranlib-15.com"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/gcc-ranlib-15.exe"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/gcc-ranlib-15"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/gcc-ranlib-15.com"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/gcc-ranlib-15.exe"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/gcc-ranlib-15"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/gcc-ranlib-15.com"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/gcc-ranlib-15.exe"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/gcc-ranlib-15"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ranlib-15.com"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ranlib-15.exe"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ranlib-15"
       - "C:/msys64/mingw64/bin/gcc-ranlib15.com"
       - "C:/msys64/mingw64/bin/gcc-ranlib15.exe"
       - "C:/msys64/mingw64/bin/gcc-ranlib15"
+      - "C:/Program Files/Microsoft MPI/Bin/gcc-ranlib15.com"
+      - "C:/Program Files/Microsoft MPI/Bin/gcc-ranlib15.exe"
+      - "C:/Program Files/Microsoft MPI/Bin/gcc-ranlib15"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/gcc-ranlib15.com"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/gcc-ranlib15.exe"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/gcc-ranlib15"
@@ -1794,12 +1964,12 @@ events:
       - "C:/Program Files/CMake/bin/gcc-ranlib15.com"
       - "C:/Program Files/CMake/bin/gcc-ranlib15.exe"
       - "C:/Program Files/CMake/bin/gcc-ranlib15"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/gcc-ranlib15.com"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/gcc-ranlib15.exe"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/gcc-ranlib15"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/gcc-ranlib15.com"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/gcc-ranlib15.exe"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/gcc-ranlib15"
+      - "C:/Program Files (x86)/GnuWin32/bin/gcc-ranlib15.com"
+      - "C:/Program Files (x86)/GnuWin32/bin/gcc-ranlib15.exe"
+      - "C:/Program Files (x86)/GnuWin32/bin/gcc-ranlib15"
+      - "C:/Program Files/Git/cmd/gcc-ranlib15.com"
+      - "C:/Program Files/Git/cmd/gcc-ranlib15.exe"
+      - "C:/Program Files/Git/cmd/gcc-ranlib15"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/gcc-ranlib15.com"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/gcc-ranlib15.exe"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/gcc-ranlib15"
@@ -1809,6 +1979,12 @@ events:
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/gcc-ranlib15.com"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/gcc-ranlib15.exe"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/gcc-ranlib15"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/gcc-ranlib15.com"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/gcc-ranlib15.exe"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/gcc-ranlib15"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/gcc-ranlib15.com"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/gcc-ranlib15.exe"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/gcc-ranlib15"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ranlib15.com"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ranlib15.exe"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ranlib15"
@@ -1816,6 +1992,7 @@ events:
     found: "C:/msys64/mingw64/bin/gcc-ranlib.exe"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\Microsoft MPI\\Bin\\"
         - "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.7.6-hotspot\\bin"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
@@ -1831,11 +2008,13 @@ events:
         - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
         - "C:\\msys64\\mingw64\\bin"
         - "C:\\Program Files\\CMake\\bin"
-        - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\"
-        - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python313\\"
+        - "C:\\Program Files (x86)\\GnuWin32\\bin"
+        - "C:\\Program Files\\Git\\cmd"
         - "C:\\Users\\rapha\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\rapha\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-7.1.1-full_build\\bin"
+        - "C:\\Users\\rapha\\AppData\\Local\\GitHubDesktop\\bin"
+        - "c:\\Users\\rapha\\.vscode\\extensions\\ms-python.debugpy-2025.10.0-win32-x64\\bundled\\scripts\\noConfigScripts"
         - "c:\\Users\\rapha\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
   -
     kind: "find-v1"
@@ -1868,6 +2047,7 @@ events:
     found: "C:/msys64/mingw64/bin/c++.exe"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\Microsoft MPI\\Bin\\"
         - "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.7.6-hotspot\\bin"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
@@ -1883,11 +2063,13 @@ events:
         - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
         - "C:\\msys64\\mingw64\\bin"
         - "C:\\Program Files\\CMake\\bin"
-        - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\"
-        - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python313\\"
+        - "C:\\Program Files (x86)\\GnuWin32\\bin"
+        - "C:\\Program Files\\Git\\cmd"
         - "C:\\Users\\rapha\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\rapha\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-7.1.1-full_build\\bin"
+        - "C:\\Users\\rapha\\AppData\\Local\\GitHubDesktop\\bin"
+        - "c:\\Users\\rapha\\.vscode\\extensions\\ms-python.debugpy-2025.10.0-win32-x64\\bundled\\scripts\\noConfigScripts"
         - "c:\\Users\\rapha\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
   -
     kind: "find-v1"
@@ -1916,6 +2098,7 @@ events:
     found: "C:/Program Files/CMake/share/cmake-4.1/Modules/CMakeCXXCompilerId.cpp.in"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\Microsoft MPI\\Bin\\"
         - "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.7.6-hotspot\\bin"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
@@ -1931,11 +2114,13 @@ events:
         - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
         - "C:\\msys64\\mingw64\\bin"
         - "C:\\Program Files\\CMake\\bin"
-        - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\"
-        - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python313\\"
+        - "C:\\Program Files (x86)\\GnuWin32\\bin"
+        - "C:\\Program Files\\Git\\cmd"
         - "C:\\Users\\rapha\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\rapha\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-7.1.1-full_build\\bin"
+        - "C:\\Users\\rapha\\AppData\\Local\\GitHubDesktop\\bin"
+        - "c:\\Users\\rapha\\.vscode\\extensions\\ms-python.debugpy-2025.10.0-win32-x64\\bundled\\scripts\\noConfigScripts"
         - "c:\\Users\\rapha\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
   -
     kind: "message-v1"
@@ -1983,6 +2168,7 @@ events:
       - "gcc-ar"
     candidate_directories:
       - "C:/msys64/mingw64/bin/"
+      - "C:/Program Files/Microsoft MPI/Bin/"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
@@ -1997,16 +2183,21 @@ events:
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
       - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/"
       - "C:/Program Files/CMake/bin/"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/"
+      - "C:/Program Files (x86)/GnuWin32/bin/"
+      - "C:/Program Files/Git/cmd/"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/rapha/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
     searched_directories:
       - "C:/msys64/mingw64/bin/gcc-ar-15.2.com"
       - "C:/msys64/mingw64/bin/gcc-ar-15.2.exe"
       - "C:/msys64/mingw64/bin/gcc-ar-15.2"
+      - "C:/Program Files/Microsoft MPI/Bin/gcc-ar-15.2.com"
+      - "C:/Program Files/Microsoft MPI/Bin/gcc-ar-15.2.exe"
+      - "C:/Program Files/Microsoft MPI/Bin/gcc-ar-15.2"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/gcc-ar-15.2.com"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/gcc-ar-15.2.exe"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/gcc-ar-15.2"
@@ -2049,12 +2240,12 @@ events:
       - "C:/Program Files/CMake/bin/gcc-ar-15.2.com"
       - "C:/Program Files/CMake/bin/gcc-ar-15.2.exe"
       - "C:/Program Files/CMake/bin/gcc-ar-15.2"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/gcc-ar-15.2.com"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/gcc-ar-15.2.exe"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/gcc-ar-15.2"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/gcc-ar-15.2.com"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/gcc-ar-15.2.exe"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/gcc-ar-15.2"
+      - "C:/Program Files (x86)/GnuWin32/bin/gcc-ar-15.2.com"
+      - "C:/Program Files (x86)/GnuWin32/bin/gcc-ar-15.2.exe"
+      - "C:/Program Files (x86)/GnuWin32/bin/gcc-ar-15.2"
+      - "C:/Program Files/Git/cmd/gcc-ar-15.2.com"
+      - "C:/Program Files/Git/cmd/gcc-ar-15.2.exe"
+      - "C:/Program Files/Git/cmd/gcc-ar-15.2"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/gcc-ar-15.2.com"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/gcc-ar-15.2.exe"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/gcc-ar-15.2"
@@ -2064,12 +2255,21 @@ events:
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/gcc-ar-15.2.com"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/gcc-ar-15.2.exe"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/gcc-ar-15.2"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/gcc-ar-15.2.com"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/gcc-ar-15.2.exe"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/gcc-ar-15.2"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/gcc-ar-15.2.com"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/gcc-ar-15.2.exe"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/gcc-ar-15.2"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ar-15.2.com"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ar-15.2.exe"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ar-15.2"
       - "C:/msys64/mingw64/bin/gcc-ar-15.com"
       - "C:/msys64/mingw64/bin/gcc-ar-15.exe"
       - "C:/msys64/mingw64/bin/gcc-ar-15"
+      - "C:/Program Files/Microsoft MPI/Bin/gcc-ar-15.com"
+      - "C:/Program Files/Microsoft MPI/Bin/gcc-ar-15.exe"
+      - "C:/Program Files/Microsoft MPI/Bin/gcc-ar-15"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/gcc-ar-15.com"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/gcc-ar-15.exe"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/gcc-ar-15"
@@ -2112,12 +2312,12 @@ events:
       - "C:/Program Files/CMake/bin/gcc-ar-15.com"
       - "C:/Program Files/CMake/bin/gcc-ar-15.exe"
       - "C:/Program Files/CMake/bin/gcc-ar-15"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/gcc-ar-15.com"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/gcc-ar-15.exe"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/gcc-ar-15"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/gcc-ar-15.com"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/gcc-ar-15.exe"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/gcc-ar-15"
+      - "C:/Program Files (x86)/GnuWin32/bin/gcc-ar-15.com"
+      - "C:/Program Files (x86)/GnuWin32/bin/gcc-ar-15.exe"
+      - "C:/Program Files (x86)/GnuWin32/bin/gcc-ar-15"
+      - "C:/Program Files/Git/cmd/gcc-ar-15.com"
+      - "C:/Program Files/Git/cmd/gcc-ar-15.exe"
+      - "C:/Program Files/Git/cmd/gcc-ar-15"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/gcc-ar-15.com"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/gcc-ar-15.exe"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/gcc-ar-15"
@@ -2127,12 +2327,21 @@ events:
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/gcc-ar-15.com"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/gcc-ar-15.exe"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/gcc-ar-15"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/gcc-ar-15.com"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/gcc-ar-15.exe"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/gcc-ar-15"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/gcc-ar-15.com"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/gcc-ar-15.exe"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/gcc-ar-15"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ar-15.com"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ar-15.exe"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ar-15"
       - "C:/msys64/mingw64/bin/gcc-ar15.com"
       - "C:/msys64/mingw64/bin/gcc-ar15.exe"
       - "C:/msys64/mingw64/bin/gcc-ar15"
+      - "C:/Program Files/Microsoft MPI/Bin/gcc-ar15.com"
+      - "C:/Program Files/Microsoft MPI/Bin/gcc-ar15.exe"
+      - "C:/Program Files/Microsoft MPI/Bin/gcc-ar15"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/gcc-ar15.com"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/gcc-ar15.exe"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/gcc-ar15"
@@ -2175,12 +2384,12 @@ events:
       - "C:/Program Files/CMake/bin/gcc-ar15.com"
       - "C:/Program Files/CMake/bin/gcc-ar15.exe"
       - "C:/Program Files/CMake/bin/gcc-ar15"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/gcc-ar15.com"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/gcc-ar15.exe"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/gcc-ar15"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/gcc-ar15.com"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/gcc-ar15.exe"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/gcc-ar15"
+      - "C:/Program Files (x86)/GnuWin32/bin/gcc-ar15.com"
+      - "C:/Program Files (x86)/GnuWin32/bin/gcc-ar15.exe"
+      - "C:/Program Files (x86)/GnuWin32/bin/gcc-ar15"
+      - "C:/Program Files/Git/cmd/gcc-ar15.com"
+      - "C:/Program Files/Git/cmd/gcc-ar15.exe"
+      - "C:/Program Files/Git/cmd/gcc-ar15"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/gcc-ar15.com"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/gcc-ar15.exe"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/gcc-ar15"
@@ -2190,6 +2399,12 @@ events:
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/gcc-ar15.com"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/gcc-ar15.exe"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/gcc-ar15"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/gcc-ar15.com"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/gcc-ar15.exe"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/gcc-ar15"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/gcc-ar15.com"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/gcc-ar15.exe"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/gcc-ar15"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ar15.com"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ar15.exe"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ar15"
@@ -2197,6 +2412,7 @@ events:
     found: "C:/msys64/mingw64/bin/gcc-ar.exe"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\Microsoft MPI\\Bin\\"
         - "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.7.6-hotspot\\bin"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
@@ -2212,11 +2428,13 @@ events:
         - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
         - "C:\\msys64\\mingw64\\bin"
         - "C:\\Program Files\\CMake\\bin"
-        - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\"
-        - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python313\\"
+        - "C:\\Program Files (x86)\\GnuWin32\\bin"
+        - "C:\\Program Files\\Git\\cmd"
         - "C:\\Users\\rapha\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\rapha\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-7.1.1-full_build\\bin"
+        - "C:\\Users\\rapha\\AppData\\Local\\GitHubDesktop\\bin"
+        - "c:\\Users\\rapha\\.vscode\\extensions\\ms-python.debugpy-2025.10.0-win32-x64\\bundled\\scripts\\noConfigScripts"
         - "c:\\Users\\rapha\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
   -
     kind: "find-v1"
@@ -2242,6 +2460,7 @@ events:
       - "gcc-ranlib"
     candidate_directories:
       - "C:/msys64/mingw64/bin/"
+      - "C:/Program Files/Microsoft MPI/Bin/"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
@@ -2256,16 +2475,21 @@ events:
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
       - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/"
       - "C:/Program Files/CMake/bin/"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/"
+      - "C:/Program Files (x86)/GnuWin32/bin/"
+      - "C:/Program Files/Git/cmd/"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/rapha/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
     searched_directories:
       - "C:/msys64/mingw64/bin/gcc-ranlib-15.2.com"
       - "C:/msys64/mingw64/bin/gcc-ranlib-15.2.exe"
       - "C:/msys64/mingw64/bin/gcc-ranlib-15.2"
+      - "C:/Program Files/Microsoft MPI/Bin/gcc-ranlib-15.2.com"
+      - "C:/Program Files/Microsoft MPI/Bin/gcc-ranlib-15.2.exe"
+      - "C:/Program Files/Microsoft MPI/Bin/gcc-ranlib-15.2"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/gcc-ranlib-15.2.com"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/gcc-ranlib-15.2.exe"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/gcc-ranlib-15.2"
@@ -2308,12 +2532,12 @@ events:
       - "C:/Program Files/CMake/bin/gcc-ranlib-15.2.com"
       - "C:/Program Files/CMake/bin/gcc-ranlib-15.2.exe"
       - "C:/Program Files/CMake/bin/gcc-ranlib-15.2"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/gcc-ranlib-15.2.com"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/gcc-ranlib-15.2.exe"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/gcc-ranlib-15.2"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/gcc-ranlib-15.2.com"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/gcc-ranlib-15.2.exe"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/gcc-ranlib-15.2"
+      - "C:/Program Files (x86)/GnuWin32/bin/gcc-ranlib-15.2.com"
+      - "C:/Program Files (x86)/GnuWin32/bin/gcc-ranlib-15.2.exe"
+      - "C:/Program Files (x86)/GnuWin32/bin/gcc-ranlib-15.2"
+      - "C:/Program Files/Git/cmd/gcc-ranlib-15.2.com"
+      - "C:/Program Files/Git/cmd/gcc-ranlib-15.2.exe"
+      - "C:/Program Files/Git/cmd/gcc-ranlib-15.2"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/gcc-ranlib-15.2.com"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/gcc-ranlib-15.2.exe"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/gcc-ranlib-15.2"
@@ -2323,12 +2547,21 @@ events:
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/gcc-ranlib-15.2.com"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/gcc-ranlib-15.2.exe"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/gcc-ranlib-15.2"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/gcc-ranlib-15.2.com"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/gcc-ranlib-15.2.exe"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/gcc-ranlib-15.2"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/gcc-ranlib-15.2.com"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/gcc-ranlib-15.2.exe"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/gcc-ranlib-15.2"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ranlib-15.2.com"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ranlib-15.2.exe"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ranlib-15.2"
       - "C:/msys64/mingw64/bin/gcc-ranlib-15.com"
       - "C:/msys64/mingw64/bin/gcc-ranlib-15.exe"
       - "C:/msys64/mingw64/bin/gcc-ranlib-15"
+      - "C:/Program Files/Microsoft MPI/Bin/gcc-ranlib-15.com"
+      - "C:/Program Files/Microsoft MPI/Bin/gcc-ranlib-15.exe"
+      - "C:/Program Files/Microsoft MPI/Bin/gcc-ranlib-15"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/gcc-ranlib-15.com"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/gcc-ranlib-15.exe"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/gcc-ranlib-15"
@@ -2371,12 +2604,12 @@ events:
       - "C:/Program Files/CMake/bin/gcc-ranlib-15.com"
       - "C:/Program Files/CMake/bin/gcc-ranlib-15.exe"
       - "C:/Program Files/CMake/bin/gcc-ranlib-15"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/gcc-ranlib-15.com"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/gcc-ranlib-15.exe"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/gcc-ranlib-15"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/gcc-ranlib-15.com"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/gcc-ranlib-15.exe"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/gcc-ranlib-15"
+      - "C:/Program Files (x86)/GnuWin32/bin/gcc-ranlib-15.com"
+      - "C:/Program Files (x86)/GnuWin32/bin/gcc-ranlib-15.exe"
+      - "C:/Program Files (x86)/GnuWin32/bin/gcc-ranlib-15"
+      - "C:/Program Files/Git/cmd/gcc-ranlib-15.com"
+      - "C:/Program Files/Git/cmd/gcc-ranlib-15.exe"
+      - "C:/Program Files/Git/cmd/gcc-ranlib-15"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/gcc-ranlib-15.com"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/gcc-ranlib-15.exe"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/gcc-ranlib-15"
@@ -2386,12 +2619,21 @@ events:
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/gcc-ranlib-15.com"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/gcc-ranlib-15.exe"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/gcc-ranlib-15"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/gcc-ranlib-15.com"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/gcc-ranlib-15.exe"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/gcc-ranlib-15"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/gcc-ranlib-15.com"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/gcc-ranlib-15.exe"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/gcc-ranlib-15"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ranlib-15.com"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ranlib-15.exe"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ranlib-15"
       - "C:/msys64/mingw64/bin/gcc-ranlib15.com"
       - "C:/msys64/mingw64/bin/gcc-ranlib15.exe"
       - "C:/msys64/mingw64/bin/gcc-ranlib15"
+      - "C:/Program Files/Microsoft MPI/Bin/gcc-ranlib15.com"
+      - "C:/Program Files/Microsoft MPI/Bin/gcc-ranlib15.exe"
+      - "C:/Program Files/Microsoft MPI/Bin/gcc-ranlib15"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/gcc-ranlib15.com"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/gcc-ranlib15.exe"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/gcc-ranlib15"
@@ -2434,12 +2676,12 @@ events:
       - "C:/Program Files/CMake/bin/gcc-ranlib15.com"
       - "C:/Program Files/CMake/bin/gcc-ranlib15.exe"
       - "C:/Program Files/CMake/bin/gcc-ranlib15"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/gcc-ranlib15.com"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/gcc-ranlib15.exe"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/gcc-ranlib15"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/gcc-ranlib15.com"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/gcc-ranlib15.exe"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/gcc-ranlib15"
+      - "C:/Program Files (x86)/GnuWin32/bin/gcc-ranlib15.com"
+      - "C:/Program Files (x86)/GnuWin32/bin/gcc-ranlib15.exe"
+      - "C:/Program Files (x86)/GnuWin32/bin/gcc-ranlib15"
+      - "C:/Program Files/Git/cmd/gcc-ranlib15.com"
+      - "C:/Program Files/Git/cmd/gcc-ranlib15.exe"
+      - "C:/Program Files/Git/cmd/gcc-ranlib15"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/gcc-ranlib15.com"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/gcc-ranlib15.exe"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/gcc-ranlib15"
@@ -2449,6 +2691,12 @@ events:
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/gcc-ranlib15.com"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/gcc-ranlib15.exe"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/gcc-ranlib15"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/gcc-ranlib15.com"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/gcc-ranlib15.exe"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/gcc-ranlib15"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/gcc-ranlib15.com"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/gcc-ranlib15.exe"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/gcc-ranlib15"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ranlib15.com"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ranlib15.exe"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ranlib15"
@@ -2456,6 +2704,7 @@ events:
     found: "C:/msys64/mingw64/bin/gcc-ranlib.exe"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\Microsoft MPI\\Bin\\"
         - "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.7.6-hotspot\\bin"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
@@ -2471,11 +2720,13 @@ events:
         - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
         - "C:\\msys64\\mingw64\\bin"
         - "C:\\Program Files\\CMake\\bin"
-        - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\"
-        - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python313\\"
+        - "C:\\Program Files (x86)\\GnuWin32\\bin"
+        - "C:\\Program Files\\Git\\cmd"
         - "C:\\Users\\rapha\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\rapha\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-7.1.1-full_build\\bin"
+        - "C:\\Users\\rapha\\AppData\\Local\\GitHubDesktop\\bin"
+        - "c:\\Users\\rapha\\.vscode\\extensions\\ms-python.debugpy-2025.10.0-win32-x64\\bundled\\scripts\\noConfigScripts"
         - "c:\\Users\\rapha\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
   -
     kind: "find-v1"
@@ -2500,6 +2751,7 @@ events:
       - "windres"
       - "windres"
     candidate_directories:
+      - "C:/Program Files/Microsoft MPI/Bin/"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
@@ -2515,11 +2767,13 @@ events:
       - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/"
       - "C:/msys64/mingw64/bin/"
       - "C:/Program Files/CMake/bin/"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/Scripts/"
-      - "C:/Users/rapha/AppData/Local/Programs/Python/Python313/"
+      - "C:/Program Files (x86)/GnuWin32/bin/"
+      - "C:/Program Files/Git/cmd/"
       - "C:/Users/rapha/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/rapha/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Users/rapha/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1.1-full_build/bin/"
+      - "C:/Users/rapha/AppData/Local/GitHubDesktop/bin/"
+      - "C:/Users/rapha/.vscode/extensions/ms-python.debugpy-2025.10.0-win32-x64/bundled/scripts/noConfigScripts/"
       - "C:/Users/rapha/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
       - "C:/Program Files/bin/"
       - "C:/Program Files/sbin/"
@@ -2534,6 +2788,9 @@ events:
       - "C:/Program Files (x86)/OpenGLApp/sbin/"
       - "C:/Program Files (x86)/OpenGLApp/"
     searched_directories:
+      - "C:/Program Files/Microsoft MPI/Bin/windres.com"
+      - "C:/Program Files/Microsoft MPI/Bin/windres.exe"
+      - "C:/Program Files/Microsoft MPI/Bin/windres"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/windres.com"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/windres.exe"
       - "C:/Program Files/Eclipse Adoptium/jdk-21.0.7.6-hotspot/bin/windres"
@@ -2577,6 +2834,7 @@ events:
     found: "C:/msys64/mingw64/bin/windres.exe"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\Microsoft MPI\\Bin\\"
         - "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.7.6-hotspot\\bin"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
@@ -2592,11 +2850,13 @@ events:
         - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
         - "C:\\msys64\\mingw64\\bin"
         - "C:\\Program Files\\CMake\\bin"
-        - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\"
-        - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python313\\"
+        - "C:\\Program Files (x86)\\GnuWin32\\bin"
+        - "C:\\Program Files\\Git\\cmd"
         - "C:\\Users\\rapha\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\rapha\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
         - "C:\\Users\\rapha\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-7.1.1-full_build\\bin"
+        - "C:\\Users\\rapha\\AppData\\Local\\GitHubDesktop\\bin"
+        - "c:\\Users\\rapha\\.vscode\\extensions\\ms-python.debugpy-2025.10.0-win32-x64\\bundled\\scripts\\noConfigScripts"
         - "c:\\Users\\rapha\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
       CMAKE_INSTALL_PREFIX: "C:/Program Files (x86)/OpenGLApp"
       CMAKE_SYSTEM_PREFIX_PATH:
@@ -2613,8 +2873,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/build/CMakeFiles/CMakeScratch/TryCompile-e0po50"
-      binary: "C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/build/CMakeFiles/CMakeScratch/TryCompile-e0po50"
+      source: "C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/build/CMakeFiles/CMakeScratch/TryCompile-x1aa68"
+      binary: "C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/build/CMakeFiles/CMakeScratch/TryCompile-x1aa68"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -2623,13 +2883,13 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/build/CMakeFiles/CMakeScratch/TryCompile-e0po50'
+        Change Dir: 'C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/build/CMakeFiles/CMakeScratch/TryCompile-x1aa68'
         
-        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/msys64/mingw64/bin/mingw32-make.exe -f Makefile cmTC_d55ed/fast
-        C:/msys64/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_d55ed.dir\\build.make CMakeFiles/cmTC_d55ed.dir/build
-        mingw32-make[1]: Entering directory 'C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/build/CMakeFiles/CMakeScratch/TryCompile-e0po50'
-        Building C object CMakeFiles/cmTC_d55ed.dir/CMakeCCompilerABI.c.obj
-        C:\\msys64\\mingw64\\bin\\cc.exe   -v -o CMakeFiles\\cmTC_d55ed.dir\\CMakeCCompilerABI.c.obj -c "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCCompilerABI.c"
+        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/msys64/mingw64/bin/mingw32-make.exe -f Makefile cmTC_9bfb6/fast
+        C:/msys64/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_9bfb6.dir\\build.make CMakeFiles/cmTC_9bfb6.dir/build
+        mingw32-make[1]: Entering directory 'C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/build/CMakeFiles/CMakeScratch/TryCompile-x1aa68'
+        Building C object CMakeFiles/cmTC_9bfb6.dir/CMakeCCompilerABI.c.obj
+        C:\\msys64\\mingw64\\bin\\cc.exe   -v -o CMakeFiles\\cmTC_9bfb6.dir\\CMakeCCompilerABI.c.obj -c "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCCompilerABI.c"
         Using built-in specs.
         COLLECT_GCC=C:\\msys64\\mingw64\\bin\\cc.exe
         Target: x86_64-w64-mingw32
@@ -2637,8 +2897,8 @@ events:
         Thread model: posix
         Supported LTO compression algorithms: zlib zstd
         gcc version 15.2.0 (Rev8, Built by MSYS2 project) 
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_d55ed.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_d55ed.dir\\'
-         C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/cc1.exe -quiet -v -iprefix C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/ -D_REENTRANT C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles\\cmTC_d55ed.dir\\ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=nocona -version -o C:\\Users\\rapha\\AppData\\Local\\Temp\\ccM5lgOS.s
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_9bfb6.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_9bfb6.dir\\'
+         C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/cc1.exe -quiet -v -iprefix C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/ -D_REENTRANT C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles\\cmTC_9bfb6.dir\\ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=nocona -version -o C:\\Users\\rapha\\AppData\\Local\\Temp\\ccWs0XRe.s
         GNU C23 (Rev8, Built by MSYS2 project) version 15.2.0 (x86_64-w64-mingw32)
         	compiled by GNU C version 15.2.0, GMP version 6.3.0, MPFR version 4.2.2, MPC version 1.3.1, isl version isl-0.27-GMP
         
@@ -2657,14 +2917,14 @@ events:
          C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/include-fixed
         End of search list.
         Compiler executable checksum: feaaa8b8d0ead308dc62d839201f7330
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_d55ed.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_d55ed.dir\\'
-         C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\\cmTC_d55ed.dir\\CMakeCCompilerABI.c.obj C:\\Users\\rapha\\AppData\\Local\\Temp\\ccM5lgOS.s
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_9bfb6.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_9bfb6.dir\\'
+         C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\\cmTC_9bfb6.dir\\CMakeCCompilerABI.c.obj C:\\Users\\rapha\\AppData\\Local\\Temp\\ccWs0XRe.s
         GNU assembler version 2.45 (x86_64-w64-mingw32) using BFD version (GNU Binutils) 2.45
         COMPILER_PATH=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/;C:/msys64/mingw64/bin/../lib/gcc/;C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/
         LIBRARY_PATH=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/;C:/msys64/mingw64/bin/../lib/gcc/;C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/;C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/;C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/;C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_d55ed.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_d55ed.dir\\CMakeCCompilerABI.c.'
-        Linking C executable cmTC_d55ed.exe
-        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_d55ed.dir\\link.txt --verbose=1
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_9bfb6.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_9bfb6.dir\\CMakeCCompilerABI.c.'
+        Linking C executable cmTC_9bfb6.exe
+        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_9bfb6.dir\\link.txt --verbose=1
         Using built-in specs.
         COLLECT_GCC=C:\\msys64\\mingw64\\bin\\cc.exe
         COLLECT_LTO_WRAPPER=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe
@@ -2675,16 +2935,16 @@ events:
         gcc version 15.2.0 (Rev8, Built by MSYS2 project) 
         COMPILER_PATH=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/;C:/msys64/mingw64/bin/../lib/gcc/;C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/
         LIBRARY_PATH=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/;C:/msys64/mingw64/bin/../lib/gcc/;C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/;C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/;C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/;C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_d55ed.exe' '-mtune=generic' '-march=nocona' '-dumpdir' 'cmTC_d55ed.'
-         C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/collect2.exe -plugin C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\rapha\\AppData\\Local\\Temp\\ccklFMj5.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_d55ed.exe C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/crt2.o C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LC:/msys64/mingw64/bin/../lib/gcc -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v --whole-archive CMakeFiles\\cmTC_d55ed.dir/objects.a --no-whole-archive --out-implib libcmTC_d55ed.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/default-manifest.o C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_9bfb6.exe' '-mtune=generic' '-march=nocona' '-dumpdir' 'cmTC_9bfb6.'
+         C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/collect2.exe -plugin C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\rapha\\AppData\\Local\\Temp\\cc94HCfg.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_9bfb6.exe C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/crt2.o C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LC:/msys64/mingw64/bin/../lib/gcc -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v --whole-archive CMakeFiles\\cmTC_9bfb6.dir/objects.a --no-whole-archive --out-implib libcmTC_9bfb6.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/default-manifest.o C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o
         collect2 version 15.2.0
-        C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe -plugin C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\rapha\\AppData\\Local\\Temp\\ccklFMj5.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_d55ed.exe C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/crt2.o C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LC:/msys64/mingw64/bin/../lib/gcc -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v --whole-archive CMakeFiles\\cmTC_d55ed.dir/objects.a --no-whole-archive --out-implib libcmTC_d55ed.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/default-manifest.o C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o
+        C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe -plugin C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\rapha\\AppData\\Local\\Temp\\cc94HCfg.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_9bfb6.exe C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/crt2.o C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LC:/msys64/mingw64/bin/../lib/gcc -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v --whole-archive CMakeFiles\\cmTC_9bfb6.dir/objects.a --no-whole-archive --out-implib libcmTC_9bfb6.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/default-manifest.o C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o
         GNU ld (GNU Binutils) 2.45
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_d55ed.exe' '-mtune=generic' '-march=nocona' '-dumpdir' 'cmTC_d55ed.'
-        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_d55ed.dir/objects.a
-        C:\\msys64\\mingw64\\bin\\ar.exe qc CMakeFiles\\cmTC_d55ed.dir/objects.a @CMakeFiles\\cmTC_d55ed.dir\\objects1.rsp
-        C:\\msys64\\mingw64\\bin\\cc.exe  -v -Wl,-v -Wl,--whole-archive CMakeFiles\\cmTC_d55ed.dir/objects.a -Wl,--no-whole-archive -o cmTC_d55ed.exe -Wl,--out-implib,libcmTC_d55ed.dll.a -Wl,--major-image-version,0,--minor-image-version,0
-        mingw32-make[1]: Leaving directory 'C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/build/CMakeFiles/CMakeScratch/TryCompile-e0po50'
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_9bfb6.exe' '-mtune=generic' '-march=nocona' '-dumpdir' 'cmTC_9bfb6.'
+        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_9bfb6.dir/objects.a
+        C:\\msys64\\mingw64\\bin\\ar.exe qc CMakeFiles\\cmTC_9bfb6.dir/objects.a @CMakeFiles\\cmTC_9bfb6.dir\\objects1.rsp
+        C:\\msys64\\mingw64\\bin\\cc.exe  -v -Wl,-v -Wl,--whole-archive CMakeFiles\\cmTC_9bfb6.dir/objects.a -Wl,--no-whole-archive -o cmTC_9bfb6.exe -Wl,--out-implib,libcmTC_9bfb6.dll.a -Wl,--major-image-version,0,--minor-image-version,0
+        mingw32-make[1]: Leaving directory 'C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/build/CMakeFiles/CMakeScratch/TryCompile-x1aa68'
         
       exitCode: 0
   -
@@ -2717,13 +2977,13 @@ events:
       Parsed C implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)))("|,| |$)]
-        ignore line: [Change Dir: 'C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/build/CMakeFiles/CMakeScratch/TryCompile-e0po50']
+        ignore line: [Change Dir: 'C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/build/CMakeFiles/CMakeScratch/TryCompile-x1aa68']
         ignore line: []
-        ignore line: [Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/msys64/mingw64/bin/mingw32-make.exe -f Makefile cmTC_d55ed/fast]
-        ignore line: [C:/msys64/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_d55ed.dir\\build.make CMakeFiles/cmTC_d55ed.dir/build]
-        ignore line: [mingw32-make[1]: Entering directory 'C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/build/CMakeFiles/CMakeScratch/TryCompile-e0po50']
-        ignore line: [Building C object CMakeFiles/cmTC_d55ed.dir/CMakeCCompilerABI.c.obj]
-        ignore line: [C:\\msys64\\mingw64\\bin\\cc.exe   -v -o CMakeFiles\\cmTC_d55ed.dir\\CMakeCCompilerABI.c.obj -c "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCCompilerABI.c"]
+        ignore line: [Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/msys64/mingw64/bin/mingw32-make.exe -f Makefile cmTC_9bfb6/fast]
+        ignore line: [C:/msys64/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_9bfb6.dir\\build.make CMakeFiles/cmTC_9bfb6.dir/build]
+        ignore line: [mingw32-make[1]: Entering directory 'C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/build/CMakeFiles/CMakeScratch/TryCompile-x1aa68']
+        ignore line: [Building C object CMakeFiles/cmTC_9bfb6.dir/CMakeCCompilerABI.c.obj]
+        ignore line: [C:\\msys64\\mingw64\\bin\\cc.exe   -v -o CMakeFiles\\cmTC_9bfb6.dir\\CMakeCCompilerABI.c.obj -c "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCCompilerABI.c"]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=C:\\msys64\\mingw64\\bin\\cc.exe]
         ignore line: [Target: x86_64-w64-mingw32]
@@ -2731,8 +2991,8 @@ events:
         ignore line: [Thread model: posix]
         ignore line: [Supported LTO compression algorithms: zlib zstd]
         ignore line: [gcc version 15.2.0 (Rev8  Built by MSYS2 project) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_d55ed.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_d55ed.dir\\']
-        ignore line: [ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/cc1.exe -quiet -v -iprefix C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/ -D_REENTRANT C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles\\cmTC_d55ed.dir\\ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=nocona -version -o C:\\Users\\rapha\\AppData\\Local\\Temp\\ccM5lgOS.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_9bfb6.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_9bfb6.dir\\']
+        ignore line: [ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/cc1.exe -quiet -v -iprefix C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/ -D_REENTRANT C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles\\cmTC_9bfb6.dir\\ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=nocona -version -o C:\\Users\\rapha\\AppData\\Local\\Temp\\ccWs0XRe.s]
         ignore line: [GNU C23 (Rev8  Built by MSYS2 project) version 15.2.0 (x86_64-w64-mingw32)]
         ignore line: [	compiled by GNU C version 15.2.0  GMP version 6.3.0  MPFR version 4.2.2  MPC version 1.3.1  isl version isl-0.27-GMP]
         ignore line: []
@@ -2751,8 +3011,8 @@ events:
         ignore line: [ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/include-fixed]
         ignore line: [End of search list.]
         ignore line: [Compiler executable checksum: feaaa8b8d0ead308dc62d839201f7330]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_d55ed.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_d55ed.dir\\']
-        ignore line: [ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\\cmTC_d55ed.dir\\CMakeCCompilerABI.c.obj C:\\Users\\rapha\\AppData\\Local\\Temp\\ccM5lgOS.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_9bfb6.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_9bfb6.dir\\']
+        ignore line: [ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\\cmTC_9bfb6.dir\\CMakeCCompilerABI.c.obj C:\\Users\\rapha\\AppData\\Local\\Temp\\ccWs0XRe.s]
         ignore line: [GNU assembler version 2.45 (x86_64-w64-mingw32) using BFD version (GNU Binutils) 2.45]
         ignore line: [COMPILER_PATH=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/]
         ignore line: [C:/msys64/mingw64/bin/../lib/gcc/]
@@ -2763,9 +3023,9 @@ events:
         ignore line: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/]
         ignore line: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/]
         ignore line: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_d55ed.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_d55ed.dir\\CMakeCCompilerABI.c.']
-        ignore line: [Linking C executable cmTC_d55ed.exe]
-        ignore line: ["C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_d55ed.dir\\link.txt --verbose=1]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_9bfb6.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_9bfb6.dir\\CMakeCCompilerABI.c.']
+        ignore line: [Linking C executable cmTC_9bfb6.exe]
+        ignore line: ["C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_9bfb6.dir\\link.txt --verbose=1]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=C:\\msys64\\mingw64\\bin\\cc.exe]
         ignore line: [COLLECT_LTO_WRAPPER=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe]
@@ -2783,13 +3043,13 @@ events:
         ignore line: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/]
         ignore line: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/]
         ignore line: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_d55ed.exe' '-mtune=generic' '-march=nocona' '-dumpdir' 'cmTC_d55ed.']
-        link line: [ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/collect2.exe -plugin C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\rapha\\AppData\\Local\\Temp\\ccklFMj5.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_d55ed.exe C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/crt2.o C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LC:/msys64/mingw64/bin/../lib/gcc -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v --whole-archive CMakeFiles\\cmTC_d55ed.dir/objects.a --no-whole-archive --out-implib libcmTC_d55ed.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/default-manifest.o C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_9bfb6.exe' '-mtune=generic' '-march=nocona' '-dumpdir' 'cmTC_9bfb6.']
+        link line: [ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/collect2.exe -plugin C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\rapha\\AppData\\Local\\Temp\\cc94HCfg.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_9bfb6.exe C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/crt2.o C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LC:/msys64/mingw64/bin/../lib/gcc -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v --whole-archive CMakeFiles\\cmTC_9bfb6.dir/objects.a --no-whole-archive --out-implib libcmTC_9bfb6.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/default-manifest.o C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o]
           arg [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/collect2.exe] ==> ignore
           arg [-plugin] ==> ignore
           arg [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll] ==> ignore
           arg [-plugin-opt=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe] ==> ignore
-          arg [-plugin-opt=-fresolution=C:\\Users\\rapha\\AppData\\Local\\Temp\\ccklFMj5.res] ==> ignore
+          arg [-plugin-opt=-fresolution=C:\\Users\\rapha\\AppData\\Local\\Temp\\cc94HCfg.res] ==> ignore
           arg [-plugin-opt=-pass-through=-lmingw32] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc_eh] ==> ignore
@@ -2811,7 +3071,7 @@ events:
           arg [i386pep] ==> ignore
           arg [-Bdynamic] ==> search dynamic
           arg [-o] ==> ignore
-          arg [cmTC_d55ed.exe] ==> ignore
+          arg [cmTC_9bfb6.exe] ==> ignore
           arg [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/crt2.o] ==> obj [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/crt2.o]
           arg [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o] ==> obj [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o]
           arg [-LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0] ==> dir [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0]
@@ -2822,10 +3082,10 @@ events:
           arg [-LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../..] ==> dir [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../..]
           arg [-v] ==> ignore
           arg [--whole-archive] ==> ignore
-          arg [CMakeFiles\\cmTC_d55ed.dir/objects.a] ==> ignore
+          arg [CMakeFiles\\cmTC_9bfb6.dir/objects.a] ==> ignore
           arg [--no-whole-archive] ==> ignore
           arg [--out-implib] ==> ignore
-          arg [libcmTC_d55ed.dll.a] ==> ignore
+          arg [libcmTC_9bfb6.dll.a] ==> ignore
           arg [--major-image-version] ==> ignore
           arg [0] ==> ignore
           arg [--minor-image-version] ==> ignore
@@ -2850,7 +3110,7 @@ events:
           arg [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/default-manifest.o] ==> obj [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/default-manifest.o]
           arg [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o] ==> obj [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o]
         ignore line: [collect2 version 15.2.0]
-        ignore line: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe -plugin C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\rapha\\AppData\\Local\\Temp\\ccklFMj5.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_d55ed.exe C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/crt2.o C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LC:/msys64/mingw64/bin/../lib/gcc -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v --whole-archive CMakeFiles\\cmTC_d55ed.dir/objects.a --no-whole-archive --out-implib libcmTC_d55ed.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/default-manifest.o C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o]
+        ignore line: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe -plugin C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\rapha\\AppData\\Local\\Temp\\cc94HCfg.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_9bfb6.exe C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/crt2.o C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LC:/msys64/mingw64/bin/../lib/gcc -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v --whole-archive CMakeFiles\\cmTC_9bfb6.dir/objects.a --no-whole-archive --out-implib libcmTC_9bfb6.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/default-manifest.o C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o]
         linker tool for 'C': C:/msys64/mingw64/x86_64-w64-mingw32/bin/ld.exe
         remove lib [gcc_eh]
         remove lib [msvcrt]
@@ -2891,8 +3151,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/build/CMakeFiles/CMakeScratch/TryCompile-ra6wp7"
-      binary: "C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/build/CMakeFiles/CMakeScratch/TryCompile-ra6wp7"
+      source: "C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/build/CMakeFiles/CMakeScratch/TryCompile-pgga9z"
+      binary: "C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/build/CMakeFiles/CMakeScratch/TryCompile-pgga9z"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -2902,13 +3162,13 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/build/CMakeFiles/CMakeScratch/TryCompile-ra6wp7'
+        Change Dir: 'C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/build/CMakeFiles/CMakeScratch/TryCompile-pgga9z'
         
-        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/msys64/mingw64/bin/mingw32-make.exe -f Makefile cmTC_34a24/fast
-        C:/msys64/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_34a24.dir\\build.make CMakeFiles/cmTC_34a24.dir/build
-        mingw32-make[1]: Entering directory 'C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/build/CMakeFiles/CMakeScratch/TryCompile-ra6wp7'
-        Building CXX object CMakeFiles/cmTC_34a24.dir/CMakeCXXCompilerABI.cpp.obj
-        C:\\msys64\\mingw64\\bin\\c++.exe   -v -o CMakeFiles\\cmTC_34a24.dir\\CMakeCXXCompilerABI.cpp.obj -c "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCXXCompilerABI.cpp"
+        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/msys64/mingw64/bin/mingw32-make.exe -f Makefile cmTC_34039/fast
+        C:/msys64/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_34039.dir\\build.make CMakeFiles/cmTC_34039.dir/build
+        mingw32-make[1]: Entering directory 'C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/build/CMakeFiles/CMakeScratch/TryCompile-pgga9z'
+        Building CXX object CMakeFiles/cmTC_34039.dir/CMakeCXXCompilerABI.cpp.obj
+        C:\\msys64\\mingw64\\bin\\c++.exe   -v -o CMakeFiles\\cmTC_34039.dir\\CMakeCXXCompilerABI.cpp.obj -c "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCXXCompilerABI.cpp"
         Using built-in specs.
         COLLECT_GCC=C:\\msys64\\mingw64\\bin\\c++.exe
         Target: x86_64-w64-mingw32
@@ -2916,8 +3176,8 @@ events:
         Thread model: posix
         Supported LTO compression algorithms: zlib zstd
         gcc version 15.2.0 (Rev8, Built by MSYS2 project) 
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_34a24.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_34a24.dir\\'
-         C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/cc1plus.exe -quiet -v -iprefix C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/ -D_REENTRANT C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles\\cmTC_34a24.dir\\ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=nocona -version -o C:\\Users\\rapha\\AppData\\Local\\Temp\\ccdN50Sv.s
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_34039.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_34039.dir\\'
+         C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/cc1plus.exe -quiet -v -iprefix C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/ -D_REENTRANT C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles\\cmTC_34039.dir\\ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=nocona -version -o C:\\Users\\rapha\\AppData\\Local\\Temp\\cc1ojevK.s
         GNU C++17 (Rev8, Built by MSYS2 project) version 15.2.0 (x86_64-w64-mingw32)
         	compiled by GNU C version 15.2.0, GMP version 6.3.0, MPFR version 4.2.2, MPC version 1.3.1, isl version isl-0.27-GMP
         
@@ -2942,14 +3202,14 @@ events:
          C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/include-fixed
         End of search list.
         Compiler executable checksum: e7386b44e3a7fd4f3b26b08cdd95994a
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_34a24.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_34a24.dir\\'
-         C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\\cmTC_34a24.dir\\CMakeCXXCompilerABI.cpp.obj C:\\Users\\rapha\\AppData\\Local\\Temp\\ccdN50Sv.s
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_34039.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_34039.dir\\'
+         C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\\cmTC_34039.dir\\CMakeCXXCompilerABI.cpp.obj C:\\Users\\rapha\\AppData\\Local\\Temp\\cc1ojevK.s
         GNU assembler version 2.45 (x86_64-w64-mingw32) using BFD version (GNU Binutils) 2.45
         COMPILER_PATH=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/;C:/msys64/mingw64/bin/../lib/gcc/;C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/
         LIBRARY_PATH=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/;C:/msys64/mingw64/bin/../lib/gcc/;C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/;C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/;C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/;C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_34a24.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_34a24.dir\\CMakeCXXCompilerABI.cpp.'
-        Linking CXX executable cmTC_34a24.exe
-        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_34a24.dir\\link.txt --verbose=1
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_34039.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_34039.dir\\CMakeCXXCompilerABI.cpp.'
+        Linking CXX executable cmTC_34039.exe
+        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_34039.dir\\link.txt --verbose=1
         Using built-in specs.
         COLLECT_GCC=C:\\msys64\\mingw64\\bin\\c++.exe
         COLLECT_LTO_WRAPPER=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe
@@ -2960,16 +3220,16 @@ events:
         gcc version 15.2.0 (Rev8, Built by MSYS2 project) 
         COMPILER_PATH=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/;C:/msys64/mingw64/bin/../lib/gcc/;C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/
         LIBRARY_PATH=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/;C:/msys64/mingw64/bin/../lib/gcc/;C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/;C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/;C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/;C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_34a24.exe' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'cmTC_34a24.'
-         C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/collect2.exe -plugin C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\rapha\\AppData\\Local\\Temp\\cctV4CeJ.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_34a24.exe C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/crt2.o C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LC:/msys64/mingw64/bin/../lib/gcc -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v --whole-archive CMakeFiles\\cmTC_34a24.dir/objects.a --no-whole-archive --out-implib libcmTC_34a24.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/default-manifest.o C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_34039.exe' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'cmTC_34039.'
+         C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/collect2.exe -plugin C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\rapha\\AppData\\Local\\Temp\\ccVvftzT.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_34039.exe C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/crt2.o C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LC:/msys64/mingw64/bin/../lib/gcc -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v --whole-archive CMakeFiles\\cmTC_34039.dir/objects.a --no-whole-archive --out-implib libcmTC_34039.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/default-manifest.o C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o
         collect2 version 15.2.0
-        C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe -plugin C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\rapha\\AppData\\Local\\Temp\\cctV4CeJ.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_34a24.exe C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/crt2.o C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LC:/msys64/mingw64/bin/../lib/gcc -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v --whole-archive CMakeFiles\\cmTC_34a24.dir/objects.a --no-whole-archive --out-implib libcmTC_34a24.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/default-manifest.o C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o
+        C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe -plugin C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\rapha\\AppData\\Local\\Temp\\ccVvftzT.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_34039.exe C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/crt2.o C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LC:/msys64/mingw64/bin/../lib/gcc -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v --whole-archive CMakeFiles\\cmTC_34039.dir/objects.a --no-whole-archive --out-implib libcmTC_34039.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/default-manifest.o C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o
         GNU ld (GNU Binutils) 2.45
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_34a24.exe' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'cmTC_34a24.'
-        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_34a24.dir/objects.a
-        C:\\msys64\\mingw64\\bin\\ar.exe qc CMakeFiles\\cmTC_34a24.dir/objects.a @CMakeFiles\\cmTC_34a24.dir\\objects1.rsp
-        C:\\msys64\\mingw64\\bin\\c++.exe  -v -Wl,-v -Wl,--whole-archive CMakeFiles\\cmTC_34a24.dir/objects.a -Wl,--no-whole-archive -o cmTC_34a24.exe -Wl,--out-implib,libcmTC_34a24.dll.a -Wl,--major-image-version,0,--minor-image-version,0
-        mingw32-make[1]: Leaving directory 'C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/build/CMakeFiles/CMakeScratch/TryCompile-ra6wp7'
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_34039.exe' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'cmTC_34039.'
+        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_34039.dir/objects.a
+        C:\\msys64\\mingw64\\bin\\ar.exe qc CMakeFiles\\cmTC_34039.dir/objects.a @CMakeFiles\\cmTC_34039.dir\\objects1.rsp
+        C:\\msys64\\mingw64\\bin\\c++.exe  -v -Wl,-v -Wl,--whole-archive CMakeFiles\\cmTC_34039.dir/objects.a -Wl,--no-whole-archive -o cmTC_34039.exe -Wl,--out-implib,libcmTC_34039.dll.a -Wl,--major-image-version,0,--minor-image-version,0
+        mingw32-make[1]: Leaving directory 'C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/build/CMakeFiles/CMakeScratch/TryCompile-pgga9z'
         
       exitCode: 0
   -
@@ -3008,13 +3268,13 @@ events:
       Parsed CXX implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)))("|,| |$)]
-        ignore line: [Change Dir: 'C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/build/CMakeFiles/CMakeScratch/TryCompile-ra6wp7']
+        ignore line: [Change Dir: 'C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/build/CMakeFiles/CMakeScratch/TryCompile-pgga9z']
         ignore line: []
-        ignore line: [Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/msys64/mingw64/bin/mingw32-make.exe -f Makefile cmTC_34a24/fast]
-        ignore line: [C:/msys64/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_34a24.dir\\build.make CMakeFiles/cmTC_34a24.dir/build]
-        ignore line: [mingw32-make[1]: Entering directory 'C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/build/CMakeFiles/CMakeScratch/TryCompile-ra6wp7']
-        ignore line: [Building CXX object CMakeFiles/cmTC_34a24.dir/CMakeCXXCompilerABI.cpp.obj]
-        ignore line: [C:\\msys64\\mingw64\\bin\\c++.exe   -v -o CMakeFiles\\cmTC_34a24.dir\\CMakeCXXCompilerABI.cpp.obj -c "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCXXCompilerABI.cpp"]
+        ignore line: [Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/msys64/mingw64/bin/mingw32-make.exe -f Makefile cmTC_34039/fast]
+        ignore line: [C:/msys64/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_34039.dir\\build.make CMakeFiles/cmTC_34039.dir/build]
+        ignore line: [mingw32-make[1]: Entering directory 'C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/build/CMakeFiles/CMakeScratch/TryCompile-pgga9z']
+        ignore line: [Building CXX object CMakeFiles/cmTC_34039.dir/CMakeCXXCompilerABI.cpp.obj]
+        ignore line: [C:\\msys64\\mingw64\\bin\\c++.exe   -v -o CMakeFiles\\cmTC_34039.dir\\CMakeCXXCompilerABI.cpp.obj -c "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCXXCompilerABI.cpp"]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=C:\\msys64\\mingw64\\bin\\c++.exe]
         ignore line: [Target: x86_64-w64-mingw32]
@@ -3022,8 +3282,8 @@ events:
         ignore line: [Thread model: posix]
         ignore line: [Supported LTO compression algorithms: zlib zstd]
         ignore line: [gcc version 15.2.0 (Rev8  Built by MSYS2 project) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_34a24.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_34a24.dir\\']
-        ignore line: [ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/cc1plus.exe -quiet -v -iprefix C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/ -D_REENTRANT C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles\\cmTC_34a24.dir\\ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=nocona -version -o C:\\Users\\rapha\\AppData\\Local\\Temp\\ccdN50Sv.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_34039.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_34039.dir\\']
+        ignore line: [ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/cc1plus.exe -quiet -v -iprefix C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/ -D_REENTRANT C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles\\cmTC_34039.dir\\ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=nocona -version -o C:\\Users\\rapha\\AppData\\Local\\Temp\\cc1ojevK.s]
         ignore line: [GNU C++17 (Rev8  Built by MSYS2 project) version 15.2.0 (x86_64-w64-mingw32)]
         ignore line: [	compiled by GNU C version 15.2.0  GMP version 6.3.0  MPFR version 4.2.2  MPC version 1.3.1  isl version isl-0.27-GMP]
         ignore line: []
@@ -3048,8 +3308,8 @@ events:
         ignore line: [ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/include-fixed]
         ignore line: [End of search list.]
         ignore line: [Compiler executable checksum: e7386b44e3a7fd4f3b26b08cdd95994a]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_34a24.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_34a24.dir\\']
-        ignore line: [ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\\cmTC_34a24.dir\\CMakeCXXCompilerABI.cpp.obj C:\\Users\\rapha\\AppData\\Local\\Temp\\ccdN50Sv.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_34039.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_34039.dir\\']
+        ignore line: [ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\\cmTC_34039.dir\\CMakeCXXCompilerABI.cpp.obj C:\\Users\\rapha\\AppData\\Local\\Temp\\cc1ojevK.s]
         ignore line: [GNU assembler version 2.45 (x86_64-w64-mingw32) using BFD version (GNU Binutils) 2.45]
         ignore line: [COMPILER_PATH=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/]
         ignore line: [C:/msys64/mingw64/bin/../lib/gcc/]
@@ -3060,9 +3320,9 @@ events:
         ignore line: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/]
         ignore line: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/]
         ignore line: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_34a24.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_34a24.dir\\CMakeCXXCompilerABI.cpp.']
-        ignore line: [Linking CXX executable cmTC_34a24.exe]
-        ignore line: ["C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_34a24.dir\\link.txt --verbose=1]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_34039.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_34039.dir\\CMakeCXXCompilerABI.cpp.']
+        ignore line: [Linking CXX executable cmTC_34039.exe]
+        ignore line: ["C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_34039.dir\\link.txt --verbose=1]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=C:\\msys64\\mingw64\\bin\\c++.exe]
         ignore line: [COLLECT_LTO_WRAPPER=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe]
@@ -3080,13 +3340,13 @@ events:
         ignore line: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/]
         ignore line: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/]
         ignore line: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_34a24.exe' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'cmTC_34a24.']
-        link line: [ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/collect2.exe -plugin C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\rapha\\AppData\\Local\\Temp\\cctV4CeJ.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_34a24.exe C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/crt2.o C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LC:/msys64/mingw64/bin/../lib/gcc -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v --whole-archive CMakeFiles\\cmTC_34a24.dir/objects.a --no-whole-archive --out-implib libcmTC_34a24.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/default-manifest.o C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_34039.exe' '-shared-libgcc' '-mtune=generic' '-march=nocona' '-dumpdir' 'cmTC_34039.']
+        link line: [ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/collect2.exe -plugin C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\rapha\\AppData\\Local\\Temp\\ccVvftzT.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_34039.exe C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/crt2.o C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LC:/msys64/mingw64/bin/../lib/gcc -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v --whole-archive CMakeFiles\\cmTC_34039.dir/objects.a --no-whole-archive --out-implib libcmTC_34039.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/default-manifest.o C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o]
           arg [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/collect2.exe] ==> ignore
           arg [-plugin] ==> ignore
           arg [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll] ==> ignore
           arg [-plugin-opt=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe] ==> ignore
-          arg [-plugin-opt=-fresolution=C:\\Users\\rapha\\AppData\\Local\\Temp\\cctV4CeJ.res] ==> ignore
+          arg [-plugin-opt=-fresolution=C:\\Users\\rapha\\AppData\\Local\\Temp\\ccVvftzT.res] ==> ignore
           arg [-plugin-opt=-pass-through=-lmingw32] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
@@ -3108,7 +3368,7 @@ events:
           arg [i386pep] ==> ignore
           arg [-Bdynamic] ==> search dynamic
           arg [-o] ==> ignore
-          arg [cmTC_34a24.exe] ==> ignore
+          arg [cmTC_34039.exe] ==> ignore
           arg [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/crt2.o] ==> obj [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/crt2.o]
           arg [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o] ==> obj [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o]
           arg [-LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0] ==> dir [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0]
@@ -3119,10 +3379,10 @@ events:
           arg [-LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../..] ==> dir [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../..]
           arg [-v] ==> ignore
           arg [--whole-archive] ==> ignore
-          arg [CMakeFiles\\cmTC_34a24.dir/objects.a] ==> ignore
+          arg [CMakeFiles\\cmTC_34039.dir/objects.a] ==> ignore
           arg [--no-whole-archive] ==> ignore
           arg [--out-implib] ==> ignore
-          arg [libcmTC_34a24.dll.a] ==> ignore
+          arg [libcmTC_34039.dll.a] ==> ignore
           arg [--major-image-version] ==> ignore
           arg [0] ==> ignore
           arg [--minor-image-version] ==> ignore
@@ -3148,7 +3408,7 @@ events:
           arg [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/default-manifest.o] ==> obj [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/default-manifest.o]
           arg [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o] ==> obj [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o]
         ignore line: [collect2 version 15.2.0]
-        ignore line: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe -plugin C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\rapha\\AppData\\Local\\Temp\\cctV4CeJ.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_34a24.exe C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/crt2.o C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LC:/msys64/mingw64/bin/../lib/gcc -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v --whole-archive CMakeFiles\\cmTC_34a24.dir/objects.a --no-whole-archive --out-implib libcmTC_34a24.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/default-manifest.o C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o]
+        ignore line: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe -plugin C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\rapha\\AppData\\Local\\Temp\\ccVvftzT.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_34039.exe C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/crt2.o C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LC:/msys64/mingw64/bin/../lib/gcc -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v --whole-archive CMakeFiles\\cmTC_34039.dir/objects.a --no-whole-archive --out-implib libcmTC_34039.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/default-manifest.o C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o]
         linker tool for 'CXX': C:/msys64/mingw64/x86_64-w64-mingw32/bin/ld.exe
         remove lib [msvcrt]
         remove lib [msvcrt]

@@ -1,6 +1,13 @@
 #include "../headers/Renderer.h"
 #include <vector>
 
+/*
+    For making some shadow system
+    -make each light have its matrixes (via a function just like the camera)
+    -we will batch all the matrixes in the shaders using UBOS
+    //lets test first with only directional
+*/
+
 Renderer::Renderer(unsigned int width, unsigned int height, const char* title) {
 
     glfwInit();
@@ -46,7 +53,7 @@ Renderer::Renderer(unsigned int width, unsigned int height, const char* title) {
 
     // Enable depth testing
     glEnable(GL_DEPTH_TEST);
-    //glEnable(GL_CULL_FACE);
+    glEnable(GL_CULL_FACE);;
     glEnable(GL_STENCIL_TEST);
     glEnable(GL_BLEND); 
     glEnable(GL_MULTISAMPLE);
@@ -61,15 +68,26 @@ Renderer::Renderer(unsigned int width, unsigned int height, const char* title) {
 
 
     // Initialize camera
-    this->camera = std::unique_ptr<Camera>( new Camera(45.0f, (float)width / (float)height, 0.1f, 1000.0f, width, height));
-    this->camera->setPosition(vec3(0.0f, 0.0f, 5.0f));
-    this->camera->setTarget(vec3(0.0f, 0.0f, 0.0f));
+    this->camera = std::unique_ptr<Camera>( new Camera(70.0f, (float)width / (float)height, 0.1f, 1000.0f, width, height));
+    this->camera->setPosition(vec3(0.0f, 5.0f, 5.0f));
+    //this->camera->setRotation(vec3(-45.0f,-90.0f,0.0f));
+    //this->camera->lookAt(vec3(0,0,0));
 
 
     this->loadShaders();
     this->loadScreenBuffer();
     this->loadSkyBox();
     this->loadShadowMap();
+
+    /*debug stuff*/
+
+    debugShader = new Shader();
+
+    debugShader->loadFromFile(
+        "Shaders/Debug/normal_vert.glsl",
+        "Shaders/Debug/normal_geo.glsl",
+        "Shaders/Debug/normal_frag.glsl"
+    );
 
 
 
@@ -299,33 +317,53 @@ void Renderer::loadScreenBuffer(){
 
 void Renderer::loadShadowMap() {
     
-    glGenFramebuffers(1, &this->gl_ShadowMap_FBO);
-    glGenTextures(1, &this->gl_ShadowMap_TEX);
+
+    //multiple maps actual implementation
+    this->gl_ShadowMap_Resolution = 4096;
     
-    glBindTexture(GL_TEXTURE_2D, this->gl_ShadowMap_TEX);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, 4096, 4096, 0, 
-                 GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glGenFramebuffers(this->MAX_SHADOWCASTERS, this->gl_ShadowMap_FBOS);
+    //generate 32 textures for the maps
     
-    glBindFramebuffer(GL_FRAMEBUFFER, this->gl_ShadowMap_FBO);
-    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, 
-                           GL_TEXTURE_2D, this->gl_ShadowMap_TEX, 0);
-    glDrawBuffer(GL_NONE);
-    glReadBuffer(GL_NONE);
+    glGenTextures(1,&this->gl_ShadowMap_TEX_ARRAY);
+    glBindTexture(GL_TEXTURE_2D_ARRAY,this->gl_ShadowMap_TEX_ARRAY);
+    glTexStorage3D(GL_TEXTURE_2D_ARRAY,1,GL_DEPTH_COMPONENT32 ,this->gl_ShadowMap_Resolution
+    ,this->gl_ShadowMap_Resolution,this->MAX_SHADOWCASTERS);
     
-    
+    glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
+    glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
+    float borderColor[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+    glTexParameterfv(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_BORDER_COLOR, borderColor);
+    glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_COMPARE_MODE, GL_COMPARE_REF_TO_TEXTURE);
+    glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_COMPARE_FUNC, GL_LEQUAL);
+
+
+    //now we go binding all of the texs to their respective framebuffers
+    for(int i = 0;i<this->MAX_SHADOWCASTERS;i++){
+        glBindFramebuffer(GL_FRAMEBUFFER,this->gl_ShadowMap_FBOS[i]);
+        //0 is the mipmap and i is the layer
+        glFramebufferTextureLayer(GL_FRAMEBUFFER,GL_DEPTH_ATTACHMENT,this->gl_ShadowMap_TEX_ARRAY,0,i);
+        glDrawBuffer(GL_NONE);
+        glReadBuffer(GL_NONE); //we are not using color for the shadow
+    }
+
+
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
-    glDrawBuffer(GL_BACK);   // Reset default framebuffer draw buffer
-    glReadBuffer(GL_BACK);   // Reset default framebuffer read buffer
+    glDrawBuffer(GL_BACK);   
+    glReadBuffer(GL_BACK);
+    
     
     this->shadowMapShader = unique_ptr<Shader>(new Shader());
     if(!(this->shadowMapShader->loadFromFile("Shaders/shadow_vertex.glsl",
                                               "Shaders/shadow_frag.glsl"))) {
         Log::write("[Renderer::loadShadowMap] - Failed to load shadowmapping shader!");
     }
+
+
+
+
+    
 }
 
 
@@ -426,61 +464,39 @@ void Renderer::processInput(){
     this->mouseX = x;
     this->mouseY = y;
 
+
+
     this->camera->receiveInput(inputDir,mouseDir,this->deltaTime,zoomIn,zoomOut);
+    SpotLight* light = (SpotLight*)this->loadedScene->getLights()[LightType::SPOT][0].get();
+
+    light->transform.setPosition(this->camera->getPosition()  - light->transform.getUp()); //the shadows dont appear
+    light->transform.lookAt(this->camera->getPosition() + 10.0f*this->camera->getForward());
+    
+ 
+    //if i move the light here manually it is ok
+    
 
     if(glfwGetKey(this->gl_Window,GLFW_KEY_W) ==  GLFW_PRESS){
-        this->loadedScene->getLights()[LightType::POINT][0]->transform.setPosition(vec3(this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition().x+0.01,
-        this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition().y,
-        this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition().z));
-
+        light->transform.rotateGlobal(vec3(0.1,0.0,0));
     }
 
+    
     if(glfwGetKey(this->gl_Window,GLFW_KEY_S) ==  GLFW_PRESS){
-        this->loadedScene->getLights()[LightType::POINT][0]->transform.setPosition(vec3(this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition().x-0.01,
-        this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition().y,
-        this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition().z));
+        light->transform.rotateGlobal(vec3(-0.1,0.0,0));
 
     }
 
     if(glfwGetKey(this->gl_Window,GLFW_KEY_D) ==  GLFW_PRESS){
-        this->loadedScene->getLights()[LightType::POINT][0]->transform.setPosition(vec3(this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition().x,
-        this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition().y,
-        this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition().z+0.01));
-
-        
+        light->transform.rotateGlobal(vec3(0.0,0.1,0));
     }
 
     
     if(glfwGetKey(this->gl_Window,GLFW_KEY_A) ==  GLFW_PRESS){
-        this->loadedScene->getLights()[LightType::POINT][0]->transform.setPosition(vec3(this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition().x,
-        this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition().y,
-        this->loadedScene->getLights()[LightType::POINT][0]->transform.getPosition().z-0.01));
+        light->transform.rotateGlobal(vec3(0.0,-0.1,0));
 
     }
-
-static float angle = 0.0f;
-if (glfwGetKey(this->gl_Window, GLFW_KEY_Q) == GLFW_PRESS) angle += 0.001f;
-if (glfwGetKey(this->gl_Window, GLFW_KEY_E) == GLFW_PRESS) angle -= 0.001f;
-
-auto light = this->loadedScene->getLights()[LightType::DIRECTIONAL][0];
-
-float radius = 5.0f;
-vec3 pos = vec3(cos(angle) * radius, sin(angle) * radius, 0.0f);
-light->transform.setPosition(pos);
-
-// compute direction to origin
-vec3 dir = glm::normalize(-pos);
-
-// build rotation quaternion to face origin
-vec3 forward = vec3(0,0,1); // default forward
-vec3 axis = glm::cross(forward, dir);
-float dot = glm::dot(forward, dir);
-float angleBetween = acos(glm::clamp(dot, -1.0f, 1.0f));
-
-if (glm::length(axis) > 0.0001f) {
-    glm::quat rot = glm::angleAxis(angleBetween, glm::normalize(axis));
-    light->transform.setRotation(glm::degrees(glm::eulerAngles(rot)));
-}
+    
+    
 
 
 
@@ -556,7 +572,20 @@ void Renderer::setupShaders(){
 }
 
 void Renderer::setupShaderLighting(Shader* shader){
+    //SpotLight* light = (SpotLight*)this->loadedScene->getLights()[LightType::SPOT][0].get();
+    //std::cout << "pos: " <<  light->transform.getPosition().x <<"," <<light->transform.getPosition().y <<"," << light->transform.getPosition().z << " ";
+    //std::cout << "rot: " <<  light->transform.getRotation().x <<"," <<light->transform.getRotation().y <<"," << light->transform.getRotation().z << " ";
+    //std::cout << "up: " <<  light->transform.getUp().x <<"," <<light->transform.getUp().y <<"," << light->transform.getUp().z << "\n";
+
+    //std::cout << "campos: " <<  camera->getPosition().x <<"," <<camera->getPosition().y <<"," << camera->getPosition().z << " ";
+    //std::cout << "camrot: " <<  camera->getRotation().x <<"," <<camera->getRotation().y <<"," << camera->getRotation().z << " ";
+    //std::cout << "camfowr: " <<  camera->getForward().x <<"," <<camera->getForward().y <<"," << camera->getForward().z << "\n";
+    
     shader->setUniform("ambientLight",this->loadedScene->ambientLight);
+
+    shader->setUniform("directionalLightCount", (int)this->loadedScene->getLights()[LightType::DIRECTIONAL].size());
+    shader->setUniform("pointLightCount", (int)this->loadedScene->getLights()[LightType::POINT].size());
+    shader->setUniform("spotLightCount", (int)this->loadedScene->getLights()[LightType::SPOT].size());
 
     for(int i = 0; i < this->loadedScene->getLights()[LightType::POINT].size(); i++){
         PointLight* light = static_cast<PointLight*>(this->loadedScene->getLights()[LightType::POINT][i].get());
@@ -572,6 +601,7 @@ void Renderer::setupShaderLighting(Shader* shader){
         shader->setUniform("dirLights[" + std::to_string(i) +"].color", light->getColor());
         shader->setUniform("dirLights[" + std::to_string(i) +"].intensity", light->getIntensity());
 
+
     }
     for(int i = 0; i < this->loadedScene->getLights()[LightType::SPOT].size(); i++){
         SpotLight* light = static_cast<SpotLight*>(this->loadedScene->getLights()[LightType::SPOT][i].get());
@@ -583,70 +613,61 @@ void Renderer::setupShaderLighting(Shader* shader){
 
     }
 
-    //world to light matrices
-    shader->setUniform("worldtoLightMat",this->worldToLightMat);
-    //shadow map
+
+    //set shadow map array
+    for(int i = 0;i<activeShadowCasters;i++){
+        shader->setUniform("lightMats[" + std::to_string(i) +"]", this->gl_LightMatrices[i]);
+    }
     glActiveTexture(GL_TEXTURE0+15);
-    glBindTexture(GL_TEXTURE_2D,this->gl_ShadowMap_TEX);
-    shader->setUniform("shadowMap",15);
+    glBindTexture(GL_TEXTURE_2D_ARRAY,this->gl_ShadowMap_TEX_ARRAY);
+    shader->setUniform("shadowMaps",15);
+    shader->setUniform("activeShadowCasters",(int)this->activeShadowCasters);
 
 }
 
 
 void Renderer::shadowPass(){
-
     glViewport(0, 0, 4096, 4096);
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
     glDepthMask(GL_TRUE);
-    glBindFramebuffer(GL_FRAMEBUFFER, this->gl_ShadowMap_FBO);
+    glEnable(GL_CULL_FACE);
     glCullFace(GL_FRONT);
-    glClear(GL_DEPTH_BUFFER_BIT);
-
-    glEnable(GL_POLYGON_OFFSET_FILL);
-
-    
-    DirectionalLight* light = (DirectionalLight*) this->loadedScene->getLights()[LightType::DIRECTIONAL][0].get();
-    
-    // Make frustum VERY large to ensure geometry is inside
-    mat4 lightPerspective = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, 1.0f, 15.0f);
-    
-    // Lo
-    mat4 lightView = glm::lookAt(
-    light->transform.getPosition(),      // eye: 45 degrees up and to the side
-    light->transform.getPosition() + light->transform.getForward(),        // target: looking at origin
-    light->transform.getUp()         // up: world up (now we can use it since not looking straight down)
-    );
-    
-    mat4 worldToLightTransform = lightPerspective * lightView;
-    this->worldToLightMat = worldToLightTransform;
-    
     this->shadowMapShader->bindShader();
-    this->shadowMapShader->setUniform("lightSpaceMat", worldToLightTransform);
     
-    
-    //now, we just render everything, we do not consider transparency here, we dont care about any of that or their respective shaders
-    //so we will just loop thourght the loaded scene drawables and render them whatever  
-    glClear(GL_DEPTH_BUFFER_BIT);
-    const auto& models = this->loadedScene->getModels();
-        for(auto modelIt = models.begin(); modelIt != models.end(); ++modelIt){
-        Drawable* drawable = modelIt->get();
-        if(drawable->getType() == DrawableType::MODEL){ //models cast shadows, usually
-            Model* model = static_cast<Model*>(drawable);
-            this->shadowMapShader->setUniform("modelMat",model->transform.getTransformMat());
-            model->draw(this->shadowMapShader.get());
-
+    for(int i = 0;i<this->activeShadowCasters;i++){
+        glBindFramebuffer(GL_FRAMEBUFFER, this->gl_ShadowMap_FBOS[i]); //debugging
+        glClear(GL_DEPTH_BUFFER_BIT);
+       
+       
+       
+       
+        Light* light = this->shadowCasters.at(i).get();
+       
+       
+        mat4 worldToLightTransform = light->getProjectionMatrix() * light->getViewMatrix();
+        this->gl_LightMatrices[i] = worldToLightTransform;
+        this->shadowMapShader->setUniform("lightSpaceMat",worldToLightTransform);
+       
+       
+        //now, we just render everything, we do not consider transparency here, we dont care about any of that or their respective shaders
+            const auto& models = this->loadedScene->getModels();
+            for(auto modelIt = models.begin(); modelIt != models.end(); ++modelIt){
+                Drawable* drawable = modelIt->get();
+                if(drawable->getType() == DrawableType::MODEL){ //models cast shadows, usually
+                    Model* model = static_cast<Model*>(drawable);
+                    this->shadowMapShader->setUniform("modelMat",model->transform.getTransformMat());
+                    model->draw(this->shadowMapShader.get());
+               
+                }
+           
+           
+           
+            }
         }
-
-        
-
-    }
-    glDisable(GL_POLYGON_OFFSET_FILL);
     glCullFace(GL_BACK);
-    
-    
-
-
+   
+   
     //here we should have this light shadow map on the gl_ShadowMap_TEX
     glBindFramebuffer(GL_FRAMEBUFFER,0);
     
@@ -661,6 +682,7 @@ void Renderer::geometryPass() {
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
     glEnable(GL_DEPTH_TEST);
+        glCullFace(GL_BACK);
 
 
     setupShaders();
@@ -681,10 +703,15 @@ void Renderer::geometryPass() {
                 shader->bindShader();
                 shader->setUniform("modelMat",model->transform.getTransformMat());
                 shader->setUniform("normalMat",model->transform.getNormalMat());
-                if(model->hasOutline == false){
+  
                     model->draw(shader);
-                }
-                else{
+
+                    //draw debug
+                    debugShader->bindShader();
+                    debugShader->setUniform("modelMat",model->transform.getTransformMat());
+                    model->draw(debugShader);
+                
+                /*else{
                     //glStencilMask(0xFF);  // enable stencil writes
                     ////we will use the stencil buffer for some neat things
                     //glStencilFunc(GL_ALWAYS, 1, 0xFF);        // always pass
@@ -692,6 +719,9 @@ void Renderer::geometryPass() {
                                                                      
                                                             // keep depth for original model
                     model->draw(shader);  
+                                        debugShader->bindShader();
+                    debugShader->setUniform("modelMat",model->transform.getTransformMat());
+                    model->draw(debugShader);
                     //Log::write("[Renderer::geometryPass] - WARNING - OUTLINES ARE DISABLED UNTIL I SORT THEM CORRECTLY!");      
                                                         
                     //glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
@@ -706,9 +736,10 @@ void Renderer::geometryPass() {
                     //glEnable(GL_DEPTH_TEST);  
 
                     }
+                    */
                 }
 
-            else if(drawable->getType() == DrawableType::INSTANCED_MODEL){
+            else if(drawable->getType() == DrawableType::INSTANCED_MODEL){  
                 glStencilMask(0x00);
                 InstancedModel* model = static_cast<InstancedModel*>(drawable); 
                 //loadedShaders[ShaderType::Instanced].get()->bindShader(); //not necessary
@@ -815,6 +846,17 @@ void Renderer::dispose(){
 void Renderer::loadScene(Scene* scene){
     this->loadedScene = scene;
     this->hasSortedGroups = false;
+    this->activeShadowCasters = scene->getLights()[LightType::DIRECTIONAL].size() + scene->getLights()[LightType::SPOT].size() ;//+ scene->getLights()[LightType::POINT].size() ;
+    //adding casters
+    const auto dirLights = scene->getLights()[LightType::DIRECTIONAL];
+    for(auto it = dirLights.begin();it != dirLights.end();++it){
+        this->shadowCasters.push_back(*it);
+    }
+    const auto spotLights = scene->getLights()[LightType::SPOT];
+    for(auto it = spotLights.begin();it != spotLights.end();++it){
+        this->shadowCasters.push_back(*it);
+    }
+
 
     sortSceneModels();
 

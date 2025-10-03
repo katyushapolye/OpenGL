@@ -95,6 +95,25 @@ void Transform::rotateLocal(vec3 angles) {
     updateVectors();
 }
 
+void Transform::lookAt(vec3 target) {
+    vec3 newForward = glm::normalize(target - position);
+
+    vec3 worldUp = vec3(0, 1, 0);
+    vec3 newRight = glm::normalize(glm::cross(worldUp, newForward));
+    vec3 newUp    = glm::normalize(glm::cross(newForward, newRight));
+
+    this->forward = newForward;
+    this->right   = newRight;
+    this->up      = newUp;
+
+    mat3 rotationMatrix(newRight, newUp, newForward); // column-major
+    this->rotation = glm::quat_cast(rotationMatrix);
+
+    this->needsUpdate = true;
+    updateVectors();
+}
+
+
 vec3 Transform::getForward() {
     return this->forward;
 }
@@ -104,6 +123,7 @@ vec3 Transform::getRight() {
 vec3 Transform::getUp() {
     return this->up;
 }
+
 
 
 void Transform::updateMatrixes(){
@@ -125,20 +145,16 @@ void Transform::updateMatrixes(){
 }
 
 void Transform::updateVectors() {
-    //i could optimize this but i understand how it is
-
     // Use the quaternion to directly transform the basis vectors
     // World forward vector (0, 0, -1) transformed by quaternion
     this->forward = glm::normalize(this->rotation * vec3(0.0f, 0.0f, 1.0f));
-    
+   
     // World up vector (0, 1, 0) transformed by quaternion
     vec3 worldUp = glm::normalize(this->rotation * vec3(0.0f, 1.0f, 0.0f));
-    
+   
     // Recalculate right using the actual forward and world up
     this->right = glm::normalize(glm::cross(this->forward, worldUp));
-    
+   
     // Recalculate up using right and forward (orthonormal basis)
     this->up = glm::normalize(glm::cross(this->right, this->forward));
-
-
 }

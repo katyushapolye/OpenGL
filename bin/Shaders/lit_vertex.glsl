@@ -7,14 +7,17 @@ layout (location = 4) in vec2 vTexCoords;
 layout (location = 5) in vec2 vTexCoords2;  // lightmap UVs
 
 
-uniform mat4 worldtoLightMat;
+uniform mat4 lightMats[16];
+uniform int activeShadowCasters;
+
 uniform mat4 modelMat;
 uniform mat3 normalMat;
 
 out vec2 fTexCoord;
 out vec3 fVertexNormal;
 out vec3 fFragPos;
-out vec4 fLightFragPos;
+out vec4 fLightFragPos[16];
+
 out mat3 fTBNMat; //Tangent bitangent Normal matrix space transformation matrix
 
 //Matrix UBO
@@ -44,5 +47,11 @@ void main()
     fVertexNormal = N; 
 
     //shadow mapping transform
-    fLightFragPos = worldtoLightMat * vec4(fFragPos, 1.0);
+    for(int i = 0;i<activeShadowCasters;i++){
+        fLightFragPos[i] = lightMats[i] * vec4(fFragPos, 1.0);
+    }
+
+
+    
+
 }

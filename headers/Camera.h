@@ -41,6 +41,9 @@ public:
     void setTarget(vec3 tgt);
     vec3 getTarget();
 
+    vec3 getForward();
+    vec3 getUp();
+
     mat4 getViewMat();
     mat4 getProjectionMat();
     
