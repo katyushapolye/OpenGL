@@ -4,7 +4,7 @@ Texture::Texture(std::string path, TextureType type){
     stbi_set_flip_vertically_on_load(true); //to make the uv map easier
     unsigned char* rawTexture = stbi_load(path.c_str(),&(this->w),&(this->h),&(this->channels),4);
     if(rawTexture == nullptr){
-        std::cout << "Failed to load texture!" << std::endl;
+        std::cout << "Failed to load texture!  - Path: "  << path << std::endl;
         return;
     }
     hasTransparency = false;

@@ -1,0 +1,9 @@
+newmtl cat
+Kd 0.8 0.0 0.0      # Diffuse color  
+Ks 1.0 1.0 1.0      # Specular color
+Ns 96.0             # Specular exponent
+d 1.0               # Dissolve/opacity
+illum 2             # Illumination model
+map_Kd cat_diffuse.png  # Diffuse texture map
+map_Ks cat_diffuse.png # Specular map
+map_bump cat_normal.png # Normal/bump map

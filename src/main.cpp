@@ -148,84 +148,13 @@ int main()
     l->transform.lookAt(vec3(0,0,0));
     scene->addLight(shared_ptr<DirectionalLight>(l));
 
-    /*
-    DirectionalLight* l= new DirectionalLight(vec3(0.0f, 0.0f,0.0f),vec3(1.0,1.0,1.0),0.3f);
-    l->transform.setPosition(vec3(0,5, 5));
-    l->transform.lookAt(vec3(0,0,0));
-    scene->addLight(shared_ptr<DirectionalLight>(l));
-    */
-
-    /*
-    l= new DirectionalLight(vec3(0.0f, 0.0f,0.0f),vec3(1.0,1.0,1.0),0.3f);
-    l->transform.setPosition(vec3(5,5,0));
-    l->transform.lookAt(vec3(0,0,0));
-    scene->addLight(shared_ptr<DirectionalLight>(l));
-
-    l= new DirectionalLight(vec3(0.0f, 0.0f,0.0f),vec3(1.0,1.0,1.0),0.3f);
-    l->transform.setPosition(vec3(-5,5,0));
-    l->transform.lookAt(vec3(0,0,0));
-    scene->addLight(shared_ptr<DirectionalLight>(l));
 
 
-    */
 
-    
-
-    Model* m = ModelLoader::loadFromObj("Models/terrain.obj");
-    m->transform.setScale(vec3(1.0,1,1));
-    scene->addModel(shared_ptr<Model>(m));
-    m = ModelLoader::loadFromObj("Models/cube.obj");
-    m->transform.setScale(vec3(0.5,0.5,0.5));
-    m->transform.setPosition(vec3(3,1,0));
-    scene->addModel(shared_ptr<Model>(m));
-    //m = ModelLoader::loadFromObj("Models/cube.obj");
-    //m->transform.setPosition(vec3(2,0.5,0));
-    //m->transform.rotateLocal(vec3(0,45,0));
-    //scene->addModel(shared_ptr<Model>(m));
-
-    Model* gizmo = ModelLoader::loadFromObj("Models/gizmo.obj");
-    
-    scene->addModel(shared_ptr<Model>( gizmo));
-
-     m = ModelLoader::loadFromObj("Models/window.obj");
-    m->transform.setPosition(vec3(0,0,5));
-    m->transform.rotateLocal(vec3(0,0,0));
-    scene->addModel(shared_ptr<Model>(m));
-
-     m = ModelLoader::loadFromObj("Models/window.obj");
-    m->transform.setPosition(vec3(0,0,6));
-    m->transform.rotateLocal(vec3(0,0,0));
-    scene->addModel(shared_ptr<Model>(m));
-
-    m = ModelLoader::loadFromObj("Models/cube.obj");
+    Model* m = ModelLoader::loadFromObj("Resources/Models/cube.obj");
     m->transform.setScale(vec3(0.5,0.5,0.5));
     m->transform.setPosition(vec3(0,1,7));
     scene->addModel(shared_ptr<Model>(m));
-
-    m = ModelLoader::loadFromObj("Models/cube.obj");
-    m->transform.setScale(vec3(0.5,0.5,0.5));
-    m->transform.setPosition(vec3(-2,1,-5));
-    scene->addModel(shared_ptr<Model>(m));
-
-
-    m = ModelLoader::loadFromObj("Models/quad.obj");
-    m->transform.setScale(vec3(1,1,1));
-    m->transform.setPosition(vec3(0,0,0));
-    m->transform.rotateLocal(vec3(0,0,0));
-    scene->addModel(shared_ptr<Model>(m));
-
-    m = ModelLoader::loadFromObj("Models/quad.obj");
-    m->transform.setScale(vec3(1,1,1));
-    m->transform.setPosition(vec3(-2,0,0));
-    m->transform.rotateLocal(vec3(0,0,0));
-    scene->addModel(shared_ptr<Model>(m));
-
-    m = ModelLoader::loadFromObj("Models/quad.obj");
-    m->transform.setScale(vec3(1,1,1));
-    m->transform.setPosition(vec3(-2,0,-2));
-    m->transform.rotateLocal(vec3(0,0,0));
-    scene->addModel(shared_ptr<Model>(m));
-
 
     renderer.loadScene(scene);
     renderer.loop();

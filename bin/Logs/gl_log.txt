@@ -1,68 +1,12 @@
-Log/initLog - Logging session started - 10:05:19 PM 
-[10:05:19 PM] - Program Initialized!
-[10:05:19 PM] - [RendererRenderer] - Mouse Raw acceleration is supported, turning it on
-[10:05:22 PM] - [ModelLoader::loadFromObjWithAssimp] - Successfully loaded: Models/terrain.obj with 1 meshes
-[10:05:22 PM] - [ModelLoader::loadFromObjWithAssimp] - Processing 1 materials (skipping default)
-[10:05:22 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
-[10:05:22 PM] - [TextureHandler::loadTexture] - Loaded texture from path Textures/Fallback/fallback.png- with transparency of value 0
-[10:05:23 PM] - [TextureHandler::loadTexture] - Loaded texture from path Textures/wood_floor_normal.png- with transparency of value 0
-[10:05:24 PM] - [TextureHandler::loadTexture] - Loaded texture from path Textures/wood_floor_specular.png- with transparency of value 0
-[10:05:24 PM] - [TextureHandler::loadTexture] - Loaded texture from path Textures/wood_floor.png- with transparency of value 0
-[10:05:24 PM] - [ModelLoader::loadFromObjWithAssimp] - Model loading completed successfully
-[10:05:24 PM] - [ModelLoader::loadFromObjWithAssimp] - Successfully loaded: Models/cube.obj with 1 meshes
-[10:05:25 PM] - [ModelLoader::loadFromObjWithAssimp] - Processing 1 materials (skipping default)
-[10:05:25 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
-[10:05:25 PM] - [TextureHandler::loadTexture] - Loaded texture from path Textures/wall_normal.png- with transparency of value 0
-[10:05:25 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
-[10:05:25 PM] - [TextureHandler::loadTexture] - Loaded texture from path Textures/wall_diff.png- with transparency of value 0
-[10:05:25 PM] - [ModelLoader::loadFromObjWithAssimp] - Model loading completed successfully
-[10:05:25 PM] - [ModelLoader::loadFromObjWithAssimp] - Successfully loaded: Models/gizmo.obj with 1 meshes
-[10:05:25 PM] - [ModelLoader::loadFromObjWithAssimp] - Processing 1 materials (skipping default)
-[10:05:25 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
-[10:05:25 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
-[10:05:25 PM] - [TextureHandler::loadTexture] - Loaded texture from path Textures/no_spec.png- with transparency of value 0
-[10:05:25 PM] - [TextureHandler::loadTexture] - Loaded texture from path Textures/gizmo.png - with transparency of value 0
-[10:05:25 PM] - [ModelLoader::loadFromObjWithAssimp] - Model loading completed successfully
-[10:05:25 PM] - [ModelLoader::loadFromObjWithAssimp] - Successfully loaded: Models/window.obj with 1 meshes
-[10:05:25 PM] - [ModelLoader::loadFromObjWithAssimp] - Processing 1 materials (skipping default)
-[10:05:25 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
-[10:05:25 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
-[10:05:25 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
-[10:05:25 PM] - [TextureHandler::loadTexture] - Loaded texture from path Textures/window.png- with transparency of value 1
-[10:05:25 PM] - [ModelLoader::loadFromObjWithAssimp] - Model loading completed successfully
-[10:05:25 PM] - [ModelLoader::loadFromObjWithAssimp] - Successfully loaded: Models/window.obj with 1 meshes
-[10:05:25 PM] - [ModelLoader::loadFromObjWithAssimp] - Processing 1 materials (skipping default)
-[10:05:25 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
-[10:05:25 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
-[10:05:25 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
-[10:05:25 PM] - [ModelLoader::loadFromObjWithAssimp] - Model loading completed successfully
-[10:05:25 PM] - [ModelLoader::loadFromObjWithAssimp] - Successfully loaded: Models/cube.obj with 1 meshes
-[10:05:25 PM] - [ModelLoader::loadFromObjWithAssimp] - Processing 1 materials (skipping default)
-[10:05:25 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
-[10:05:25 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
-[10:05:25 PM] - [ModelLoader::loadFromObjWithAssimp] - Model loading completed successfully
-[10:05:25 PM] - [ModelLoader::loadFromObjWithAssimp] - Successfully loaded: Models/cube.obj with 1 meshes
-[10:05:25 PM] - [ModelLoader::loadFromObjWithAssimp] - Processing 1 materials (skipping default)
-[10:05:25 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
-[10:05:25 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
-[10:05:25 PM] - [ModelLoader::loadFromObjWithAssimp] - Model loading completed successfully
-[10:05:25 PM] - [ModelLoader::loadFromObjWithAssimp] - Successfully loaded: Models/quad.obj with 1 meshes
-[10:05:25 PM] - [ModelLoader::loadFromObjWithAssimp] - Processing 1 materials (skipping default)
-[10:05:25 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
-[10:05:25 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
-[10:05:25 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
-[10:05:25 PM] - [TextureHandler::loadTexture] - Loaded texture from path Textures/grassleaves.png- with transparency of value 1
-[10:05:25 PM] - [ModelLoader::loadFromObjWithAssimp] - Model loading completed successfully
-[10:05:25 PM] - [ModelLoader::loadFromObjWithAssimp] - Successfully loaded: Models/quad.obj with 1 meshes
-[10:05:25 PM] - [ModelLoader::loadFromObjWithAssimp] - Processing 1 materials (skipping default)
-[10:05:25 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
-[10:05:25 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
-[10:05:25 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
-[10:05:25 PM] - [ModelLoader::loadFromObjWithAssimp] - Model loading completed successfully
-[10:05:25 PM] - [ModelLoader::loadFromObjWithAssimp] - Successfully loaded: Models/quad.obj with 1 meshes
-[10:05:25 PM] - [ModelLoader::loadFromObjWithAssimp] - Processing 1 materials (skipping default)
-[10:05:25 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
-[10:05:25 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
-[10:05:25 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
-[10:05:25 PM] - [ModelLoader::loadFromObjWithAssimp] - Model loading completed successfully
-Log/closeLog - Logging session ended - 10:06:08 PM 
+Log/initLog - Logging session started - 06:41:02 PM 
+[06:41:02 PM] - Program Initialized!
+[06:41:02 PM] - [RendererRenderer] - Mouse Raw acceleration is supported, turning it on
+[06:41:03 PM] - [ModelLoader::loadFromObjWithAssimp] - Successfully loaded: Resources/Models/cube.obj with 1 meshes
+[06:41:03 PM] - [ModelLoader::loadFromObjWithAssimp] - Processing 1 materials (skipping default)
+[06:41:03 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
+[06:41:03 PM] - [TextureHandler::loadTexture] - Loaded texture from path Resources/Textures/Fallback/fallback.png- with transparency of value 0
+[06:41:03 PM] - [TextureHandler::loadTexture] - Loaded texture from path Resources/Textures/wall_normal.png- with transparency of value 0
+[06:41:03 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
+[06:41:03 PM] - [TextureHandler::loadTexture] - Loaded texture from path Resources/Textures/wall_diff.png- with transparency of value 0
+[06:41:03 PM] - [ModelLoader::loadFromObjWithAssimp] - Model loading completed successfully
+Log/closeLog - Logging session ended - 06:41:12 PM 

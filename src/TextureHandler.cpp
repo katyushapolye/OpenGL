@@ -7,12 +7,12 @@ shared_ptr<Texture> TextureHandler::loadTexture(std::string path,TextureType typ
 
     if(path == "DIFFUSE_FALLBACK"){
         Log::write("[TextureHandler::loadTexture] - Setting texture path to Diffuse fallback.png");
-        path = "Textures/Fallback/fallback_white.png";
+        path = "Resources/Textures/Fallback/fallback_white.png";
     }
     else if(path == "GENERIC_FALLBACK" || path == ""){
         Log::write("[TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png");
 
-        path = "Textures/Fallback/fallback.png";
+        path = "Resources/Textures/Fallback/fallback.png";
     }
 
 

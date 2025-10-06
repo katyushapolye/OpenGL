@@ -1,9 +1,0 @@
-newmtl brick
-Kd 0.8 0.0 0.0      # Diffuse color  
-Ks 1.0 1.0 1.0      # Specular color
-Ns 1.0             # Specular exponent
-d 1.0               # Dissolve/opacity
-illum 2             # Illumination model
-map_Kd grass.png  # Diffuse texture map
-map_Ks no_spec.png # Specular map
-map_bump grass.png # Normal/bump map

@@ -87,13 +87,11 @@ private:
     unsigned int gl_ScreenQuad_VAO; //our vertex array
 
     unsigned int gl_Screen_FBO;
-    unsigned int gl_Resolved_FBO;
-    unsigned int gl_Intermediate_FBO;
+
 
     unsigned int gl_Screen_TEX; //The texture that stores the colors
     unsigned int gl_Screen_DepthStencil_TEX; //the texture that stores depth and stencil values, complete
-    unsigned int gl_Resolved_TEX;
-    unsigned int gl_Resolved_DepthStencil_TEX;
+
 
     unique_ptr<Shader> postProcessShader;
     

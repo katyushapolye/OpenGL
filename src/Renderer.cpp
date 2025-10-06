@@ -56,7 +56,7 @@ Renderer::Renderer(unsigned int width, unsigned int height, const char* title) {
     glEnable(GL_CULL_FACE);;
     glEnable(GL_STENCIL_TEST);
     glEnable(GL_BLEND); 
-    glEnable(GL_MULTISAMPLE);
+
 
     
 
@@ -84,9 +84,9 @@ Renderer::Renderer(unsigned int width, unsigned int height, const char* title) {
     debugShader = new Shader();
 
     debugShader->loadFromFile(
-        "Shaders/Debug/normal_vert.glsl",
-        "Shaders/Debug/normal_geo.glsl",
-        "Shaders/Debug/normal_frag.glsl"
+        "Resources/Shaders/Debug/normal_vert.glsl",
+        "Resources/Shaders/Debug/normal_geo.glsl",
+        "Resources/Shaders/Debug/normal_frag.glsl"
     );
 
 
@@ -100,18 +100,18 @@ void Renderer::loadShaders(){
         ShaderType type = (ShaderType)i;
         this->loadedShaders[type] = std::unique_ptr<Shader>(new Shader());
         if(type == ShaderType::Lit){
-            if( !(this->loadedShaders[(ShaderType)i]->loadFromFile("Shaders/lit_vertex.glsl", "Shaders/lit_frag.glsl"))){
+            if( !(this->loadedShaders[(ShaderType)i]->loadFromFile("Resources/Shaders/lit_vertex.glsl", "Resources/Shaders/lit_frag.glsl"))){
                 Log::write("[RendererRenderer] - Failed to load lit shader");
 
             }
         }
         else if(type == ShaderType::Instanced){
-            if(!( this->loadedShaders[(ShaderType)i]->loadFromFile("Shaders/instanced_vertex.glsl", "Shaders/instanced_frag.glsl"))){
+            if(!( this->loadedShaders[(ShaderType)i]->loadFromFile("Resources/Shaders/instanced_vertex.glsl", "Resources/Shaders/instanced_frag.glsl"))){
                 Log::write("[RendererRenderer] - Failed to load instanced shader");
             }
         }
         else if(type == ShaderType::Outline){
-            if(!( this->loadedShaders[(ShaderType)i]->loadFromFile("Shaders/outline_vertex.glsl", "Shaders/outline_frag.glsl"))){
+            if(!( this->loadedShaders[(ShaderType)i]->loadFromFile("Resources/Shaders/outline_vertex.glsl", "Resources/Shaders/outline_frag.glsl"))){
                 Log::write("[RendererRenderer] - Failed to load outline");
             }
         }
@@ -155,12 +155,12 @@ void Renderer::loadShaders(){
 
 void Renderer::loadSkyBox(){
         std::vector<std::string> paths = {
-            "Textures/Skybox/Sunny/posx.png",  // GL_TEXTURE_CUBE_MAP_POSITIVE_X
-            "Textures/Skybox/Sunny/negx.png",  // GL_TEXTURE_CUBE_MAP_NEGATIVE_X
-            "Textures/Skybox/Sunny/posy.png",  // GL_TEXTURE_CUBE_MAP_POSITIVE_Y
-            "Textures/Skybox/Sunny/negy.png",  // GL_TEXTURE_CUBE_MAP_NEGATIVE_Y
-            "Textures/Skybox/Sunny/posz.png",  // GL_TEXTURE_CUBE_MAP_POSITIVE_Z
-            "Textures/Skybox/Sunny/negz.png"   // GL_TEXTURE_CUBE_MAP_NEGATIVE_Z
+            "Resources/Textures/Skybox/Sunny/posx.png",  // GL_TEXTURE_CUBE_MAP_POSITIVE_X
+            "Resources/Textures/Skybox/Sunny/negx.png",  // GL_TEXTURE_CUBE_MAP_NEGATIVE_X
+            "Resources/Textures/Skybox/Sunny/posy.png",  // GL_TEXTURE_CUBE_MAP_POSITIVE_Y
+            "Resources/Textures/Skybox/Sunny/negy.png",  // GL_TEXTURE_CUBE_MAP_NEGATIVE_Y
+            "Resources/Textures/Skybox/Sunny/posz.png",  // GL_TEXTURE_CUBE_MAP_POSITIVE_Z
+            "Resources/Textures/Skybox/Sunny/negz.png"   // GL_TEXTURE_CUBE_MAP_NEGATIVE_Z
         };
 
     glGenTextures(1, &this->gl_SkyBox_Cubemap);
@@ -242,7 +242,7 @@ void Renderer::loadSkyBox(){
         
 
         this->skyboxShader = unique_ptr<Shader>(new Shader());
-        if(!(this->skyboxShader->loadFromFile("Shaders/skybox_vertex.glsl","Shaders/skybox_frag.glsl"))){
+        if(!(this->skyboxShader->loadFromFile("Resources/Shaders/skybox_vertex.glsl","Resources/Shaders/skybox_frag.glsl"))){
             Log::write("[Renderer::loadSkybox] -  Failed to load the skybox shader!");
         }
 
@@ -276,61 +276,39 @@ void Renderer::loadScreenBuffer(){
     glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)(2 * sizeof(float)));
    
     this->postProcessShader = unique_ptr<Shader>(new Shader());
-    this->postProcessShader->loadFromFile("PostProcessing/vertex_post.glsl","PostProcessing/fragment_post.glsl");
+    this->postProcessShader->loadFromFile("Resources/PostProcessing/vertex_post.glsl","Resources/PostProcessing/fragment_post.glsl");
  
-    // MULTISAMPLED FRAMEBUFFER
+    // Create framebuffer
     glGenFramebuffers(1, &this->gl_Screen_FBO);
     glBindFramebuffer(GL_FRAMEBUFFER, this->gl_Screen_FBO);
     
-    // Multisampled color texture
+    // Create color texture
     glGenTextures(1, &this->gl_Screen_TEX);
-    glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, this->gl_Screen_TEX);
-    glTexImage2DMultisample(GL_TEXTURE_2D_MULTISAMPLE, 4, GL_RGB, width, height, GL_TRUE);
-    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D_MULTISAMPLE, this->gl_Screen_TEX, 0);
-    
-    // Multisampled depth-stencil texture (replacing RBO)
+    glBindTexture(GL_TEXTURE_2D, this->gl_Screen_TEX);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);  // ADD THIS
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);  // ADD THIS
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);  // ADD THIS
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);  // ADD THIS
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, this->gl_Screen_TEX, 0);
+   
+    // Create depth/stencil texture - FIXED
     glGenTextures(1, &this->gl_Screen_DepthStencil_TEX);
-    glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, this->gl_Screen_DepthStencil_TEX);
-    glTexImage2DMultisample(GL_TEXTURE_2D_MULTISAMPLE, 4, GL_DEPTH24_STENCIL8, this->width, this->height, GL_TRUE);
-    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_TEXTURE_2D_MULTISAMPLE, this->gl_Screen_DepthStencil_TEX, 0);
+    glBindTexture(GL_TEXTURE_2D, this->gl_Screen_DepthStencil_TEX);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH24_STENCIL8, this->width, this->height, 0, GL_DEPTH_STENCIL, GL_UNSIGNED_INT_24_8, NULL);  // FIXED FORMAT
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);  // ADD THIS
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);  // ADD THIS
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);  // ADD THIS
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);  // ADD THIS
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_TEXTURE_2D, this->gl_Screen_DepthStencil_TEX, 0);  // FIXED TARGET
    
     if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE){
         Log::write("[Renderer::loadScreenBuffer] - Failed to initialize the Screen buffer");
-    }
-   
-    // RESOLVE FRAMEBUFFER - same thing but used to resolve the color buffer to a non-multisampled value
-    glGenFramebuffers(1, &this->gl_Resolved_FBO);
-    glBindFramebuffer(GL_FRAMEBUFFER, this->gl_Resolved_FBO);
-    
-    // Resolved color texture
-    glGenTextures(1, &this->gl_Resolved_TEX);
-    glBindTexture(GL_TEXTURE_2D, this->gl_Resolved_TEX);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, this->gl_Resolved_TEX, 0);
-    
-    // Resolved depth-stencil texture
-    glGenTextures(1, &this->gl_Resolved_DepthStencil_TEX);
-    glBindTexture(GL_TEXTURE_2D, this->gl_Resolved_DepthStencil_TEX);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH24_STENCIL8, width, height, 0, GL_DEPTH_STENCIL, GL_UNSIGNED_INT_24_8, NULL);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_TEXTURE_2D, this->gl_Resolved_DepthStencil_TEX, 0);
-    
-    // Check resolve framebuffer completeness
-    if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE){
-        Log::write("[Renderer::loadScreenBuffer] - Failed to initialize resolve framebuffer");
     }
        
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
     glBindTexture(GL_TEXTURE_2D, 0);
 }
-
 void Renderer::loadShadowMap() {
     
 
@@ -371,8 +349,8 @@ void Renderer::loadShadowMap() {
     
     
     this->shadowMapShader = unique_ptr<Shader>(new Shader());
-    if(!(this->shadowMapShader->loadFromFile("Shaders/shadow_vertex.glsl",
-                                              "Shaders/shadow_frag.glsl"))) {
+    if(!(this->shadowMapShader->loadFromFile("Resources/Shaders/shadow_vertex.glsl",
+                                              "Resources/Shaders/shadow_frag.glsl"))) {
         Log::write("[Renderer::loadShadowMap] - Failed to load shadowmapping shader!");
     }
 
@@ -602,15 +580,7 @@ void Renderer::setupShaders(){
 }
 
 void Renderer::setupShaderLighting(Shader* shader){
-    //SpotLight* light = (SpotLight*)this->loadedScene->getLights()[LightType::SPOT][0].get();
-    //std::cout << "pos: " <<  light->transform.getPosition().x <<"," <<light->transform.getPosition().y <<"," << light->transform.getPosition().z << " ";
-    //std::cout << "rot: " <<  light->transform.getRotation().x <<"," <<light->transform.getRotation().y <<"," << light->transform.getRotation().z << " ";
-    //std::cout << "up: " <<  light->transform.getUp().x <<"," <<light->transform.getUp().y <<"," << light->transform.getUp().z << "\n";
 
-    //std::cout << "campos: " <<  camera->getPosition().x <<"," <<camera->getPosition().y <<"," << camera->getPosition().z << " ";
-    //std::cout << "camrot: " <<  camera->getRotation().x <<"," <<camera->getRotation().y <<"," << camera->getRotation().z << " ";
-    //std::cout << "camfowr: " <<  camera->getForward().x <<"," <<camera->getForward().y <<"," << camera->getForward().z << "\n";
-    
     shader->setUniform("ambientLight",this->loadedScene->ambientLight);
 
     shader->setUniform("directionalLightCount", (int)this->loadedScene->getLights()[LightType::DIRECTIONAL].size());
@@ -820,20 +790,15 @@ void Renderer::geometryPass() {
 
 
 
-    glBindFramebuffer(GL_READ_FRAMEBUFFER, this->gl_Screen_FBO);    // we resolve the multisampled buffer source
-    glBindFramebuffer(GL_DRAW_FRAMEBUFFER, this->gl_Resolved_FBO);   //dest
-    glBlitFramebuffer(0, 0, width, height, 0, 0, width, height, GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT, GL_NEAREST); //solve everyting
-
-    // Now bind the resolved texture for post-processing
-    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    glBindFramebuffer(GL_FRAMEBUFFER, 0); //0 is the default buffer and per consequence, the frame buffer'
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
     glDisable(GL_DEPTH_TEST);
 
     glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, this->gl_Resolved_TEX);  
+    glBindTexture(GL_TEXTURE_2D, this->gl_Screen_TEX);  
     glActiveTexture(GL_TEXTURE1);
-    glBindTexture(GL_TEXTURE_2D, this->gl_Resolved_DepthStencil_TEX);  
+    glBindTexture(GL_TEXTURE_2D, this->gl_Screen_DepthStencil_TEX);  
 
     this->postProcessShader->bindShader();
     this->postProcessShader->setUniform("screenTexture", 0);
@@ -867,7 +832,7 @@ void Renderer::loop() {
         this->deltaTime = this->currentFrame - this->lastFrame;
         this->lastFrame = this->currentFrame;
 
-        std::cout << 1.0 / deltaTime << std::endl;
+        //std::cout << 1.0 / deltaTime << std::endl;
 
         processInput();
 
