@@ -6164,6 +6164,7 @@ CMakeFiles/OpenGLApp.dir/src/Renderer.cpp.obj: C:/Users/rapha/Documents/Pessoal/
   C:/msys64/mingw64/include/c++/15.2.0/bits/basic_string.tcc \
   C:/msys64/mingw64/include/c++/15.2.0/bits/char_traits.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/charconv.h \
+  C:/msys64/mingw64/include/c++/15.2.0/bits/chrono.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/codecvt.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/concept_check.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/cpp_type_traits.h \
@@ -6201,6 +6202,7 @@ CMakeFiles/OpenGLApp.dir/src/Renderer.cpp.obj: C:/Users/rapha/Documents/Pessoal/
   C:/msys64/mingw64/include/c++/15.2.0/bits/ostream.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/ostream.tcc \
   C:/msys64/mingw64/include/c++/15.2.0/bits/ostream_insert.h \
+  C:/msys64/mingw64/include/c++/15.2.0/bits/parse_numbers.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/postypes.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/predefined_ops.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/ptr_traits.h \
@@ -6226,6 +6228,7 @@ CMakeFiles/OpenGLApp.dir/src/Renderer.cpp.obj: C:/Users/rapha/Documents/Pessoal/
   C:/msys64/mingw64/include/c++/15.2.0/bits/sstream.tcc \
   C:/msys64/mingw64/include/c++/15.2.0/bits/std_abs.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/std_function.h \
+  C:/msys64/mingw64/include/c++/15.2.0/bits/std_thread.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/stl_algo.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/stl_algobase.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/stl_bvector.h \
@@ -6249,6 +6252,7 @@ CMakeFiles/OpenGLApp.dir/src/Renderer.cpp.obj: C:/Users/rapha/Documents/Pessoal/
   C:/msys64/mingw64/include/c++/15.2.0/bits/streambuf_iterator.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/string_view.tcc \
   C:/msys64/mingw64/include/c++/15.2.0/bits/stringfwd.h \
+  C:/msys64/mingw64/include/c++/15.2.0/bits/this_thread_sleep.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/uniform_int_dist.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/unique_ptr.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/unordered_set.h \
@@ -6262,6 +6266,7 @@ CMakeFiles/OpenGLApp.dir/src/Renderer.cpp.obj: C:/Users/rapha/Documents/Pessoal/
   C:/msys64/mingw64/include/c++/15.2.0/cctype \
   C:/msys64/mingw64/include/c++/15.2.0/cerrno \
   C:/msys64/mingw64/include/c++/15.2.0/cfloat \
+  C:/msys64/mingw64/include/c++/15.2.0/chrono \
   C:/msys64/mingw64/include/c++/15.2.0/climits \
   C:/msys64/mingw64/include/c++/15.2.0/clocale \
   C:/msys64/mingw64/include/c++/15.2.0/cmath \
@@ -6301,6 +6306,7 @@ CMakeFiles/OpenGLApp.dir/src/Renderer.cpp.obj: C:/Users/rapha/Documents/Pessoal/
   C:/msys64/mingw64/include/c++/15.2.0/pstl/glue_algorithm_defs.h \
   C:/msys64/mingw64/include/c++/15.2.0/pstl/glue_memory_defs.h \
   C:/msys64/mingw64/include/c++/15.2.0/pstl/pstl_config.h \
+  C:/msys64/mingw64/include/c++/15.2.0/ratio \
   C:/msys64/mingw64/include/c++/15.2.0/regex \
   C:/msys64/mingw64/include/c++/15.2.0/sstream \
   C:/msys64/mingw64/include/c++/15.2.0/stack \
@@ -6310,6 +6316,7 @@ CMakeFiles/OpenGLApp.dir/src/Renderer.cpp.obj: C:/Users/rapha/Documents/Pessoal/
   C:/msys64/mingw64/include/c++/15.2.0/string \
   C:/msys64/mingw64/include/c++/15.2.0/string_view \
   C:/msys64/mingw64/include/c++/15.2.0/system_error \
+  C:/msys64/mingw64/include/c++/15.2.0/thread \
   C:/msys64/mingw64/include/c++/15.2.0/tr1/bessel_function.tcc \
   C:/msys64/mingw64/include/c++/15.2.0/tr1/beta_function.tcc \
   C:/msys64/mingw64/include/c++/15.2.0/tr1/ell_integral.tcc \
@@ -10549,6 +10556,7 @@ CMakeFiles/OpenGLApp.dir/src/main.cpp.obj: C:/Users/rapha/Documents/Pessoal/Open
   C:/msys64/mingw64/include/c++/15.2.0/bits/basic_string.tcc \
   C:/msys64/mingw64/include/c++/15.2.0/bits/char_traits.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/charconv.h \
+  C:/msys64/mingw64/include/c++/15.2.0/bits/chrono.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/codecvt.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/concept_check.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/cpp_type_traits.h \
@@ -10586,6 +10594,7 @@ CMakeFiles/OpenGLApp.dir/src/main.cpp.obj: C:/Users/rapha/Documents/Pessoal/Open
   C:/msys64/mingw64/include/c++/15.2.0/bits/ostream.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/ostream.tcc \
   C:/msys64/mingw64/include/c++/15.2.0/bits/ostream_insert.h \
+  C:/msys64/mingw64/include/c++/15.2.0/bits/parse_numbers.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/postypes.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/predefined_ops.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/ptr_traits.h \
@@ -10613,6 +10622,7 @@ CMakeFiles/OpenGLApp.dir/src/main.cpp.obj: C:/Users/rapha/Documents/Pessoal/Open
   C:/msys64/mingw64/include/c++/15.2.0/bits/sstream.tcc \
   C:/msys64/mingw64/include/c++/15.2.0/bits/std_abs.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/std_function.h \
+  C:/msys64/mingw64/include/c++/15.2.0/bits/std_thread.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/stl_algo.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/stl_algobase.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/stl_bvector.h \
@@ -10637,6 +10647,7 @@ CMakeFiles/OpenGLApp.dir/src/main.cpp.obj: C:/Users/rapha/Documents/Pessoal/Open
   C:/msys64/mingw64/include/c++/15.2.0/bits/streambuf_iterator.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/string_view.tcc \
   C:/msys64/mingw64/include/c++/15.2.0/bits/stringfwd.h \
+  C:/msys64/mingw64/include/c++/15.2.0/bits/this_thread_sleep.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/uniform_int_dist.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/unique_ptr.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/unordered_set.h \
@@ -10650,6 +10661,7 @@ CMakeFiles/OpenGLApp.dir/src/main.cpp.obj: C:/Users/rapha/Documents/Pessoal/Open
   C:/msys64/mingw64/include/c++/15.2.0/cctype \
   C:/msys64/mingw64/include/c++/15.2.0/cerrno \
   C:/msys64/mingw64/include/c++/15.2.0/cfloat \
+  C:/msys64/mingw64/include/c++/15.2.0/chrono \
   C:/msys64/mingw64/include/c++/15.2.0/climits \
   C:/msys64/mingw64/include/c++/15.2.0/clocale \
   C:/msys64/mingw64/include/c++/15.2.0/cmath \
@@ -10692,6 +10704,7 @@ CMakeFiles/OpenGLApp.dir/src/main.cpp.obj: C:/Users/rapha/Documents/Pessoal/Open
   C:/msys64/mingw64/include/c++/15.2.0/pstl/glue_numeric_defs.h \
   C:/msys64/mingw64/include/c++/15.2.0/pstl/pstl_config.h \
   C:/msys64/mingw64/include/c++/15.2.0/random \
+  C:/msys64/mingw64/include/c++/15.2.0/ratio \
   C:/msys64/mingw64/include/c++/15.2.0/regex \
   C:/msys64/mingw64/include/c++/15.2.0/sstream \
   C:/msys64/mingw64/include/c++/15.2.0/stack \
@@ -10701,6 +10714,7 @@ CMakeFiles/OpenGLApp.dir/src/main.cpp.obj: C:/Users/rapha/Documents/Pessoal/Open
   C:/msys64/mingw64/include/c++/15.2.0/string \
   C:/msys64/mingw64/include/c++/15.2.0/string_view \
   C:/msys64/mingw64/include/c++/15.2.0/system_error \
+  C:/msys64/mingw64/include/c++/15.2.0/thread \
   C:/msys64/mingw64/include/c++/15.2.0/tr1/bessel_function.tcc \
   C:/msys64/mingw64/include/c++/15.2.0/tr1/beta_function.tcc \
   C:/msys64/mingw64/include/c++/15.2.0/tr1/ell_integral.tcc \
@@ -11322,6 +11336,8 @@ C:/msys64/mingw64/include/c++/15.2.0/bits/ios_base.h:
 
 C:/msys64/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/ctype_inline.h:
 
+C:/msys64/mingw64/include/c++/15.2.0/bits/chrono.h:
+
 C:/msys64/mingw64/include/realtimeapiset.h:
 
 C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_double3x2_precision.hpp:
@@ -11349,6 +11365,8 @@ C:/msys64/mingw64/include/c++/15.2.0/ext/type_traits.h:
 C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_double4x2.hpp:
 
 C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_double4x2_precision.hpp:
+
+C:/msys64/mingw64/include/c++/15.2.0/bits/parse_numbers.h:
 
 C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/matrix_double4x3.hpp:
 
@@ -11932,6 +11950,8 @@ C:/msys64/mingw64/include/c++/15.2.0/cerrno:
 
 C:/msys64/mingw64/include/swprintf.inl:
 
+C:/msys64/mingw64/include/c++/15.2.0/bits/std_thread.h:
+
 C:/msys64/mingw64/include/ole2.h:
 
 C:/msys64/mingw64/include/c++/15.2.0/bits/hashtable_policy.h:
@@ -12372,6 +12392,8 @@ C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/avx512fp16intrin.h:
 
 C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/avx512fp16vlintrin.h:
 
+C:/msys64/mingw64/include/c++/15.2.0/bits/this_thread_sleep.h:
+
 C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/avx512ifmaintrin.h:
 
 C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/avx512ifmavlintrin.h:
@@ -12425,6 +12447,8 @@ C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/ia32intrin.h:
 C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/lzcntintrin.h:
 
 C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/mm3dnow.h:
+
+C:/msys64/mingw64/include/c++/15.2.0/ratio:
 
 C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/mm_malloc.h:
 
@@ -12612,6 +12636,8 @@ C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/assimp/types.h:
 
 C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/assimp/vector2.h:
 
+C:/msys64/mingw64/include/c++/15.2.0/thread:
+
 C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/assimp/vector2.inl:
 
 C:/msys64/mingw64/include/c++/15.2.0/algorithm:
@@ -12621,6 +12647,8 @@ C:/msys64/mingw64/include/c++/15.2.0/bits/erase_if.h:
 C:/msys64/mingw64/include/c++/15.2.0/pstl/glue_algorithm_defs.h:
 
 C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/headers/Scene.h:
+
+C:/msys64/mingw64/include/c++/15.2.0/chrono:
 
 C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/src/Shader.cpp:
 

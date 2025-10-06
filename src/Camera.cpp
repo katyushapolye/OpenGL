@@ -50,6 +50,15 @@ vec3 Camera::getTarget()
     return this->target;
 }
 
+float Camera::getNearPlane(){
+    return this->nearPlane;
+}
+
+float Camera::getFarPlane(){
+    return this->farPlane;
+}
+
+
 vec3 Camera::getForward(){
     return this->forward;
 }

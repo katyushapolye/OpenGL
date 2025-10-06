@@ -138,13 +138,15 @@ void Renderer::loadShaders(){
          layout(std140, binding = 1) uniform CameraUBO  {
         vec3 cameraPos; //4N = 16 offset at 0
         vec3 cameraRot; //4N = 16 offset at 16
+        float nearPlane;
+        float farPlane;
             };
 
         */
         glGenBuffers(1, &this->gl_Camera_UBO);
         glBindBuffer(GL_UNIFORM_BUFFER, this->gl_Camera_UBO);
-        glBufferData(GL_UNIFORM_BUFFER,32,NULL,GL_STATIC_DRAW);
-        glBindBufferRange(GL_UNIFORM_BUFFER,1,this->gl_Camera_UBO,0,32);
+        glBufferData(GL_UNIFORM_BUFFER,2*sizeof(mat4) + sizeof(vec2),NULL,GL_STATIC_DRAW);
+        glBindBufferRange(GL_UNIFORM_BUFFER,1,this->gl_Camera_UBO,0,2*sizeof(mat4) + sizeof(vec2));
         glBindBuffer(GL_UNIFORM_BUFFER,0);
 
 
@@ -153,12 +155,12 @@ void Renderer::loadShaders(){
 
 void Renderer::loadSkyBox(){
         std::vector<std::string> paths = {
-            "Textures/Skybox/Sunny/posx.jpg",  // GL_TEXTURE_CUBE_MAP_POSITIVE_X
-            "Textures/Skybox/Sunny/negx.jpg",  // GL_TEXTURE_CUBE_MAP_NEGATIVE_X
-            "Textures/Skybox/Sunny/posy.jpg",  // GL_TEXTURE_CUBE_MAP_POSITIVE_Y
-            "Textures/Skybox/Sunny/negy.jpg",  // GL_TEXTURE_CUBE_MAP_NEGATIVE_Y
-            "Textures/Skybox/Sunny/posz.jpg",  // GL_TEXTURE_CUBE_MAP_POSITIVE_Z
-            "Textures/Skybox/Sunny/negz.jpg"   // GL_TEXTURE_CUBE_MAP_NEGATIVE_Z
+            "Textures/Skybox/Sunny/posx.png",  // GL_TEXTURE_CUBE_MAP_POSITIVE_X
+            "Textures/Skybox/Sunny/negx.png",  // GL_TEXTURE_CUBE_MAP_NEGATIVE_X
+            "Textures/Skybox/Sunny/posy.png",  // GL_TEXTURE_CUBE_MAP_POSITIVE_Y
+            "Textures/Skybox/Sunny/negy.png",  // GL_TEXTURE_CUBE_MAP_NEGATIVE_Y
+            "Textures/Skybox/Sunny/posz.png",  // GL_TEXTURE_CUBE_MAP_POSITIVE_Z
+            "Textures/Skybox/Sunny/negz.png"   // GL_TEXTURE_CUBE_MAP_NEGATIVE_Z
         };
 
     glGenTextures(1, &this->gl_SkyBox_Cubemap);
@@ -167,7 +169,7 @@ void Renderer::loadSkyBox(){
     //now the directry is fixed because i need to think how we will approach this, we also just load it once and bypass the texturehandler since this is different 
     for(int i = 0;i<6;i++){
             unsigned char* data = stbi_load(paths[i].c_str(), &width, &height, &nrChannels, 0);
-            glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_SRGB, width, height, 0,GL_RGB, GL_UNSIGNED_BYTE, data);
+            glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_RGBA, width, height, 0,GL_RGBA, GL_UNSIGNED_BYTE, data);
             stbi_image_free(data);
 
     }
@@ -279,23 +281,28 @@ void Renderer::loadScreenBuffer(){
     // MULTISAMPLED FRAMEBUFFER
     glGenFramebuffers(1, &this->gl_Screen_FBO);
     glBindFramebuffer(GL_FRAMEBUFFER, this->gl_Screen_FBO);
+    
+    // Multisampled color texture
     glGenTextures(1, &this->gl_Screen_TEX);
-    glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, this->gl_Screen_TEX); 
+    glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, this->gl_Screen_TEX);
     glTexImage2DMultisample(GL_TEXTURE_2D_MULTISAMPLE, 4, GL_RGB, width, height, GL_TRUE);
-    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D_MULTISAMPLE, this->gl_Screen_TEX, 0); 
-    // Setup multisampled depth/stencil renderbuffer
-    glGenRenderbuffers(1, &this->gl_Screen_RBO);
-    glBindRenderbuffer(GL_RENDERBUFFER, this->gl_Screen_RBO);
-    glRenderbufferStorageMultisample(GL_RENDERBUFFER, 4, GL_DEPTH24_STENCIL8, this->width, this->height);  
-    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, this->gl_Screen_RBO);
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D_MULTISAMPLE, this->gl_Screen_TEX, 0);
+    
+    // Multisampled depth-stencil texture (replacing RBO)
+    glGenTextures(1, &this->gl_Screen_DepthStencil_TEX);
+    glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, this->gl_Screen_DepthStencil_TEX);
+    glTexImage2DMultisample(GL_TEXTURE_2D_MULTISAMPLE, 4, GL_DEPTH24_STENCIL8, this->width, this->height, GL_TRUE);
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_TEXTURE_2D_MULTISAMPLE, this->gl_Screen_DepthStencil_TEX, 0);
    
     if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE){
         Log::write("[Renderer::loadScreenBuffer] - Failed to initialize the Screen buffer");
     }
-    
-    // RESOLVE FRAMEBUFFER -same thing byt used to resolve the color buffer to a non-multisampeld value
+   
+    // RESOLVE FRAMEBUFFER - same thing but used to resolve the color buffer to a non-multisampled value
     glGenFramebuffers(1, &this->gl_Resolved_FBO);
     glBindFramebuffer(GL_FRAMEBUFFER, this->gl_Resolved_FBO);
+    
+    // Resolved color texture
     glGenTextures(1, &this->gl_Resolved_TEX);
     glBindTexture(GL_TEXTURE_2D, this->gl_Resolved_TEX);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
@@ -304,16 +311,25 @@ void Renderer::loadScreenBuffer(){
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, this->gl_Resolved_TEX, 0);
-
+    
+    // Resolved depth-stencil texture
+    glGenTextures(1, &this->gl_Resolved_DepthStencil_TEX);
+    glBindTexture(GL_TEXTURE_2D, this->gl_Resolved_DepthStencil_TEX);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH24_STENCIL8, width, height, 0, GL_DEPTH_STENCIL, GL_UNSIGNED_INT_24_8, NULL);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_TEXTURE_2D, this->gl_Resolved_DepthStencil_TEX, 0);
+    
     // Check resolve framebuffer completeness
     if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE){
         Log::write("[Renderer::loadScreenBuffer] - Failed to initialize resolve framebuffer");
     }
        
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
-    glBindRenderbuffer(GL_RENDERBUFFER, 0);
+    glBindTexture(GL_TEXTURE_2D, 0);
 }
-
 
 void Renderer::loadShadowMap() {
     
@@ -385,6 +401,7 @@ void Renderer::sortSceneModels(){
         this->hasSortedGroups = true;
     }
     //now for the transparent models, we will sort them by camera distance for the render, note that, we only do that if
+    //this is a big issue because we have volumetric effects
     glm::vec3 camPos = camera->getPosition();
 
     // Sort back-to-front
@@ -467,10 +484,10 @@ void Renderer::processInput(){
 
 
     this->camera->receiveInput(inputDir,mouseDir,this->deltaTime,zoomIn,zoomOut);
-    SpotLight* light = (SpotLight*)this->loadedScene->getLights()[LightType::SPOT][0].get();
+    DirectionalLight* light = (DirectionalLight*)this->loadedScene->getLights()[LightType::DIRECTIONAL][0].get();
 
-    light->transform.setPosition(this->camera->getPosition()  - light->transform.getUp()); //the shadows dont appear
-    light->transform.lookAt(this->camera->getPosition() + 10.0f*this->camera->getForward());
+    //light->transform.setPosition(this->camera->getPosition()  - light->transform.getUp()); //the shadows dont appear
+    //light->transform.lookAt(this->camera->getPosition() + 10.0f*this->camera->getForward());
     
  
     //if i move the light here manually it is ok
@@ -525,6 +542,12 @@ void Renderer::setupShaders(){
         glBindBuffer(GL_UNIFORM_BUFFER,this->gl_Camera_UBO);
         glBufferSubData(GL_UNIFORM_BUFFER,0,sizeof(vec4),glm::value_ptr(this->camera->getPosition()));
         glBufferSubData(GL_UNIFORM_BUFFER,16,sizeof(vec4),glm::value_ptr(this->camera->getRotation())); //in degrees
+        float nearPlane = this->camera->getNearPlane();
+        float farPlane = this->camera->getFarPlane();
+        vec2 nearFar = vec2(nearPlane,farPlane);
+        glBufferSubData(GL_UNIFORM_BUFFER, 32, sizeof(vec2), glm::value_ptr(nearFar));
+
+        
         glBindBuffer(GL_UNIFORM_BUFFER, 0);
         //now the hard part with these buffers will be the lights, since we wil have 3 big vectors with stride things
 
@@ -567,6 +590,13 @@ void Renderer::setupShaders(){
 
         
     }
+
+    //now on special shaders
+
+        Shader* shader =  this->postProcessShader.get();
+        shader->bindShader();
+        setupShaderLighting(shader);
+
 
 
 }
@@ -622,12 +652,13 @@ void Renderer::setupShaderLighting(Shader* shader){
     glBindTexture(GL_TEXTURE_2D_ARRAY,this->gl_ShadowMap_TEX_ARRAY);
     shader->setUniform("shadowMaps",15);
     shader->setUniform("activeShadowCasters",(int)this->activeShadowCasters);
+    shader->setUniform("shadowMapSize",(float)this->gl_ShadowMap_Resolution);
 
 }
 
 
 void Renderer::shadowPass(){
-    glViewport(0, 0, 4096, 4096);
+    glViewport(0, 0, this->gl_ShadowMap_Resolution,this->gl_ShadowMap_Resolution);
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
     glDepthMask(GL_TRUE);
@@ -663,7 +694,7 @@ void Renderer::shadowPass(){
            
            
            
-            }
+            }   
         }
     glCullFace(GL_BACK);
    
@@ -682,7 +713,7 @@ void Renderer::geometryPass() {
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
     glEnable(GL_DEPTH_TEST);
-        glCullFace(GL_BACK);
+        //glCullFace(GL_BACK);
 
 
     setupShaders();
@@ -753,6 +784,7 @@ void Renderer::geometryPass() {
         }
     }
 
+    //is there a way to copy the current depth buffer and save it to use later?
 
     
     //After that, we draw the skybox
@@ -766,8 +798,11 @@ void Renderer::geometryPass() {
     glBindTexture(GL_TEXTURE_CUBE_MAP, this->gl_SkyBox_Cubemap);
     glDrawArrays(GL_TRIANGLES, 0, 36);
 
-    //Finally, we draw the transparent 
 
+    //is thereeaway to duplicated the texture so it does the depth testing but does not write to it
+    //glDisable(GL_DEPTH_TEST);
+    glDepthMask(GL_FALSE);  // Disable depth writes because of this, volumtric effects will render on top of the transparentt ones
+    //glEnable(GL_BLEND);
     for (auto& drawable : this->transparentDrawGroups) {
         Shader* shader = loadedShaders[drawable->getShaderType()].get();
         if(drawable->getType() == DrawableType::MODEL){
@@ -780,27 +815,35 @@ void Renderer::geometryPass() {
         
         
     }
+    //glDisable(GL_DEPTH_TEST);
+    glDepthMask(GL_TRUE);
 
 
 
-
-    glBindFramebuffer(GL_READ_FRAMEBUFFER, this->gl_Screen_FBO);    // we resole the multisampld buffer sour
+    glBindFramebuffer(GL_READ_FRAMEBUFFER, this->gl_Screen_FBO);    // we resolve the multisampled buffer source
     glBindFramebuffer(GL_DRAW_FRAMEBUFFER, this->gl_Resolved_FBO);   //dest
-    glBlitFramebuffer(0, 0, width, height, 0, 0, width, height, GL_COLOR_BUFFER_BIT, GL_NEAREST);
+    glBlitFramebuffer(0, 0, width, height, 0, 0, width, height, GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT, GL_NEAREST); //solve everyting
 
     // Now bind the resolved texture for post-processing
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
     glDisable(GL_DEPTH_TEST);
+
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, this->gl_Resolved_TEX);  
+    glActiveTexture(GL_TEXTURE1);
+    glBindTexture(GL_TEXTURE_2D, this->gl_Resolved_DepthStencil_TEX);  
 
     this->postProcessShader->bindShader();
     this->postProcessShader->setUniform("screenTexture", 0);
+    this->postProcessShader->setUniform("screenDepth", 1);  
+    this->postProcessShader->setUniform("time",(float) glfwGetTime());  
 
     glBindVertexArray(this->gl_ScreenQuad_VAO);
     glDrawArrays(GL_TRIANGLES, 0, 6);
+
+    
 
 
 
@@ -814,13 +857,18 @@ bool Renderer::isRunning() {
 }
 
 void Renderer::loop() {
-    while (isRunning()) {
-        
 
-        this->currentFrame = static_cast<float>(glfwGetTime());
+
+    while (isRunning()) {
+        double frameStart = glfwGetTime();
+
+        // Delta time
+        this->currentFrame = static_cast<float>(frameStart);
         this->deltaTime = this->currentFrame - this->lastFrame;
         this->lastFrame = this->currentFrame;
-        //std::cout << 1/deltaTime << std::endl;
+
+        std::cout << 1.0 / deltaTime << std::endl;
+
         processInput();
 
         shadowPass();
@@ -828,6 +876,10 @@ void Renderer::loop() {
 
         glfwSwapBuffers(this->gl_Window);
         glfwPollEvents();
+
+        // Frame time calculation
+        double frameEnd = glfwGetTime();
+
     }
 }
 

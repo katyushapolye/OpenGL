@@ -15,7 +15,7 @@ Model::Model(std::vector<std::unique_ptr<Mesh>> meshes,std::vector<std::unique_p
 
         for(auto mat = materials.begin();mat != materials.end();mat++ ){
             if(mat->get()->diffuseMap->isTransparent()){
-                this->renderGroup = RenderGroup::Transparent;
+                this->renderGroup = RenderGroup::Transparent; //we need to sort by meshes
             }
             else{
                 this->renderGroup = RenderGroup::Opaque;
@@ -26,6 +26,7 @@ Model::Model(std::vector<std::unique_ptr<Mesh>> meshes,std::vector<std::unique_p
 }
 
 
+//this is not a good approach since it fucks up transparency when some meshes have transparency
 
 void Model::draw(Shader* shader) {
 

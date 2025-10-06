@@ -79,7 +79,7 @@ mat4 SpotLight::getViewMatrix(){
 
 mat4 SpotLight::getProjectionMatrix(){
 
-    return glm::perspective(glm::radians((theta*2.0f)),1.0f,0.1f,20.0f); //doesnt work when
+    return glm::perspective(glm::radians((theta*2.0f)),1.0f,1.0f,10.0f); //doesnt work when
 
     
     
@@ -116,7 +116,7 @@ mat4 DirectionalLight::getViewMatrix(){
 
 mat4 DirectionalLight::getProjectionMatrix(){
 
-    return glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, -10.0f, 10.0f); //big box for directional light, with the light at its center, unconvential 
+    return glm::ortho(-15.0f, 15.0f, -15.0f, 15.0f, 1.0f, 30.0f); //big box for directional light, with the light at its center, unconvential 
 
     
 }

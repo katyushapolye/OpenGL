@@ -44,6 +44,10 @@ public:
     vec3 getForward();
     vec3 getUp();
 
+    float getNearPlane();
+    float getFarPlane();;
+
+
     mat4 getViewMat();
     mat4 getProjectionMat();
     
