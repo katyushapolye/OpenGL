@@ -69,9 +69,9 @@ Renderer::Renderer(unsigned int width, unsigned int height, const char* title) {
 
     // Initialize camera
     this->camera = std::unique_ptr<Camera>( new Camera(70.0f, (float)width / (float)height, 0.1f, 1000.0f, width, height));
-    this->camera->setPosition(vec3(0.0f, 5.0f, 5.0f));
-    //this->camera->setRotation(vec3(-45.0f,-90.0f,0.0f));
-    //this->camera->lookAt(vec3(0,0,0));
+    this->camera->setPosition(vec3(0.0f, 3.0f, 3.0f));
+    this->camera->setRotation(vec3(-45.0f,75.0f,0.0f));
+   //this->camera->lookAt(vec3(0,0,0));
 
 
     this->loadShaders();
@@ -110,8 +110,8 @@ void Renderer::loadShaders(){
                 Log::write("[RendererRenderer] - Failed to load instanced shader");
             }
         }
-        else if(type == ShaderType::Outline){
-            if(!( this->loadedShaders[(ShaderType)i]->loadFromFile("Resources/Shaders/outline_vertex.glsl", "Resources/Shaders/outline_frag.glsl"))){
+        else if(type == ShaderType::Raymarch){
+            if(!( this->loadedShaders[(ShaderType)i]->loadFromFile("Resources/Shaders/volumetric_vertex.glsl", "Resources/Shaders/volumetric_frag.glsl"))){
                 Log::write("[RendererRenderer] - Failed to load outline");
             }
         }
@@ -292,15 +292,41 @@ void Renderer::loadScreenBuffer(){
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);  // ADD THIS
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, this->gl_Screen_TEX, 0);
    
-    // Create depth/stencil texture - FIXED
+    // Create depth/stencil texture 
     glGenTextures(1, &this->gl_Screen_DepthStencil_TEX);
     glBindTexture(GL_TEXTURE_2D, this->gl_Screen_DepthStencil_TEX);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH24_STENCIL8, this->width, this->height, 0, GL_DEPTH_STENCIL, GL_UNSIGNED_INT_24_8, NULL);  // FIXED FORMAT
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);  // ADD THIS
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);  // ADD THIS
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH24_STENCIL8, this->width, this->height, 0, GL_DEPTH_STENCIL, GL_UNSIGNED_INT_24_8, NULL); 
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);  
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);  
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);  
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);  
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_TEXTURE_2D, this->gl_Screen_DepthStencil_TEX, 0);  
+
+    //for buffer ping pong, we will use create another one exactly the same
+    glGenFramebuffers(1, &this->gl_Screen_Volumetric_FBO);
+    glBindFramebuffer(GL_FRAMEBUFFER, this->gl_Screen_Volumetric_FBO);
+
+    // Create color texture
+    glGenTextures(1, &this->gl_Screen_Volumetric_TEX);
+    glBindTexture(GL_TEXTURE_2D, this->gl_Screen_Volumetric_TEX);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);  // ADD THIS
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);  // ADD THIS
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);  // ADD THIS
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);  // ADD THIS
-    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_TEXTURE_2D, this->gl_Screen_DepthStencil_TEX, 0);  // FIXED TARGET
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, this->gl_Screen_Volumetric_TEX, 0);
+   
+    // Create depth/stencil texture 
+    glGenTextures(1, &this->gl_Screen_Volumetric_DepthStencil_TEX);
+    glBindTexture(GL_TEXTURE_2D, this->gl_Screen_Volumetric_DepthStencil_TEX);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH24_STENCIL8, this->width, this->height, 0, GL_DEPTH_STENCIL, GL_UNSIGNED_INT_24_8, NULL); 
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);  
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);  
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);  
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);  
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_TEXTURE_2D, this->gl_Screen_Volumetric_DepthStencil_TEX, 0);  
+
+
    
     if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE){
         Log::write("[Renderer::loadScreenBuffer] - Failed to initialize the Screen buffer");
@@ -325,7 +351,7 @@ void Renderer::loadShadowMap() {
     
     glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-        glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
+    glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
     glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
     float borderColor[] = { 1.0f, 1.0f, 1.0f, 1.0f };
     glTexParameterfv(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_BORDER_COLOR, borderColor);
@@ -381,27 +407,32 @@ void Renderer::sortSceneModels(){
     //now for the transparent models, we will sort them by camera distance for the render, note that, we only do that if
     //this is a big issue because we have volumetric effects
     glm::vec3 camPos = camera->getPosition();
+    //std::cout << "s: "  << transparentDrawGroups.size() << std::endl;
+
 
     // Sort back-to-front
     std::sort(transparentDrawGroups.begin(), transparentDrawGroups.end(),
-        [&camPos](const std::shared_ptr<Drawable> a, const std::shared_ptr<Drawable> b) {
-            Model* modelA;
-            Model* modelB;
-            if(a->getType() == DrawableType::MODEL && b->getType() == DrawableType::MODEL){
-                modelA = static_cast<Model*>(a.get());
-                modelB = static_cast<Model*>(b.get());
+        [&camPos](const std::shared_ptr<Drawable>& a, const std::shared_ptr<Drawable>& b) {
+            //we will make these proper functions in a util.h file later
+            auto getDistance = [&camPos](const std::shared_ptr<Drawable>& drawable) -> float {
+                if (drawable->getType() == DrawableType::MODEL) {
+                    Model* model = static_cast<Model*>(drawable.get());
+                    return glm::length2(camPos - model->transform.getPosition());
+                }
+                else if (drawable->getType() == DrawableType::VOLUMETRIC) {
+                    Volumetric* vol = static_cast<Volumetric*>(drawable.get());
+                    return vol->distance2To(camPos);
+                }
+                else {
+                    Log::write("[Renderer::sortSceneModels] - WARNING! Transparent object without a transform encountered!");
+                    return 0.0f; // fallback distance
+                }
+            };
 
-                float distA = glm::length2(camPos - modelA->transform.getPosition());
-                float distB = glm::length2(camPos - modelB->transform.getPosition());
-                return distA > distB; // farthest first
-            }
-            else{
-                Log::write("[Renderer::sortSceneModels] -  WARNING! Transparent object without a transform was tried to be sorted!");
-                return false;
+            float distA = getDistance(a);
+            float distB = getDistance(b);
 
-            }
-  
-
+            return distA > distB; // farthest first
         }
     );
 
@@ -555,7 +586,7 @@ void Renderer::setupShaders(){
 
             break;
 
-        case ShaderType::Outline:
+        case ShaderType::Raymarch:
             shader = loadedShaders[type].get();
             loadedShaders[type]->bindShader();
             //this shader is lit so we set its lights
@@ -754,7 +785,7 @@ void Renderer::geometryPass() {
         }
     }
 
-    //is there a way to copy the current depth buffer and save it to use later?
+
 
     
     //After that, we draw the skybox
@@ -772,25 +803,68 @@ void Renderer::geometryPass() {
     //is thereeaway to duplicated the texture so it does the depth testing but does not write to it
     //glDisable(GL_DEPTH_TEST);
     glDepthMask(GL_FALSE);  // Disable depth writes because of this, volumtric effects will render on top of the transparentt ones
-    //glEnable(GL_BLEND);
+    glEnable(GL_BLEND);
     for (auto& drawable : this->transparentDrawGroups) {
-        Shader* shader = loadedShaders[drawable->getShaderType()].get();
+        Shader* shader = nullptr;
         if(drawable->getType() == DrawableType::MODEL){
+            //bind the screen buffer
+            glBindFramebuffer(GL_FRAMEBUFFER,this->gl_Screen_FBO);
+            shader = loadedShaders[drawable->getShaderType()].get();
             Model* model = static_cast<Model*>(drawable.get()); 
             shader->bindShader();
             shader->setUniform("modelMat",model->transform.getTransformMat());
             shader->setUniform("normalMat",model->transform.getNormalMat());
             model->draw(shader);
         }
+        else if(drawable->getType() == DrawableType::VOLUMETRIC){
+
+        glBindFramebuffer(GL_READ_FRAMEBUFFER, this->gl_Screen_FBO);
+        glBindFramebuffer(GL_DRAW_FRAMEBUFFER, this->gl_Screen_Volumetric_FBO);
+        glBlitFramebuffer(
+            0, 0, width, height, 
+            0, 0, width, height, 
+            GL_DEPTH_BUFFER_BIT,  // Copy depth only
+            GL_NEAREST
+        );
         
+        // Now render volumetric
+        glBindFramebuffer(GL_FRAMEBUFFER, this->gl_Screen_Volumetric_FBO);
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, this->gl_Screen_TEX);  
+        glActiveTexture(GL_TEXTURE1);
+        glBindTexture(GL_TEXTURE_2D, this->gl_Screen_DepthStencil_TEX);  
         
+        Volumetric* volume = static_cast<Volumetric*>(drawable.get());
+        shader = loadedShaders[drawable->getShaderType()].get();
+        shader->bindShader();
+        shader->setUniform("screenTexture", 0);
+        shader->setUniform("screenDepth", 1);  
+        shader->setUniform("time", (float)glfwGetTime());
+
+        shader->setUniform("volumeCenter",volume->transform.getPosition());
+        shader->setUniform("volumeDimension",vec3(volume->width,volume->height,volume->length));
+
+        
+        glBindVertexArray(this->gl_ScreenQuad_VAO);
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+        
+        // Copy result back (color only, preserve depth in Screen_FBO)
+        glBindFramebuffer(GL_READ_FRAMEBUFFER, this->gl_Screen_Volumetric_FBO);
+        glBindFramebuffer(GL_DRAW_FRAMEBUFFER, this->gl_Screen_FBO);
+        glBlitFramebuffer(
+            0, 0, width, height, 
+            0, 0, width, height, 
+            GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT, 
+            GL_NEAREST
+        );
     }
+}
     //glDisable(GL_DEPTH_TEST);
     glDepthMask(GL_TRUE);
 
 
 
-    glBindFramebuffer(GL_FRAMEBUFFER, 0); //0 is the default buffer and per consequence, the frame buffer'
+    glBindFramebuffer(GL_FRAMEBUFFER, 0); //0 is the default buffer and, per consequence, the windowe buffer
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
     glDisable(GL_DEPTH_TEST);

@@ -4,6 +4,4 @@ Ks 1.0 1.0 1.0      # Specular color
 Ns 0.0             # Specular exponent
 d 1.0               # Dissolve/opacity
 illum 2             # Illumination model
-map_Kd   Textures/gizmo.png 
-map_Ks   Textures/no_spec.png
-map_bump Textures/no_spec.png 
+map_Kd   Resources/Textures/gizmo.png 

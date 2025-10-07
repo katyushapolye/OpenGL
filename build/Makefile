@@ -488,6 +488,30 @@ src/Transform.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\OpenGLApp.dir\build.make CMakeFiles/OpenGLApp.dir/src/Transform.cpp.s
 .PHONY : src/Transform.cpp.s
 
+src/Volumetric.obj: src/Volumetric.cpp.obj
+.PHONY : src/Volumetric.obj
+
+# target to build an object file
+src/Volumetric.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\OpenGLApp.dir\build.make CMakeFiles/OpenGLApp.dir/src/Volumetric.cpp.obj
+.PHONY : src/Volumetric.cpp.obj
+
+src/Volumetric.i: src/Volumetric.cpp.i
+.PHONY : src/Volumetric.i
+
+# target to preprocess a source file
+src/Volumetric.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\OpenGLApp.dir\build.make CMakeFiles/OpenGLApp.dir/src/Volumetric.cpp.i
+.PHONY : src/Volumetric.cpp.i
+
+src/Volumetric.s: src/Volumetric.cpp.s
+.PHONY : src/Volumetric.s
+
+# target to generate assembly for a file
+src/Volumetric.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\OpenGLApp.dir\build.make CMakeFiles/OpenGLApp.dir/src/Volumetric.cpp.s
+.PHONY : src/Volumetric.cpp.s
+
 src/glad.obj: src/glad.c.obj
 .PHONY : src/glad.obj
 
@@ -614,6 +638,9 @@ help:
 	@echo ... src/Transform.obj
 	@echo ... src/Transform.i
 	@echo ... src/Transform.s
+	@echo ... src/Volumetric.obj
+	@echo ... src/Volumetric.i
+	@echo ... src/Volumetric.s
 	@echo ... src/glad.obj
 	@echo ... src/glad.i
 	@echo ... src/glad.s

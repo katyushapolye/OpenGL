@@ -30,7 +30,7 @@ struct Vertex {
 enum class DrawableType {
         MODEL,
         INSTANCED_MODEL,
-        MIRROR,
+        VOLUMETRIC,
 };
 
 enum class TextureType {
@@ -49,12 +49,12 @@ enum class LightType {
 enum class ShaderType{ //should be put in render order (Lit first, Unlit second...)
     Lit,
     Instanced,
-    Outline,
+    Raymarch,
 };
 
 enum class RenderGroup{
     Opaque,
-    Transparent
+    Transparent,
 };
 
 const unsigned int SHADER_COUNT = 3;

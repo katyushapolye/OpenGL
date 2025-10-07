@@ -32,6 +32,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/OpenGLApp.dir/src/TextureHandler.cpp.obj.d"
   "CMakeFiles/OpenGLApp.dir/src/Transform.cpp.obj"
   "CMakeFiles/OpenGLApp.dir/src/Transform.cpp.obj.d"
+  "CMakeFiles/OpenGLApp.dir/src/Volumetric.cpp.obj"
+  "CMakeFiles/OpenGLApp.dir/src/Volumetric.cpp.obj.d"
   "CMakeFiles/OpenGLApp.dir/src/glad.c.obj"
   "CMakeFiles/OpenGLApp.dir/src/glad.c.obj.d"
   "CMakeFiles/OpenGLApp.dir/src/main.cpp.obj"

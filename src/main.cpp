@@ -151,10 +151,21 @@ int main()
 
 
 
-    Model* m = ModelLoader::loadFromObj("Resources/Models/cube.obj");
-    m->transform.setScale(vec3(0.5,0.5,0.5));
-    m->transform.setPosition(vec3(0,1,7));
-    scene->addModel(shared_ptr<Model>(m));
+    //Model* m = ModelLoader::loadFromObj("Resources/Models/cube.obj");
+    //m->transform.setScale(vec3(0.5,0.5,0.5));
+    //m->transform.setPosition(vec3(0,1,7));
+    //scene->addModel(shared_ptr<Model>(m));
+
+   scene->addModel(shared_ptr<Model>(   ModelLoader::loadFromObj("Resources/Models/gizmo.obj")));
+
+
+    //Model* m = ModelLoader::loadFromObj("Resources/Models/window.obj");
+    //m->transform.setScale(vec3(5.0,5.0,5.0));
+    //m->transform.setPosition(vec3(0,-5,5.0));
+    //scene->addModel(shared_ptr<Model>(m));
+
+
+    scene->addModel(shared_ptr<Volumetric>(new Volumetric(Transform(),10,10,10)));
 
     renderer.loadScene(scene);
     renderer.loop();
