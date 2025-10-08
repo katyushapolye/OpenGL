@@ -8,17 +8,21 @@ in mat4 inverseProjectionMat;
 //screen buffers
 uniform sampler2D screenTexture;
 uniform sampler2D screenDepth;
+uniform samplerCube skybox; //TEX UNIT 0
 uniform float time;
 
 //ray march parameters
-#define dt  0.1
+#define dt  0.02
 #define EPS 0.001
 #define MAX_RANGE  50
 //volume parameters
 uniform vec3 volumeCenter;
 uniform vec3 volumeDimension;
+uniform sampler3D volumeDensity;
 
-uniform vec3 refractionIndex;
+uniform vec3 scatteringCoefficient;
+
+#define densityMultiplier 1.0
 
 //Lights
 struct PointLight {
@@ -60,6 +64,14 @@ struct Ray {
     vec3 dir;
 };
 
+struct Hit{
+    vec3 pos;
+    bool fluidToAir;
+    vec3 normal;
+    
+
+};
+
 layout(std140, binding = 1) uniform Camera  {
     vec3 cameraPos;
     vec3 cameraRot;
@@ -72,14 +84,22 @@ float CubeSDF(vec3 pos) {
     vec3 localPos = pos - volumeCenter;
     vec3 q = abs(localPos) - halfExtents;
     return length(max(q, 0.0)) + min(max(q.x, max(q.y, q.z)), 0.0);
-}
+};
 
+
+
+layout(std140, binding = 0) uniform Matrixes  {
+    mat4 viewMat;
+    mat4 projectionMat;
+
+};
 
 
 
 
 
 /*
+
 float hash(float n) {
     return fract(sin(n)*43758.5453);
 }
@@ -170,31 +190,177 @@ vec3 marchRay_OLD(Ray r, vec3 currentColor, float maxDepth) {
     // Blend with background
     return mix(currentColor, accumulated.rgb, accumulated.a);
 }
+
 */
 
+
+bool willHitFluid(Ray r, vec3 boxMin, vec3 boxMax) {
+    vec3 invDir = 1.0 / r.dir;
+    vec3 t0 = (boxMin - r.pos) * invDir;
+    vec3 t1 = (boxMax - r.pos) * invDir;
+    
+    vec3 tSmaller = min(t0, t1);
+    vec3 tBigger = max(t0, t1);
+    
+    float tMin = max(max(tSmaller.x, tSmaller.y), tSmaller.z);
+    float tMax = min(min(tBigger.x, tBigger.y), tBigger.z);
+    
+    return tMax >= tMin && tMax >= 0.0;
+}
+
+vec3 worldToCubeMap(vec3 pos){
+    vec3 cubeMin = volumeCenter - 0.5 * volumeDimension;
+    vec3 cubeMax = volumeCenter + 0.5 * volumeDimension;
+
+    vec3 uvw = (pos - cubeMin) / (cubeMax - cubeMin);
+    return uvw;
+}
+
+vec3 getDensityGradient(vec3 pos) {
+    float eps = dt * 0.5;
+    float dx = texture(volumeDensity, worldToCubeMap(pos + vec3(eps, 0, 0))).r 
+             - texture(volumeDensity, worldToCubeMap(pos - vec3(eps, 0, 0))).r;
+    float dy = texture(volumeDensity, worldToCubeMap(pos + vec3(0, eps, 0))).r 
+             - texture(volumeDensity, worldToCubeMap(pos - vec3(0, eps, 0))).r;
+    float dz = texture(volumeDensity, worldToCubeMap(pos + vec3(0, 0, eps))).r 
+             - texture(volumeDensity, worldToCubeMap(pos - vec3(0, 0, eps))).r;
+    return vec3(dx, dy, dz) / (2.0 * eps);
+}
+
+
+//marches up util wwe hit some object or max range to the skybox
+//returns the color we hit. Uses the screen texture 
+
+
+
+// Convert world position to screen space (NDC then to [0,1]) (uv map)
+vec3 worldToScreen(vec3 world, mat4 view, mat4 proj) {
+    vec4 clip = proj * view * vec4(world, 1.0);
+    vec3 ndc = clip.xyz / clip.w;
+    return ndc * 0.5 + 0.5; 
+}
+
+// Convert screen space back to world space using precomputed inverse matrices
+vec3 screenToWorld(vec3 screen) {
+    // Convert from [0,1] to [-1,1] NDC
+    vec3 ndc = screen * 2.0 - 1.0;
+    
+    // Unproject
+    vec4 clip = vec4(ndc, 1.0);
+    vec4 viewPos = inverseProjectionMat * clip;
+    viewPos /= viewPos.w;
+    
+    vec4 worldPos = inverseViewMat * viewPos;
+    return worldPos.xyz;
+}
+
+//wwe need a function to sample the screen tex given a direction
+//we have the depth buffer so we can check it for a colision
+
+
+
+
+
+
+float densityAlongDirection(vec3 pos, vec3 dir,float dh){
+    float density = 0.0;
+    float marchDist = 0.0;
+    
+    // March towards light until we exit the volume
+    while(marchDist < MAX_RANGE){
+        pos = pos + dir * dh;
+        marchDist += dt;
+        
+        if(CubeSDF(pos) < 0){
+            density += texture(volumeDensity, worldToCubeMap(pos)).r * dt * densityMultiplier;
+        }
+        else{
+            break; // Exited volume
+        }
+    }
+    
+    return density;
+}
+
 vec3 marchRay(Ray r, vec3 currentColor, float maxDepth){
+    //add a intersection test here, if no intersection with the cube, just return the current coplor
+    vec3 boxMin = volumeCenter - volumeDimension * 0.5;
+    vec3 boxMax = volumeCenter + volumeDimension * 0.5;
+
     float marchDistance = 0.0;
     float volumeDistance = 0.0;
+
+    float rayPathDensity = 0.0;
+    vec3 totalLight =  vec3(0.0);
+
+    //ray control
+    int refractionCount  =  0;
+    bool inFluid = false;
+
+
+    if (!willHitFluid(r, boxMin, boxMax)) {
+        // No intersection with cube, return current color
+        vec3 finalTransmittance = exp(-rayPathDensity * scatteringCoefficient);
+        vec3 result = totalLight + currentColor * finalTransmittance;
+        return pow(clamp(result, 0.0, 1.0), vec3(1.0/2.2));;
+    }
+
+
    
-    while(marchDistance < MAX_RANGE){
+    while(marchDistance < MAX_RANGE){ 
+        //rush to the box
+        if(CubeSDF(r.pos) > 1.0){
+            r.pos = r.pos + r.dir  * 0.75*CubeSDF(r.pos);
+            marchDistance += 0.75*CubeSDF(r.pos);
+            continue;
+        }
         r.pos = r.pos + r.dir * dt;
         marchDistance += dt;
        
+
         // Stop at opaque geometry
 
         if( marchDistance > maxDepth){
            //we hit a non volume object (and not transparent since we dont write transparents to depth buffer)
-           
+            
         }
        
        
         if(CubeSDF(r.pos) < 0){
-           volumeDistance += dt;
+
+            vec3 gradient = getDensityGradient(r.pos);
+            float gradientMagnitude = length(gradient);
+            if(gradientMagnitude > 0.1){ //at a interface of either fluid-air or air fluid
+                vec3 normal = -normalize(gradient);//our
+                
+
+            }
+
+
+
+
+            float stepDensity = texture(volumeDensity,worldToCubeMap(r.pos)).r*dt *  densityMultiplier;
+            rayPathDensity += stepDensity;
+
+
+            float sunlightDensity = densityAlongDirection(r.pos,dirLights[0].direction,0.1);
+            vec3 sunlight =  exp(-sunlightDensity*scatteringCoefficient);
+
+            vec3 scatteredLight = sunlight*stepDensity*  scatteringCoefficient;
+            vec3 transmitance = exp(-rayPathDensity*scatteringCoefficient);
+            totalLight += scatteredLight * transmitance;
+
         }
     }
-   
-    return mix(vec3(1,1,1), currentColor, exp(-volumeDistance * 0.25));
+    vec3 finalTransmittance = exp(-rayPathDensity * scatteringCoefficient);
+    vec3 result = totalLight + currentColor * finalTransmittance;
+    return pow(clamp(result, 0.0, 1.0), vec3(1.0/2.2));;
 }
+
+
+//calculates the density up until the end of the volume
+//if not on the inside, it just returns 0.0
+
 
 float linearizeDepth(float depthNDC,float near,float far)
 {

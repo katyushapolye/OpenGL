@@ -17,6 +17,7 @@
 #include "Scene.h"
 #include "InstancedModel.h"
 #include "Volumetric.h"
+#include "Utils.h"
 
 
 
@@ -146,7 +147,7 @@ public:
 
 
     bool isRunning();
-    void loop();
+    void renderPass();
     void dispose();
 
 

@@ -267,6 +267,7 @@ CMakeFiles/OpenGLApp.dir/src/Camera.cpp.obj: C:/Users/rapha/Documents/Pessoal/Op
   C:/msys64/mingw64/include/c++/15.2.0/bits/specfun.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/std_abs.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/stl_algobase.h \
+  C:/msys64/mingw64/include/c++/15.2.0/bits/stl_bvector.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/stl_construct.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/stl_function.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/stl_iterator.h \
@@ -276,6 +277,7 @@ CMakeFiles/OpenGLApp.dir/src/Camera.cpp.obj: C:/Users/rapha/Documents/Pessoal/Op
   C:/msys64/mingw64/include/c++/15.2.0/bits/stl_raw_storage_iter.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/stl_tempbuf.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/stl_uninitialized.h \
+  C:/msys64/mingw64/include/c++/15.2.0/bits/stl_vector.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/streambuf.tcc \
   C:/msys64/mingw64/include/c++/15.2.0/bits/streambuf_iterator.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/string_view.tcc \
@@ -284,6 +286,7 @@ CMakeFiles/OpenGLApp.dir/src/Camera.cpp.obj: C:/Users/rapha/Documents/Pessoal/Op
   C:/msys64/mingw64/include/c++/15.2.0/bits/uses_allocator.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/uses_allocator_args.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/utility.h \
+  C:/msys64/mingw64/include/c++/15.2.0/bits/vector.tcc \
   C:/msys64/mingw64/include/c++/15.2.0/bits/version.h \
   C:/msys64/mingw64/include/c++/15.2.0/cassert \
   C:/msys64/mingw64/include/c++/15.2.0/cctype \
@@ -343,6 +346,7 @@ CMakeFiles/OpenGLApp.dir/src/Camera.cpp.obj: C:/Users/rapha/Documents/Pessoal/Op
   C:/msys64/mingw64/include/c++/15.2.0/tuple \
   C:/msys64/mingw64/include/c++/15.2.0/type_traits \
   C:/msys64/mingw64/include/c++/15.2.0/typeinfo \
+  C:/msys64/mingw64/include/c++/15.2.0/vector \
   C:/msys64/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/atomic_word.h \
   C:/msys64/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/c++allocator.h \
   C:/msys64/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/c++config.h \
@@ -2303,6 +2307,7 @@ CMakeFiles/OpenGLApp.dir/src/Light.cpp.obj: C:/Users/rapha/Documents/Pessoal/Ope
   C:/msys64/mingw64/include/c++/15.2.0/bits/specfun.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/std_abs.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/stl_algobase.h \
+  C:/msys64/mingw64/include/c++/15.2.0/bits/stl_bvector.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/stl_construct.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/stl_function.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/stl_iterator.h \
@@ -2312,6 +2317,7 @@ CMakeFiles/OpenGLApp.dir/src/Light.cpp.obj: C:/Users/rapha/Documents/Pessoal/Ope
   C:/msys64/mingw64/include/c++/15.2.0/bits/stl_raw_storage_iter.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/stl_tempbuf.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/stl_uninitialized.h \
+  C:/msys64/mingw64/include/c++/15.2.0/bits/stl_vector.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/streambuf.tcc \
   C:/msys64/mingw64/include/c++/15.2.0/bits/streambuf_iterator.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/string_view.tcc \
@@ -2320,6 +2326,7 @@ CMakeFiles/OpenGLApp.dir/src/Light.cpp.obj: C:/Users/rapha/Documents/Pessoal/Ope
   C:/msys64/mingw64/include/c++/15.2.0/bits/uses_allocator.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/uses_allocator_args.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/utility.h \
+  C:/msys64/mingw64/include/c++/15.2.0/bits/vector.tcc \
   C:/msys64/mingw64/include/c++/15.2.0/bits/version.h \
   C:/msys64/mingw64/include/c++/15.2.0/cassert \
   C:/msys64/mingw64/include/c++/15.2.0/cctype \
@@ -2379,6 +2386,7 @@ CMakeFiles/OpenGLApp.dir/src/Light.cpp.obj: C:/Users/rapha/Documents/Pessoal/Ope
   C:/msys64/mingw64/include/c++/15.2.0/tuple \
   C:/msys64/mingw64/include/c++/15.2.0/type_traits \
   C:/msys64/mingw64/include/c++/15.2.0/typeinfo \
+  C:/msys64/mingw64/include/c++/15.2.0/vector \
   C:/msys64/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/atomic_word.h \
   C:/msys64/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/c++allocator.h \
   C:/msys64/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/c++config.h \
@@ -5907,6 +5915,7 @@ CMakeFiles/OpenGLApp.dir/src/Renderer.cpp.obj: C:/Users/rapha/Documents/Pessoal/
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/headers/Texture.h \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/headers/TextureHandler.h \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/headers/Transform.h \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/headers/Utils.h \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/headers/Volumetric.h \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/headers/stb_image.h \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/KHR/khrplatform.h \
@@ -7635,6 +7644,7 @@ CMakeFiles/OpenGLApp.dir/src/Shader.cpp.obj: C:/Users/rapha/Documents/Pessoal/Op
   C:/msys64/mingw64/include/c++/15.2.0/bits/sstream.tcc \
   C:/msys64/mingw64/include/c++/15.2.0/bits/std_abs.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/stl_algobase.h \
+  C:/msys64/mingw64/include/c++/15.2.0/bits/stl_bvector.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/stl_construct.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/stl_function.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/stl_iterator.h \
@@ -7644,6 +7654,7 @@ CMakeFiles/OpenGLApp.dir/src/Shader.cpp.obj: C:/Users/rapha/Documents/Pessoal/Op
   C:/msys64/mingw64/include/c++/15.2.0/bits/stl_raw_storage_iter.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/stl_tempbuf.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/stl_uninitialized.h \
+  C:/msys64/mingw64/include/c++/15.2.0/bits/stl_vector.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/streambuf.tcc \
   C:/msys64/mingw64/include/c++/15.2.0/bits/streambuf_iterator.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/string_view.tcc \
@@ -7652,6 +7663,7 @@ CMakeFiles/OpenGLApp.dir/src/Shader.cpp.obj: C:/Users/rapha/Documents/Pessoal/Op
   C:/msys64/mingw64/include/c++/15.2.0/bits/uses_allocator.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/uses_allocator_args.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/utility.h \
+  C:/msys64/mingw64/include/c++/15.2.0/bits/vector.tcc \
   C:/msys64/mingw64/include/c++/15.2.0/bits/version.h \
   C:/msys64/mingw64/include/c++/15.2.0/cassert \
   C:/msys64/mingw64/include/c++/15.2.0/cctype \
@@ -7713,6 +7725,7 @@ CMakeFiles/OpenGLApp.dir/src/Shader.cpp.obj: C:/Users/rapha/Documents/Pessoal/Op
   C:/msys64/mingw64/include/c++/15.2.0/tuple \
   C:/msys64/mingw64/include/c++/15.2.0/type_traits \
   C:/msys64/mingw64/include/c++/15.2.0/typeinfo \
+  C:/msys64/mingw64/include/c++/15.2.0/vector \
   C:/msys64/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/atomic_word.h \
   C:/msys64/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/basic_file.h \
   C:/msys64/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/c++allocator.h \
@@ -9596,6 +9609,7 @@ CMakeFiles/OpenGLApp.dir/src/Transform.cpp.obj: C:/Users/rapha/Documents/Pessoal
   C:/msys64/mingw64/include/c++/15.2.0/bits/specfun.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/std_abs.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/stl_algobase.h \
+  C:/msys64/mingw64/include/c++/15.2.0/bits/stl_bvector.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/stl_construct.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/stl_function.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/stl_iterator.h \
@@ -9605,6 +9619,7 @@ CMakeFiles/OpenGLApp.dir/src/Transform.cpp.obj: C:/Users/rapha/Documents/Pessoal
   C:/msys64/mingw64/include/c++/15.2.0/bits/stl_raw_storage_iter.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/stl_tempbuf.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/stl_uninitialized.h \
+  C:/msys64/mingw64/include/c++/15.2.0/bits/stl_vector.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/streambuf.tcc \
   C:/msys64/mingw64/include/c++/15.2.0/bits/streambuf_iterator.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/string_view.tcc \
@@ -9613,6 +9628,7 @@ CMakeFiles/OpenGLApp.dir/src/Transform.cpp.obj: C:/Users/rapha/Documents/Pessoal
   C:/msys64/mingw64/include/c++/15.2.0/bits/uses_allocator.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/uses_allocator_args.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/utility.h \
+  C:/msys64/mingw64/include/c++/15.2.0/bits/vector.tcc \
   C:/msys64/mingw64/include/c++/15.2.0/bits/version.h \
   C:/msys64/mingw64/include/c++/15.2.0/cassert \
   C:/msys64/mingw64/include/c++/15.2.0/cctype \
@@ -9672,6 +9688,7 @@ CMakeFiles/OpenGLApp.dir/src/Transform.cpp.obj: C:/Users/rapha/Documents/Pessoal
   C:/msys64/mingw64/include/c++/15.2.0/tuple \
   C:/msys64/mingw64/include/c++/15.2.0/type_traits \
   C:/msys64/mingw64/include/c++/15.2.0/typeinfo \
+  C:/msys64/mingw64/include/c++/15.2.0/vector \
   C:/msys64/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/atomic_word.h \
   C:/msys64/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/c++allocator.h \
   C:/msys64/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/c++config.h \
@@ -10258,6 +10275,7 @@ CMakeFiles/OpenGLApp.dir/src/Volumetric.cpp.obj: C:/Users/rapha/Documents/Pessoa
   C:/msys64/mingw64/include/c++/15.2.0/bits/sstream.tcc \
   C:/msys64/mingw64/include/c++/15.2.0/bits/std_abs.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/stl_algobase.h \
+  C:/msys64/mingw64/include/c++/15.2.0/bits/stl_bvector.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/stl_construct.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/stl_function.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/stl_iterator.h \
@@ -10267,6 +10285,7 @@ CMakeFiles/OpenGLApp.dir/src/Volumetric.cpp.obj: C:/Users/rapha/Documents/Pessoa
   C:/msys64/mingw64/include/c++/15.2.0/bits/stl_raw_storage_iter.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/stl_tempbuf.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/stl_uninitialized.h \
+  C:/msys64/mingw64/include/c++/15.2.0/bits/stl_vector.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/streambuf.tcc \
   C:/msys64/mingw64/include/c++/15.2.0/bits/streambuf_iterator.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/string_view.tcc \
@@ -10275,6 +10294,7 @@ CMakeFiles/OpenGLApp.dir/src/Volumetric.cpp.obj: C:/Users/rapha/Documents/Pessoa
   C:/msys64/mingw64/include/c++/15.2.0/bits/uses_allocator.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/uses_allocator_args.h \
   C:/msys64/mingw64/include/c++/15.2.0/bits/utility.h \
+  C:/msys64/mingw64/include/c++/15.2.0/bits/vector.tcc \
   C:/msys64/mingw64/include/c++/15.2.0/bits/version.h \
   C:/msys64/mingw64/include/c++/15.2.0/cassert \
   C:/msys64/mingw64/include/c++/15.2.0/cctype \
@@ -10336,6 +10356,7 @@ CMakeFiles/OpenGLApp.dir/src/Volumetric.cpp.obj: C:/Users/rapha/Documents/Pessoa
   C:/msys64/mingw64/include/c++/15.2.0/tuple \
   C:/msys64/mingw64/include/c++/15.2.0/type_traits \
   C:/msys64/mingw64/include/c++/15.2.0/typeinfo \
+  C:/msys64/mingw64/include/c++/15.2.0/vector \
   C:/msys64/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/atomic_word.h \
   C:/msys64/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/basic_file.h \
   C:/msys64/mingw64/include/c++/15.2.0/x86_64-w64-mingw32/bits/c++allocator.h \
@@ -10966,6 +10987,7 @@ CMakeFiles/OpenGLApp.dir/src/main.cpp.obj: C:/Users/rapha/Documents/Pessoal/Open
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/headers/Texture.h \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/headers/TextureHandler.h \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/headers/Transform.h \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/headers/Utils.h \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/headers/Volumetric.h \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/headers/stb_image.h \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/KHR/khrplatform.h \
@@ -11762,6 +11784,8 @@ C:/msys64/mingw64/include/c++/15.2.0/bits/move.h:
 
 C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/src/Camera.cpp:
 
+C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/headers/Utils.h:
+
 C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/detail/_fixes.hpp:
 
 C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/glm.hpp:
@@ -12338,13 +12362,13 @@ C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/vector_uint1.hpp:
 
 C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/vector_uint1_sized.hpp:
 
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/avx10_2mediaintrin.h:
+C:/msys64/mingw64/include/c++/15.2.0/bit:
 
-C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/vector_uint2.hpp:
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/avx10_2mediaintrin.h:
 
 C:/msys64/mingw64/include/winefs.h:
 
-C:/msys64/mingw64/include/c++/15.2.0/bit:
+C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/ext/vector_uint2.hpp:
 
 C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/mat3x3.hpp:
 
@@ -12470,11 +12494,11 @@ C:/msys64/mingw64/include/combaseapi.h:
 
 C:/msys64/mingw64/include/_mingw_off_t.h:
 
-C:/msys64/mingw64/include/windef.h:
-
 C:/msys64/mingw64/include/_mingw_secapi.h:
 
 C:/msys64/mingw64/include/_mingw_stat64.h:
+
+C:/msys64/mingw64/include/c++/15.2.0/bits/stl_bvector.h:
 
 C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/tmmintrin.h:
 
@@ -12640,6 +12664,8 @@ C:/msys64/mingw64/include/profileapi.h:
 
 C:/msys64/mingw64/include/c++/15.2.0/bits/stl_tempbuf.h:
 
+C:/msys64/mingw64/include/c++/15.2.0/bits/stl_vector.h:
+
 C:/msys64/mingw64/include/c++/15.2.0/bits/streambuf.tcc:
 
 C:/msys64/mingw64/include/c++/15.2.0/bits/streambuf_iterator.h:
@@ -12649,6 +12675,10 @@ C:/msys64/mingw64/include/c++/15.2.0/bits/stringfwd.h:
 C:/msys64/mingw64/include/c++/15.2.0/bits/uses_allocator.h:
 
 C:/msys64/mingw64/include/c++/15.2.0/bits/utility.h:
+
+C:/msys64/mingw64/include/servprov.h:
+
+C:/msys64/mingw64/include/c++/15.2.0/bits/vector.tcc:
 
 C:/msys64/mingw64/include/c++/15.2.0/bits/version.h:
 
@@ -12676,11 +12706,11 @@ C:/msys64/mingw64/include/wincon.h:
 
 C:/msys64/mingw64/include/c++/15.2.0/concepts:
 
-C:/msys64/mingw64/include/c++/15.2.0/vector:
-
 C:/msys64/mingw64/include/c++/15.2.0/cstddef:
 
 C:/msys64/mingw64/include/c++/15.2.0/debug/assertions.h:
+
+C:/msys64/mingw64/include/c++/15.2.0/vector:
 
 C:/msys64/mingw64/include/c++/15.2.0/cstdio:
 
@@ -12770,11 +12800,11 @@ C:/msys64/mingw64/include/imm.h:
 
 C:/msys64/mingw64/include/namespaceapi.h:
 
-C:/msys64/mingw64/include/c++/15.2.0/tr1/exp_integral.tcc:
+C:/msys64/mingw64/include/msxml.h:
 
 C:/msys64/mingw64/include/windows.h:
 
-C:/msys64/mingw64/include/msxml.h:
+C:/msys64/mingw64/include/c++/15.2.0/tr1/exp_integral.tcc:
 
 C:/msys64/mingw64/include/c++/15.2.0/tr1/legendre_function.tcc:
 
@@ -12938,11 +12968,9 @@ C:/msys64/mingw64/include/sec_api/sys/timeb_s.h:
 
 C:/msys64/mingw64/include/securityappcontainer.h:
 
-C:/msys64/mingw64/include/servprov.h:
+C:/msys64/mingw64/include/wincrypt.h:
 
 C:/msys64/mingw64/include/shellapi.h:
-
-C:/msys64/mingw64/include/wincrypt.h:
 
 C:/msys64/mingw64/include/stdarg.h:
 
@@ -12967,6 +12995,8 @@ C:/msys64/mingw64/include/wchar.h:
 C:/msys64/mingw64/include/winbase.h:
 
 C:/msys64/mingw64/include/wincontypes.h:
+
+C:/msys64/mingw64/include/windef.h:
 
 C:/msys64/mingw64/include/winerror.h:
 
@@ -13205,12 +13235,6 @@ C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/headers/Texture.h:
 C:/msys64/mingw64/include/c++/15.2.0/bits/codecvt.h:
 
 C:/msys64/mingw64/include/c++/15.2.0/bits/sstream.tcc:
-
-C:/msys64/mingw64/include/c++/15.2.0/bits/stl_bvector.h:
-
-C:/msys64/mingw64/include/c++/15.2.0/bits/stl_vector.h:
-
-C:/msys64/mingw64/include/c++/15.2.0/bits/vector.tcc:
 
 C:/msys64/mingw64/include/c++/15.2.0/sstream:
 

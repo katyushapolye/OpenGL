@@ -17,7 +17,8 @@
 #include "../headers/Renderer.h"
 #include "../headers/ModelLoader.h"
 #include "../headers/Log.h"
-
+#include "../headers/Utils.h"
+using namespace std::chrono_literals;
 
 
 
@@ -40,7 +41,7 @@ int main()
 
 
 
-    Renderer renderer = Renderer(1280,720,"OpenGL Window"); //we need instantiate the renderer because it starts openGL
+    Renderer renderer = Renderer(1024,768,"OpenGL Window"); //we need instantiate the renderer because it starts openGL
 
     Scene* scene = new Scene();
     scene->ambientLight = vec3(0.3,0.3,0.3);
@@ -151,24 +152,69 @@ int main()
 
 
 
-    //Model* m = ModelLoader::loadFromObj("Resources/Models/cube.obj");
-    //m->transform.setScale(vec3(0.5,0.5,0.5));
-    //m->transform.setPosition(vec3(0,1,7));
-    //scene->addModel(shared_ptr<Model>(m));
+    Model* m = ModelLoader::loadFromObj("Resources/Models/quad.obj");
+    m->transform.rotateGlobal(vec3(-90,0,0));
+    m->transform.setScale(vec3(10,10,10));
+    m->transform.setPosition(vec3(0,0,10));
+    scene->addModel(shared_ptr<Model>(m));
 
    scene->addModel(shared_ptr<Model>(   ModelLoader::loadFromObj("Resources/Models/gizmo.obj")));
 
 
-    //Model* m = ModelLoader::loadFromObj("Resources/Models/window.obj");
-    //m->transform.setScale(vec3(5.0,5.0,5.0));
-    //m->transform.setPosition(vec3(0,-5,5.0));
-    //scene->addModel(shared_ptr<Model>(m));
+
+    Transform t = Transform();
+    t.setPosition(vec3(0,5,0));
+    Volumetric* fluidView = new Volumetric(t,10,10,10);
+    fluidView->scatteringCoefficient = vec3(2.5,1.0,1.0);
+    scene->addModel(shared_ptr<Volumetric>(fluidView));
 
 
-    scene->addModel(shared_ptr<Volumetric>(new Volumetric(Transform(),10,10,10)));
 
     renderer.loadScene(scene);
-    renderer.loop();
+
+
+    unsigned int Nx = 64, Ny = 64, Nz = 64;
+    size_t totalSize = Nx * Ny * Nz;
+
+    std::unique_ptr<float[]> densityField(new float[totalSize]());
+
+    int currentFrame = 1;
+    const int maxFrame = 1;
+
+    while(renderer.isRunning()){
+        // Read the current frame
+        std::string filename = "Debug\\density_" + std::to_string(currentFrame) + ".txt";
+        std::vector<float> vec = Utils::readGrid_DEBUG(filename.c_str(), Nx, Ny);
+
+        // Fill the density field
+        for (unsigned int k = 16; k < 48; ++k) {   // z
+            for (unsigned int i = 0; i < Ny; ++i) { // y
+                for (unsigned int j = 0; j < Nx; ++j) { // x
+                    unsigned int index = j + Nx * (i + Ny * k);
+                    densityField.get()[index] = glm::smoothstep(0.0f,5.f,vec[i * Nx + j]); //we can test different
+                    //functions later
+                }
+            }
+        }
+
+        // Update the fluid view
+        fluidView->setDensityField(std::move(densityField), Nx, Ny, Nz);
+
+        // Render the frame
+        renderer.renderPass();
+
+        // Move to next frame and loop back
+        currentFrame++;
+        if (currentFrame > maxFrame) {
+            currentFrame = 1;
+        }
+
+        // Re-allocate for next iteration (since we moved densityField)
+        densityField.reset(new float[totalSize]());
+
+        //std::this_thread::sleep_for(33ms);
+    }
+
     renderer.dispose();
 
 

@@ -411,30 +411,11 @@ void Renderer::sortSceneModels(){
 
 
     // Sort back-to-front
-    std::sort(transparentDrawGroups.begin(), transparentDrawGroups.end(),
-        [&camPos](const std::shared_ptr<Drawable>& a, const std::shared_ptr<Drawable>& b) {
-            //we will make these proper functions in a util.h file later
-            auto getDistance = [&camPos](const std::shared_ptr<Drawable>& drawable) -> float {
-                if (drawable->getType() == DrawableType::MODEL) {
-                    Model* model = static_cast<Model*>(drawable.get());
-                    return glm::length2(camPos - model->transform.getPosition());
-                }
-                else if (drawable->getType() == DrawableType::VOLUMETRIC) {
-                    Volumetric* vol = static_cast<Volumetric*>(drawable.get());
-                    return vol->distance2To(camPos);
-                }
-                else {
-                    Log::write("[Renderer::sortSceneModels] - WARNING! Transparent object without a transform encountered!");
-                    return 0.0f; // fallback distance
-                }
-            };
-
-            float distA = getDistance(a);
-            float distB = getDistance(b);
-
-            return distA > distB; // farthest first
-        }
-    );
+   std::sort(transparentDrawGroups.begin(), transparentDrawGroups.end(),
+    [&camPos](const std::shared_ptr<Drawable>& a, const std::shared_ptr<Drawable>& b) {
+        return Utils::compareDrawablesFarthestFirst(a, b, camPos);
+    }
+);
 
 
 
@@ -591,6 +572,7 @@ void Renderer::setupShaders(){
             loadedShaders[type]->bindShader();
             //this shader is lit so we set its lights
             setupShaderLighting(shader);
+            shader->setUniform("skybox",0);
             break;
         
         default:
@@ -795,7 +777,7 @@ void Renderer::geometryPass() {
     skyboxShader->setUniform("projectionMat",camera->getProjectionMat());
     skyboxShader->setUniform("viewMat",glm::mat4(glm::mat3(camera->getViewMat())));
     glBindVertexArray(this->gl_Skybox_VAO);
-    glActiveTexture(0);
+    glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_CUBE_MAP, this->gl_SkyBox_Cubemap);
     glDrawArrays(GL_TRIANGLES, 0, 36);
 
@@ -818,45 +800,49 @@ void Renderer::geometryPass() {
         }
         else if(drawable->getType() == DrawableType::VOLUMETRIC){
 
-        glBindFramebuffer(GL_READ_FRAMEBUFFER, this->gl_Screen_FBO);
-        glBindFramebuffer(GL_DRAW_FRAMEBUFFER, this->gl_Screen_Volumetric_FBO);
-        glBlitFramebuffer(
-            0, 0, width, height, 
-            0, 0, width, height, 
-            GL_DEPTH_BUFFER_BIT,  // Copy depth only
-            GL_NEAREST
-        );
-        
-        // Now render volumetric
-        glBindFramebuffer(GL_FRAMEBUFFER, this->gl_Screen_Volumetric_FBO);
+            glBindFramebuffer(GL_READ_FRAMEBUFFER, this->gl_Screen_FBO);
+            glBindFramebuffer(GL_DRAW_FRAMEBUFFER, this->gl_Screen_Volumetric_FBO);
+            glBlitFramebuffer(
+                0, 0, width, height, 
+                0, 0, width, height, 
+                GL_DEPTH_BUFFER_BIT,  // Copy depth only
+                GL_NEAREST
+            );
+            
+            // Now render volumetric
         glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, this->gl_Screen_TEX);  
+        glBindTexture(GL_TEXTURE_CUBE_MAP, this->gl_SkyBox_Cubemap);  // ← Add this!
         glActiveTexture(GL_TEXTURE1);
+        glBindTexture(GL_TEXTURE_2D, this->gl_Screen_TEX);  
+        glActiveTexture(GL_TEXTURE2);
         glBindTexture(GL_TEXTURE_2D, this->gl_Screen_DepthStencil_TEX);  
+            
+            Volumetric* volume = static_cast<Volumetric*>(drawable.get());
+            volume->bindDensityField(3);
+            shader = loadedShaders[drawable->getShaderType()].get();
+            shader->bindShader();
+            shader->setUniform("skybox", 0);           // ← Skybox on unit 0
+            shader->setUniform("screenTexture", 1);
+            shader->setUniform("screenDepth", 2);  
+            shader->setUniform("time", (float)glfwGetTime());
+            shader->setUniform("volumeCenter",volume->transform.getPosition());
+            shader->setUniform("volumeDensity",3);
+            shader->setUniform("volumeDimension",vec3(volume->width,volume->height,volume->length));
+            shader->setUniform("scatteringCoefficient",volume->scatteringCoefficient);
         
-        Volumetric* volume = static_cast<Volumetric*>(drawable.get());
-        shader = loadedShaders[drawable->getShaderType()].get();
-        shader->bindShader();
-        shader->setUniform("screenTexture", 0);
-        shader->setUniform("screenDepth", 1);  
-        shader->setUniform("time", (float)glfwGetTime());
-
-        shader->setUniform("volumeCenter",volume->transform.getPosition());
-        shader->setUniform("volumeDimension",vec3(volume->width,volume->height,volume->length));
-
-        
-        glBindVertexArray(this->gl_ScreenQuad_VAO);
-        glDrawArrays(GL_TRIANGLES, 0, 6);
-        
-        // Copy result back (color only, preserve depth in Screen_FBO)
-        glBindFramebuffer(GL_READ_FRAMEBUFFER, this->gl_Screen_Volumetric_FBO);
-        glBindFramebuffer(GL_DRAW_FRAMEBUFFER, this->gl_Screen_FBO);
-        glBlitFramebuffer(
-            0, 0, width, height, 
-            0, 0, width, height, 
-            GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT, 
-            GL_NEAREST
-        );
+            
+            glBindVertexArray(this->gl_ScreenQuad_VAO);
+            glDrawArrays(GL_TRIANGLES, 0, 6);
+            
+            // Copy result back (color only, preserve depth in Screen_FBO)
+            glBindFramebuffer(GL_READ_FRAMEBUFFER, this->gl_Screen_Volumetric_FBO);
+            glBindFramebuffer(GL_DRAW_FRAMEBUFFER, this->gl_Screen_FBO);
+            glBlitFramebuffer(
+                0, 0, width, height, 
+                0, 0, width, height, 
+                GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT, 
+                GL_NEAREST
+            );
     }
 }
     //glDisable(GL_DEPTH_TEST);
@@ -895,10 +881,10 @@ bool Renderer::isRunning() {
     return !glfwWindowShouldClose(this->gl_Window);
 }
 
-void Renderer::loop() {
+void Renderer::renderPass() {
 
 
-    while (isRunning()) {
+
         double frameStart = glfwGetTime();
 
         // Delta time
@@ -919,7 +905,7 @@ void Renderer::loop() {
         // Frame time calculation
         double frameEnd = glfwGetTime();
 
-    }
+    
 }
 
 void Renderer::dispose(){

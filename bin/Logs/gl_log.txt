@@ -1,19 +1,19 @@
-Log/initLog - Logging session started - 11:42:56 AM 
-[11:42:56 AM] - Program Initialized!
-[11:42:56 AM] - [RendererRenderer] - Mouse Raw acceleration is supported, turning it on
-[11:42:57 AM] - [ModelLoader::loadFromObjWithAssimp] - Successfully loaded: Resources/Models/gizmo.obj with 1 meshes
-[11:42:57 AM] - [ModelLoader::loadFromObjWithAssimp] - Processing 1 materials (skipping default)
-[11:42:57 AM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
-[11:42:57 AM] - [TextureHandler::loadTexture] - Loaded texture from path Resources/Textures/Fallback/fallback.png- with transparency of value 0
-[11:42:57 AM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
-[11:42:57 AM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
-[11:42:57 AM] - [TextureHandler::loadTexture] - Loaded texture from path Resources/Textures/gizmo.png - with transparency of value 0
-[11:42:57 AM] - [ModelLoader::loadFromObjWithAssimp] - Model loading completed successfully
-[11:42:57 AM] - [ModelLoader::loadFromObjWithAssimp] - Successfully loaded: Resources/Models/window.obj with 1 meshes
-[11:42:57 AM] - [ModelLoader::loadFromObjWithAssimp] - Processing 1 materials (skipping default)
-[11:42:57 AM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
-[11:42:57 AM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
-[11:42:57 AM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
-[11:42:57 AM] - [TextureHandler::loadTexture] - Loaded texture from path Resources/Textures/window.png- with transparency of value 1
-[11:42:57 AM] - [ModelLoader::loadFromObjWithAssimp] - Model loading completed successfully
-Log/closeLog - Logging session ended - 11:43:09 AM 
+Log/initLog - Logging session started - 10:23:19 PM 
+[10:23:19 PM] - Program Initialized!
+[10:23:19 PM] - [RendererRenderer] - Mouse Raw acceleration is supported, turning it on
+[10:23:20 PM] - [ModelLoader::loadFromObjWithAssimp] - Successfully loaded: Resources/Models/quad.obj with 1 meshes
+[10:23:20 PM] - [ModelLoader::loadFromObjWithAssimp] - Processing 1 materials (skipping default)
+[10:23:20 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
+[10:23:20 PM] - [TextureHandler::loadTexture] - Loaded texture from path Resources/Textures/Fallback/fallback.png- with transparency of value 0
+[10:23:20 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
+[10:23:20 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
+[10:23:21 PM] - [TextureHandler::loadTexture] - Loaded texture from path Resources/Textures/checkered.png- with transparency of value 0
+[10:23:21 PM] - [ModelLoader::loadFromObjWithAssimp] - Model loading completed successfully
+[10:23:21 PM] - [ModelLoader::loadFromObjWithAssimp] - Successfully loaded: Resources/Models/gizmo.obj with 1 meshes
+[10:23:21 PM] - [ModelLoader::loadFromObjWithAssimp] - Processing 1 materials (skipping default)
+[10:23:21 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
+[10:23:21 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
+[10:23:21 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
+[10:23:21 PM] - [TextureHandler::loadTexture] - Loaded texture from path Resources/Textures/gizmo.png - with transparency of value 0
+[10:23:21 PM] - [ModelLoader::loadFromObjWithAssimp] - Model loading completed successfully
+Log/closeLog - Logging session ended - 10:23:31 PM 
