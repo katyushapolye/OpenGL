@@ -7,7 +7,6 @@ out vec2 TexCoords;
 
 out mat4 inverseViewMat;//we will use this to calculate the direction vector of our frag for ray marching
 out mat4 inverseProjectionMat; //we will put these in the UBO
-uniform mat4 modelMat;
 
 layout(std140, binding = 0) uniform Matrixes  {
     mat4 viewMat;

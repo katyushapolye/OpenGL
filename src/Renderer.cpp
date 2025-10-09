@@ -809,6 +809,7 @@ void Renderer::geometryPass() {
                 GL_NEAREST
             );
             
+            
             // Now render volumetric
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_CUBE_MAP, this->gl_SkyBox_Cubemap);  // ← Add this!

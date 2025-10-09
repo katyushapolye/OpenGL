@@ -44,7 +44,7 @@ int main()
     Renderer renderer = Renderer(1024,768,"OpenGL Window"); //we need instantiate the renderer because it starts openGL
 
     Scene* scene = new Scene();
-    scene->ambientLight = vec3(0.3,0.3,0.3);
+    scene->ambientLight = vec3(0.9,0.9,0.9);
     /*Grass scene
     //scene->addModel(shared_ptr<Model>(   ModelLoader::loadFromObj("Models/gizmo.obj")));
 
@@ -160,12 +160,16 @@ int main()
 
    scene->addModel(shared_ptr<Model>(   ModelLoader::loadFromObj("Resources/Models/gizmo.obj")));
 
-
+    m = ModelLoader::loadFromObj("Resources/Models/cube.obj");
+    m->transform.setPosition(vec3(-1,10,0));
+    m->transform.setScale(vec3(0.2,0.2,0.2));
+    m->transform.rotateGlobal(vec3(0,0,45));
+    scene->addModel(shared_ptr<Model>(m));
 
     Transform t = Transform();
     t.setPosition(vec3(0,5,0));
     Volumetric* fluidView = new Volumetric(t,10,10,10);
-    fluidView->scatteringCoefficient = vec3(2.5,1.0,1.0);
+    fluidView->scatteringCoefficient = vec3(0.2*2, 0.175*2, 0.1*2); // Slightly blue
     scene->addModel(shared_ptr<Volumetric>(fluidView));
 
 
@@ -179,7 +183,7 @@ int main()
     std::unique_ptr<float[]> densityField(new float[totalSize]());
 
     int currentFrame = 1;
-    const int maxFrame = 1;
+    const int maxFrame = 40;
 
     while(renderer.isRunning()){
         // Read the current frame
@@ -187,11 +191,12 @@ int main()
         std::vector<float> vec = Utils::readGrid_DEBUG(filename.c_str(), Nx, Ny);
 
         // Fill the density field
-        for (unsigned int k = 16; k < 48; ++k) {   // z
+        for (unsigned int k = 12; k < 54; ++k) {   // z
             for (unsigned int i = 0; i < Ny; ++i) { // y
                 for (unsigned int j = 0; j < Nx; ++j) { // x
                     unsigned int index = j + Nx * (i + Ny * k);
-                    densityField.get()[index] = glm::smoothstep(0.0f,5.f,vec[i * Nx + j]); //we can test different
+                    densityField.get()[index] = (glm::clamp(0.0f,4.f,vec[i * Nx + j])/4.0); //we can test different
+
                     //functions later
                 }
             }
@@ -211,8 +216,7 @@ int main()
 
         // Re-allocate for next iteration (since we moved densityField)
         densityField.reset(new float[totalSize]());
-
-        //std::this_thread::sleep_for(33ms);
+std::this_thread::sleep_for(33ms);
     }
 
     renderer.dispose();
