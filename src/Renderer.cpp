@@ -35,7 +35,7 @@ Renderer::Renderer(unsigned int width, unsigned int height, const char* title) {
 
     glfwMakeContextCurrent(this->gl_Window);
     glfwSetFramebufferSizeCallback(this->gl_Window, this->framebuffer_size_callback);
-    glfwSetInputMode(this->gl_Window, GLFW_CURSOR, GLFW_CURSOR_DISABLED); //locks tthe mouse to screen
+    //glfwSetInputMode(this->gl_Window, GLFW_CURSOR, GLFW_CURSOR_DISABLED); //locks tthe mouse to screen
     if (glfwRawMouseMotionSupported()){
         Log::write("[RendererRenderer] - Mouse Raw acceleration is supported, turning it on");
         glfwSetInputMode(this->gl_Window, GLFW_RAW_MOUSE_MOTION, GLFW_TRUE);
@@ -78,6 +78,7 @@ Renderer::Renderer(unsigned int width, unsigned int height, const char* title) {
     this->loadScreenBuffer();
     this->loadSkyBox();
     this->loadShadowMap();
+    this->loadUI();
 
     /*debug stuff*/
 
@@ -93,6 +94,20 @@ Renderer::Renderer(unsigned int width, unsigned int height, const char* title) {
 
 
 
+
+
+}
+
+void Renderer::loadUI(){
+
+    IMGUI_CHECKVERSION();
+    ImGui::CreateContext();
+    ImGuiIO& io = ImGui::GetIO(); (void)io;
+    ImGui::StyleColorsDark();
+    
+    // Initialize ImGui for GLFW and OpenGL3
+    ImGui_ImplGlfw_InitForOpenGL(this->gl_Window, true);
+    ImGui_ImplOpenGL3_Init("#version 440");
 }
 
 void Renderer::loadShaders(){
@@ -427,6 +442,7 @@ void Renderer::sortSceneModels(){
 
 
 }
+
 
 void Renderer::processInput(){
     vec2 inputDir = vec2(0.0f,0.0f);
@@ -900,8 +916,8 @@ void Renderer::renderPass() {
         shadowPass();
         geometryPass();
 
-        glfwSwapBuffers(this->gl_Window);
-        glfwPollEvents();
+        // /glfwSwapBuffers(this->gl_Window);
+        // /glfwPollEvents();
 
         // Frame time calculation
         double frameEnd = glfwGetTime();
@@ -940,6 +956,11 @@ void Renderer::loadScene(Scene* scene){
 
     //update all sorting layers
 }
+
+ GLFWwindow* Renderer::getWindow(){
+    return this->gl_Window;
+ }
+
 
 void Renderer::framebuffer_size_callback(GLFWwindow* gl_Window, int width, int height) {
     glViewport(0, 0, width, height);

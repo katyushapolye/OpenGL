@@ -10,6 +10,13 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/src/glad.c" "CMakeFiles/OpenGLApp.dir/src/glad.c.obj" "gcc" "CMakeFiles/OpenGLApp.dir/src/glad.c.obj.d"
   "C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/src/stb_image.c" "CMakeFiles/OpenGLApp.dir/src/stb_image.c.obj" "gcc" "CMakeFiles/OpenGLApp.dir/src/stb_image.c.obj.d"
+  "C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/imgui-1.92.4/backends/imgui_impl_glfw.cpp" "CMakeFiles/OpenGLApp.dir/include/imgui-1.92.4/backends/imgui_impl_glfw.cpp.obj" "gcc" "CMakeFiles/OpenGLApp.dir/include/imgui-1.92.4/backends/imgui_impl_glfw.cpp.obj.d"
+  "C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/imgui-1.92.4/backends/imgui_impl_opengl3.cpp" "CMakeFiles/OpenGLApp.dir/include/imgui-1.92.4/backends/imgui_impl_opengl3.cpp.obj" "gcc" "CMakeFiles/OpenGLApp.dir/include/imgui-1.92.4/backends/imgui_impl_opengl3.cpp.obj.d"
+  "C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/imgui-1.92.4/imgui.cpp" "CMakeFiles/OpenGLApp.dir/include/imgui-1.92.4/imgui.cpp.obj" "gcc" "CMakeFiles/OpenGLApp.dir/include/imgui-1.92.4/imgui.cpp.obj.d"
+  "C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/imgui-1.92.4/imgui_demo.cpp" "CMakeFiles/OpenGLApp.dir/include/imgui-1.92.4/imgui_demo.cpp.obj" "gcc" "CMakeFiles/OpenGLApp.dir/include/imgui-1.92.4/imgui_demo.cpp.obj.d"
+  "C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/imgui-1.92.4/imgui_draw.cpp" "CMakeFiles/OpenGLApp.dir/include/imgui-1.92.4/imgui_draw.cpp.obj" "gcc" "CMakeFiles/OpenGLApp.dir/include/imgui-1.92.4/imgui_draw.cpp.obj.d"
+  "C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/imgui-1.92.4/imgui_tables.cpp" "CMakeFiles/OpenGLApp.dir/include/imgui-1.92.4/imgui_tables.cpp.obj" "gcc" "CMakeFiles/OpenGLApp.dir/include/imgui-1.92.4/imgui_tables.cpp.obj.d"
+  "C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/imgui-1.92.4/imgui_widgets.cpp" "CMakeFiles/OpenGLApp.dir/include/imgui-1.92.4/imgui_widgets.cpp.obj" "gcc" "CMakeFiles/OpenGLApp.dir/include/imgui-1.92.4/imgui_widgets.cpp.obj.d"
   "C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/src/Camera.cpp" "CMakeFiles/OpenGLApp.dir/src/Camera.cpp.obj" "gcc" "CMakeFiles/OpenGLApp.dir/src/Camera.cpp.obj.d"
   "C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/src/InstancedMesh.cpp" "CMakeFiles/OpenGLApp.dir/src/InstancedMesh.cpp.obj" "gcc" "CMakeFiles/OpenGLApp.dir/src/InstancedMesh.cpp.obj.d"
   "C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/src/InstancedModel.cpp" "CMakeFiles/OpenGLApp.dir/src/InstancedModel.cpp.obj" "gcc" "CMakeFiles/OpenGLApp.dir/src/InstancedModel.cpp.obj.d"

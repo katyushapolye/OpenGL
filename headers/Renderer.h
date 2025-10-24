@@ -4,6 +4,12 @@
 #include <vector>
 #include <thread>
 #include <chrono>
+
+#include "imgui.h"
+#include "imgui_impl_glfw.h"
+#include "imgui_impl_opengl3.h"
+
+
 #include "Definitions.h"
 #include "Camera.h"
 #include "Shader.h"
@@ -110,6 +116,7 @@ private:
     void loadScreenBuffer();
     void loadSkyBox();
     void loadShadowMap();
+    void loadUI();
 
     //Utility function, sorts every scene object in their group. We call this every frame but it is aware of updates
     //operations are done since we only need to sort groups once
@@ -139,6 +146,8 @@ private:
 
 
 
+
+
     
 public:
 
@@ -152,6 +161,7 @@ public:
 
 
     void loadScene(Scene* scene);
+        GLFWwindow* getWindow();
 
 
 

@@ -29,6 +29,48 @@ namespace Utils {
         return grid;
     }
 
+    inline std::vector<float> readGrid3D_Binary(const char* path, int& Nz, int& Ny, int& Nx, float& dh) {
+        std::ifstream file(path, std::ios::binary);
+        if (!file.is_open()) {
+            std::cerr << "Error: Could not open file " << path << std::endl;
+            return std::vector<float>();
+        }
+
+        // Read header: [Nx, Ny, Nz, dh]
+        float header[4];
+        file.read(reinterpret_cast<char*>(header), 4 * sizeof(float));
+
+        if (!file) {
+            std::cerr << "Error: Could not read header from " << path << std::endl;
+            return std::vector<float>();
+        }
+
+        // Extract dimensions and spacing from header
+        Nx = static_cast<int>(header[0]);
+        Ny = static_cast<int>(header[1]);
+        Nz = static_cast<int>(header[2]);
+        dh = header[3];
+
+        //std::cout << "Grid dimensions: " << Nx << " x " << Ny << " x " << Nz << std::endl;
+        //std::cout << "Grid spacing: " << dh << std::endl;
+
+        // Allocate grid and read data
+        std::vector<float> grid(Nz * Ny * Nx);
+        file.read(reinterpret_cast<char*>(grid.data()), Nz * Ny * Nx * sizeof(float));
+
+        if (!file) {
+            std::cerr << "Error: Could not read complete grid data from " << path << std::endl;
+            std::cerr << "Expected " << (Nz * Ny * Nx * sizeof(float)) << " bytes" << std::endl;
+            return std::vector<float>();
+        }
+
+        file.close();
+
+        //std::cout << "Successfully loaded grid with " << grid.size() << " points" << std::endl;
+
+        return grid;
+    }
+    
 
     inline float getDrawableDistance2(const std::shared_ptr<Drawable>& drawable, const glm::vec3& camPos) {
         if (drawable->getType() == DrawableType::MODEL) {

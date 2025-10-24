@@ -12,7 +12,7 @@ uniform samplerCube skybox; //TEX UNIT 0
 uniform float time;
 
 //ray march parameters
-#define dt  0.03
+#define dt  0.01
 #define EPS 0.001
 #define MAX_RANGE  50
 //volume parameters
@@ -22,7 +22,7 @@ uniform sampler3D volumeDensity;
 
 uniform vec3 scatteringCoefficient;
 
-#define densityMultiplier 0.1;
+#define densityMultiplier 0.00001;
 
 //Lights
 struct PointLight {
@@ -207,14 +207,18 @@ vec3 worldToCubeMap(vec3 pos){
 }
 
 vec3 getDensityGradient(vec3 pos) {
-    float eps = dt * 0.5;
-    float dx = texture(volumeDensity, worldToCubeMap(pos + vec3(eps, 0, 0))).r 
-             - texture(volumeDensity, worldToCubeMap(pos - vec3(eps, 0, 0))).r;
-    float dy = texture(volumeDensity, worldToCubeMap(pos + vec3(0, eps, 0))).r 
-             - texture(volumeDensity, worldToCubeMap(pos - vec3(0, eps, 0))).r;
-    float dz = texture(volumeDensity, worldToCubeMap(pos + vec3(0, 0, eps))).r 
-             - texture(volumeDensity, worldToCubeMap(pos - vec3(0, 0, eps))).r;
-    return vec3(dx, dy, dz) / (2.0 * eps);
+    // Use texture space epsilon for more stable gradients
+    vec3 uvw = worldToCubeMap(pos);
+    float texelSize = 1.0 / 128.0; // Your grid resolution
+    
+    float dx = texture(volumeDensity, uvw + vec3(texelSize, 0, 0)).r 
+             - texture(volumeDensity, uvw - vec3(texelSize, 0, 0)).r;
+    float dy = texture(volumeDensity, uvw + vec3(0, texelSize, 0)).r 
+             - texture(volumeDensity, uvw - vec3(0, texelSize, 0)).r;
+    float dz = texture(volumeDensity, uvw + vec3(0, 0, texelSize)).r 
+             - texture(volumeDensity, uvw - vec3(0, 0, texelSize)).r;
+    
+    return vec3(dx, dy, dz) / (2.0 * texelSize * length(volumeDimension));
 }
 
 bool willHitFluid(Ray r, vec3 boxMin, vec3 boxMax) {
@@ -509,7 +513,7 @@ vec3 march(Ray r, vec3 sceneColor)
     vec3 accumulatedLight = vec3(0.0);
     bool travellingThroughFluid = isInsideFluid(r.pos);
    
-    const int MAX_REFRACTIONS = 2;
+    const int MAX_REFRACTIONS = 3;
     
     for(int i = 0; i < MAX_REFRACTIONS; i++){
         // Search for next surface boundary
