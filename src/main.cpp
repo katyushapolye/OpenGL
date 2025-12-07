@@ -17,6 +17,7 @@
 #include "../headers/ModelLoader.h"
 #include "../headers/Log.h"
 #include "../headers/Utils.h"
+#include "../headers/UI.h"
 
 
 
@@ -57,42 +58,33 @@ int main()
 
     Transform t = Transform();
     t.setPosition(vec3(0,5,0));
+
+
+    
     Volumetric* fluidView = new Volumetric(t,10,10,10);
+    fluidView->transform.rotateGlobal(vec3(0,0,90));
     fluidView->scatteringCoefficient = vec3(0.2, 0.175, 0.1);
     scene->addModel(shared_ptr<Volumetric>(fluidView));
 
     renderer.loadScene(scene);
 
-    int Nx = 64, Ny = 64, Nz = 64;
-    float dh = 1.0/64.0;
+    int Nx = 60, Ny = 60, Nz = 60;
+    float dh = 1.0/60.0;
     size_t totalSize = Nx * Ny * Nz;
 
     std::unique_ptr<float[]> densityField(new float[totalSize]());
 
-    int currentFrame = 3;
-    const int maxFrame = 3;
+
 
     // ImGui slider variable
-    float densityOffset = 250.0f;
+    float densityOffset = 0.0f;
 
-    while(renderer.isRunning()){
+    renderer.addUIElement(std::move(unique_ptr<UIElement>(new Text("Hello world!",vec2(0.0f,0.0f)))));
+    
+    std::string filename = "Debug\\density.bin";
+    std::vector<float> vec = Utils::readGrid3D(filename.c_str(), Nx, Ny,Nz,dh);
 
-        ImGui_ImplOpenGL3_NewFrame();
-        ImGui_ImplGlfw_NewFrame();
-        ImGui::NewFrame();
-
-        // Create ImGui window with slider
-        ImGui::Begin("HUD");
-        ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
-        ImGui::End();
-        //std::cout << "density offset: " << densityOffset << std::endl;
-
-
-        std::string filename = "Debug\\density_grid_"  +std::to_string(currentFrame) + ".bin";
-        std::vector<float> vec = Utils::readGrid3D_Binary(filename.c_str(), Nx, Ny,Nz,dh);
-
-        // Fill the density field
-        for (unsigned int k = 0; k < Nz; ++k) {
+    for (unsigned int k = 0; k < Nz; ++k) {
             for (unsigned int i = 0; i < Ny; ++i) {
                 for (unsigned int j = 0; j < Nx; ++j) {
                     unsigned int index = j + Nx * (i + Ny * k);
@@ -103,34 +95,34 @@ int main()
                 }
             }
         }
+     // Update the fluid view
+    fluidView->setDensityField(std::move(densityField), Nx, Ny, Nz);
+    while(renderer.isRunning()){
 
-        // Update the fluid view
-        fluidView->setDensityField(std::move(densityField), Nx, Ny, Nz);
+
 
         renderer.renderPass();
 
+        /*
+        first this
+        ImGui_ImplOpenGL3_NewFrame();
+        ImGui_ImplGlfw_NewFrame();
+        ImGui::NewFrame();
+        ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+
+        //then this at the end of the render pass
         ImGui::Render();
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
         // NOW swap buffers //we needd to do that on the renderer, we will later incorporate it back into the render pass
-        glfwSwapBuffers(renderer.getWindow());
-        glfwPollEvents();
-
-        currentFrame++;
-        if (currentFrame > maxFrame) {
-            currentFrame = 3;
-        }
 
 
-        densityField.reset(new float[totalSize]());
+        */
 
-        std::this_thread::sleep_for(33ms);
+
+        
     }
 
-    // Cleanup ImGui
-    ImGui_ImplOpenGL3_Shutdown();
-    ImGui_ImplGlfw_Shutdown();
-    ImGui::DestroyContext();
 
     renderer.dispose();
 

@@ -7,6 +7,11 @@ out vec2 TexCoords;
 
 out mat4 inverseViewMat;//we will use this to calculate the direction vector of our frag for ray marching
 out mat4 inverseProjectionMat; //we will put these in the UBO
+out mat4 inverseModelMat;
+
+
+uniform mat4 modelMat; //to rotate and scale the volumetric
+
 
 layout(std140, binding = 0) uniform Matrixes  {
     mat4 viewMat;
@@ -14,8 +19,10 @@ layout(std140, binding = 0) uniform Matrixes  {
 
 };
 
+
 void main()
 {
+    inverseModelMat = inverse(modelMat);
     gl_Position = vec4(aPos.x, aPos.y, 0.0, 1.0); 
     TexCoords = aTexCoords;
     inverseProjectionMat = inverse(projectionMat);

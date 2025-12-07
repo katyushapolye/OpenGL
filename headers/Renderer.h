@@ -5,9 +5,9 @@
 #include <thread>
 #include <chrono>
 
-#include "imgui.h"
-#include "imgui_impl_glfw.h"
-#include "imgui_impl_opengl3.h"
+#include <imgui.h>
+#include <imgui_impl_glfw.h>
+#include <imgui_impl_opengl3.h>
 
 
 #include "Definitions.h"
@@ -24,6 +24,7 @@
 #include "InstancedModel.h"
 #include "Volumetric.h"
 #include "Utils.h"
+#include "UI.h"
 
 
 
@@ -44,6 +45,7 @@ private:
     float lastFrame;
     float currentFrame;
     double mouseX,mouseY;
+    bool isMouseLocked = true;
 
 
 
@@ -58,6 +60,9 @@ private:
     std::map<ShaderType, std::vector<shared_ptr<Drawable>>> opaqueShaderDrawGroups;
     std::vector<shared_ptr<Drawable>> transparentDrawGroups; //for transparent objects, we cant render by shader, only by their order of depth, since the drawable knows who is its shader, we can
                                                                   //get away with just a vector
+
+
+    std::vector<unique_ptr<UIElement>> IMGUI_elements;
 
     //Shader UBO's
     unsigned int gl_Matrixes_UBO;
@@ -134,6 +139,8 @@ private:
     void shadowPass();
     void geometryPass();
 
+    void uiPass();
+
 
     //callbacks functions
     static void framebuffer_size_callback(GLFWwindow* window, int width, int height);
@@ -158,6 +165,11 @@ public:
     bool isRunning();
     void renderPass();
     void dispose();
+
+
+    void addUIElement(std::unique_ptr<UIElement> element);
+
+    
 
 
     void loadScene(Scene* scene);

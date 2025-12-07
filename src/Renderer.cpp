@@ -35,7 +35,7 @@ Renderer::Renderer(unsigned int width, unsigned int height, const char* title) {
 
     glfwMakeContextCurrent(this->gl_Window);
     glfwSetFramebufferSizeCallback(this->gl_Window, this->framebuffer_size_callback);
-    //glfwSetInputMode(this->gl_Window, GLFW_CURSOR, GLFW_CURSOR_DISABLED); //locks tthe mouse to screen
+    glfwSetInputMode(this->gl_Window, GLFW_CURSOR, GLFW_CURSOR_DISABLED); //locks tthe mouse to screen
     if (glfwRawMouseMotionSupported()){
         Log::write("[RendererRenderer] - Mouse Raw acceleration is supported, turning it on");
         glfwSetInputMode(this->gl_Window, GLFW_RAW_MOUSE_MOTION, GLFW_TRUE);
@@ -476,7 +476,23 @@ void Renderer::processInput(){
         zoomOut = true;
 
     }
+
+    if(glfwGetKey(this->gl_Window, GLFW_KEY_LEFT_ALT) == GLFW_PRESS){
+            isMouseLocked = !isMouseLocked;
+            if(isMouseLocked){
+                glfwSetInputMode(this->gl_Window, GLFW_CURSOR, GLFW_CURSOR_DISABLED); //locks tthe mouse to screen}
+            }
+            else{
+                glfwSetInputMode(this->gl_Window, GLFW_CURSOR, GLFW_CURSOR_NORMAL); 
+                
+            }
+       
+    }
     //mouse
+    if(isMouseLocked    == false){
+        return;
+    }   
+
     vec2 mouseDir;
     double x,y;
     
@@ -838,7 +854,8 @@ void Renderer::geometryPass() {
             volume->bindDensityField(3);
             shader = loadedShaders[drawable->getShaderType()].get();
             shader->bindShader();
-            shader->setUniform("skybox", 0);           // ← Skybox on unit 0
+            shader->setUniform("modelMat",volume->transform.getTransformMat());
+            shader->setUniform("skybox", 0);           //  Skybox on unit 0
             shader->setUniform("screenTexture", 1);
             shader->setUniform("screenDepth", 2);  
             shader->setUniform("time", (float)glfwGetTime());
@@ -892,6 +909,29 @@ void Renderer::geometryPass() {
 
 }
 
+void Renderer::addUIElement(std::unique_ptr<UIElement> element){
+    this->IMGUI_elements.push_back(std::move(element));
+}
+
+void Renderer::uiPass(){
+
+         ImGui_ImplOpenGL3_NewFrame();
+        ImGui_ImplGlfw_NewFrame();
+        ImGui::NewFrame();
+        //ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+
+
+
+    for(auto& element : this->IMGUI_elements){
+        element->draw();
+    }
+
+            //then this at the end of the render pass
+        ImGui::Render();
+        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+    
+}
+
 
 
 bool Renderer::isRunning() {
@@ -919,8 +959,20 @@ void Renderer::renderPass() {
         // /glfwSwapBuffers(this->gl_Window);
         // /glfwPollEvents();
 
+        
+
+
+
+        uiPass();
+
+
+        glfwSwapBuffers(this->gl_Window);
+        glfwPollEvents();
+
+
         // Frame time calculation
         double frameEnd = glfwGetTime();
+
 
     
 }
@@ -928,6 +980,10 @@ void Renderer::renderPass() {
 void Renderer::dispose(){
     // Clean up resources
     delete this->loadedScene;
+
+    ImGui_ImplOpenGL3_Shutdown();
+    ImGui_ImplGlfw_Shutdown();
+    ImGui::DestroyContext();
 
 
 
@@ -960,6 +1016,8 @@ void Renderer::loadScene(Scene* scene){
  GLFWwindow* Renderer::getWindow(){
     return this->gl_Window;
  }
+
+
 
 
 void Renderer::framebuffer_size_callback(GLFWwindow* gl_Window, int width, int height) {

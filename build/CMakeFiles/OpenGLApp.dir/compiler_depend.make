@@ -7427,6 +7427,7 @@ CMakeFiles/OpenGLApp.dir/src/Renderer.cpp.obj: C:/Users/rapha/Documents/Pessoal/
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/headers/Texture.h \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/headers/TextureHandler.h \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/headers/Transform.h \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/headers/UI.h \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/headers/Utils.h \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/headers/Volumetric.h \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/headers/stb_image.h \
@@ -7653,6 +7654,10 @@ CMakeFiles/OpenGLApp.dir/src/Renderer.cpp.obj: C:/Users/rapha/Documents/Pessoal/
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/vec3.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/vec4.hpp \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/glm/vector_relational.hpp \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/imgui-1.92.4/backends/imgui_impl_glfw.h \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/imgui-1.92.4/backends/imgui_impl_opengl3.h \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/imgui-1.92.4/imconfig.h \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/imgui-1.92.4/imgui.h \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/libs/glfw-3.4.bin.WIN64/include/GLFW/glfw3.h \
   C:/msys64/mingw64/include/_bsd_types.h \
   C:/msys64/mingw64/include/_mingw.h \
@@ -12499,6 +12504,7 @@ CMakeFiles/OpenGLApp.dir/src/main.cpp.obj: C:/Users/rapha/Documents/Pessoal/Open
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/headers/Texture.h \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/headers/TextureHandler.h \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/headers/Transform.h \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/headers/UI.h \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/headers/Utils.h \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/headers/Volumetric.h \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/headers/stb_image.h \
@@ -14897,6 +14903,8 @@ C:/msys64/mingw64/include/c++/15.2.0/bits/erase_if.h:
 C:/msys64/mingw64/include/c++/15.2.0/pstl/glue_algorithm_defs.h:
 
 C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/headers/Scene.h:
+
+C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/headers/UI.h:
 
 C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/src/Texture.cpp:
 
