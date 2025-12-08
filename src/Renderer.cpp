@@ -863,6 +863,7 @@ void Renderer::geometryPass() {
             shader->setUniform("volumeDensity",3);
             shader->setUniform("volumeDimension",vec3(volume->width,volume->height,volume->length));
             shader->setUniform("scatteringCoefficient",volume->scatteringCoefficient);
+            shader->setUniform("densityMultiplier",volume->densityMultiplier);
         
             
             glBindVertexArray(this->gl_ScreenQuad_VAO);
@@ -915,7 +916,7 @@ void Renderer::addUIElement(std::unique_ptr<UIElement> element){
 
 void Renderer::uiPass(){
 
-         ImGui_ImplOpenGL3_NewFrame();
+        ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
         //ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);

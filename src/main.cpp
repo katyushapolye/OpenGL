@@ -46,42 +46,54 @@ int main()
     m->transform.rotateGlobal(vec3(-90,0,0));
     m->transform.setScale(vec3(10,10,10));
     m->transform.setPosition(vec3(0,0,10));
-    scene->addModel(shared_ptr<Model>(m));
+    //scene->addModel(shared_ptr<Model>(m));
 
-    scene->addModel(shared_ptr<Model>(ModelLoader::loadFromObj("Resources/Models/gizmo.obj")));
+    //scene->addModel(shared_ptr<Model>(ModelLoader::loadFromObj("Resources/Models/gizmo.obj")));
 
-    m = ModelLoader::loadFromObj("Resources/Models/cube.obj");
-    m->transform.setPosition(vec3(-1,10,0));
-    m->transform.setScale(vec3(0.2,0.2,0.2));
-    m->transform.rotateGlobal(vec3(0,0,45));
-    scene->addModel(shared_ptr<Model>(m));
+    //m = ModelLoader::loadFromObj("Resources/Models/cube.obj");
+    //m->transform.setPosition(vec3(-1,0,0));
+    //m->transform.setScale(vec3(0.2,10,0.2));
+    //m->transform.rotateGlobal(vec3(0,0,45));
+    //scene->addModel(shared_ptr<Model>(m));
 
     Transform t = Transform();
-    t.setPosition(vec3(0,5,0));
+
 
 
     
     Volumetric* fluidView = new Volumetric(t,10,10,10);
+    fluidView->transform.setPosition(vec3(2.5,2.5,0));
     fluidView->transform.rotateGlobal(vec3(0,0,90));
-    fluidView->scatteringCoefficient = vec3(0.2, 0.175, 0.1);
+
+    fluidView->densityMultiplier = 0.030;
+    fluidView->scatteringCoefficient = vec3(0.01, 0.0025, 0.001);
     scene->addModel(shared_ptr<Volumetric>(fluidView));
 
     renderer.loadScene(scene);
 
-    int Nx = 60, Ny = 60, Nz = 60;
-    float dh = 1.0/60.0;
+    int Nx = 512, Ny = 512, Nz = 512;
+    float dh = 1.0/512.0;
     size_t totalSize = Nx * Ny * Nz;
 
     std::unique_ptr<float[]> densityField(new float[totalSize]());
 
 
 
-    // ImGui slider variable
-    float densityOffset = 0.0f;
 
-    renderer.addUIElement(std::move(unique_ptr<UIElement>(new Text("Hello world!",vec2(0.0f,0.0f)))));
+
+
+    renderer.addUIElement(std::move(unique_ptr<UIElement>(new Text("Volumetric Controls",vec2(0.0f,0.0f)))));
+    renderer.addUIElement(std::move(unique_ptr<UIElement>(new Slider("DensityMultiplier",vec2(0.0f,0.0f), &fluidView->densityMultiplier, 0.0f, 1.0f))));
+    renderer.addUIElement(std::move(unique_ptr<UIElement>(new Slider("Scattering R",vec2(0.0f,0.0f), &fluidView->scatteringCoefficient.x, 0.0f, 1.0f))));
+    renderer.addUIElement(std::move(unique_ptr<UIElement>(new Slider("Scattering G",vec2(0.0f,0.0f), &fluidView->scatteringCoefficient.g, 0.0f, 1.0f))));
+    renderer.addUIElement(std::move(unique_ptr<UIElement>(new Slider("Scattering B",vec2(0.0f,0.0f), &fluidView->scatteringCoefficient.b, 0.0f, 1.0f))));
+
+    vec3 pos = fluidView->transform.getPosition();
+    vec3 rot = fluidView->transform.getRotation();
+
+
     
-    std::string filename = "Debug\\density.bin";
+    std::string filename = "Debug\\density_810.bin";
     std::vector<float> vec = Utils::readGrid3D(filename.c_str(), Nx, Ny,Nz,dh);
 
     for (unsigned int k = 0; k < Nz; ++k) {
@@ -89,9 +101,6 @@ int main()
                 for (unsigned int j = 0; j < Nx; ++j) {
                     unsigned int index = j + Nx * (i + Ny * k);
                     densityField.get()[index] = vec[index];
-                    if(densityField.get()[index] > 0.001){
-                        densityField.get()[index] += densityOffset;
-                    }
                 }
             }
         }
@@ -102,7 +111,8 @@ int main()
 
 
         renderer.renderPass();
-
+        fluidView->transform.setPosition(pos);
+        fluidView->transform.setRotation(rot);
         /*
         first this
         ImGui_ImplOpenGL3_NewFrame();

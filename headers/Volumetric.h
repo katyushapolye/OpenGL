@@ -23,6 +23,7 @@ public:
     float width, length,height;
 
     vec3 scatteringCoefficient;
+    float densityMultiplier;
     float refractionIndex;
 
     Transform transform;

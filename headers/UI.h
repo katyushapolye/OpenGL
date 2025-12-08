@@ -27,19 +27,43 @@ public:
     vec2 pos;
     
     void draw() override{
-        ImGui::SetNextWindowPos(ImVec2(pos.x, pos.y), ImGuiCond_Always);
+       // ImGui::SetNextWindowPos(ImVec2(pos.x, pos.y), ImGuiCond_Always);
         ImGui::Text("%s", content.c_str());
     }
 };
 
 
-class Slider : UIElement{
-    float& value;
+class Slider : public UIElement{
+    public:
+    float* value;
+    vec2 pos;
     float minValue;
     float maxValue;
     std::string label;
 
-    void draw() override;
+    Slider(){
+        label = "DefaultSlider";
+        minValue = 0.0f;
+        maxValue = 1.0f;
+        pos = vec2(0.0f, 0.0f);
+    }
+    
+
+    Slider(const std::string& label, const vec2& position, float* val, float minVal, float maxVal){
+        this->label = label;
+        this->value = val;
+        this->minValue = minVal;
+        this->maxValue = maxVal;
+        pos = position;
+    }
+
+    void draw() override{
+
+        //ImGui::SetNextWindowPos(ImVec2(pos.x, pos.y), ImGuiCond_Always);
+
+    ImGui::SliderFloat(label.c_str(), value, minValue, maxValue, "%.4f", ImGuiSliderFlags_Logarithmic);
+
+    };
 
 
 };
