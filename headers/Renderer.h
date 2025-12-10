@@ -41,6 +41,8 @@ private:
     unsigned int width;
     unsigned int height;
 
+    bool altKeyWasPressed = false;
+
     float deltaTime;
     float lastFrame;
     float currentFrame;
@@ -139,6 +141,8 @@ private:
     void shadowPass();
     void geometryPass();
 
+    void volumetricPass(Volumetric* volumetric);
+
     void uiPass();
 
 
@@ -164,6 +168,8 @@ public:
 
     bool isRunning();
     void renderPass();
+
+    void saveToFile(const std::string& filename,int W, int H);
     void dispose();
 
 

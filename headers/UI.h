@@ -40,6 +40,7 @@ class Slider : public UIElement{
     float minValue;
     float maxValue;
     std::string label;
+    bool logarithmic;
 
     Slider(){
         label = "DefaultSlider";
@@ -49,19 +50,24 @@ class Slider : public UIElement{
     }
     
 
-    Slider(const std::string& label, const vec2& position, float* val, float minVal, float maxVal){
+    Slider(const std::string& label, const vec2& position, float* val, float minVal, float maxVal,bool logarithmic = false){
         this->label = label;
         this->value = val;
         this->minValue = minVal;
         this->maxValue = maxVal;
         pos = position;
+        this->logarithmic = logarithmic;
     }
 
     void draw() override{
 
         //ImGui::SetNextWindowPos(ImVec2(pos.x, pos.y), ImGuiCond_Always);
+     if(!logarithmic)
+            ImGui::SliderFloat(label.c_str(), value, minValue, maxValue, "%.4f");
+     else{
 
     ImGui::SliderFloat(label.c_str(), value, minValue, maxValue, "%.4f", ImGuiSliderFlags_Logarithmic);
+     }
 
     };
 

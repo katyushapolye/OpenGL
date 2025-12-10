@@ -1,5 +1,7 @@
 #include "../headers/Renderer.h"
 #include <vector>
+#define STB_IMAGE_WRITE_IMPLEMENTATION
+#include "../headers/stb_image_write.h"
 
 /*
     For making some shadow system
@@ -450,95 +452,77 @@ void Renderer::processInput(){
     bool zoomOut = false;
     if (glfwGetKey(this->gl_Window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(this->gl_Window, true);
-
     if(glfwGetKey(this->gl_Window,GLFW_KEY_UP) ==  GLFW_PRESS){
         inputDir.y +=1.0f;
-
     }
     if(glfwGetKey(this->gl_Window,GLFW_KEY_DOWN) ==  GLFW_PRESS){
         inputDir.y -=1.0f;
-
     }
     if(glfwGetKey(this->gl_Window,GLFW_KEY_LEFT) ==  GLFW_PRESS){
         inputDir.x -=1.0f;
-
     }
     if(glfwGetKey(this->gl_Window,GLFW_KEY_RIGHT) ==  GLFW_PRESS){
         inputDir.x +=1.0f;
-
     }
-
     if(glfwGetKey(this->gl_Window,GLFW_KEY_M) ==  GLFW_PRESS){
         zoomIn = true;
-
     }
     if(glfwGetKey(this->gl_Window,GLFW_KEY_N) ==  GLFW_PRESS){
         zoomOut = true;
-
     }
-
-    if(glfwGetKey(this->gl_Window, GLFW_KEY_LEFT_ALT) == GLFW_PRESS){
-            isMouseLocked = !isMouseLocked;
-            if(isMouseLocked){
-                glfwSetInputMode(this->gl_Window, GLFW_CURSOR, GLFW_CURSOR_DISABLED); //locks tthe mouse to screen}
-            }
-            else{
-                glfwSetInputMode(this->gl_Window, GLFW_CURSOR, GLFW_CURSOR_NORMAL); 
-                
-            }
-       
-    }
-    //mouse
-    if(isMouseLocked    == false){
-        return;
-    }   
-
-    vec2 mouseDir;
-    double x,y;
-    
-    glfwGetCursorPos(this->gl_Window,&x,&y);
-
-    mouseDir.x = ( x-this->mouseX) / this->deltaTime;
-    mouseDir.y = ( y-this->mouseY) / this->deltaTime;
-    this->mouseX = x;
-    this->mouseY = y;
-
-
-
-    this->camera->receiveInput(inputDir,mouseDir,this->deltaTime,zoomIn,zoomOut);
-    DirectionalLight* light = (DirectionalLight*)this->loadedScene->getLights()[LightType::DIRECTIONAL][0].get();
-
-    //light->transform.setPosition(this->camera->getPosition()  - light->transform.getUp()); //the shadows dont appear
-    //light->transform.lookAt(this->camera->getPosition() + 10.0f*this->camera->getForward());
     
  
-    //if i move the light here manually it is ok
-    
 
+    
+    if(glfwGetKey(this->gl_Window, GLFW_KEY_LEFT_ALT) == GLFW_PRESS){
+        if(!altKeyWasPressed) {
+            isMouseLocked = !isMouseLocked;
+            if(isMouseLocked){
+                glfwSetInputMode(this->gl_Window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+                // Reset mouse position to current cursor position
+                double x, y;
+                glfwGetCursorPos(this->gl_Window, &x, &y);
+                this->mouseX = x;
+                this->mouseY = y;
+            }
+            else{
+                glfwSetInputMode(this->gl_Window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+            }
+            altKeyWasPressed = true;
+        }
+    }
+    else {
+        altKeyWasPressed = false;
+    }
+    
+    //mouse
+    if(isMouseLocked == false){
+        return;
+    }
+    vec2 mouseDir;
+    double x, y;
+    glfwGetCursorPos(this->gl_Window, &x, &y);
+    mouseDir.x = (x - this->mouseX) / this->deltaTime;
+    mouseDir.y = (y - this->mouseY) / this->deltaTime;
+    this->mouseX = x;
+    this->mouseY = y;
+    this->camera->receiveInput(inputDir,mouseDir,this->deltaTime,zoomIn,zoomOut);
+    DirectionalLight* light = (DirectionalLight*)this->loadedScene->getLights()[LightType::DIRECTIONAL][0].get();
+    
     if(glfwGetKey(this->gl_Window,GLFW_KEY_W) ==  GLFW_PRESS){
         light->transform.rotateGlobal(vec3(0.1,0.0,0));
     }
-
     
     if(glfwGetKey(this->gl_Window,GLFW_KEY_S) ==  GLFW_PRESS){
         light->transform.rotateGlobal(vec3(-0.1,0.0,0));
-
     }
-
     if(glfwGetKey(this->gl_Window,GLFW_KEY_D) ==  GLFW_PRESS){
         light->transform.rotateGlobal(vec3(0.0,0.1,0));
     }
-
     
     if(glfwGetKey(this->gl_Window,GLFW_KEY_A) ==  GLFW_PRESS){
         light->transform.rotateGlobal(vec3(0.0,-0.1,0));
-
     }
-    
-    
-
-
-
 }
 
 
@@ -814,8 +798,7 @@ void Renderer::geometryPass() {
     glDrawArrays(GL_TRIANGLES, 0, 36);
 
 
-    //is thereeaway to duplicated the texture so it does the depth testing but does not write to it
-    //glDisable(GL_DEPTH_TEST);
+
     glDepthMask(GL_FALSE);  // Disable depth writes because of this, volumtric effects will render on top of the transparentt ones
     glEnable(GL_BLEND);
     for (auto& drawable : this->transparentDrawGroups) {
@@ -832,54 +815,9 @@ void Renderer::geometryPass() {
         }
         else if(drawable->getType() == DrawableType::VOLUMETRIC){
 
-            glBindFramebuffer(GL_READ_FRAMEBUFFER, this->gl_Screen_FBO);
-            glBindFramebuffer(GL_DRAW_FRAMEBUFFER, this->gl_Screen_Volumetric_FBO);
-            glBlitFramebuffer(
-                0, 0, width, height, 
-                0, 0, width, height, 
-                GL_DEPTH_BUFFER_BIT,  // Copy depth only
-                GL_NEAREST
-            );
-            
-            
-            // Now render volumetric
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_CUBE_MAP, this->gl_SkyBox_Cubemap);  // ← Add this!
-        glActiveTexture(GL_TEXTURE1);
-        glBindTexture(GL_TEXTURE_2D, this->gl_Screen_TEX);  
-        glActiveTexture(GL_TEXTURE2);
-        glBindTexture(GL_TEXTURE_2D, this->gl_Screen_DepthStencil_TEX);  
-            
-            Volumetric* volume = static_cast<Volumetric*>(drawable.get());
-            volume->bindDensityField(3);
-            shader = loadedShaders[drawable->getShaderType()].get();
-            shader->bindShader();
-            shader->setUniform("modelMat",volume->transform.getTransformMat());
-            shader->setUniform("skybox", 0);           //  Skybox on unit 0
-            shader->setUniform("screenTexture", 1);
-            shader->setUniform("screenDepth", 2);  
-            shader->setUniform("time", (float)glfwGetTime());
-            shader->setUniform("volumeCenter",volume->transform.getPosition());
-            shader->setUniform("volumeDensity",3);
-            shader->setUniform("volumeDimension",vec3(volume->width,volume->height,volume->length));
-            shader->setUniform("scatteringCoefficient",volume->scatteringCoefficient);
-            shader->setUniform("densityMultiplier",volume->densityMultiplier);
-        
-            
-            glBindVertexArray(this->gl_ScreenQuad_VAO);
-            glDrawArrays(GL_TRIANGLES, 0, 6);
-            
-            // Copy result back (color only, preserve depth in Screen_FBO)
-            glBindFramebuffer(GL_READ_FRAMEBUFFER, this->gl_Screen_Volumetric_FBO);
-            glBindFramebuffer(GL_DRAW_FRAMEBUFFER, this->gl_Screen_FBO);
-            glBlitFramebuffer(
-                0, 0, width, height, 
-                0, 0, width, height, 
-                GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT, 
-                GL_NEAREST
-            );
+            volumetricPass(static_cast<Volumetric*>(drawable.get()));
     }
-}
+    }
     //glDisable(GL_DEPTH_TEST);
     glDepthMask(GL_TRUE);
 
@@ -908,6 +846,54 @@ void Renderer::geometryPass() {
 
 
 
+}
+
+void Renderer::volumetricPass(Volumetric* volume){
+    glBindFramebuffer(GL_READ_FRAMEBUFFER, this->gl_Screen_FBO);
+            glBindFramebuffer(GL_DRAW_FRAMEBUFFER, this->gl_Screen_Volumetric_FBO);
+            glBlitFramebuffer(
+                0, 0, width, height, 
+                0, 0, width, height, 
+                GL_DEPTH_BUFFER_BIT,  // Copy depth only
+                GL_NEAREST
+            );
+            
+            
+            // Now render volumetric
+            glActiveTexture(GL_TEXTURE0);
+            glBindTexture(GL_TEXTURE_CUBE_MAP, this->gl_SkyBox_Cubemap);  //Add this!
+            glActiveTexture(GL_TEXTURE1);
+            glBindTexture(GL_TEXTURE_2D, this->gl_Screen_TEX);  
+            glActiveTexture(GL_TEXTURE2);
+            glBindTexture(GL_TEXTURE_2D, this->gl_Screen_DepthStencil_TEX);  
+            Shader* shader = nullptr;
+            volume->bindDensityField(3);
+            shader = loadedShaders[volume->getShaderType()].get();
+            shader->bindShader();
+            shader->setUniform("modelMat",volume->transform.getTransformMat());
+            shader->setUniform("skybox", 0);           //  Skybox on unit 0
+            shader->setUniform("screenTexture", 1);
+            shader->setUniform("screenDepth", 2);  
+            shader->setUniform("time", (float)glfwGetTime());
+            shader->setUniform("volumeCenter",volume->transform.getPosition());
+            shader->setUniform("volumeDensity",3);
+            shader->setUniform("volumeDimension",vec3(volume->width,volume->height,volume->length));
+            shader->setUniform("scatteringCoefficient",volume->scatteringCoefficient);
+            shader->setUniform("densityMultiplier",volume->densityMultiplier);
+        
+            
+            glBindVertexArray(this->gl_ScreenQuad_VAO);
+            glDrawArrays(GL_TRIANGLES, 0, 6);
+            
+            // Copy result back (color only, preserve depth in Screen_FBO)
+            glBindFramebuffer(GL_READ_FRAMEBUFFER, this->gl_Screen_Volumetric_FBO);
+            glBindFramebuffer(GL_DRAW_FRAMEBUFFER, this->gl_Screen_FBO);
+            glBlitFramebuffer(
+                0, 0, width, height, 
+                0, 0, width, height, 
+                GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT, 
+                GL_NEAREST
+            );
 }
 
 void Renderer::addUIElement(std::unique_ptr<UIElement> element){
@@ -976,6 +962,27 @@ void Renderer::renderPass() {
 
 
     
+}
+
+void Renderer::saveToFile(const std::string& filename,int W, int H){
+     std::vector<unsigned char> pixels(W * H * 4);
+
+    glReadBuffer(GL_FRONT);   // or GL_BACK depending on swap mode
+    glReadPixels(0, 0, W, H, GL_RGBA, GL_UNSIGNED_BYTE, pixels.data());
+
+    // vertical flip
+    for (int y = 0; y < H/2; ++y) {
+        for (int x = 0; x < W*4; ++x) {
+            std::swap(
+                pixels[y * W * 4 + x],
+                pixels[(H - 1 - y) * W * 4 + x]
+            );
+        }
+    }
+
+    
+
+    stbi_write_png(filename.c_str(), W, H, 4, pixels.data(), W * 4);
 }
 
 void Renderer::dispose(){

@@ -7431,6 +7431,7 @@ CMakeFiles/OpenGLApp.dir/src/Renderer.cpp.obj: C:/Users/rapha/Documents/Pessoal/
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/headers/Utils.h \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/headers/Volumetric.h \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/headers/stb_image.h \
+  C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/headers/stb_image_write.h \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/KHR/khrplatform.h \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/assimp/Compiler/poppack1.h \
   C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/include/assimp/Compiler/pushpack1.h \
@@ -7826,6 +7827,7 @@ CMakeFiles/OpenGLApp.dir/src/Renderer.cpp.obj: C:/Users/rapha/Documents/Pessoal/
   C:/msys64/mingw64/include/c++/15.2.0/limits \
   C:/msys64/mingw64/include/c++/15.2.0/locale \
   C:/msys64/mingw64/include/c++/15.2.0/map \
+  C:/msys64/mingw64/include/c++/15.2.0/math.h \
   C:/msys64/mingw64/include/c++/15.2.0/memory \
   C:/msys64/mingw64/include/c++/15.2.0/new \
   C:/msys64/mingw64/include/c++/15.2.0/ostream \
@@ -13717,6 +13719,8 @@ C:/msys64/mingw64/include/psdk_inc/_ip_types.h:
 C:/msys64/mingw64/include/psdk_inc/_socket_types.h:
 
 C:/msys64/mingw64/include/psdk_inc/_wsa_errnos.h:
+
+C:/Users/rapha/Documents/Pessoal/OpenGL/OpenGL/headers/stb_image_write.h:
 
 C:/msys64/mingw64/include/c++/15.2.0/initializer_list:
 
