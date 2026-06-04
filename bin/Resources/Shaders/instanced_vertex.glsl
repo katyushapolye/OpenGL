@@ -8,8 +8,13 @@ out vec2 fTexCoord;
 out vec3 fVertexNormal;
 out vec3 fVertexNormal2; //for artistic reasons, we do some random rotations of the normals to smooth them out and create some randomness
 out vec3 fFragPos;
-
+out vec4 fLightFragPos[16];
 uniform float time;
+
+uniform mat4 lightMats[16];
+uniform int activeShadowCasters;
+
+
 
 
 /*NOISE FUNCTIONS from the book of shaders, we use a 3d perlin noise, 2d for th*/
@@ -82,7 +87,7 @@ float snoise(vec3 v) {
 }
 
 float windIntensity(vec3 worldPos, float time, float gustFrequency, vec3 windDir) {
-    // Normalize the wind direction
+
     vec3 direction = normalize(windDir);
     
 
@@ -143,10 +148,10 @@ void main()
    vec3 worldPos = (instanceMatrix * vec4(vPosition, 1.0)).xyz;
     
     // Wind intensity with time-based variation
-    float intensity = windIntensity(worldPos, time, 0.3,vec3(-1,0,0));
+    float intensity = windIntensity(worldPos, time, 0.3,vec3(0,0,1));
     
     // Apply wind effect (consider using intensity more subtly)
-    float factor = (intensity*50  + 25.0+(2*(gl_InstanceID*8931) % 7) )* (vPosition.y / 1.5);
+    float factor = (intensity*25 + 25.0+(2*(gl_InstanceID*8931) % 7) )* (vPosition.y / 1.5);
 
 
 
@@ -160,7 +165,11 @@ void main()
 
     gl_Position = projectionMat * viewMat * instanceMatrix * vec4(newPos, 1.0);
     fFragPos = vec3(instanceMatrix * vec4(newPos, 1.0)); // Use rotated position
-    fVertexNormal = (instanceMatrix * vec4(rotatedNormal, 0.0)).xyz;
-    fVertexNormal2 = (instanceMatrix * vec4(rotatedNormal2, 0.0)).xyz;
+    fVertexNormal = -(instanceMatrix * vec4(rotatedNormal, 0.0)).xyz;
+    fVertexNormal2 = -(instanceMatrix * vec4(rotatedNormal2, 0.0)).xyz;
     fTexCoord = vTexCoords;
+
+    for(int i = 0; i < activeShadowCasters; i++){
+        fLightFragPos[i] = lightMats[i] * vec4(fFragPos, 1.0);
+    }
 }

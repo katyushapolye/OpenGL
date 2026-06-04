@@ -28,11 +28,10 @@ void Scene::addLight(shared_ptr<SpotLight> light){
 
 
 
-std::vector<std::shared_ptr<Drawable>> Scene::getModels(){
-    return this->models;
+const std::vector<std::shared_ptr<Drawable>>& Scene::getModels() const {
+    return models;
 }
 
-
-std::map<LightType,std::vector<shared_ptr<Light>>> Scene::getLights(){
-    return this->lights;
+const std::map<LightType,std::vector<std::shared_ptr<Light>>>& Scene::getLights() const {
+    return lights;
 }

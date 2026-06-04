@@ -28,8 +28,8 @@ public:
     void addLight(shared_ptr<SpotLight> light);
 
 
-    std::vector<shared_ptr<Drawable>> getModels();
-    std::map<LightType,std::vector<shared_ptr<Light>>> getLights();
+    const std::vector<std::shared_ptr<Drawable>>& getModels() const;
+    const std::map<LightType,std::vector<std::shared_ptr<Light>>>& getLights() const;
 
 
 };

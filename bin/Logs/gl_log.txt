@@ -1,12 +1,81 @@
-Log/initLog - Logging session started - 09:09:10 PM 
-[09:09:10 PM] - Program Initialized!
-[09:09:10 PM] - [RendererRenderer] - Mouse Raw acceleration is supported, turning it on
-[09:09:12 PM] - [ModelLoader::loadFromObjWithAssimp] - Successfully loaded: Resources/Models/quad.obj with 1 meshes
-[09:09:12 PM] - [ModelLoader::loadFromObjWithAssimp] - Processing 1 materials (skipping default)
-[09:09:12 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
-[09:09:12 PM] - [TextureHandler::loadTexture] - Loaded texture from path Resources/Textures/Fallback/fallback.png- with transparency of value 0
-[09:09:12 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
-[09:09:12 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
-[09:09:12 PM] - [TextureHandler::loadTexture] - Loaded texture from path Resources/Textures/checkered.png- with transparency of value 0
-[09:09:12 PM] - [ModelLoader::loadFromObjWithAssimp] - Model loading completed successfully
-Log/closeLog - Logging session ended - 09:10:13 PM 
+Log/initLog - Logging session started - 03:05:27 PM
+[03:05:27 PM] - CWD: C:\Users\rapha\Documents\Pessoal\OpenGL\OpenGL\bin
+[03:05:27 PM] - argv[0]: OpenGLApp.exe
+[03:05:27 PM] - [RendererRenderer] - Mouse Raw acceleration is supported, turning it on
+[03:05:27 PM] - [Renderer::loadShaders] - Loading 3 shaders...
+[03:05:27 PM] - [Shader] Loading: Resources/Shaders/lit_vertex.glsl | Resources/Shaders/lit_frag.glsl
+[03:05:27 PM] - [Renderer::loadShaders] - Lit shader loaded OK
+[03:05:27 PM] - [Shader] Loading: Resources/Shaders/instanced_vertex.glsl | Resources/Shaders/instanced_frag.glsl
+[03:05:27 PM] - [Renderer::loadShaders] - Instanced shader loaded OK
+[03:05:27 PM] - [Shader] Loading: Resources/Shaders/volumetric_vertex.glsl | Resources/Shaders/volumetric_frag.glsl
+[03:05:27 PM] - [Renderer::loadShaders] - Raymarch shader loaded OK
+[03:05:27 PM] - [Renderer::loadShaders] - Allocating Matrix UBO (128 bytes, binding 0)
+[03:05:27 PM] - [Renderer::loadShaders] - Allocating Camera UBO (binding 1)
+[03:05:27 PM] - [Renderer::loadShaders] - UBOs initialized
+[03:05:27 PM] - [Renderer::loadScreenBuffer] - Creating screen FBO (1024x768)
+[03:05:27 PM] - [Shader] Loading: Resources/PostProcessing/vertex_post.glsl | Resources/PostProcessing/fragment_post.glsl
+[03:05:27 PM] - [Renderer::loadScreenBuffer] - Screen FBO complete OK
+[03:05:27 PM] - [Renderer::loadScreenBuffer] - Depth FBO complete OK
+[03:05:27 PM] - [Renderer::loadScreenBuffer] - Volumetric FBO complete OK
+[03:05:27 PM] - [Renderer::loadScreenBuffer] - Volumetric Depth FBO complete OK
+[03:05:27 PM] - [Renderer::loadSkyBox] - Loading skybox cubemap...
+[03:05:28 PM] - [Renderer::loadSkyBox] - Cubemap faces loaded (2048x2048)
+[03:05:28 PM] - [Renderer::loadSkyBox] - Skybox VAO/VBO created
+[03:05:28 PM] - [Shader] Loading: Resources/Shaders/skybox_vertex.glsl | Resources/Shaders/skybox_frag.glsl
+[03:05:28 PM] - [Renderer::loadSkyBox] - Skybox shader loaded OK
+[03:05:28 PM] - [Renderer::loadShadowMap] - Initializing shadow maps: 16 casters, 4096x4096 resolution
+[03:05:28 PM] - [Renderer::loadShadowMap] - Shadow FBOs created OK
+[03:05:28 PM] - [Shader] Loading: Resources/Shaders/shadow_vertex.glsl | Resources/Shaders/shadow_frag.glsl
+[03:05:28 PM] - [Renderer::loadShadowMap] - Shadow map shader loaded OK
+[03:05:28 PM] - [ModelLoader::loadFromObjWithAssimp] - Successfully loaded: Resources/Models/quad.obj with 1 meshes
+[03:05:28 PM] - [ModelLoader::loadFromObjWithAssimp] - Processing 1 materials (skipping default)
+[03:05:28 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
+[03:05:28 PM] - [TextureHandler::loadTexture] - Loaded texture from path Resources/Textures/Fallback/fallback.png- with transparency of value 0
+[03:05:28 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
+[03:05:28 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
+[03:05:28 PM] - [TextureHandler::loadTexture] - Loaded texture from path Resources/Textures/grass.png- with transparency of value 0
+[03:05:28 PM] - [ModelLoader::loadFromObjWithAssimp] - Model loading completed successfully
+[03:05:28 PM] - [ModelLoader::loadFromObjWithAssimp] - Successfully loaded: Resources/Models/windmill.obj with 5 meshes
+[03:05:28 PM] - [ModelLoader::loadFromObjWithAssimp] - Processing 5 materials (skipping default)
+[03:05:28 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
+[03:05:28 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
+[03:05:28 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
+[03:05:28 PM] - [TextureHandler::loadTexture] - Setting texture path to Diffuse fallback.png
+[03:05:28 PM] - [TextureHandler::loadTexture] - Loaded texture from path Resources/Textures/Fallback/fallback_white.png- with transparency of value 0
+[03:05:28 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
+[03:05:28 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
+[03:05:28 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
+[03:05:28 PM] - [TextureHandler::loadTexture] - Setting texture path to Diffuse fallback.png
+[03:05:28 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
+[03:05:28 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
+[03:05:28 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
+[03:05:28 PM] - [TextureHandler::loadTexture] - Setting texture path to Diffuse fallback.png
+[03:05:28 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
+[03:05:28 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
+[03:05:28 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
+[03:05:28 PM] - [TextureHandler::loadTexture] - Setting texture path to Diffuse fallback.png
+[03:05:28 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
+[03:05:28 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
+[03:05:28 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
+[03:05:28 PM] - [TextureHandler::loadTexture] - Setting texture path to Diffuse fallback.png
+[03:05:28 PM] - [ModelLoader::loadFromObjWithAssimp] - Model loading completed successfully
+[03:05:28 PM] - [ModelLoader::loadFromObjWithAssimp] - Successfully loaded: Resources/Models/grassblade.obj with 1 meshes
+[03:05:28 PM] - [ModelLoader::loadFromObjWithAssimp] - Processing 1 materials (skipping default)
+[03:05:28 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
+[03:05:28 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
+[03:05:28 PM] - [TextureHandler::loadTexture] - Path was either empty or GENERIC_FALLBACK. Setting texture path to generic fallback.png
+[03:05:28 PM] - [TextureHandler::loadTexture] - Loaded texture from path Resources/Textures/grassblade.png- with transparency of value 0
+[03:05:28 PM] - [ModelLoader::loadFromObjWithAssimp] - Model loading completed successfully
+[03:05:29 PM] - [Renderer::loadScene] - Loading scene...
+[03:05:29 PM] - [Renderer::loadScene] - Models: 3
+[03:05:29 PM] - [Renderer::loadScene] - Dir lights: 1
+[03:05:29 PM] - [Renderer::loadScene] - Spot lights: 0
+[03:05:29 PM] - [Renderer::loadScene] - Point lights: 0
+[03:05:29 PM] - [Renderer::loadScene] - Active shadow casters: 1
+[03:05:29 PM] - [Renderer::sortSceneModels] - Sorted: 3 opaque, 0 transparent
+[03:05:54 PM] - [Renderer::dispose] - Disposing renderer...
+[03:05:54 PM] - [Renderer::dispose] - Shutting down ImGui
+[03:05:54 PM] - [Renderer::dispose] - Releasing OpenGL resources
+[03:05:54 PM] - [Renderer::dispose] - Destroying GLFW window
+[03:05:54 PM] - [Renderer::dispose] - Renderer destroyed gracefully
+Log/closeLog - Logging session ended - 03:05:54 PM

@@ -1,51 +1,56 @@
 #include "../headers/Log.h"
 
+#ifdef _WIN32
+#  include <windows.h>
+#  include <dbghelp.h>
+#else
+#  include <execinfo.h>   // backtrace / backtrace_symbols_fd
+#endif
+
 FILE *Log::currentLog = nullptr;
-
-
 
 void Log::SEGFAULT_HANDLER(int SIG)
 {
     printf("A FATAL EXCEPTION HAS OCCURRED\n");
 
-
     if (currentLog != nullptr)
     {
-        DWORD64 moduleBase = (DWORD64)GetModuleHandle(NULL);
-        
-        fprintf(currentLog, "[%s] - A SEGMENTATION FAULT HAS BEEN TRIGGERED - ERROR CODE %d.\n", Log::getDate().c_str(), SIG);
-        fprintf(currentLog, "[%s] - MODULE BASE - (0x%llx) %d. - Good luck!\n", Log::getDate().c_str(),moduleBase );
-        fflush(currentLog);
+        fprintf(currentLog, "[%s] - A SEGMENTATION FAULT HAS BEEN TRIGGERED - ERROR CODE %d.\n",
+                Log::getDate().c_str(), SIG);
 
 #ifdef _WIN32
-        // Windows implementation using DbgHelp
+        DWORD64 moduleBase = (DWORD64)GetModuleHandle(NULL);
+        fprintf(currentLog, "[%s] - MODULE BASE - (0x%llx) - Good luck!\n",
+                Log::getDate().c_str(), moduleBase);
+        fflush(currentLog);
+
         const int max_frames = 16;
-        void* stack[max_frames];
-        
+        void *stack[max_frames];
         HANDLE process = GetCurrentProcess();
         SymInitialize(process, NULL, TRUE);
-        
         WORD frames = CaptureStackBackTrace(0, max_frames, stack, NULL);
-        
-        for (int i = 0; i < frames; i++) {
+
+        for (int i = 0; i < frames; i++)
+        {
             DWORD64 address = (DWORD64)(stack[i]);
-            
             char buffer[sizeof(SYMBOL_INFO) + MAX_SYM_NAME * sizeof(TCHAR)];
             PSYMBOL_INFO symbol = (PSYMBOL_INFO)buffer;
             symbol->SizeOfStruct = sizeof(SYMBOL_INFO);
-            symbol->MaxNameLen = MAX_SYM_NAME;
-            
-            if (SymFromAddr(process, address, NULL, symbol)) {
+            symbol->MaxNameLen   = MAX_SYM_NAME;
+
+            if (SymFromAddr(process, address, NULL, symbol))
                 fprintf(currentLog, "[%d] %s (0x%llx)\n", i, symbol->Name, address);
-            } else {
+            else
                 fprintf(currentLog, "[%d] <unknown> (0x%llx)\n", i, address);
-            }
         }
-        
         SymCleanup(process);
 #else
-        //posix
-        void *stackTrace[16];
+        // POSIX — moduleBase equivalent via /proc
+        fprintf(currentLog, "[%s] - MODULE BASE - (see /proc/%d/maps) - Good luck!\n",
+                Log::getDate().c_str(), getpid());
+        fflush(currentLog);
+
+        void  *stackTrace[16];
         size_t size = backtrace(stackTrace, 16);
         backtrace_symbols_fd(stackTrace, size, fileno(currentLog));
 #endif
@@ -53,6 +58,7 @@ void Log::SEGFAULT_HANDLER(int SIG)
         fflush(currentLog);
         fclose(currentLog);
     }
+
     exit(-1);
 }
 
@@ -64,9 +70,8 @@ void Log::write(std::string logEntry)
 
 std::string Log::getDate()
 {
-    time_t rawtime;
-    struct tm *timeinfo;
-
+    time_t      rawtime;
+    struct tm  *timeinfo;
     time(&rawtime);
     timeinfo = localtime(&rawtime);
 
@@ -85,19 +90,20 @@ void Log::initLog(std::string name)
     {
         signal(SIGSEGV, SEGFAULT_HANDLER);
         printf("Debug log started at %s.\n", fName.c_str());
-
-        fprintf(currentLog, "Log/initLog - Logging session started - %s \n", Log::getDate().c_str());
+        fprintf(currentLog, "Log/initLog - Logging session started - %s\n",
+                Log::getDate().c_str());
         fflush(currentLog);
     }
     else
     {
-        printf("Log/initLog - Log creating has failed... - %s .\n", fName.c_str());
+        printf("Log/initLog - Log creating has failed... - %s\n", fName.c_str());
     }
 }
 
 void Log::closeLog()
 {
-    fprintf(currentLog, "Log/closeLog - Logging session ended - %s \n", Log::getDate().c_str());
+    fprintf(currentLog, "Log/closeLog - Logging session ended - %s\n",
+            Log::getDate().c_str());
     fflush(currentLog);
     fclose(currentLog);
 }
